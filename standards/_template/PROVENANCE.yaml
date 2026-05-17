@@ -1,0 +1,29 @@
+# Template — replace every REPLACE_WITH value before opening a PR.
+
+standard: REPLACE_WITH_STANDARD_FULL_NAME
+owner:
+  name: REPLACE_WITH_OWNER_NAME
+  url: REPLACE_WITH_OWNER_HOMEPAGE
+  github: REPLACE_WITH_OWNER_GITHUB_OR_LEAVE_EMPTY
+source:
+  repository: REPLACE_WITH_UPSTREAM_URL
+  upstream_version: REPLACE_WITH_VERSION_LABEL
+  upstream_sha: REPLACE_WITH_SHA_OR_NA
+  upstream_date: REPLACE_WITH_UPSTREAM_RELEASE_DATE_ISO
+  fetched_at: REPLACE_WITH_TODAY_ISO
+license:
+  terms: REPLACE_WITH_UPSTREAM_LICENSE_TERMS
+  cora_redistribution_rights: REPLACE_WITH_full_OR_partial_OR_link_only
+  attribution_required: true
+  notes: |
+    REPLACE_WITH any license-specific notes, attribution requirements,
+    or restrictions on redistribution.
+status:
+  cora_tier: REPLACE_WITH_bootstrap_mirror_OR_participating_OR_link_only
+  participating: REPLACE_WITH_true_OR_false
+  partnership_doc: REPLACE_WITH_LINK_TO_INTERNAL_PARTNERSHIP_RECORD_OR_NA
+  notes: |
+    REPLACE_WITH the relationship summary. Examples:
+    - "Bootstrap mirror under upstream open license; no formal partnership."
+    - "Participating standard under MOU signed YYYY-MM-DD."
+    - "Link-only; CORA does not redistribute upstream content."
