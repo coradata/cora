@@ -1,0 +1,34 @@
+name: License Check
+
+on:
+  pull_request:
+
+jobs:
+  check-licenses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for LICENSE files
+        run: |
+          test -f LICENSE || (echo "LICENSE missing" && exit 1)
+          test -f LICENSE-Docs || (echo "LICENSE-Docs missing" && exit 1)
+          test -f NOTICE || (echo "NOTICE missing" && exit 1)
+      - name: Check upstream provenance on standards directories
+        run: |
+          for dir in standards/*/; do
+            name=$(basename "$dir")
+            # Skip the template directory (underscore prefix marks it as not-a-real-standard)
+            if [[ "$name" == _* ]]; then
+              continue
+            fi
+            # Real standards must have a PROVENANCE.yaml
+            if [ ! -f "$dir/PROVENANCE.yaml" ]; then
+              echo "Missing PROVENANCE.yaml in $dir"
+              exit 1
+            fi
+            # Real standards must not have unfilled REPLACE_WITH placeholders
+            if grep -q "REPLACE_WITH" "$dir/PROVENANCE.yaml"; then
+              echo "Unfilled REPLACE_WITH placeholders in $dir/PROVENANCE.yaml"
+              exit 1
+            fi
+          done

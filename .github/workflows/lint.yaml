@@ -1,0 +1,50 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown lint
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        with:
+          globs: |
+            **/*.md
+            !node_modules
+
+  yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: YAML lint
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: |
+            crosswalks/
+            standards/
+            drift/
+            .github/
+
+  crosswalk-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install validator
+        run: pip install check-jsonschema pyyaml
+      - name: Validate crosswalks against schema
+        run: |
+          shopt -s nullglob
+          files=(crosswalks/concepts/*.yaml)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No crosswalk files yet — skipping."
+            exit 0
+          fi
+          check-jsonschema --schemafile crosswalks/schema/crosswalk.schema.json "${files[@]}"
