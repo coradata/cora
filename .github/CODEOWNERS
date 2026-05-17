@@ -1,0 +1,23 @@
+# CORA CODEOWNERS
+#
+# Routes PRs to the right reviewers. Teams will be created as working groups form.
+# Until then, the @coradata/maintainers team owns everything.
+
+# Default: maintainers own all changes
+*                                @coradata/maintainers
+
+# Standards directories — to be re-routed to per-standard working groups as they form
+/standards/ibpdi/                @coradata/maintainers
+
+# Cross-cutting
+/crosswalks/                     @coradata/maintainers
+/skills/                         @coradata/maintainers
+/drift/                          @coradata/maintainers
+
+# Governance — extra scrutiny
+/governance/                     @coradata/maintainers
+/.github/                        @coradata/maintainers
+LICENSE                          @coradata/maintainers
+LICENSE-Docs                     @coradata/maintainers
+NOTICE                           @coradata/maintainers
+README.md                        @coradata/maintainers

@@ -1,0 +1,28 @@
+name: Standard update
+description: An upstream standards body has released a new version of a hosted standard.
+labels: ["standard-update"]
+body:
+  - type: input
+    id: standard
+    attributes:
+      label: Standard
+      placeholder: e.g. ibpdi, mits, redi
+    validations:
+      required: true
+  - type: input
+    id: new_version
+    attributes:
+      label: New version
+    validations:
+      required: true
+  - type: input
+    id: upstream_release_url
+    attributes:
+      label: Upstream release URL
+    validations:
+      required: true
+  - type: textarea
+    id: change_summary
+    attributes:
+      label: Summary of changes
+      description: What changed upstream? Breaking? Additive? New concepts?

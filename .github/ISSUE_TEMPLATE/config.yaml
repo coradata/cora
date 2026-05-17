@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussion (questions, ideas, general Q&A)
+    url: https://github.com/coradata/cora/discussions
+    about: For questions, ideas, and general discussion that don't fit an issue template.
+  - name: Partnership inquiries
+    url: mailto:custodianship@coradata.org
+    about: For standards bodies considering participation in CORA.
+  - name: Security disclosures
+    url: https://github.com/coradata/cora/security/advisories/new
+    about: Private security disclosures.

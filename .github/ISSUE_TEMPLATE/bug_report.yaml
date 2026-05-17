@@ -1,0 +1,33 @@
+name: Bug report
+description: Something is broken or behaving incorrectly in a CORA artifact or tool.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for bugs in CORA-published derivations, crosswalks, skills, or tooling.
+
+        **Do not file bugs against hosted upstream standards here.** Those should go to the standards body's own issue tracker.
+  - type: input
+    id: affected_artifact
+    attributes:
+      label: Affected artifact
+      description: Which file, crosswalk, skill, or tool?
+      placeholder: e.g. crosswalks/concepts/noi.yaml
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What's wrong
+      description: Describe the bug. Include the expected vs actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
