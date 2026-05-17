@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coradata.org/schemas/crosswalk.schema.json",
+  "title": "CORA Crosswalk",
+  "description": "A cross-standard mapping for a single concept across hosted standards.",
+  "type": "object",
+  "required": ["concept", "canonical_definition", "mappings", "maintainer", "last_reviewed"],
+  "properties": {
+    "concept": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "Canonical concept name in lowercase snake_case."
+    },
+    "canonical_definition": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Working definition of the concept, written by CORA maintainers."
+    },
+    "aliases": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Alternative names for this concept used in different communities."
+    },
+    "boundary": {
+      "type": "boolean",
+      "default": false,
+      "description": "True if this is a boundary crosswalk connecting to an adjacent ontology CORA does not host (e.g. MISMO, RealEstateCore, OSI)."
+    },
+    "mappings": {
+      "type": "object",
+      "description": "Per-standard field mappings keyed by standard short name.",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["confidence"],
+        "properties": {
+          "field": {
+            "type": ["string", "null"],
+            "description": "Field name or path in the standard. Null if not_present."
+          },
+          "version": {
+            "type": "string",
+            "description": "Standard version this mapping applies to."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["exact", "close", "partial", "divergent", "not_present"],
+            "description": "Mapping confidence. divergent and not_present require a narrative."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Required when confidence is divergent or not_present."
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the upstream documentation for this field."
+          }
+        }
+      }
+    },
+    "maintainer": {
+      "type": "string",
+      "pattern": "^@[a-zA-Z0-9-]+(\\/[a-zA-Z0-9-]+)?$",
+      "description": "GitHub handle or team responsible for this crosswalk."
+    },
+    "last_reviewed": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 date of last maintainer review."
+    },
+    "references": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "description": "Additional references supporting the mapping."
+    }
+  }
+}
