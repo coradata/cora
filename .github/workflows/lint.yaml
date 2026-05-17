@@ -9,7 +9,7 @@ jobs:
   markdown:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Markdown lint
         uses: DavidAnson/markdownlint-cli2-action@v15
         with:
@@ -21,7 +21,7 @@ jobs:
   yaml:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: YAML lint
         uses: ibiqlik/action-yamllint@v3
         with:
@@ -35,7 +35,7 @@ jobs:
   crosswalk-schema:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
