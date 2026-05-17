@@ -1,0 +1,132 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "_allImports.1.0.cdm.json"
+    },
+    {
+      "corpusPath": "RentalPayment.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "Dunning",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "name": "DunningId",
+          "purpose": "identifiedBy",
+          "dataType": "string",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "explanation": "fk Dunning.RentalPaymentId to RentalPayment.RentalPaymentId",
+          "entity": {
+            "entityReference": "RentalPayment",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "RentalPayment/(resolvedAttributes)/RentalPaymentId"
+                ]
+              }
+            ]
+          },
+          "name": "RentalPaymentId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "RentalPaymentId",
+                "purpose": "hasA",
+                "dataType": "string",
+                "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+                "maximumLength": 50
+              }
+            }
+          }
+        },
+        {
+          "name": "DunningLevel",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Dunning level",
+          "maximumLength": 50,
+          "appliedTraits": [
+            "means.category"
+          ]
+        },
+        {
+          "name": "DunningAmount",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "description": "Dunning Amount",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "attributeGroupReference": "Currency"
+        },
+        {
+          "name": "PaymentAmount",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "description": "Value of payment",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "InitialDueDate",
+          "purpose": "hasA",
+          "dataType": "dateTime",
+          "description": "Initial due date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)",
+          "appliedTraits": [
+            "is.formatted.dateTime"
+          ]
+        },
+        {
+          "name": "PaymentDate",
+          "purpose": "endedOn",
+          "dataType": "dateTime",
+          "description": "Payment date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)",
+          "appliedTraits": [
+            "is.formatted.dateTime"
+          ]
+        }
+      ],
+      "displayName": "Dunning",
+      "description": "Information about outstanding rent receivables"
+    }
+  ]
+}

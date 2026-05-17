@@ -1,0 +1,388 @@
+{
+  "manifestName": "energyAndResources",
+  "explanation": "IBPDI real estate CDM standard entities",
+  "entities": [
+    {
+      "type": "LocalEntity",
+      "entityName": "Climate",
+      "entityPath": "Climate.cdm.json/Climate"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ClimateBuilding",
+      "entityPath": "ClimateBuilding.cdm.json/ClimateBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ClimateSite",
+      "entityPath": "ClimateSite.cdm.json/ClimateSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "EmissionFactor",
+      "entityPath": "EmissionFactor.cdm.json/EmissionFactor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "EmissionFactorBuilding",
+      "entityPath": "EmissionFactorBuilding.cdm.json/EmissionFactorBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "EmissionFactorOperationalMeasurement",
+      "entityPath": "EmissionFactorOperationalMeasurement.cdm.json/EmissionFactorOperationalMeasurement"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "EmissionFactorSite",
+      "entityPath": "EmissionFactorSite.cdm.json/EmissionFactorSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "GhgEmission",
+      "entityPath": "GhgEmission.cdm.json/GhgEmission"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "GhgEmissionBuilding",
+      "entityPath": "GhgEmissionBuilding.cdm.json/GhgEmissionBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "GhgEmissionEmissionFactor",
+      "entityPath": "GhgEmissionEmissionFactor.cdm.json/GhgEmissionEmissionFactor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "GhgEmissionSite",
+      "entityPath": "GhgEmissionSite.cdm.json/GhgEmissionSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurement",
+      "entityPath": "OperationalMeasurement.cdm.json/OperationalMeasurement"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementBuilding",
+      "entityPath": "OperationalMeasurementBuilding.cdm.json/OperationalMeasurementBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementFloor",
+      "entityPath": "OperationalMeasurementFloor.cdm.json/OperationalMeasurementFloor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementLand",
+      "entityPath": "OperationalMeasurementLand.cdm.json/OperationalMeasurementLand"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementRentalUnit",
+      "entityPath": "OperationalMeasurementRentalUnit.cdm.json/OperationalMeasurementRentalUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementSite",
+      "entityPath": "OperationalMeasurementSite.cdm.json/OperationalMeasurementSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementSpace",
+      "entityPath": "OperationalMeasurementSpace.cdm.json/OperationalMeasurementSpace"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "OperationalMeasurementUnit",
+      "entityPath": "OperationalMeasurementUnit.cdm.json/OperationalMeasurementUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SustainabilityIndicator",
+      "entityPath": "SustainabilityIndicator.cdm.json/SustainabilityIndicator"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SustainabilityIndicatorEmissionFactor",
+      "entityPath": "SustainabilityIndicatorEmissionFactor.cdm.json/SustainabilityIndicatorEmissionFactor"
+    }
+  ],
+  "relationships": [
+    {
+      "fromEntity": "ClimateBuilding.cdm.json/ClimateBuilding",
+      "fromEntityAttribute": "ClimateId",
+      "toEntity": "Climate.cdm.json/Climate",
+      "toEntityAttribute": "ClimateId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ClimateSite.cdm.json/ClimateSite",
+      "fromEntityAttribute": "ClimateId",
+      "toEntity": "Climate.cdm.json/Climate",
+      "toEntityAttribute": "ClimateId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "EmissionFactorBuilding.cdm.json/EmissionFactorBuilding",
+      "fromEntityAttribute": "EmissionFactorId",
+      "toEntity": "EmissionFactor.cdm.json/EmissionFactor",
+      "toEntityAttribute": "EmissionFactorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "EmissionFactorOperationalMeasurement.cdm.json/EmissionFactorOperationalMeasurement",
+      "fromEntityAttribute": "EmissionFactorId",
+      "toEntity": "EmissionFactor.cdm.json/EmissionFactor",
+      "toEntityAttribute": "EmissionFactorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "EmissionFactorSite.cdm.json/EmissionFactorSite",
+      "fromEntityAttribute": "EmissionFactorId",
+      "toEntity": "EmissionFactor.cdm.json/EmissionFactor",
+      "toEntityAttribute": "EmissionFactorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "GhgEmissionEmissionFactor.cdm.json/GhgEmissionEmissionFactor",
+      "fromEntityAttribute": "EmissionFactorId",
+      "toEntity": "EmissionFactor.cdm.json/EmissionFactor",
+      "toEntityAttribute": "EmissionFactorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SustainabilityIndicatorEmissionFactor.cdm.json/SustainabilityIndicatorEmissionFactor",
+      "fromEntityAttribute": "EmissionFactorId",
+      "toEntity": "EmissionFactor.cdm.json/EmissionFactor",
+      "toEntityAttribute": "EmissionFactorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "EmissionFactorOperationalMeasurement.cdm.json/EmissionFactorOperationalMeasurement",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "GhgEmission.cdm.json/GhgEmission",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId"
+    },
+    {
+      "fromEntity": "GhgEmissionBuilding.cdm.json/GhgEmissionBuilding",
+      "fromEntityAttribute": "GhgEmissionId",
+      "toEntity": "GhgEmission.cdm.json/GhgEmission",
+      "toEntityAttribute": "GhgEmissionId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "GhgEmissionEmissionFactor.cdm.json/GhgEmissionEmissionFactor",
+      "fromEntityAttribute": "GhgEmissionId",
+      "toEntity": "GhgEmission.cdm.json/GhgEmission",
+      "toEntityAttribute": "GhgEmissionId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "GhgEmissionSite.cdm.json/GhgEmissionSite",
+      "fromEntityAttribute": "GhgEmissionId",
+      "toEntity": "GhgEmission.cdm.json/GhgEmission",
+      "toEntityAttribute": "GhgEmissionId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementBuilding.cdm.json/OperationalMeasurementBuilding",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementFloor.cdm.json/OperationalMeasurementFloor",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementLand.cdm.json/OperationalMeasurementLand",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementRentalUnit.cdm.json/OperationalMeasurementRentalUnit",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementSite.cdm.json/OperationalMeasurementSite",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementSpace.cdm.json/OperationalMeasurementSpace",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "OperationalMeasurementUnit.cdm.json/OperationalMeasurementUnit",
+      "fromEntityAttribute": "OperationalMeasurementId",
+      "toEntity": "OperationalMeasurement.cdm.json/OperationalMeasurement",
+      "toEntityAttribute": "OperationalMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SustainabilityIndicatorEmissionFactor.cdm.json/SustainabilityIndicatorEmissionFactor",
+      "fromEntityAttribute": "SustainabilityIndicatorId",
+      "toEntity": "SustainabilityIndicator.cdm.json/SustainabilityIndicator",
+      "toEntityAttribute": "SustainabilityIndicatorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    }
+  ],
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "$schema": "CdmManifest.cdm.json",
+  "documentVersion": "1.0"
+}

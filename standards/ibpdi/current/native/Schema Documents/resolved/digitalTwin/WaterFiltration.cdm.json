@@ -1,0 +1,243 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "/core/digitalTwin/WaterFiltration.cdm.json",
+      "moniker": "resolvedFrom"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "WaterFiltration",
+      "exhibitsTraits": [
+        {
+          "traitReference": "has.entitySchemaAbstractionLevel",
+          "arguments": [
+            {
+              "name": "level",
+              "value": "resolved"
+            }
+          ]
+        }
+      ],
+      "attributeContext": {
+        "type": "entity",
+        "name": "WaterFiltration",
+        "definition": "resolvedFrom/WaterFiltration",
+        "contents": [
+          {
+            "type": "entityReferenceExtends",
+            "name": "extends",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "contents": [
+              {
+                "type": "entity",
+                "name": "CdmEntity",
+                "parent": "WaterFiltration/attributeContext/WaterFiltration/extends",
+                "definition": "resolvedFrom/CdmEntity"
+              }
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "WaterFiltrationId",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "definition": "resolvedFrom/WaterFiltration/hasAttributes/WaterFiltrationId",
+            "contents": [
+              "WaterFiltration/hasAttributes/WaterFiltrationId"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "ComponentTypeId",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "definition": "resolvedFrom/WaterFiltration/hasAttributes/ComponentTypeId",
+            "contents": [
+              {
+                "type": "entity",
+                "name": "ComponentType",
+                "parent": "WaterFiltration/attributeContext/WaterFiltration/ComponentTypeId",
+                "definition": "resolvedFrom/ComponentType"
+              },
+              {
+                "type": "generatedSet",
+                "name": "_generatedAttributeSet",
+                "parent": "WaterFiltration/attributeContext/WaterFiltration/ComponentTypeId",
+                "contents": [
+                  {
+                    "type": "generatedRound",
+                    "name": "_generatedAttributeRound0",
+                    "parent": "WaterFiltration/attributeContext/WaterFiltration/ComponentTypeId/_generatedAttributeSet",
+                    "contents": [
+                      {
+                        "type": "addedAttributeIdentity",
+                        "name": "_foreignKey",
+                        "parent": "WaterFiltration/attributeContext/WaterFiltration/ComponentTypeId/_generatedAttributeSet/_generatedAttributeRound0",
+                        "definition": "resolvedFrom/WaterFiltration/hasAttributes/ComponentTypeId/resolutionGuidance/foreignKeyAttribute/ComponentTypeId",
+                        "contents": [
+                          "WaterFiltration/hasAttributes/ComponentTypeId"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "Type",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "definition": "resolvedFrom/WaterFiltration/hasAttributes/Type",
+            "contents": [
+              "WaterFiltration/hasAttributes/Type"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "TankCapacity",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "definition": "resolvedFrom/WaterFiltration/hasAttributes/TankCapacity",
+            "contents": [
+              "WaterFiltration/hasAttributes/TankCapacity"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FlowCapacity",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "definition": "resolvedFrom/WaterFiltration/hasAttributes/FlowCapacity",
+            "contents": [
+              "WaterFiltration/hasAttributes/FlowCapacity"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FiltrationRating",
+            "parent": "WaterFiltration/attributeContext/WaterFiltration",
+            "definition": "resolvedFrom/WaterFiltration/hasAttributes/FiltrationRating",
+            "contents": [
+              "WaterFiltration/hasAttributes/FiltrationRating"
+            ]
+          }
+        ]
+      },
+      "hasAttributes": [
+        {
+          "name": "WaterFiltrationId",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "WaterFiltration/attributeContext/WaterFiltration/WaterFiltrationId",
+          "isPrimaryKey": true,
+          "dataFormat": "String",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "name": "ComponentTypeId",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array",
+            {
+              "traitReference": "is.linkedEntity.identifier",
+              "arguments": [
+                {
+                  "entityReference": {
+                    "entityShape": "entityGroupSet",
+                    "constantValues": [
+                      [
+                        "/core/digitalTwin/ComponentType.cdm.json/ComponentType",
+                        "ComponentTypeId"
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "attributeContext": "WaterFiltration/attributeContext/WaterFiltration/ComponentTypeId/_generatedAttributeSet/_generatedAttributeRound0/_foreignKey",
+          "dataFormat": "String",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "name": "Type",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "WaterFiltration/attributeContext/WaterFiltration/Type",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Water filtration type",
+          "maximumLength": 50
+        },
+        {
+          "name": "TankCapacity",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "WaterFiltration/attributeContext/WaterFiltration/TankCapacity",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Tank capacity"
+        },
+        {
+          "name": "FlowCapacity",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "WaterFiltration/attributeContext/WaterFiltration/FlowCapacity",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Flow capacity"
+        },
+        {
+          "name": "FiltrationRating",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "WaterFiltration/attributeContext/WaterFiltration/FiltrationRating",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Water filtration rating",
+          "maximumLength": 50
+        }
+      ],
+      "displayName": "WaterFiltration",
+      "description": "Information about water filtration",
+      "version": "4.3"
+    }
+  ]
+}

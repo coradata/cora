@@ -1,0 +1,82 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "WorkArea.1.0.cdm.json"
+    },
+    {
+      "corpusPath": "/core/digitalTwin/Floor.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "WorkAreaFloor",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "explanation": "fk WorkAreaFloor.WorkAreaId to WorkArea.WorkAreaId",
+          "entity": {
+            "entityReference": "WorkArea",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "WorkArea/(resolvedAttributes)/WorkAreaId"
+                ]
+              }
+            ]
+          },
+          "name": "WorkAreaId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "WorkAreaId",
+                "purpose": "hasA",
+                "dataType": "string",
+                "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+                "maximumLength": 50
+              }
+            }
+          },
+          "purpose": "identifiedBy"
+        },
+        {
+          "explanation": "fk WorkAreaFloor.FloorId to Floor.FloorId",
+          "entity": {
+            "entityReference": "Floor",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "Floor/(resolvedAttributes)/FloorId"
+                ]
+              }
+            ]
+          },
+          "name": "FloorId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "FloorId",
+                "purpose": "hasA",
+                "dataType": "string",
+                "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+                "maximumLength": 50
+              }
+            }
+          },
+          "purpose": "identifiedBy"
+        }
+      ],
+      "displayName": "WorkAreaFloor",
+      "description": "Linking entity between WorkArea and Floor"
+    }
+  ]
+}

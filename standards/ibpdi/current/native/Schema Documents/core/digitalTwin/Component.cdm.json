@@ -1,0 +1,235 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.cdm.json"
+    },
+    {
+      "corpusPath": "_allImports.cdm.json"
+    },
+    {
+      "corpusPath": "ComponentType.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "Component",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "name": "ComponentId",
+          "purpose": "identifiedBy",
+          "dataType": "string",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "explanation": "fk Component.ComponentTypeId to ComponentType.ComponentTypeId",
+          "entity": {
+            "entityReference": "ComponentType",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "ComponentType/(resolvedAttributes)/ComponentTypeId"
+                ]
+              }
+            ]
+          },
+          "name": "ComponentTypeId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "ComponentTypeId",
+                "purpose": "hasA",
+                "dataType": "string",
+                "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+                "maximumLength": 50
+              }
+            }
+          }
+        },
+        {
+          "attributeGroupReference": "Name"
+        },
+        {
+          "attributeGroupReference": "Type"
+        },
+        {
+          "attributeGroupReference": "Counter"
+        },
+        {
+          "name": "Description",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Description of component",
+          "maximumLength": 200
+        },
+        {
+          "name": "ConditionStatus",
+          "purpose": "hasA",
+          "dataType": "string",
+          "appliedTraits": [
+            {
+              "traitReference": "does.haveDefault",
+              "arguments": [
+                {
+                  "entityReference": {
+                    "explanation": "The constantValues below correspond to the attributes of the 'listLookupValues' entityShape which are: {languageTag, displayText, attributeValue, displayOrder}",
+                    "entityShape": "listLookupValues",
+                    "constantValues": [
+                      [
+                        "en",
+                        "Defect",
+                        "Defect",
+                        "0"
+                      ],
+                      [
+                        "en",
+                        "Good",
+                        "Good",
+                        "1"
+                      ],
+                      [
+                        "en",
+                        "Not Available",
+                        "Not Available",
+                        "2"
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "description": "Condition of component",
+          "maximumLength": 50,
+          "valueConstrainedToList": true
+        },
+        {
+          "name": "DurationLifeYear",
+          "purpose": "hasA",
+          "dataFormat": "integer",
+          "description": "Life span of component in years"
+        },
+        {
+          "name": "WarrantyStartDate",
+          "purpose": "hasA",
+          "dataType": "dateTime",
+          "description": "Warranty start date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "TurnoverDate",
+          "purpose": "hasA",
+          "dataType": "dateTime",
+          "isNullable": true,
+          "description": "Turnover date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "CommissionDate",
+          "purpose": "hasA",
+          "dataType": "dateTime",
+          "isNullable": true,
+          "description": "Commission date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "ExpectedEndOfLife",
+          "purpose": "hasA",
+          "dataType": "dateTime",
+          "isNullable": true,
+          "description": "Expected end of life date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "SerialNumber",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Serial number of component",
+          "maximumLength": 50
+        },
+        {
+          "name": "TagNumber",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Tag number",
+          "maximumLength": 50
+        },
+        {
+          "name": "GeometrySpatialReference",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Description of component",
+          "maximumLength": 200
+        },
+        {
+          "name": "ExpectedReplacementCost",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Expected replacement costs",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "InitialCost",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Initial cost",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "attributeGroupReference": "Currency"
+        },
+        {
+          "name": "InstallationDate",
+          "purpose": "hasA",
+          "dataType": "dateTime",
+          "isNullable": true,
+          "description": "Installation date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "Barcode",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Barcode of component",
+          "maximumLength": 50
+        }
+      ],
+      "displayName": "Component",
+      "description": "Component [component, part, apparatus] is a named and individually defined physical object and may require management efforts such as inspections, maintenance, service, or replacement during the use phase"
+    }
+  ]
+}

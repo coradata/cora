@@ -1,0 +1,377 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "_allImports.1.0.cdm.json"
+    },
+    {
+      "corpusPath": "Floor.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "Space",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "name": "SpaceId",
+          "purpose": "identifiedBy",
+          "dataType": "string",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "explanation": "fk Space.FloorId to Floor.FloorId",
+          "entity": {
+            "entityReference": "Floor",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "Floor/(resolvedAttributes)/FloorId"
+                ]
+              }
+            ]
+          },
+          "name": "FloorId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "FloorId",
+                "purpose": "hasA",
+                "dataType": "string",
+                "description": "Reference to the floor which the space belongs to",
+                "maximumLength": 50
+              }
+            }
+          }
+        },
+        {
+          "attributeGroupReference": "Name"
+        },
+        {
+          "name": "SpaceCode",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "User specific Space Code",
+          "maximumLength": 70
+        },
+        {
+          "name": "SpaceNumber",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Number of space",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Type",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Type of space",
+          "maximumLength": 50
+        },
+        {
+          "attributeGroupReference": "ValidityInfo"
+        },
+        {
+          "name": "SpaceHeightUsable",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Usable Height of space",
+          "appliedTraits": [
+            "means.measurement.size.height",
+            "means.measurement.units.si.meter",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SpaceHeight",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Actual space height e.g: 3.6 m",
+          "appliedTraits": [
+            "means.measurement.size.height",
+            "means.measurement.units.si.meter",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SpaceVolumeGross",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Gross volume of space including surrounding walls",
+          "appliedTraits": [
+            "means.measurement.size.volume",
+            "means.measurement.units.si",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "SpaceVolumeNet",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Gross volume of space excluding surrounding  walls",
+          "appliedTraits": [
+            "means.measurement.size.volume",
+            "means.measurement.units.si",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PrimaryFloorMaterial",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Material of floor",
+          "maximumLength": 75
+        },
+        {
+          "name": "PrimaryWallMaterial",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Material of wall",
+          "maximumLength": 75
+        },
+        {
+          "name": "PrimaryCeilingMaterial",
+          "purpose": "hasA",
+          "dataType": "string",
+          "isNullable": true,
+          "description": "Material of ceiling e.g: cement",
+          "maximumLength": 75
+        },
+        {
+          "name": "Rentability",
+          "purpose": "hasA",
+          "dataType": "boolean",
+          "isNullable": true,
+          "description": "Status of the space is eligible for renting out (Y/N)"
+        },
+        {
+          "name": "EffectZonesHeating",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Area that is heated",
+          "appliedTraits": [
+            "means.measurement.units.si",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "EffectZonesCooling",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Area that is cooled",
+          "appliedTraits": [
+            "means.measurement.units.si",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "EffectZonesVentilation",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "isNullable": true,
+          "description": "Area that is ventilated",
+          "appliedTraits": [
+            "means.measurement.units.si",
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ClimateHeated",
+          "purpose": "hasA",
+          "dataType": "boolean",
+          "isNullable": true,
+          "description": "Define if space is climate heated (Y/N)"
+        },
+        {
+          "name": "ClimateCooled",
+          "purpose": "hasA",
+          "dataType": "boolean",
+          "isNullable": true,
+          "description": "Define if space is climate cooled (Y/N)"
+        },
+        {
+          "name": "CoUseArea",
+          "purpose": "hasA",
+          "dataType": "boolean",
+          "isNullable": true,
+          "description": "Is the space used by multiple tenants (Y/N)"
+        },
+        {
+          "name": "MaximumOccupancy",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "isNullable": true,
+          "description": "Define maximum occupancy of space",
+          "appliedTraits": [
+            "means.measurement.count"
+          ]
+        },
+        {
+          "name": "VentilationType",
+          "purpose": "hasA",
+          "dataType": "string",
+          "appliedTraits": [
+            {
+              "traitReference": "does.haveDefault",
+              "arguments": [
+                {
+                  "entityReference": {
+                    "explanation": "The constantValues below correspond to the attributes of the 'listLookupValues' entityShape which are: {languageTag, displayText, attributeValue, displayOrder}",
+                    "entityShape": "listLookupValues",
+                    "constantValues": [
+                      [
+                        "en",
+                        "Exhaust",
+                        "Exhaust",
+                        "0"
+                      ],
+                      [
+                        "en",
+                        "Supply",
+                        "Supply",
+                        "1"
+                      ],
+                      [
+                        "en",
+                        "Balanced",
+                        "Balanced",
+                        "2"
+                      ],
+                      [
+                        "en",
+                        "Heat-recovery",
+                        "Heat-recovery",
+                        "3"
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "isNullable": true,
+          "description": "Define the ventilation type e.g: exhaust, supply, balanced, and heat-recovery",
+          "maximumLength": 75,
+          "valueConstrainedToList": true
+        }
+      ],
+      "displayName": "Space",
+      "description": "A space represents an area or volume bounded actually or theoretically. Spaces are areas or volumes that provide for certain functions within a building."
+    }
+  ]
+}

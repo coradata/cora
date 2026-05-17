@@ -1,0 +1,2253 @@
+{
+  "manifestName": "digitalTwin",
+  "explanation": "IBPDI real estate CDM standard entities",
+  "entities": [
+    {
+      "type": "LocalEntity",
+      "entityName": "AccessPanel",
+      "entityPath": "AccessPanel.cdm.json/AccessPanel"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AirCompressor",
+      "entityPath": "AirCompressor.cdm.json/AirCompressor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AirFilter",
+      "entityPath": "AirFilter.cdm.json/AirFilter"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AirHandlingUnit",
+      "entityPath": "AirHandlingUnit.cdm.json/AirHandlingUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurement",
+      "entityPath": "AreaMeasurement.cdm.json/AreaMeasurement"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementBuilding",
+      "entityPath": "AreaMeasurementBuilding.cdm.json/AreaMeasurementBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementFloor",
+      "entityPath": "AreaMeasurementFloor.cdm.json/AreaMeasurementFloor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementLand",
+      "entityPath": "AreaMeasurementLand.cdm.json/AreaMeasurementLand"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementRentalUnit",
+      "entityPath": "AreaMeasurementRentalUnit.cdm.json/AreaMeasurementRentalUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementSite",
+      "entityPath": "AreaMeasurementSite.cdm.json/AreaMeasurementSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementSpace",
+      "entityPath": "AreaMeasurementSpace.cdm.json/AreaMeasurementSpace"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AreaMeasurementUnit",
+      "entityPath": "AreaMeasurementUnit.cdm.json/AreaMeasurementUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AutomaticTransferSwitch",
+      "entityPath": "AutomaticTransferSwitch.cdm.json/AutomaticTransferSwitch"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "BacNetController",
+      "entityPath": "BacNetController.cdm.json/BacNetController"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Boiler",
+      "entityPath": "Boiler.cdm.json/Boiler"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Building",
+      "entityPath": "Building.cdm.json/Building"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CeilingFan",
+      "entityPath": "CeilingFan.cdm.json/CeilingFan"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Certificate",
+      "entityPath": "Certificate.cdm.json/Certificate"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CertificateBuilding",
+      "entityPath": "CertificateBuilding.cdm.json/CertificateBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CertificateComponent",
+      "entityPath": "CertificateComponent.cdm.json/CertificateComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CertificateSystem",
+      "entityPath": "CertificateSystem.cdm.json/CertificateSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CertificateValuation",
+      "entityPath": "CertificateValuation.cdm.json/CertificateValuation"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Chiller",
+      "entityPath": "Chiller.cdm.json/Chiller"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CoGenerator",
+      "entityPath": "CoGenerator.cdm.json/CoGenerator"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Component",
+      "entityPath": "Component.cdm.json/Component"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentBuilding",
+      "entityPath": "ComponentBuilding.cdm.json/ComponentBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentFloor",
+      "entityPath": "ComponentFloor.cdm.json/ComponentFloor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentRentalUnit",
+      "entityPath": "ComponentRentalUnit.cdm.json/ComponentRentalUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentSite",
+      "entityPath": "ComponentSite.cdm.json/ComponentSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentSpace",
+      "entityPath": "ComponentSpace.cdm.json/ComponentSpace"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentSystem",
+      "entityPath": "ComponentSystem.cdm.json/ComponentSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentType",
+      "entityPath": "ComponentType.cdm.json/ComponentType"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ComponentUnit",
+      "entityPath": "ComponentUnit.cdm.json/ComponentUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CondensingUnit",
+      "entityPath": "CondensingUnit.cdm.json/CondensingUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Controller",
+      "entityPath": "Controller.cdm.json/Controller"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CoolingTower",
+      "entityPath": "CoolingTower.cdm.json/CoolingTower"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Damper",
+      "entityPath": "Damper.cdm.json/Damper"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "DataNetworkEquipment",
+      "entityPath": "DataNetworkEquipment.cdm.json/DataNetworkEquipment"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "DataNetworkSubComponent",
+      "entityPath": "DataNetworkSubComponent.cdm.json/DataNetworkSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalDistributionEquipmentSubComponent",
+      "entityPath": "ElectricalDistributionEquipmentSubComponent.cdm.json/ElectricalDistributionEquipmentSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalMeter",
+      "entityPath": "ElectricalMeter.cdm.json/ElectricalMeter"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalPanelBoard",
+      "entityPath": "ElectricalPanelBoard.cdm.json/ElectricalPanelBoard"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalPanelBoardMcb",
+      "entityPath": "ElectricalPanelBoardMcb.cdm.json/ElectricalPanelBoardMcb"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalPanelBoardMlo",
+      "entityPath": "ElectricalPanelBoardMlo.cdm.json/ElectricalPanelBoardMlo"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalSystem",
+      "entityPath": "ElectricalSystem.cdm.json/ElectricalSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectricalVehicleChargingStation",
+      "entityPath": "ElectricalVehicleChargingStation.cdm.json/ElectricalVehicleChargingStation"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElectronicSafetyAndSecuritySystem",
+      "entityPath": "ElectronicSafetyAndSecuritySystem.cdm.json/ElectronicSafetyAndSecuritySystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Elevator",
+      "entityPath": "Elevator.cdm.json/Elevator"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ElevatorMachine",
+      "entityPath": "ElevatorMachine.cdm.json/ElevatorMachine"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Escalator",
+      "entityPath": "Escalator.cdm.json/Escalator"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "EthernetSwitchPort",
+      "entityPath": "EthernetSwitchPort.cdm.json/EthernetSwitchPort"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FanCoilUnit",
+      "entityPath": "FanCoilUnit.cdm.json/FanCoilUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FanCoilUnitReheat",
+      "entityPath": "FanCoilUnitReheat.cdm.json/FanCoilUnitReheat"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FanPoweredBox",
+      "entityPath": "FanPoweredBox.cdm.json/FanPoweredBox"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FanPoweredBoxReheat",
+      "entityPath": "FanPoweredBoxReheat.cdm.json/FanPoweredBoxReheat"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Faucet",
+      "entityPath": "Faucet.cdm.json/Faucet"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FireDamper",
+      "entityPath": "FireDamper.cdm.json/FireDamper"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FirePump",
+      "entityPath": "FirePump.cdm.json/FirePump"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FireSprinklerHead",
+      "entityPath": "FireSprinklerHead.cdm.json/FireSprinklerHead"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Floor",
+      "entityPath": "Floor.cdm.json/Floor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "FlushometerValve",
+      "entityPath": "FlushometerValve.cdm.json/FlushometerValve"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "GasMeter",
+      "entityPath": "GasMeter.cdm.json/GasMeter"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Gateway",
+      "entityPath": "Gateway.cdm.json/Gateway"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Generator",
+      "entityPath": "Generator.cdm.json/Generator"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacFan",
+      "entityPath": "HvacFan.cdm.json/HvacFan"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacFanSubComponent",
+      "entityPath": "HvacFanSubComponent.cdm.json/HvacFanSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacHeatTracing",
+      "entityPath": "HvacHeatTracing.cdm.json/HvacHeatTracing"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacPump",
+      "entityPath": "HvacPump.cdm.json/HvacPump"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacShutOffValve",
+      "entityPath": "HvacShutOffValve.cdm.json/HvacShutOffValve"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacSystem",
+      "entityPath": "HvacSystem.cdm.json/HvacSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacTank",
+      "entityPath": "HvacTank.cdm.json/HvacTank"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "HvacValve",
+      "entityPath": "HvacValve.cdm.json/HvacValve"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "IctHardware",
+      "entityPath": "IctHardware.cdm.json/IctHardware"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "InformationAndCommunicationSystem",
+      "entityPath": "InformationAndCommunicationSystem.cdm.json/InformationAndCommunicationSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ItRack",
+      "entityPath": "ItRack.cdm.json/ItRack"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "JockeyPump",
+      "entityPath": "JockeyPump.cdm.json/JockeyPump"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Land",
+      "entityPath": "Land.cdm.json/Land"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "LightingSystem",
+      "entityPath": "LightingSystem.cdm.json/LightingSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Luminaire",
+      "entityPath": "Luminaire.cdm.json/Luminaire"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ModbusController",
+      "entityPath": "ModbusController.cdm.json/ModbusController"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "MovingWalkway",
+      "entityPath": "MovingWalkway.cdm.json/MovingWalkway"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingExpansionTank",
+      "entityPath": "PlumbingExpansionTank.cdm.json/PlumbingExpansionTank"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingPump",
+      "entityPath": "PlumbingPump.cdm.json/PlumbingPump"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingPumpSubComponent",
+      "entityPath": "PlumbingPumpSubComponent.cdm.json/PlumbingPumpSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingShutOffValve",
+      "entityPath": "PlumbingShutOffValve.cdm.json/PlumbingShutOffValve"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingStorageTank",
+      "entityPath": "PlumbingStorageTank.cdm.json/PlumbingStorageTank"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingSystem",
+      "entityPath": "PlumbingSystem.cdm.json/PlumbingSystem"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingTank",
+      "entityPath": "PlumbingTank.cdm.json/PlumbingTank"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingValve",
+      "entityPath": "PlumbingValve.cdm.json/PlumbingValve"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PlumbingValveSubComponent",
+      "entityPath": "PlumbingValveSubComponent.cdm.json/PlumbingValveSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Sensor",
+      "entityPath": "Sensor.cdm.json/Sensor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorBuilding",
+      "entityPath": "SensorBuilding.cdm.json/SensorBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorComponent",
+      "entityPath": "SensorComponent.cdm.json/SensorComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorEquipment",
+      "entityPath": "SensorEquipment.cdm.json/SensorEquipment"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorFloor",
+      "entityPath": "SensorFloor.cdm.json/SensorFloor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorLand",
+      "entityPath": "SensorLand.cdm.json/SensorLand"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorMeasurement",
+      "entityPath": "SensorMeasurement.cdm.json/SensorMeasurement"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorRentalUnit",
+      "entityPath": "SensorRentalUnit.cdm.json/SensorRentalUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorSite",
+      "entityPath": "SensorSite.cdm.json/SensorSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorSpace",
+      "entityPath": "SensorSpace.cdm.json/SensorSpace"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SensorUnit",
+      "entityPath": "SensorUnit.cdm.json/SensorUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Server",
+      "entityPath": "Server.cdm.json/Server"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Site",
+      "entityPath": "Site.cdm.json/Site"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Space",
+      "entityPath": "Space.cdm.json/Space"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SprinklerHeatTracing",
+      "entityPath": "SprinklerHeatTracing.cdm.json/SprinklerHeatTracing"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SprinklerTank",
+      "entityPath": "SprinklerTank.cdm.json/SprinklerTank"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SprinklerValve",
+      "entityPath": "SprinklerValve.cdm.json/SprinklerValve"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "System",
+      "entityPath": "System.cdm.json/System"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SystemBuilding",
+      "entityPath": "SystemBuilding.cdm.json/SystemBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SystemFloor",
+      "entityPath": "SystemFloor.cdm.json/SystemFloor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SystemRentalUnit",
+      "entityPath": "SystemRentalUnit.cdm.json/SystemRentalUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SystemSite",
+      "entityPath": "SystemSite.cdm.json/SystemSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SystemSpace",
+      "entityPath": "SystemSpace.cdm.json/SystemSpace"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "SystemUnit",
+      "entityPath": "SystemUnit.cdm.json/SystemUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TanklessWaterHeater",
+      "entityPath": "TanklessWaterHeater.cdm.json/TanklessWaterHeater"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TanklessWaterHeaterSubComponent",
+      "entityPath": "TanklessWaterHeaterSubComponent.cdm.json/TanklessWaterHeaterSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TankWaterHeater",
+      "entityPath": "TankWaterHeater.cdm.json/TankWaterHeater"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TankWaterHeaterSubComponent",
+      "entityPath": "TankWaterHeaterSubComponent.cdm.json/TankWaterHeaterSubComponent"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TerminalUnit",
+      "entityPath": "TerminalUnit.cdm.json/TerminalUnit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ThermalMeter",
+      "entityPath": "ThermalMeter.cdm.json/ThermalMeter"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Toilet",
+      "entityPath": "Toilet.cdm.json/Toilet"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ToiletFlushometer",
+      "entityPath": "ToiletFlushometer.cdm.json/ToiletFlushometer"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "ToiletTank",
+      "entityPath": "ToiletTank.cdm.json/ToiletTank"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TransferSwitch",
+      "entityPath": "TransferSwitch.cdm.json/TransferSwitch"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Transformer",
+      "entityPath": "Transformer.cdm.json/Transformer"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Unit",
+      "entityPath": "Unit.cdm.json/Unit"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UnitBuilding",
+      "entityPath": "UnitBuilding.cdm.json/UnitBuilding"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UnitFloor",
+      "entityPath": "UnitFloor.cdm.json/UnitFloor"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UnitHeater",
+      "entityPath": "UnitHeater.cdm.json/UnitHeater"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UnitLand",
+      "entityPath": "UnitLand.cdm.json/UnitLand"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UnitSite",
+      "entityPath": "UnitSite.cdm.json/UnitSite"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UnitSpace",
+      "entityPath": "UnitSpace.cdm.json/UnitSpace"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Ups",
+      "entityPath": "Ups.cdm.json/Ups"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "UrinalFlushometer",
+      "entityPath": "UrinalFlushometer.cdm.json/UrinalFlushometer"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "VariableFrequencyDrive",
+      "entityPath": "VariableFrequencyDrive.cdm.json/VariableFrequencyDrive"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "VavBoxReheat",
+      "entityPath": "VavBoxReheat.cdm.json/VavBoxReheat"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "WaterFiltration",
+      "entityPath": "WaterFiltration.cdm.json/WaterFiltration"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "WaterHeater",
+      "entityPath": "WaterHeater.cdm.json/WaterHeater"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "WaterMeter",
+      "entityPath": "WaterMeter.cdm.json/WaterMeter"
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "WirelessAccessPoint",
+      "entityPath": "WirelessAccessPoint.cdm.json/WirelessAccessPoint"
+    }
+  ],
+  "relationships": [
+    {
+      "fromEntity": "AccessPanel.cdm.json/AccessPanel",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "AirCompressor.cdm.json/AirCompressor",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "AirFilter.cdm.json/AirFilter",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "AirHandlingUnit.cdm.json/AirHandlingUnit",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "AreaMeasurementBuilding.cdm.json/AreaMeasurementBuilding",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementFloor.cdm.json/AreaMeasurementFloor",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementLand.cdm.json/AreaMeasurementLand",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementRentalUnit.cdm.json/AreaMeasurementRentalUnit",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementSite.cdm.json/AreaMeasurementSite",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementSpace.cdm.json/AreaMeasurementSpace",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementUnit.cdm.json/AreaMeasurementUnit",
+      "fromEntityAttribute": "AreaMeasurementId",
+      "toEntity": "AreaMeasurement.cdm.json/AreaMeasurement",
+      "toEntityAttribute": "AreaMeasurementId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementBuilding.cdm.json/AreaMeasurementBuilding",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementFloor.cdm.json/AreaMeasurementFloor",
+      "fromEntityAttribute": "FloorId",
+      "toEntity": "Floor.cdm.json/Floor",
+      "toEntityAttribute": "FloorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementLand.cdm.json/AreaMeasurementLand",
+      "fromEntityAttribute": "LandId",
+      "toEntity": "Land.cdm.json/Land",
+      "toEntityAttribute": "LandId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementSite.cdm.json/AreaMeasurementSite",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementSpace.cdm.json/AreaMeasurementSpace",
+      "fromEntityAttribute": "SpaceId",
+      "toEntity": "Space.cdm.json/Space",
+      "toEntityAttribute": "SpaceId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AreaMeasurementUnit.cdm.json/AreaMeasurementUnit",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "AutomaticTransferSwitch.cdm.json/AutomaticTransferSwitch",
+      "fromEntityAttribute": "TransferSwitchId",
+      "toEntity": "TransferSwitch.cdm.json/TransferSwitch",
+      "toEntityAttribute": "TransferSwitchId"
+    },
+    {
+      "fromEntity": "BacNetController.cdm.json/BacNetController",
+      "fromEntityAttribute": "ControllerId",
+      "toEntity": "Controller.cdm.json/Controller",
+      "toEntityAttribute": "ControllerId"
+    },
+    {
+      "fromEntity": "Boiler.cdm.json/Boiler",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Building.cdm.json/Building",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId"
+    },
+    {
+      "fromEntity": "CertificateBuilding.cdm.json/CertificateBuilding",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentBuilding.cdm.json/ComponentBuilding",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "Floor.cdm.json/Floor",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId"
+    },
+    {
+      "fromEntity": "SensorBuilding.cdm.json/SensorBuilding",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemBuilding.cdm.json/SystemBuilding",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitBuilding.cdm.json/UnitBuilding",
+      "fromEntityAttribute": "BuildingId",
+      "toEntity": "Building.cdm.json/Building",
+      "toEntityAttribute": "BuildingId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CeilingFan.cdm.json/CeilingFan",
+      "fromEntityAttribute": "HvacFanId",
+      "toEntity": "HvacFan.cdm.json/HvacFan",
+      "toEntityAttribute": "HvacFanId"
+    },
+    {
+      "fromEntity": "CertificateBuilding.cdm.json/CertificateBuilding",
+      "fromEntityAttribute": "CertificateId",
+      "toEntity": "Certificate.cdm.json/Certificate",
+      "toEntityAttribute": "CertificateId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CertificateComponent.cdm.json/CertificateComponent",
+      "fromEntityAttribute": "CertificateId",
+      "toEntity": "Certificate.cdm.json/Certificate",
+      "toEntityAttribute": "CertificateId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CertificateSystem.cdm.json/CertificateSystem",
+      "fromEntityAttribute": "CertificateId",
+      "toEntity": "Certificate.cdm.json/Certificate",
+      "toEntityAttribute": "CertificateId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CertificateValuation.cdm.json/CertificateValuation",
+      "fromEntityAttribute": "CertificateId",
+      "toEntity": "Certificate.cdm.json/Certificate",
+      "toEntityAttribute": "CertificateId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CertificateComponent.cdm.json/CertificateComponent",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CertificateSystem.cdm.json/CertificateSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "Chiller.cdm.json/Chiller",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "CoGenerator.cdm.json/CoGenerator",
+      "fromEntityAttribute": "GeneratorId",
+      "toEntity": "Generator.cdm.json/Generator",
+      "toEntityAttribute": "GeneratorId"
+    },
+    {
+      "fromEntity": "Component.cdm.json/Component",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ComponentBuilding.cdm.json/ComponentBuilding",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentFloor.cdm.json/ComponentFloor",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentRentalUnit.cdm.json/ComponentRentalUnit",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentSite.cdm.json/ComponentSite",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentSpace.cdm.json/ComponentSpace",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentSystem.cdm.json/ComponentSystem",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentUnit.cdm.json/ComponentUnit",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorComponent.cdm.json/SensorComponent",
+      "fromEntityAttribute": "ComponentId",
+      "toEntity": "Component.cdm.json/Component",
+      "toEntityAttribute": "ComponentId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentFloor.cdm.json/ComponentFloor",
+      "fromEntityAttribute": "FloorId",
+      "toEntity": "Floor.cdm.json/Floor",
+      "toEntityAttribute": "FloorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentSite.cdm.json/ComponentSite",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentSpace.cdm.json/ComponentSpace",
+      "fromEntityAttribute": "SpaceId",
+      "toEntity": "Space.cdm.json/Space",
+      "toEntityAttribute": "SpaceId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ComponentSystem.cdm.json/ComponentSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "CondensingUnit.cdm.json/CondensingUnit",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Controller.cdm.json/Controller",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "CoolingTower.cdm.json/CoolingTower",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Damper.cdm.json/Damper",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "DataNetworkEquipment.cdm.json/DataNetworkEquipment",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ElectricalDistributionEquipmentSubComponent.cdm.json/ElectricalDistributionEquipmentSubComponent",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ElectricalMeter.cdm.json/ElectricalMeter",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ElectricalPanelBoard.cdm.json/ElectricalPanelBoard",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ElectricalVehicleChargingStation.cdm.json/ElectricalVehicleChargingStation",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Elevator.cdm.json/Elevator",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ElevatorMachine.cdm.json/ElevatorMachine",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Escalator.cdm.json/Escalator",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Faucet.cdm.json/Faucet",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "FirePump.cdm.json/FirePump",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "FireSprinklerHead.cdm.json/FireSprinklerHead",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "FlushometerValve.cdm.json/FlushometerValve",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "GasMeter.cdm.json/GasMeter",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Gateway.cdm.json/Gateway",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Generator.cdm.json/Generator",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "HvacFan.cdm.json/HvacFan",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "HvacHeatTracing.cdm.json/HvacHeatTracing",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "HvacPump.cdm.json/HvacPump",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "HvacTank.cdm.json/HvacTank",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "HvacValve.cdm.json/HvacValve",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "IctHardware.cdm.json/IctHardware",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ItRack.cdm.json/ItRack",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "JockeyPump.cdm.json/JockeyPump",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Luminaire.cdm.json/Luminaire",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "MovingWalkway.cdm.json/MovingWalkway",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "PlumbingPump.cdm.json/PlumbingPump",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "PlumbingTank.cdm.json/PlumbingTank",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "PlumbingValve.cdm.json/PlumbingValve",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "SensorEquipment.cdm.json/SensorEquipment",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "SprinklerHeatTracing.cdm.json/SprinklerHeatTracing",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "SprinklerTank.cdm.json/SprinklerTank",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "SprinklerValve.cdm.json/SprinklerValve",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "TerminalUnit.cdm.json/TerminalUnit",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ThermalMeter.cdm.json/ThermalMeter",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Toilet.cdm.json/Toilet",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "TransferSwitch.cdm.json/TransferSwitch",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Transformer.cdm.json/Transformer",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "UnitHeater.cdm.json/UnitHeater",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "Ups.cdm.json/Ups",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "UrinalFlushometer.cdm.json/UrinalFlushometer",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "VariableFrequencyDrive.cdm.json/VariableFrequencyDrive",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "WaterFiltration.cdm.json/WaterFiltration",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "WaterHeater.cdm.json/WaterHeater",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "WaterMeter.cdm.json/WaterMeter",
+      "fromEntityAttribute": "ComponentTypeId",
+      "toEntity": "ComponentType.cdm.json/ComponentType",
+      "toEntityAttribute": "ComponentTypeId"
+    },
+    {
+      "fromEntity": "ComponentUnit.cdm.json/ComponentUnit",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "ModbusController.cdm.json/ModbusController",
+      "fromEntityAttribute": "ControllerId",
+      "toEntity": "Controller.cdm.json/Controller",
+      "toEntityAttribute": "ControllerId"
+    },
+    {
+      "fromEntity": "FireDamper.cdm.json/FireDamper",
+      "fromEntityAttribute": "DamperId",
+      "toEntity": "Damper.cdm.json/Damper",
+      "toEntityAttribute": "DamperId"
+    },
+    {
+      "fromEntity": "DataNetworkSubComponent.cdm.json/DataNetworkSubComponent",
+      "fromEntityAttribute": "DataNetworkEquipmentId",
+      "toEntity": "DataNetworkEquipment.cdm.json/DataNetworkEquipment",
+      "toEntityAttribute": "DataNetworkEquipmentId"
+    },
+    {
+      "fromEntity": "EthernetSwitchPort.cdm.json/EthernetSwitchPort",
+      "fromEntityAttribute": "DataNetworkEquipmentId",
+      "toEntity": "DataNetworkEquipment.cdm.json/DataNetworkEquipment",
+      "toEntityAttribute": "DataNetworkEquipmentId"
+    },
+    {
+      "fromEntity": "WirelessAccessPoint.cdm.json/WirelessAccessPoint",
+      "fromEntityAttribute": "DataNetworkEquipmentId",
+      "toEntity": "DataNetworkEquipment.cdm.json/DataNetworkEquipment",
+      "toEntityAttribute": "DataNetworkEquipmentId"
+    },
+    {
+      "fromEntity": "ElectricalPanelBoardMcb.cdm.json/ElectricalPanelBoardMcb",
+      "fromEntityAttribute": "ElectricalPanelBoardId",
+      "toEntity": "ElectricalPanelBoard.cdm.json/ElectricalPanelBoard",
+      "toEntityAttribute": "ElectricalPanelBoardId"
+    },
+    {
+      "fromEntity": "ElectricalPanelBoardMlo.cdm.json/ElectricalPanelBoardMlo",
+      "fromEntityAttribute": "ElectricalPanelBoardId",
+      "toEntity": "ElectricalPanelBoard.cdm.json/ElectricalPanelBoard",
+      "toEntityAttribute": "ElectricalPanelBoardId"
+    },
+    {
+      "fromEntity": "ElectricalSystem.cdm.json/ElectricalSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId"
+    },
+    {
+      "fromEntity": "ElectronicSafetyAndSecuritySystem.cdm.json/ElectronicSafetyAndSecuritySystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId"
+    },
+    {
+      "fromEntity": "FanCoilUnit.cdm.json/FanCoilUnit",
+      "fromEntityAttribute": "TerminalUnitId",
+      "toEntity": "TerminalUnit.cdm.json/TerminalUnit",
+      "toEntityAttribute": "TerminalUnitId"
+    },
+    {
+      "fromEntity": "FanCoilUnitReheat.cdm.json/FanCoilUnitReheat",
+      "fromEntityAttribute": "FanCoilUnitId",
+      "toEntity": "FanCoilUnit.cdm.json/FanCoilUnit",
+      "toEntityAttribute": "FanCoilUnitId"
+    },
+    {
+      "fromEntity": "FanPoweredBox.cdm.json/FanPoweredBox",
+      "fromEntityAttribute": "TerminalUnitId",
+      "toEntity": "TerminalUnit.cdm.json/TerminalUnit",
+      "toEntityAttribute": "TerminalUnitId"
+    },
+    {
+      "fromEntity": "FanPoweredBoxReheat.cdm.json/FanPoweredBoxReheat",
+      "fromEntityAttribute": "TerminalUnitId",
+      "toEntity": "TerminalUnit.cdm.json/TerminalUnit",
+      "toEntityAttribute": "TerminalUnitId"
+    },
+    {
+      "fromEntity": "SensorFloor.cdm.json/SensorFloor",
+      "fromEntityAttribute": "FloorId",
+      "toEntity": "Floor.cdm.json/Floor",
+      "toEntityAttribute": "FloorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "Space.cdm.json/Space",
+      "fromEntityAttribute": "FloorId",
+      "toEntity": "Floor.cdm.json/Floor",
+      "toEntityAttribute": "FloorId"
+    },
+    {
+      "fromEntity": "SystemFloor.cdm.json/SystemFloor",
+      "fromEntityAttribute": "FloorId",
+      "toEntity": "Floor.cdm.json/Floor",
+      "toEntityAttribute": "FloorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitFloor.cdm.json/UnitFloor",
+      "fromEntityAttribute": "FloorId",
+      "toEntity": "Floor.cdm.json/Floor",
+      "toEntityAttribute": "FloorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "HvacFanSubComponent.cdm.json/HvacFanSubComponent",
+      "fromEntityAttribute": "HvacFanId",
+      "toEntity": "HvacFan.cdm.json/HvacFan",
+      "toEntityAttribute": "HvacFanId"
+    },
+    {
+      "fromEntity": "HvacShutOffValve.cdm.json/HvacShutOffValve",
+      "fromEntityAttribute": "HvacValveId",
+      "toEntity": "HvacValve.cdm.json/HvacValve",
+      "toEntityAttribute": "HvacValveId"
+    },
+    {
+      "fromEntity": "HvacSystem.cdm.json/HvacSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId"
+    },
+    {
+      "fromEntity": "Server.cdm.json/Server",
+      "fromEntityAttribute": "IctHardwareId",
+      "toEntity": "IctHardware.cdm.json/IctHardware",
+      "toEntityAttribute": "IctHardwareId"
+    },
+    {
+      "fromEntity": "InformationAndCommunicationSystem.cdm.json/InformationAndCommunicationSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId"
+    },
+    {
+      "fromEntity": "Land.cdm.json/Land",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId"
+    },
+    {
+      "fromEntity": "SensorLand.cdm.json/SensorLand",
+      "fromEntityAttribute": "LandId",
+      "toEntity": "Land.cdm.json/Land",
+      "toEntityAttribute": "LandId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitLand.cdm.json/UnitLand",
+      "fromEntityAttribute": "LandId",
+      "toEntity": "Land.cdm.json/Land",
+      "toEntityAttribute": "LandId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "LightingSystem.cdm.json/LightingSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId"
+    },
+    {
+      "fromEntity": "PlumbingExpansionTank.cdm.json/PlumbingExpansionTank",
+      "fromEntityAttribute": "PlumbingTankId",
+      "toEntity": "PlumbingTank.cdm.json/PlumbingTank",
+      "toEntityAttribute": "PlumbingTankId"
+    },
+    {
+      "fromEntity": "PlumbingPumpSubComponent.cdm.json/PlumbingPumpSubComponent",
+      "fromEntityAttribute": "PlumbingPumpId",
+      "toEntity": "PlumbingPump.cdm.json/PlumbingPump",
+      "toEntityAttribute": "PlumbingPumpId"
+    },
+    {
+      "fromEntity": "PlumbingShutOffValve.cdm.json/PlumbingShutOffValve",
+      "fromEntityAttribute": "PlumbingValveId",
+      "toEntity": "PlumbingValve.cdm.json/PlumbingValve",
+      "toEntityAttribute": "PlumbingValveId"
+    },
+    {
+      "fromEntity": "PlumbingStorageTank.cdm.json/PlumbingStorageTank",
+      "fromEntityAttribute": "PlumbingTankId",
+      "toEntity": "PlumbingTank.cdm.json/PlumbingTank",
+      "toEntityAttribute": "PlumbingTankId"
+    },
+    {
+      "fromEntity": "PlumbingSystem.cdm.json/PlumbingSystem",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId"
+    },
+    {
+      "fromEntity": "PlumbingValveSubComponent.cdm.json/PlumbingValveSubComponent",
+      "fromEntityAttribute": "PlumbingValveId",
+      "toEntity": "PlumbingValve.cdm.json/PlumbingValve",
+      "toEntityAttribute": "PlumbingValveId"
+    },
+    {
+      "fromEntity": "SensorBuilding.cdm.json/SensorBuilding",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorComponent.cdm.json/SensorComponent",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorFloor.cdm.json/SensorFloor",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorLand.cdm.json/SensorLand",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorMeasurement.cdm.json/SensorMeasurement",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId"
+    },
+    {
+      "fromEntity": "SensorRentalUnit.cdm.json/SensorRentalUnit",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorSite.cdm.json/SensorSite",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorSpace.cdm.json/SensorSpace",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorUnit.cdm.json/SensorUnit",
+      "fromEntityAttribute": "SensorId",
+      "toEntity": "Sensor.cdm.json/Sensor",
+      "toEntityAttribute": "SensorId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorSite.cdm.json/SensorSite",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorSpace.cdm.json/SensorSpace",
+      "fromEntityAttribute": "SpaceId",
+      "toEntity": "Space.cdm.json/Space",
+      "toEntityAttribute": "SpaceId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SensorUnit.cdm.json/SensorUnit",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemSite.cdm.json/SystemSite",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitSite.cdm.json/UnitSite",
+      "fromEntityAttribute": "SiteId",
+      "toEntity": "Site.cdm.json/Site",
+      "toEntityAttribute": "SiteId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemSpace.cdm.json/SystemSpace",
+      "fromEntityAttribute": "SpaceId",
+      "toEntity": "Space.cdm.json/Space",
+      "toEntityAttribute": "SpaceId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitSpace.cdm.json/UnitSpace",
+      "fromEntityAttribute": "SpaceId",
+      "toEntity": "Space.cdm.json/Space",
+      "toEntityAttribute": "SpaceId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemBuilding.cdm.json/SystemBuilding",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemFloor.cdm.json/SystemFloor",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemRentalUnit.cdm.json/SystemRentalUnit",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemSite.cdm.json/SystemSite",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemSpace.cdm.json/SystemSpace",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemUnit.cdm.json/SystemUnit",
+      "fromEntityAttribute": "SystemId",
+      "toEntity": "System.cdm.json/System",
+      "toEntityAttribute": "SystemId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "SystemUnit.cdm.json/SystemUnit",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "TanklessWaterHeater.cdm.json/TanklessWaterHeater",
+      "fromEntityAttribute": "WaterHeaterId",
+      "toEntity": "WaterHeater.cdm.json/WaterHeater",
+      "toEntityAttribute": "WaterHeaterId"
+    },
+    {
+      "fromEntity": "TanklessWaterHeaterSubComponent.cdm.json/TanklessWaterHeaterSubComponent",
+      "fromEntityAttribute": "TanklessWaterHeaterId",
+      "toEntity": "TanklessWaterHeater.cdm.json/TanklessWaterHeater",
+      "toEntityAttribute": "TanklessWaterHeaterId"
+    },
+    {
+      "fromEntity": "TankWaterHeater.cdm.json/TankWaterHeater",
+      "fromEntityAttribute": "WaterHeaterId",
+      "toEntity": "WaterHeater.cdm.json/WaterHeater",
+      "toEntityAttribute": "WaterHeaterId"
+    },
+    {
+      "fromEntity": "TankWaterHeaterSubComponent.cdm.json/TankWaterHeaterSubComponent",
+      "fromEntityAttribute": "TankWaterHeaterId",
+      "toEntity": "TankWaterHeater.cdm.json/TankWaterHeater",
+      "toEntityAttribute": "TankWaterHeaterId"
+    },
+    {
+      "fromEntity": "VavBoxReheat.cdm.json/VavBoxReheat",
+      "fromEntityAttribute": "TerminalUnitId",
+      "toEntity": "TerminalUnit.cdm.json/TerminalUnit",
+      "toEntityAttribute": "TerminalUnitId"
+    },
+    {
+      "fromEntity": "ToiletFlushometer.cdm.json/ToiletFlushometer",
+      "fromEntityAttribute": "ToiletId",
+      "toEntity": "Toilet.cdm.json/Toilet",
+      "toEntityAttribute": "ToiletId"
+    },
+    {
+      "fromEntity": "ToiletTank.cdm.json/ToiletTank",
+      "fromEntityAttribute": "ToiletId",
+      "toEntity": "Toilet.cdm.json/Toilet",
+      "toEntityAttribute": "ToiletId"
+    },
+    {
+      "fromEntity": "UnitBuilding.cdm.json/UnitBuilding",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitFloor.cdm.json/UnitFloor",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitLand.cdm.json/UnitLand",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitSite.cdm.json/UnitSite",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    },
+    {
+      "fromEntity": "UnitSpace.cdm.json/UnitSpace",
+      "fromEntityAttribute": "UnitId",
+      "toEntity": "Unit.cdm.json/Unit",
+      "toEntityAttribute": "UnitId",
+      "exhibitsTraits": [
+        {
+          "traitReference": "is.identifiedBy",
+          "arguments": [
+            "this.attribute"
+          ]
+        }
+      ]
+    }
+  ],
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "$schema": "CdmManifest.cdm.json",
+  "documentVersion": "1.0"
+}

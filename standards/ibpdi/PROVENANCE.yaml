@@ -1,0 +1,22 @@
+standard: IBPDI Common Data Model
+owner:
+  name: International Building Performance & Data Initiative
+  url: https://ibpdi.org
+  github: https://github.com/ibpdi
+source:
+  repository: https://github.com/ibpdi/cdm
+  upstream_sha: 12afb170c8d3a65897bf49234d6e12acb96fe949
+  upstream_date: 2024-06-10T11:12:27+02:00
+  fetched_at: 2026-05-17T00:00:00Z
+license:
+  docs: CC BY 4.0 (per upstream LICENCE)
+  code: MIT (per upstream LICENCE-CODE)
+  cora_redistribution_rights: full
+  attribution_required: true
+status:
+  cora_tier: bootstrap_mirror
+  participating: false
+  notes: |
+    IBPDI is mirrored under its existing CC BY 4.0 + MIT licenses, which require
+    no upstream permission. IBPDI is not yet a participating standards body in
+    CORA governance; this is a one-way mirror with attribution.

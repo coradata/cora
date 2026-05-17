@@ -1,0 +1,3215 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "/core/digitalTwin/HvacFanSubComponent.cdm.json",
+      "moniker": "resolvedFrom"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "HvacFanSubComponent",
+      "exhibitsTraits": [
+        {
+          "traitReference": "has.entitySchemaAbstractionLevel",
+          "arguments": [
+            {
+              "name": "level",
+              "value": "resolved"
+            }
+          ]
+        }
+      ],
+      "attributeContext": {
+        "type": "entity",
+        "name": "HvacFanSubComponent",
+        "definition": "resolvedFrom/HvacFanSubComponent",
+        "contents": [
+          {
+            "type": "entityReferenceExtends",
+            "name": "extends",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "contents": [
+              {
+                "type": "entity",
+                "name": "CdmEntity",
+                "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/extends",
+                "definition": "resolvedFrom/CdmEntity"
+              }
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "HvacFanSubComponentId",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/HvacFanSubComponentId",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/HvacFanSubComponentId"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "HvacFanId",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/HvacFanId",
+            "contents": [
+              {
+                "type": "entity",
+                "name": "HvacFan",
+                "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/HvacFanId",
+                "definition": "resolvedFrom/HvacFan"
+              },
+              {
+                "type": "generatedSet",
+                "name": "_generatedAttributeSet",
+                "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/HvacFanId",
+                "contents": [
+                  {
+                    "type": "generatedRound",
+                    "name": "_generatedAttributeRound0",
+                    "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/HvacFanId/_generatedAttributeSet",
+                    "contents": [
+                      {
+                        "type": "addedAttributeIdentity",
+                        "name": "_foreignKey",
+                        "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/HvacFanId/_generatedAttributeSet/_generatedAttributeRound0",
+                        "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/HvacFanId/resolutionGuidance/foreignKeyAttribute/HvacFanId",
+                        "contents": [
+                          "HvacFanSubComponent/hasAttributes/HvacFanId"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DriveType",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DriveType",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DriveType"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "NominalAirflow",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/NominalAirflow",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/NominalAirflow"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "MotorPower",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/MotorPower",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/MotorPower"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "MinAirflowRating",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/MinAirflowRating",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/MinAirflowRating"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "MaxAirflowRating",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/MaxAirflowRating",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/MaxAirflowRating"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "MaxRotationSpeed",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/MaxRotationSpeed",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/MaxRotationSpeed"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanNominalAirflow",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanNominalAirflow",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanNominalAirflow"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "Type",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/Type",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/Type"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanMotorPower",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanMotorPower",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanMotorPower"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanMinAirflowRating",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanMinAirflowRating",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanMinAirflowRating"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanMaxAirflowRating",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanMaxAirflowRating",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanMaxAirflowRating"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanDriveType",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanDriveType",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanDriveType"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanName",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanName",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanName"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanCommissionDate",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanCommissionDate",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanCommissionDate"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanExpectedEndOfLife",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanExpectedEndOfLife",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanExpectedEndOfLife"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanDurationLifeYear",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanDurationLifeYear",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanDurationLifeYear"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanExpectedReplacementCost",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanExpectedReplacementCost",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanExpectedReplacementCost"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanInitialCost",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanInitialCost",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanInitialCost"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "Currency",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/Currency",
+            "contents": [
+              {
+                "type": "attributeGroup",
+                "name": "Currency",
+                "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/Currency",
+                "definition": "resolvedFrom/Currency",
+                "contents": [
+                  {
+                    "type": "attributeDefinition",
+                    "name": "Currency",
+                    "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/Currency/Currency",
+                    "definition": "resolvedFrom/Currency/members/Currency",
+                    "contents": [
+                      "HvacFanSubComponent/hasAttributes/Currency"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanInstallationDate",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanInstallationDate",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanInstallationDate"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanMaintenanceInterval",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanMaintenanceInterval",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanMaintenanceInterval"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanTurnoverDate",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanTurnoverDate",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanTurnoverDate"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanModelNumber",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanModelNumber",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanModelNumber"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanTagNumber",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanTagNumber",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanTagNumber"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "FanSerialNumber",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/FanSerialNumber",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/FanSerialNumber"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletSize",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletSize",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletSize"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletShape",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletShape",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletShape"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletConfiguration",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletConfiguration",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletConfiguration"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletName",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletName",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletName"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletCommissionDate",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletCommissionDate",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletCommissionDate"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletExpectedEndOfLife",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletExpectedEndOfLife",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletExpectedEndOfLife"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletExpectedReplacementCost",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletExpectedReplacementCost",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletExpectedReplacementCost"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletInitialCost",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletInitialCost",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletInitialCost"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletCurrency",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/DuctInletCurrency",
+            "contents": [
+              {
+                "type": "attributeGroup",
+                "name": "DuctInletCurrency",
+                "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletCurrency",
+                "definition": "resolvedFrom/DuctInletCurrency",
+                "contents": [
+                  {
+                    "type": "attributeDefinition",
+                    "name": "DuctInletCurrency",
+                    "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletCurrency/DuctInletCurrency",
+                    "definition": "resolvedFrom/DuctInletCurrency/members/DuctInletCurrency",
+                    "contents": [
+                      "HvacFanSubComponent/hasAttributes/DuctInletCurrency"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletInstallationDate",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletInstallationDate",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletInstallationDate"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletMaintenanceInterval",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletMaintenanceInterval",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletMaintenanceInterval"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletTurnoverDate",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletTurnoverDate",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletTurnoverDate"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletModel",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletModel",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletModel"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletTagNumber",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletTagNumber",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletTagNumber"
+            ]
+          },
+          {
+            "type": "attributeDefinition",
+            "name": "DuctInletSerialNumber",
+            "parent": "HvacFanSubComponent/attributeContext/HvacFanSubComponent",
+            "definition": "resolvedFrom/HvacFanSubComponent/hasAttributes/DuctInletSerialNumber",
+            "contents": [
+              "HvacFanSubComponent/hasAttributes/DuctInletSerialNumber"
+            ]
+          }
+        ]
+      },
+      "hasAttributes": [
+        {
+          "name": "HvacFanSubComponentId",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/HvacFanSubComponentId",
+          "isPrimaryKey": true,
+          "dataFormat": "String",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "name": "HvacFanId",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array",
+            {
+              "traitReference": "is.linkedEntity.identifier",
+              "arguments": [
+                {
+                  "entityReference": {
+                    "entityShape": "entityGroupSet",
+                    "constantValues": [
+                      [
+                        "/core/digitalTwin/HvacFan.cdm.json/HvacFan",
+                        "HvacFanId"
+                      ]
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/HvacFanId/_generatedAttributeSet/_generatedAttributeRound0/_foreignKey",
+          "dataFormat": "String",
+          "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+          "maximumLength": 50
+        },
+        {
+          "name": "DriveType",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DriveType",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Other hvac fan drive type",
+          "maximumLength": 50
+        },
+        {
+          "name": "NominalAirflow",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/NominalAirflow",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Nominal airflow"
+        },
+        {
+          "name": "MotorPower",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/MotorPower",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Motor power"
+        },
+        {
+          "name": "MinAirflowRating",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/MinAirflowRating",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Min flow capacity"
+        },
+        {
+          "name": "MaxAirflowRating",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/MaxAirflowRating",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Max flow capacity"
+        },
+        {
+          "name": "MaxRotationSpeed",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/MaxRotationSpeed",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Max rotation speed in rotations per minute"
+        },
+        {
+          "name": "FanNominalAirflow",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanNominalAirflow",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Fan nominal airflow"
+        },
+        {
+          "name": "Type",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/Type",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Ceiling fan type",
+          "maximumLength": 50
+        },
+        {
+          "name": "FanMotorPower",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanMotorPower",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Fan motor power"
+        },
+        {
+          "name": "FanMinAirflowRating",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanMinAirflowRating",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Fan min flow capacity"
+        },
+        {
+          "name": "FanMaxAirflowRating",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanMaxAirflowRating",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Fan max flow capacity"
+        },
+        {
+          "name": "FanDriveType",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanDriveType",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Fan fan drive type",
+          "maximumLength": 50
+        },
+        {
+          "name": "FanName",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanName",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Name of fan",
+          "maximumLength": 200
+        },
+        {
+          "name": "FanCommissionDate",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanCommissionDate",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Fan commission date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "FanExpectedEndOfLife",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanExpectedEndOfLife",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Fan expected end of life date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "FanDurationLifeYear",
+          "appliedTraits": [
+            "is.dataFormat.integer"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanDurationLifeYear",
+          "isNullable": true,
+          "dataFormat": "Int32",
+          "description": "Fan life span of component in years"
+        },
+        {
+          "name": "FanExpectedReplacementCost",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanExpectedReplacementCost",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Fan expected replacement costs"
+        },
+        {
+          "name": "FanInitialCost",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanInitialCost",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Fan initial cost"
+        },
+        {
+          "name": "Currency",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/Currency/Currency/Currency",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Currency code according to Iso 4217",
+          "maximumLength": 50,
+          "valueConstrainedToList": true,
+          "defaultValue": [
+            {
+              "languageTag": "en",
+              "displayText": "AFN",
+              "attributeValue": "AFN",
+              "displayOrder": "0"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ALL",
+              "attributeValue": "ALL",
+              "displayOrder": "1"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DZD",
+              "attributeValue": "DZD",
+              "displayOrder": "2"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "USD",
+              "attributeValue": "USD",
+              "displayOrder": "3"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "EUR",
+              "attributeValue": "EUR",
+              "displayOrder": "4"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AOA",
+              "attributeValue": "AOA",
+              "displayOrder": "5"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XCD",
+              "attributeValue": "XCD",
+              "displayOrder": "6"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ARS",
+              "attributeValue": "ARS",
+              "displayOrder": "7"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AMD",
+              "attributeValue": "AMD",
+              "displayOrder": "8"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AWG",
+              "attributeValue": "AWG",
+              "displayOrder": "9"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AUD",
+              "attributeValue": "AUD",
+              "displayOrder": "10"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AZN",
+              "attributeValue": "AZN",
+              "displayOrder": "11"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BSD",
+              "attributeValue": "BSD",
+              "displayOrder": "12"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BHD",
+              "attributeValue": "BHD",
+              "displayOrder": "13"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BDT",
+              "attributeValue": "BDT",
+              "displayOrder": "14"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BBD",
+              "attributeValue": "BBD",
+              "displayOrder": "15"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BYN",
+              "attributeValue": "BYN",
+              "displayOrder": "16"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BZD",
+              "attributeValue": "BZD",
+              "displayOrder": "17"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XOF",
+              "attributeValue": "XOF",
+              "displayOrder": "18"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BMD",
+              "attributeValue": "BMD",
+              "displayOrder": "19"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BTN",
+              "attributeValue": "BTN",
+              "displayOrder": "20"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "INR",
+              "attributeValue": "INR",
+              "displayOrder": "21"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BOB",
+              "attributeValue": "BOB",
+              "displayOrder": "22"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BOV",
+              "attributeValue": "BOV",
+              "displayOrder": "23"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BAM",
+              "attributeValue": "BAM",
+              "displayOrder": "24"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BWP",
+              "attributeValue": "BWP",
+              "displayOrder": "25"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NOK",
+              "attributeValue": "NOK",
+              "displayOrder": "26"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BRL",
+              "attributeValue": "BRL",
+              "displayOrder": "27"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BND",
+              "attributeValue": "BND",
+              "displayOrder": "28"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BGN",
+              "attributeValue": "BGN",
+              "displayOrder": "29"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BIF",
+              "attributeValue": "BIF",
+              "displayOrder": "30"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CVE",
+              "attributeValue": "CVE",
+              "displayOrder": "31"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KHR",
+              "attributeValue": "KHR",
+              "displayOrder": "32"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XAF",
+              "attributeValue": "XAF",
+              "displayOrder": "33"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CAD",
+              "attributeValue": "CAD",
+              "displayOrder": "34"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KYD",
+              "attributeValue": "KYD",
+              "displayOrder": "35"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CLF",
+              "attributeValue": "CLF",
+              "displayOrder": "36"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CLP",
+              "attributeValue": "CLP",
+              "displayOrder": "37"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CNY",
+              "attributeValue": "CNY",
+              "displayOrder": "38"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "COP",
+              "attributeValue": "COP",
+              "displayOrder": "39"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "COU",
+              "attributeValue": "COU",
+              "displayOrder": "40"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KMF",
+              "attributeValue": "KMF",
+              "displayOrder": "41"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CDF",
+              "attributeValue": "CDF",
+              "displayOrder": "42"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NZD",
+              "attributeValue": "NZD",
+              "displayOrder": "43"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CRC",
+              "attributeValue": "CRC",
+              "displayOrder": "44"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HRK",
+              "attributeValue": "HRK",
+              "displayOrder": "45"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CUC",
+              "attributeValue": "CUC",
+              "displayOrder": "46"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CUP",
+              "attributeValue": "CUP",
+              "displayOrder": "47"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ANG",
+              "attributeValue": "ANG",
+              "displayOrder": "48"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CZK",
+              "attributeValue": "CZK",
+              "displayOrder": "49"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DKK",
+              "attributeValue": "DKK",
+              "displayOrder": "50"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DJF",
+              "attributeValue": "DJF",
+              "displayOrder": "51"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DOP",
+              "attributeValue": "DOP",
+              "displayOrder": "52"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "EGP",
+              "attributeValue": "EGP",
+              "displayOrder": "53"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SVC",
+              "attributeValue": "SVC",
+              "displayOrder": "54"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ERN",
+              "attributeValue": "ERN",
+              "displayOrder": "55"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ETB",
+              "attributeValue": "ETB",
+              "displayOrder": "56"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "FKP",
+              "attributeValue": "FKP",
+              "displayOrder": "57"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "FJD",
+              "attributeValue": "FJD",
+              "displayOrder": "58"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XPF",
+              "attributeValue": "XPF",
+              "displayOrder": "59"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GMD",
+              "attributeValue": "GMD",
+              "displayOrder": "60"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GEL",
+              "attributeValue": "GEL",
+              "displayOrder": "61"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GHS",
+              "attributeValue": "GHS",
+              "displayOrder": "62"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GIP",
+              "attributeValue": "GIP",
+              "displayOrder": "63"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GTQ",
+              "attributeValue": "GTQ",
+              "displayOrder": "64"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GBP",
+              "attributeValue": "GBP",
+              "displayOrder": "65"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GNF",
+              "attributeValue": "GNF",
+              "displayOrder": "66"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GYD",
+              "attributeValue": "GYD",
+              "displayOrder": "67"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HTG",
+              "attributeValue": "HTG",
+              "displayOrder": "68"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HNL",
+              "attributeValue": "HNL",
+              "displayOrder": "69"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HKD",
+              "attributeValue": "HKD",
+              "displayOrder": "70"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HUF",
+              "attributeValue": "HUF",
+              "displayOrder": "71"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ISK",
+              "attributeValue": "ISK",
+              "displayOrder": "72"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "IDR",
+              "attributeValue": "IDR",
+              "displayOrder": "73"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XDR",
+              "attributeValue": "XDR",
+              "displayOrder": "74"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "IRR",
+              "attributeValue": "IRR",
+              "displayOrder": "75"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "IQD",
+              "attributeValue": "IQD",
+              "displayOrder": "76"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ILS",
+              "attributeValue": "ILS",
+              "displayOrder": "77"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "JMD",
+              "attributeValue": "JMD",
+              "displayOrder": "78"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "JPY",
+              "attributeValue": "JPY",
+              "displayOrder": "79"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "JOD",
+              "attributeValue": "JOD",
+              "displayOrder": "80"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KZT",
+              "attributeValue": "KZT",
+              "displayOrder": "81"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KES",
+              "attributeValue": "KES",
+              "displayOrder": "82"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KPW",
+              "attributeValue": "KPW",
+              "displayOrder": "83"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KRW",
+              "attributeValue": "KRW",
+              "displayOrder": "84"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KWD",
+              "attributeValue": "KWD",
+              "displayOrder": "85"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KGS",
+              "attributeValue": "KGS",
+              "displayOrder": "86"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LAK",
+              "attributeValue": "LAK",
+              "displayOrder": "87"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LBP",
+              "attributeValue": "LBP",
+              "displayOrder": "88"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LSL",
+              "attributeValue": "LSL",
+              "displayOrder": "89"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ZAR",
+              "attributeValue": "ZAR",
+              "displayOrder": "90"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LRD",
+              "attributeValue": "LRD",
+              "displayOrder": "91"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LYD",
+              "attributeValue": "LYD",
+              "displayOrder": "92"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CHF",
+              "attributeValue": "CHF",
+              "displayOrder": "93"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MOP",
+              "attributeValue": "MOP",
+              "displayOrder": "94"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MGA",
+              "attributeValue": "MGA",
+              "displayOrder": "95"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MWK",
+              "attributeValue": "MWK",
+              "displayOrder": "96"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MYR",
+              "attributeValue": "MYR",
+              "displayOrder": "97"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MVR",
+              "attributeValue": "MVR",
+              "displayOrder": "98"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MRU",
+              "attributeValue": "MRU",
+              "displayOrder": "99"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MUR",
+              "attributeValue": "MUR",
+              "displayOrder": "100"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XUA",
+              "attributeValue": "XUA",
+              "displayOrder": "101"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MXN",
+              "attributeValue": "MXN",
+              "displayOrder": "102"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MXV",
+              "attributeValue": "MXV",
+              "displayOrder": "103"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MDL",
+              "attributeValue": "MDL",
+              "displayOrder": "104"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MNT",
+              "attributeValue": "MNT",
+              "displayOrder": "105"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MAD",
+              "attributeValue": "MAD",
+              "displayOrder": "106"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MZN",
+              "attributeValue": "MZN",
+              "displayOrder": "107"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MMK",
+              "attributeValue": "MMK",
+              "displayOrder": "108"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NAD",
+              "attributeValue": "NAD",
+              "displayOrder": "109"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NPR",
+              "attributeValue": "NPR",
+              "displayOrder": "110"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NIO",
+              "attributeValue": "NIO",
+              "displayOrder": "111"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NGN",
+              "attributeValue": "NGN",
+              "displayOrder": "112"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "OMR",
+              "attributeValue": "OMR",
+              "displayOrder": "113"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PKR",
+              "attributeValue": "PKR",
+              "displayOrder": "114"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PAB",
+              "attributeValue": "PAB",
+              "displayOrder": "115"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PGK",
+              "attributeValue": "PGK",
+              "displayOrder": "116"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PYG",
+              "attributeValue": "PYG",
+              "displayOrder": "117"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PEN",
+              "attributeValue": "PEN",
+              "displayOrder": "118"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PHP",
+              "attributeValue": "PHP",
+              "displayOrder": "119"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PLN",
+              "attributeValue": "PLN",
+              "displayOrder": "120"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "QAR",
+              "attributeValue": "QAR",
+              "displayOrder": "121"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MKD",
+              "attributeValue": "MKD",
+              "displayOrder": "122"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RON",
+              "attributeValue": "RON",
+              "displayOrder": "123"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RUB",
+              "attributeValue": "RUB",
+              "displayOrder": "124"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RWF",
+              "attributeValue": "RWF",
+              "displayOrder": "125"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SHP",
+              "attributeValue": "SHP",
+              "displayOrder": "126"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "WST",
+              "attributeValue": "WST",
+              "displayOrder": "127"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "STN",
+              "attributeValue": "STN",
+              "displayOrder": "128"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SAR",
+              "attributeValue": "SAR",
+              "displayOrder": "129"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RSD",
+              "attributeValue": "RSD",
+              "displayOrder": "130"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SCR",
+              "attributeValue": "SCR",
+              "displayOrder": "131"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SLL",
+              "attributeValue": "SLL",
+              "displayOrder": "132"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SGD",
+              "attributeValue": "SGD",
+              "displayOrder": "133"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XSU",
+              "attributeValue": "XSU",
+              "displayOrder": "134"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SBD",
+              "attributeValue": "SBD",
+              "displayOrder": "135"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SOS",
+              "attributeValue": "SOS",
+              "displayOrder": "136"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SSP",
+              "attributeValue": "SSP",
+              "displayOrder": "137"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LKR",
+              "attributeValue": "LKR",
+              "displayOrder": "138"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SDG",
+              "attributeValue": "SDG",
+              "displayOrder": "139"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SRD",
+              "attributeValue": "SRD",
+              "displayOrder": "140"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SZL",
+              "attributeValue": "SZL",
+              "displayOrder": "141"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SEK",
+              "attributeValue": "SEK",
+              "displayOrder": "142"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CHE",
+              "attributeValue": "CHE",
+              "displayOrder": "143"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CHW",
+              "attributeValue": "CHW",
+              "displayOrder": "144"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SYP",
+              "attributeValue": "SYP",
+              "displayOrder": "145"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TWD",
+              "attributeValue": "TWD",
+              "displayOrder": "146"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TJS",
+              "attributeValue": "TJS",
+              "displayOrder": "147"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TZS",
+              "attributeValue": "TZS",
+              "displayOrder": "148"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "THB",
+              "attributeValue": "THB",
+              "displayOrder": "149"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TOP",
+              "attributeValue": "TOP",
+              "displayOrder": "150"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TTD",
+              "attributeValue": "TTD",
+              "displayOrder": "151"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TND",
+              "attributeValue": "TND",
+              "displayOrder": "152"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TRY",
+              "attributeValue": "TRY",
+              "displayOrder": "153"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TMT",
+              "attributeValue": "TMT",
+              "displayOrder": "154"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UGX",
+              "attributeValue": "UGX",
+              "displayOrder": "155"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UAH",
+              "attributeValue": "UAH",
+              "displayOrder": "156"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AED",
+              "attributeValue": "AED",
+              "displayOrder": "157"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "USN",
+              "attributeValue": "USN",
+              "displayOrder": "158"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UYI",
+              "attributeValue": "UYI",
+              "displayOrder": "159"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UYU",
+              "attributeValue": "UYU",
+              "displayOrder": "160"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UZS",
+              "attributeValue": "UZS",
+              "displayOrder": "161"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VUV",
+              "attributeValue": "VUV",
+              "displayOrder": "162"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VEF",
+              "attributeValue": "VEF",
+              "displayOrder": "163"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VED",
+              "attributeValue": "VED",
+              "displayOrder": "164"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VND",
+              "attributeValue": "VND",
+              "displayOrder": "165"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "YER",
+              "attributeValue": "YER",
+              "displayOrder": "166"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ZMW",
+              "attributeValue": "ZMW",
+              "displayOrder": "167"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ZWL",
+              "attributeValue": "ZWL",
+              "displayOrder": "168"
+            }
+          ]
+        },
+        {
+          "name": "FanInstallationDate",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanInstallationDate",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Installation date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "FanMaintenanceInterval",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanMaintenanceInterval",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Fan maintenance interval either as string: monthly, quarterly, etc. or as month",
+          "maximumLength": 50
+        },
+        {
+          "name": "FanTurnoverDate",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanTurnoverDate",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Fan turnover date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "FanModelNumber",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanModelNumber",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Model number of fan",
+          "maximumLength": 50
+        },
+        {
+          "name": "FanTagNumber",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanTagNumber",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Fan tag number",
+          "maximumLength": 50
+        },
+        {
+          "name": "FanSerialNumber",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/FanSerialNumber",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Serial number of fan",
+          "maximumLength": 50
+        },
+        {
+          "name": "DuctInletSize",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletSize",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Duct inlet size"
+        },
+        {
+          "name": "DuctInletShape",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "19"
+                },
+                {
+                  "name": "scale",
+                  "value": "6"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletShape",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Duct inlet shape"
+        },
+        {
+          "name": "DuctInletConfiguration",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletConfiguration",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Duct inlet configuration",
+          "maximumLength": 200
+        },
+        {
+          "name": "DuctInletName",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletName",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Name of Duct inlet",
+          "maximumLength": 200
+        },
+        {
+          "name": "DuctInletCommissionDate",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletCommissionDate",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Commission date if duct inlet in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "DuctInletExpectedEndOfLife",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletExpectedEndOfLife",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Expected end of life date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "DuctInletExpectedReplacementCost",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletExpectedReplacementCost",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Duct inlet expected replacement costs"
+        },
+        {
+          "name": "DuctInletInitialCost",
+          "appliedTraits": [
+            {
+              "traitReference": "is.dataFormat.numeric.shaped",
+              "arguments": [
+                {
+                  "name": "precision",
+                  "value": "28"
+                },
+                {
+                  "name": "scale",
+                  "value": "4"
+                }
+              ]
+            }
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletInitialCost",
+          "isNullable": true,
+          "dataFormat": "Decimal",
+          "description": "Duct inlet initial cost"
+        },
+        {
+          "name": "DuctInletCurrency",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletCurrency/DuctInletCurrency/DuctInletCurrency",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Duct inlet currency code according to Iso 4217",
+          "maximumLength": 50,
+          "valueConstrainedToList": true,
+          "defaultValue": [
+            {
+              "languageTag": "en",
+              "displayText": "AFN",
+              "attributeValue": "AFN",
+              "displayOrder": "0"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ALL",
+              "attributeValue": "ALL",
+              "displayOrder": "1"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DZD",
+              "attributeValue": "DZD",
+              "displayOrder": "2"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "USD",
+              "attributeValue": "USD",
+              "displayOrder": "3"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "EUR",
+              "attributeValue": "EUR",
+              "displayOrder": "4"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AOA",
+              "attributeValue": "AOA",
+              "displayOrder": "5"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XCD",
+              "attributeValue": "XCD",
+              "displayOrder": "6"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ARS",
+              "attributeValue": "ARS",
+              "displayOrder": "7"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AMD",
+              "attributeValue": "AMD",
+              "displayOrder": "8"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AWG",
+              "attributeValue": "AWG",
+              "displayOrder": "9"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AUD",
+              "attributeValue": "AUD",
+              "displayOrder": "10"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AZN",
+              "attributeValue": "AZN",
+              "displayOrder": "11"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BSD",
+              "attributeValue": "BSD",
+              "displayOrder": "12"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BHD",
+              "attributeValue": "BHD",
+              "displayOrder": "13"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BDT",
+              "attributeValue": "BDT",
+              "displayOrder": "14"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BBD",
+              "attributeValue": "BBD",
+              "displayOrder": "15"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BYN",
+              "attributeValue": "BYN",
+              "displayOrder": "16"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BZD",
+              "attributeValue": "BZD",
+              "displayOrder": "17"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XOF",
+              "attributeValue": "XOF",
+              "displayOrder": "18"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BMD",
+              "attributeValue": "BMD",
+              "displayOrder": "19"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BTN",
+              "attributeValue": "BTN",
+              "displayOrder": "20"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "INR",
+              "attributeValue": "INR",
+              "displayOrder": "21"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BOB",
+              "attributeValue": "BOB",
+              "displayOrder": "22"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BOV",
+              "attributeValue": "BOV",
+              "displayOrder": "23"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BAM",
+              "attributeValue": "BAM",
+              "displayOrder": "24"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BWP",
+              "attributeValue": "BWP",
+              "displayOrder": "25"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NOK",
+              "attributeValue": "NOK",
+              "displayOrder": "26"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BRL",
+              "attributeValue": "BRL",
+              "displayOrder": "27"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BND",
+              "attributeValue": "BND",
+              "displayOrder": "28"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BGN",
+              "attributeValue": "BGN",
+              "displayOrder": "29"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "BIF",
+              "attributeValue": "BIF",
+              "displayOrder": "30"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CVE",
+              "attributeValue": "CVE",
+              "displayOrder": "31"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KHR",
+              "attributeValue": "KHR",
+              "displayOrder": "32"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XAF",
+              "attributeValue": "XAF",
+              "displayOrder": "33"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CAD",
+              "attributeValue": "CAD",
+              "displayOrder": "34"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KYD",
+              "attributeValue": "KYD",
+              "displayOrder": "35"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CLF",
+              "attributeValue": "CLF",
+              "displayOrder": "36"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CLP",
+              "attributeValue": "CLP",
+              "displayOrder": "37"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CNY",
+              "attributeValue": "CNY",
+              "displayOrder": "38"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "COP",
+              "attributeValue": "COP",
+              "displayOrder": "39"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "COU",
+              "attributeValue": "COU",
+              "displayOrder": "40"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KMF",
+              "attributeValue": "KMF",
+              "displayOrder": "41"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CDF",
+              "attributeValue": "CDF",
+              "displayOrder": "42"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NZD",
+              "attributeValue": "NZD",
+              "displayOrder": "43"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CRC",
+              "attributeValue": "CRC",
+              "displayOrder": "44"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HRK",
+              "attributeValue": "HRK",
+              "displayOrder": "45"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CUC",
+              "attributeValue": "CUC",
+              "displayOrder": "46"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CUP",
+              "attributeValue": "CUP",
+              "displayOrder": "47"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ANG",
+              "attributeValue": "ANG",
+              "displayOrder": "48"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CZK",
+              "attributeValue": "CZK",
+              "displayOrder": "49"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DKK",
+              "attributeValue": "DKK",
+              "displayOrder": "50"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DJF",
+              "attributeValue": "DJF",
+              "displayOrder": "51"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "DOP",
+              "attributeValue": "DOP",
+              "displayOrder": "52"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "EGP",
+              "attributeValue": "EGP",
+              "displayOrder": "53"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SVC",
+              "attributeValue": "SVC",
+              "displayOrder": "54"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ERN",
+              "attributeValue": "ERN",
+              "displayOrder": "55"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ETB",
+              "attributeValue": "ETB",
+              "displayOrder": "56"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "FKP",
+              "attributeValue": "FKP",
+              "displayOrder": "57"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "FJD",
+              "attributeValue": "FJD",
+              "displayOrder": "58"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XPF",
+              "attributeValue": "XPF",
+              "displayOrder": "59"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GMD",
+              "attributeValue": "GMD",
+              "displayOrder": "60"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GEL",
+              "attributeValue": "GEL",
+              "displayOrder": "61"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GHS",
+              "attributeValue": "GHS",
+              "displayOrder": "62"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GIP",
+              "attributeValue": "GIP",
+              "displayOrder": "63"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GTQ",
+              "attributeValue": "GTQ",
+              "displayOrder": "64"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GBP",
+              "attributeValue": "GBP",
+              "displayOrder": "65"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GNF",
+              "attributeValue": "GNF",
+              "displayOrder": "66"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "GYD",
+              "attributeValue": "GYD",
+              "displayOrder": "67"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HTG",
+              "attributeValue": "HTG",
+              "displayOrder": "68"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HNL",
+              "attributeValue": "HNL",
+              "displayOrder": "69"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HKD",
+              "attributeValue": "HKD",
+              "displayOrder": "70"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "HUF",
+              "attributeValue": "HUF",
+              "displayOrder": "71"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ISK",
+              "attributeValue": "ISK",
+              "displayOrder": "72"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "IDR",
+              "attributeValue": "IDR",
+              "displayOrder": "73"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XDR",
+              "attributeValue": "XDR",
+              "displayOrder": "74"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "IRR",
+              "attributeValue": "IRR",
+              "displayOrder": "75"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "IQD",
+              "attributeValue": "IQD",
+              "displayOrder": "76"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ILS",
+              "attributeValue": "ILS",
+              "displayOrder": "77"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "JMD",
+              "attributeValue": "JMD",
+              "displayOrder": "78"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "JPY",
+              "attributeValue": "JPY",
+              "displayOrder": "79"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "JOD",
+              "attributeValue": "JOD",
+              "displayOrder": "80"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KZT",
+              "attributeValue": "KZT",
+              "displayOrder": "81"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KES",
+              "attributeValue": "KES",
+              "displayOrder": "82"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KPW",
+              "attributeValue": "KPW",
+              "displayOrder": "83"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KRW",
+              "attributeValue": "KRW",
+              "displayOrder": "84"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KWD",
+              "attributeValue": "KWD",
+              "displayOrder": "85"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "KGS",
+              "attributeValue": "KGS",
+              "displayOrder": "86"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LAK",
+              "attributeValue": "LAK",
+              "displayOrder": "87"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LBP",
+              "attributeValue": "LBP",
+              "displayOrder": "88"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LSL",
+              "attributeValue": "LSL",
+              "displayOrder": "89"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ZAR",
+              "attributeValue": "ZAR",
+              "displayOrder": "90"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LRD",
+              "attributeValue": "LRD",
+              "displayOrder": "91"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LYD",
+              "attributeValue": "LYD",
+              "displayOrder": "92"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CHF",
+              "attributeValue": "CHF",
+              "displayOrder": "93"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MOP",
+              "attributeValue": "MOP",
+              "displayOrder": "94"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MGA",
+              "attributeValue": "MGA",
+              "displayOrder": "95"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MWK",
+              "attributeValue": "MWK",
+              "displayOrder": "96"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MYR",
+              "attributeValue": "MYR",
+              "displayOrder": "97"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MVR",
+              "attributeValue": "MVR",
+              "displayOrder": "98"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MRU",
+              "attributeValue": "MRU",
+              "displayOrder": "99"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MUR",
+              "attributeValue": "MUR",
+              "displayOrder": "100"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XUA",
+              "attributeValue": "XUA",
+              "displayOrder": "101"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MXN",
+              "attributeValue": "MXN",
+              "displayOrder": "102"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MXV",
+              "attributeValue": "MXV",
+              "displayOrder": "103"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MDL",
+              "attributeValue": "MDL",
+              "displayOrder": "104"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MNT",
+              "attributeValue": "MNT",
+              "displayOrder": "105"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MAD",
+              "attributeValue": "MAD",
+              "displayOrder": "106"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MZN",
+              "attributeValue": "MZN",
+              "displayOrder": "107"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MMK",
+              "attributeValue": "MMK",
+              "displayOrder": "108"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NAD",
+              "attributeValue": "NAD",
+              "displayOrder": "109"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NPR",
+              "attributeValue": "NPR",
+              "displayOrder": "110"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NIO",
+              "attributeValue": "NIO",
+              "displayOrder": "111"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "NGN",
+              "attributeValue": "NGN",
+              "displayOrder": "112"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "OMR",
+              "attributeValue": "OMR",
+              "displayOrder": "113"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PKR",
+              "attributeValue": "PKR",
+              "displayOrder": "114"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PAB",
+              "attributeValue": "PAB",
+              "displayOrder": "115"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PGK",
+              "attributeValue": "PGK",
+              "displayOrder": "116"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PYG",
+              "attributeValue": "PYG",
+              "displayOrder": "117"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PEN",
+              "attributeValue": "PEN",
+              "displayOrder": "118"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PHP",
+              "attributeValue": "PHP",
+              "displayOrder": "119"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "PLN",
+              "attributeValue": "PLN",
+              "displayOrder": "120"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "QAR",
+              "attributeValue": "QAR",
+              "displayOrder": "121"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "MKD",
+              "attributeValue": "MKD",
+              "displayOrder": "122"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RON",
+              "attributeValue": "RON",
+              "displayOrder": "123"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RUB",
+              "attributeValue": "RUB",
+              "displayOrder": "124"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RWF",
+              "attributeValue": "RWF",
+              "displayOrder": "125"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SHP",
+              "attributeValue": "SHP",
+              "displayOrder": "126"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "WST",
+              "attributeValue": "WST",
+              "displayOrder": "127"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "STN",
+              "attributeValue": "STN",
+              "displayOrder": "128"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SAR",
+              "attributeValue": "SAR",
+              "displayOrder": "129"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "RSD",
+              "attributeValue": "RSD",
+              "displayOrder": "130"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SCR",
+              "attributeValue": "SCR",
+              "displayOrder": "131"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SLL",
+              "attributeValue": "SLL",
+              "displayOrder": "132"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SGD",
+              "attributeValue": "SGD",
+              "displayOrder": "133"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "XSU",
+              "attributeValue": "XSU",
+              "displayOrder": "134"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SBD",
+              "attributeValue": "SBD",
+              "displayOrder": "135"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SOS",
+              "attributeValue": "SOS",
+              "displayOrder": "136"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SSP",
+              "attributeValue": "SSP",
+              "displayOrder": "137"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "LKR",
+              "attributeValue": "LKR",
+              "displayOrder": "138"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SDG",
+              "attributeValue": "SDG",
+              "displayOrder": "139"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SRD",
+              "attributeValue": "SRD",
+              "displayOrder": "140"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SZL",
+              "attributeValue": "SZL",
+              "displayOrder": "141"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SEK",
+              "attributeValue": "SEK",
+              "displayOrder": "142"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CHE",
+              "attributeValue": "CHE",
+              "displayOrder": "143"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "CHW",
+              "attributeValue": "CHW",
+              "displayOrder": "144"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "SYP",
+              "attributeValue": "SYP",
+              "displayOrder": "145"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TWD",
+              "attributeValue": "TWD",
+              "displayOrder": "146"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TJS",
+              "attributeValue": "TJS",
+              "displayOrder": "147"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TZS",
+              "attributeValue": "TZS",
+              "displayOrder": "148"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "THB",
+              "attributeValue": "THB",
+              "displayOrder": "149"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TOP",
+              "attributeValue": "TOP",
+              "displayOrder": "150"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TTD",
+              "attributeValue": "TTD",
+              "displayOrder": "151"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TND",
+              "attributeValue": "TND",
+              "displayOrder": "152"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TRY",
+              "attributeValue": "TRY",
+              "displayOrder": "153"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "TMT",
+              "attributeValue": "TMT",
+              "displayOrder": "154"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UGX",
+              "attributeValue": "UGX",
+              "displayOrder": "155"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UAH",
+              "attributeValue": "UAH",
+              "displayOrder": "156"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "AED",
+              "attributeValue": "AED",
+              "displayOrder": "157"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "USN",
+              "attributeValue": "USN",
+              "displayOrder": "158"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UYI",
+              "attributeValue": "UYI",
+              "displayOrder": "159"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UYU",
+              "attributeValue": "UYU",
+              "displayOrder": "160"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "UZS",
+              "attributeValue": "UZS",
+              "displayOrder": "161"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VUV",
+              "attributeValue": "VUV",
+              "displayOrder": "162"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VEF",
+              "attributeValue": "VEF",
+              "displayOrder": "163"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VED",
+              "attributeValue": "VED",
+              "displayOrder": "164"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "VND",
+              "attributeValue": "VND",
+              "displayOrder": "165"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "YER",
+              "attributeValue": "YER",
+              "displayOrder": "166"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ZMW",
+              "attributeValue": "ZMW",
+              "displayOrder": "167"
+            },
+            {
+              "languageTag": "en",
+              "displayText": "ZWL",
+              "attributeValue": "ZWL",
+              "displayOrder": "168"
+            }
+          ]
+        },
+        {
+          "name": "DuctInletInstallationDate",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletInstallationDate",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Duct inlet Installation date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "DuctInletMaintenanceInterval",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletMaintenanceInterval",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Duct inlet maintenance interval either as string: monthly, quarterly, etc. or as month",
+          "maximumLength": 50
+        },
+        {
+          "name": "DuctInletTurnoverDate",
+          "appliedTraits": [
+            "is.dataFormat.date",
+            "means.measurement.date",
+            "is.dataFormat.time",
+            "means.measurement.time"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletTurnoverDate",
+          "isNullable": true,
+          "dataFormat": "DateTime",
+          "description": "Duct inlet turnover date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)"
+        },
+        {
+          "name": "DuctInletModel",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletModel",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Duct inlet model number",
+          "maximumLength": 200
+        },
+        {
+          "name": "DuctInletTagNumber",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletTagNumber",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Tag number",
+          "maximumLength": 50
+        },
+        {
+          "name": "DuctInletSerialNumber",
+          "appliedTraits": [
+            "is.dataFormat.character",
+            "is.dataFormat.big",
+            "is.dataFormat.array"
+          ],
+          "attributeContext": "HvacFanSubComponent/attributeContext/HvacFanSubComponent/DuctInletSerialNumber",
+          "isNullable": true,
+          "dataFormat": "String",
+          "description": "Serial number of component",
+          "maximumLength": 50
+        }
+      ],
+      "displayName": "HvacFanSubComponent",
+      "description": "Information about other hvac fans",
+      "version": "4.3"
+    }
+  ]
+}

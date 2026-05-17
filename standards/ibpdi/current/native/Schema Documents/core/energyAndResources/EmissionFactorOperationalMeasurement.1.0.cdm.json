@@ -1,0 +1,82 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "EmissionFactor.1.0.cdm.json"
+    },
+    {
+      "corpusPath": "OperationalMeasurement.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "EmissionFactorOperationalMeasurement",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "explanation": "fk EmissionFactorOperationalMeasurement.EmissionFactorId to EmissionFactor.EmissionFactorId",
+          "entity": {
+            "entityReference": "EmissionFactor",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "EmissionFactor/(resolvedAttributes)/EmissionFactorId"
+                ]
+              }
+            ]
+          },
+          "name": "EmissionFactorId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "EmissionFactorId",
+                "purpose": "hasA",
+                "dataType": "guid",
+                "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+                "maximumLength": 36
+              }
+            }
+          },
+          "purpose": "identifiedBy"
+        },
+        {
+          "explanation": "fk EmissionFactorOperationalMeasurement.OperationalMeasurementId to OperationalMeasurement.OperationalMeasurementId",
+          "entity": {
+            "entityReference": "OperationalMeasurement",
+            "appliedTraits": [
+              {
+                "traitReference": "is.identifiedBy",
+                "arguments": [
+                  "OperationalMeasurement/(resolvedAttributes)/OperationalMeasurementId"
+                ]
+              }
+            ]
+          },
+          "name": "OperationalMeasurementId",
+          "resolutionGuidance": {
+            "renameFormat": "{m}",
+            "entityByReference": {
+              "allowReference": true,
+              "foreignKeyAttribute": {
+                "name": "OperationalMeasurementId",
+                "purpose": "hasA",
+                "dataType": "guid",
+                "description": "Unique identifier either coming from previous system otherwise it needs to be defined",
+                "maximumLength": 36
+              }
+            }
+          },
+          "purpose": "identifiedBy"
+        }
+      ],
+      "displayName": "EmissionFactorOperationalMeasurement",
+      "description": "Linking entity between EmissionFactor and OperationalMeasurement"
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "$schema": "CdmManifest.cdm.json",
+  "documentVersion": "1.0",
+  "manifestName": "organisationalManagement",
+  "explanation": "IBPDI real estate CDM standard entities",
+  "entities": [
+    {
+      "type": "LocalEntity",
+      "entityName": "Address",
+      "entityPath": "Address.cdm.json/Address",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AddressBuilding",
+      "entityPath": "AddressBuilding.cdm.json/AddressBuilding",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AddressContact",
+      "entityPath": "AddressContact.cdm.json/AddressContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AddressLand",
+      "entityPath": "AddressLand.cdm.json/AddressLand",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AddressOrganisation",
+      "entityPath": "AddressOrganisation.cdm.json/AddressOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AddressRentalUnit",
+      "entityPath": "AddressRentalUnit.cdm.json/AddressRentalUnit",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "AddressSite",
+      "entityPath": "AddressSite.cdm.json/AddressSite",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Contact",
+      "entityPath": "Contact.cdm.json/Contact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "GeoCoordinate",
+      "entityPath": "GeoCoordinate.cdm.json/GeoCoordinate",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Organisation",
+      "entityPath": "Organisation.cdm.json/Organisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Role",
+      "entityPath": "Role.cdm.json/Role",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleBuildingContact",
+      "entityPath": "RoleBuildingContact.cdm.json/RoleBuildingContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleBuildingOrganisation",
+      "entityPath": "RoleBuildingOrganisation.cdm.json/RoleBuildingOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleComponentContact",
+      "entityPath": "RoleComponentContact.cdm.json/RoleComponentContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleComponentOrganisation",
+      "entityPath": "RoleComponentOrganisation.cdm.json/RoleComponentOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleComponentTypeContact",
+      "entityPath": "RoleComponentTypeContact.cdm.json/RoleComponentTypeContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleComponentTypeOrganisation",
+      "entityPath": "RoleComponentTypeOrganisation.cdm.json/RoleComponentTypeOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleEmissionFactorContact",
+      "entityPath": "RoleEmissionFactorContact.cdm.json/RoleEmissionFactorContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleEmissionFactorOrganisation",
+      "entityPath": "RoleEmissionFactorOrganisation.cdm.json/RoleEmissionFactorOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleLandContact",
+      "entityPath": "RoleLandContact.cdm.json/RoleLandContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleLandOrganisation",
+      "entityPath": "RoleLandOrganisation.cdm.json/RoleLandOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleOperationalMeasurementContact",
+      "entityPath": "RoleOperationalMeasurementContact.cdm.json/RoleOperationalMeasurementContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleOperationalMeasurementOrganisation",
+      "entityPath": "RoleOperationalMeasurementOrganisation.cdm.json/RoleOperationalMeasurementOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RolePortfolioContact",
+      "entityPath": "RolePortfolioContact.cdm.json/RolePortfolioContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RolePortfolioOrganisation",
+      "entityPath": "RolePortfolioOrganisation.cdm.json/RolePortfolioOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RolePortfolioStrategyContact",
+      "entityPath": "RolePortfolioStrategyContact.cdm.json/RolePortfolioStrategyContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RolePortfolioStrategyOrganisation",
+      "entityPath": "RolePortfolioStrategyOrganisation.cdm.json/RolePortfolioStrategyOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleRentalContractContact",
+      "entityPath": "RoleRentalContractContact.cdm.json/RoleRentalContractContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleRentalContractOrganisation",
+      "entityPath": "RoleRentalContractOrganisation.cdm.json/RoleRentalContractOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleRentalUnitContact",
+      "entityPath": "RoleRentalUnitContact.cdm.json/RoleRentalUnitContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleRentalUnitOrganisation",
+      "entityPath": "RoleRentalUnitOrganisation.cdm.json/RoleRentalUnitOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleSiteContact",
+      "entityPath": "RoleSiteContact.cdm.json/RoleSiteContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleSiteOrganisation",
+      "entityPath": "RoleSiteOrganisation.cdm.json/RoleSiteOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleSystemContact",
+      "entityPath": "RoleSystemContact.cdm.json/RoleSystemContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleSystemOrganisation",
+      "entityPath": "RoleSystemOrganisation.cdm.json/RoleSystemOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleTenantCommunicationContact",
+      "entityPath": "RoleTenantCommunicationContact.cdm.json/RoleTenantCommunicationContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleTenantCommunicationOrganisation",
+      "entityPath": "RoleTenantCommunicationOrganisation.cdm.json/RoleTenantCommunicationOrganisation",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleValuationContact",
+      "entityPath": "RoleValuationContact.cdm.json/RoleValuationContact",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "RoleValuationOrganisation",
+      "entityPath": "RoleValuationOrganisation.cdm.json/RoleValuationOrganisation",
+      "dataPartitionPatterns": []
+    }
+  ]
+}
