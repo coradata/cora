@@ -16,6 +16,7 @@ jobs:
           globs: |
             **/*.md
             !node_modules
+            !standards/*/current/native
 
   yaml:
     runs-on: ubuntu-latest
@@ -26,7 +27,8 @@ jobs:
         with:
           file_or_dir: |
             crosswalks/
-            standards/
+            standards/ibpdi/PROVENANCE.yaml
+            standards/_template/PROVENANCE.yaml
             drift/
             .github/
 
