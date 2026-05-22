@@ -24,6 +24,7 @@ Each subdirectory here holds a hosted real assets data standard. A directory exi
 | Directory | Status | Notes |
 |---|---|---|
 | `ibpdi/` | Bootstrap mirror | CC BY 4.0 + MIT, mirrored from github.com/ibpdi/cdm |
+| `mits/` | Participating | Mirrored from rettc.org/mits-data-models under permission from RETTC |
 | `_template/` | Onboarding template | Copy this when a new standard is being onboarded |
 
 ## Target corpus
@@ -33,7 +34,7 @@ The full list of standards CORA aims to host. A directory does not exist until p
 | Standard | Status | Notes |
 |---|---|---|
 | IBPDI | Hosted (bootstrap mirror) | See `ibpdi/` |
-| RETTC MITS | First participating-standard target | Cherre/RETTC MITS Knowledge Graph engagement underway |
+| RETTC MITS | Hosted (participating) | See `mits/` |
 | OSCRE | Future invitation | OSCRE owns Smart Data Highway; CORA does not produce a competing commercial RE ontology |
 | REDI | Future invitation | LP-led; INREV/NCREIF mappings already exist in their data model |
 | NCREIF / PREA | Future invitation | |

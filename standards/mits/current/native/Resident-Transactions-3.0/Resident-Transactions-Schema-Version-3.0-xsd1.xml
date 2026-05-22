@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp3 U (http://www.altova.com) by XMLSPY 2006 Professional Ed. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCoreData30.xsd"/>
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCustomExtension.xsd"/>
+	<xs:element name="ResidentTransactions">
+		<xs:annotation>
+			<xs:documentation>MITS Resident Transactions 3.0 Final 12/27/07</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Property" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PropertyID" type="PropertyType" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>MITS 3.0 PropertyType</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="PropertyContacts" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Node contians MITS 3.0 CompanyType and PersonType</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Companies" type="CompanyType" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="Persons" type="PersonType" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RT_Customer" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>This is an IDType to allow for LeaseID as in ver2.0. Also allows for CustomerID and BuildingID at this level so the individual elements have been removed</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="IdentificationType">
+											<xs:sequence>
+												<xs:element name="Customers" type="CustomersType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>MITS 3.0 CustomersType</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="AccountNumber" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Other resident account number</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element name="Unit" type="UnitType" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>MITS 3.0 UnitType - RT_Unit no longer needed</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="SpecialStatus" minOccurs="0">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element name="PaymentAccepted" minOccurs="0">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50"/>
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element name="RTServiceTransactions" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Services" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="Detail" type="ServiceDetail"/>
+																	</xs:sequence>
+																	<xs:attribute name="ServicesType" use="required">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:enumeration value="AirCon"/>
+																				<xs:enumeration value="Heat"/>
+																				<xs:enumeration value="Trash"/>
+																				<xs:enumeration value="BroadbandInternet"/>
+																				<xs:enumeration value="Cable"/>
+																				<xs:enumeration value="Electric"/>
+																				<xs:enumeration value="Gas"/>
+																				<xs:enumeration value="HotWater"/>
+																				<xs:enumeration value="Sewer"/>
+																				<xs:enumeration value="Water"/>
+																				<xs:enumeration value="Telephone"/>
+																				<xs:enumeration value="Other"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="Transactions" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="Charge" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="Detail" type="ChargeDetail"/>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="Payment" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="Detail">
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="BatchID" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Specialized ID - Left as a string element. </xs:documentation>
+																									</xs:annotation>
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="50"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="Description" minOccurs="0">
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="100"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="TransactionID" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Specialized ID - Left as a string element. </xs:documentation>
+																									</xs:annotation>
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="50"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="DocumentNumber" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>check#,money order#, etc.</xs:documentation>
+																									</xs:annotation>
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="50"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="Reversal" minOccurs="0">
+																									<xs:complexType>
+																										<xs:attribute name="ReversalType" use="required">
+																											<xs:simpleType>
+																												<xs:restriction base="xs:string">
+																													<xs:enumeration value="NSF"/>
+																													<xs:enumeration value="Chargeback"/>
+																													<xs:enumeration value="Adjustment"/>
+																													<xs:enumeration value="Other"/>
+																												</xs:restriction>
+																											</xs:simpleType>
+																										</xs:attribute>
+																									</xs:complexType>
+																								</xs:element>
+																								<xs:element name="ReversalDescription" minOccurs="0">
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="100"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="ReversalTranID" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Specialized ID - Left as a string element. </xs:documentation>
+																									</xs:annotation>
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="50"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="TransactionDate" type="xs:date" minOccurs="0"/>
+																								<xs:element name="Charge" minOccurs="0" maxOccurs="unbounded">
+																									<xs:annotation>
+																										<xs:documentation>Specialized ChargeID - Left as a string attribute. </xs:documentation>
+																									</xs:annotation>
+																									<xs:complexType>
+																										<xs:sequence>
+																											<xs:element name="ChargeAmount" minOccurs="0"/>
+																											<xs:element name="ChargeCode" minOccurs="0"/>
+																										</xs:sequence>
+																										<xs:attribute name="ChargeID" use="optional">
+																											<xs:simpleType>
+																												<xs:restriction base="xs:string">
+																													<xs:maxLength value="50"/>
+																												</xs:restriction>
+																											</xs:simpleType>
+																										</xs:attribute>
+																									</xs:complexType>
+																								</xs:element>
+																								<xs:element name="BankBook" type="xs:string" minOccurs="0"/>
+																								<xs:element name="GLAccountNumber" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>general ledger account number</xs:documentation>
+																									</xs:annotation>
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="50"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="SupplementalID" type="IdentificationType" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>New IDType node to house additional needed ID's</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element name="CustomerID" type="IdentificationType" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element name="UnitID" type="IdentificationType" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element name="BuildingID" type="IdentificationType" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																								<xs:element name="PaidBy" type="xs:string" minOccurs="0"/>
+																								<xs:element name="Amount" type="xs:decimal" minOccurs="0"/>
+																								<xs:element name="AmountPaid" type="xs:decimal" minOccurs="0"/>
+																								<xs:element name="InvoiceNumber" minOccurs="0"/>
+																								<xs:element name="BalanceDue" type="xs:decimal" minOccurs="0"/>
+																								<xs:element name="Comment" minOccurs="0">
+																									<xs:simpleType>
+																										<xs:restriction base="xs:string">
+																											<xs:maxLength value="255"/>
+																										</xs:restriction>
+																									</xs:simpleType>
+																								</xs:element>
+																								<xs:element name="PropertyPrimaryID" type="IdentificationType" minOccurs="0">
+																									<xs:annotation>
+																										<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+																									</xs:annotation>
+																								</xs:element>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="PaymentType" use="required">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:enumeration value="CreditCard"/>
+																							<xs:enumeration value="DebitCard"/>
+																							<xs:enumeration value="ACH"/>
+																							<xs:enumeration value="Check"/>
+																							<xs:enumeration value="Cash"/>
+																							<xs:enumeration value="MoneyOrder"/>
+																							<xs:enumeration value="Other"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:attribute>
+																				<xs:attribute name="Channel" use="optional">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:enumeration value="Online"/>
+																							<xs:enumeration value="Phone"/>
+																							<xs:enumeration value="Onsite"/>
+																							<xs:enumeration value="Mail"/>
+																							<xs:enumeration value="Lockbox"/>
+																							<xs:enumeration value="BankBillPayment"/>
+																							<xs:enumeration value="Other"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:attribute>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="Concession" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="Detail" type="ChargeDetail"/>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="RT_Messages" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="PropertyText" minOccurs="0">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:maxLength value="500"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																		<xs:element name="CustomerText" minOccurs="0" maxOccurs="10">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="MessageText" minOccurs="0">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="500"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="CustomerID" type="IdentificationType" minOccurs="0"/>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Ledger" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Used for holding a customer's financial transactions.</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Description" minOccurs="0">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="100"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="LedgerID" type="IdentificationType" minOccurs="0"/>
+															<xs:element name="LedgerStatus" minOccurs="0">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="50"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="LedgerClosedDate" type="xs:date" minOccurs="0"/>
+															<xs:element name="AutoEnrollOptOut" minOccurs="0">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:maxLength value="50"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:element>
+															<xs:element name="BlockedUntilDate" type="xs:date" minOccurs="0"/>
+															<xs:element name="CertifiedFundsRequiredUntilDate" type="xs:date" minOccurs="0"/>
+														</xs:sequence>
+														<xs:attribute name="LedgerType" use="required">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:enumeration value="Deposit"/>
+																	<xs:enumeration value="ResidentMain"/>
+																	<xs:enumeration value="Subsidy"/>
+																	<xs:enumeration value="Other"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ServiceDetail">
+		<xs:sequence>
+			<xs:element name="Description" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Service" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ServiceType" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Rent"/>
+								<xs:enumeration value="AirCon"/>
+								<xs:enumeration value="Heat"/>
+								<xs:enumeration value="Trash"/>
+								<xs:enumeration value="BroadbandInternet"/>
+								<xs:enumeration value="Cable"/>
+								<xs:enumeration value="Electric"/>
+								<xs:enumeration value="Gas"/>
+								<xs:enumeration value="HotWater"/>
+								<xs:enumeration value="Sewer"/>
+								<xs:enumeration value="Water"/>
+								<xs:enumeration value="Telephone"/>
+								<xs:enumeration value="Fitness"/>
+								<xs:enumeration value="Parking"/>
+								<xs:enumeration value="Fees"/>
+								<xs:enumeration value="Other"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ChargeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="GLAccountNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>general Ledger account number</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SupplementalID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>New IDType node to house additional needed ID's</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UnitID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Amount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="BalanceForward" type="xs:decimal" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChargeDetail">
+		<xs:sequence>
+			<xs:element name="BatchID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specialized ID - Left as a string element. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Description" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Service" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ServiceType" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Rent"/>
+								<xs:enumeration value="AirCon"/>
+								<xs:enumeration value="Heat"/>
+								<xs:enumeration value="Trash"/>
+								<xs:enumeration value="BroadbandInternet"/>
+								<xs:enumeration value="Cable"/>
+								<xs:enumeration value="Electric"/>
+								<xs:enumeration value="Gas"/>
+								<xs:enumeration value="HotWater"/>
+								<xs:enumeration value="Sewer"/>
+								<xs:enumeration value="Water"/>
+								<xs:enumeration value="Telephone"/>
+								<xs:enumeration value="Fitness"/>
+								<xs:enumeration value="Parking"/>
+								<xs:enumeration value="Fees"/>
+								<xs:enumeration value="Other"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TransactionDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="ServiceToDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="ServiceFromDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="TransactionID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specialized ID - Left as a string element. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ChargeCode" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BankBook" type="xs:string" minOccurs="0"/>
+			<xs:element name="GLAccountNumber" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>General ledger account number</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SupplementalID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>New IDType node to house additional needed ID's</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CustomerID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UnitID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BuildingID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaidBy" type="xs:string" minOccurs="0"/>
+			<xs:element name="AmountPaid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="InvoiceNumber" minOccurs="0"/>
+			<xs:element name="BalanceDue" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="Amount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="Comment" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Reversal" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ReversalType" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="NSF"/>
+								<xs:enumeration value="Chargeback"/>
+								<xs:enumeration value="Adjustment"/>
+								<xs:enumeration value="Other"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReversalDescription" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ReversalTranID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Specialized ID - Left as a string element. </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PropertyPrimaryID" type="IdentificationType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Left for backwards compatibility to ver 2.0 and will be removed in future versions. SupplementalID should be used.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

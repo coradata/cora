@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCoreData30.xsd"/>
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCustomExtension.xsd"/>
+	<xs:element name="LeaseApplication" type="LeaseApplication">
+		<xs:annotation>
+			<xs:documentation>MITS Lease/Application 3.0m Draft 10/29/2008</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="AccountingData">
+		<xs:annotation>
+			<xs:documentation>
+			This type is a simple container for ChargeSet elements.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ChargeSet" type="ChargeSet" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdditionalSpace">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes either a parking or storage space leased by
+			the tenant(s) which is not a part of their unit.</p>
+				<dl>
+					<dt>SpaceType (required attribute)</dt>
+					<dd>Clarifies the type of space being described (eg. indoor
+				 parking, non-parking storage, etc.)</dd>
+					<dt>Private (optional attribute)</dt>
+					<dd>If set to "true", represents that the space is not
+				accessible to other tenants at the property<br/>
+				(For example, Private="true" could be used to describe an
+				individual garage assigned to a tenant, but not a space in a
+				 communal garage.)</dd>
+					<dt>Address (optional element)</dt>
+					<dd>the address of the space (intended for use at multi-building
+				properties, or when parking spaces off of the property are
+				provided)</dd>
+					<dt>SpaceNumber (optional element)</dt>
+					<dd>the identifying number of the space</dd>
+					<dt>Description (optional element)</dt>
+					<dd>human-friendly description of the space</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="Address" type="AddressType" minOccurs="0"/>
+					<xs:element name="Description" type="xs:string" minOccurs="0"/>
+					<xs:element name="SpaceNumber" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="Private" type="xs:boolean"/>
+				<xs:attribute name="SpaceType" type="AdditionalSpaceType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="AdditionalSpaceType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of an AdditionalSpace.</p>
+				<dl>
+					<dt>Covered</dt>
+					<dd>an outdoor but covered parking space (ie. a carport)</dd>
+					<dt>Exposed</dt>
+					<dd>an outdoor uncovered parking space</dd>
+					<dt>Indoor</dt>
+					<dd>an indoor parking space (ie. garage)</dd>
+					<dt>Storage</dt>
+					<dd>a non-parking storage space (may be in- or out- door)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Covered"/>
+			<xs:enumeration value="Exposed"/>
+			<xs:enumeration value="Indoor"/>
+			<xs:enumeration value="Storage"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ApprovalStatus">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the approval status of a lease.</p>
+				<dl>
+					<dt>Approved</dt>
+					<dd>lease approved by management</dd>
+					<dt>Canceled</dt>
+					<dd>lease canceled (for a non-qualification reason)</dd>
+					<dt>Denied</dt>
+					<dd>lease canceled because tenant(s) were not qualified</dd>
+					<dt>Signed</dt>
+					<dd>lease approved by management AND signed by tenant(s)</dd>
+					<dt>Pending</dt>
+					<dd>lease unapproved (currently only an application)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Approved"/>
+			<xs:enumeration value="Canceled"/>
+			<xs:enumeration value="Denied"/>
+			<xs:enumeration value="Pending"/>
+			<xs:enumeration value="Signed"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Asset">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes an financial asset of a Tenant that is being
+			used to qualify that Tenant.</p>
+				<dl>
+					<dt>AssetType (optional attribute)</dt>
+					<dd>asset type in semantic terms</dd>
+					<dt>Description (required element)</dt>
+					<dd>asset type in human friendly terms (eg. "5,000 Shares of IBM
+				Stock")</dd>
+					<dt>Value (required element)</dt>
+					<dd>the asset's worth (and date that value was assessed)</dd>
+					<dt>IsLiquid (optional attribute; defaults to false)</dt>
+					<dd>indicates whether or not the asset can easily be converted
+				to cash (eg. a mutual fund would have IsLiquid="true", while a
+				house would have IsLiquid="false")</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="Value" type="DatedCurrency"/>
+		</xs:sequence>
+		<xs:attribute name="IsLiquid" type="xs:boolean"/>
+		<xs:attribute name="AssetType" type="AssetType"/>
+	</xs:complexType>
+	<xs:simpleType name="AssetType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type defines a type of an asset, and should be relatively
+			self-explanatory.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Bond"/>
+			<xs:enumeration value="Commodity"/>
+			<xs:enumeration value="MutualFund"/>
+			<xs:enumeration value="Property"/>
+			<xs:enumeration value="Stock"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="BankAccount">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a bank account of a Tenant that is being used
+			to qualify that Tenant.</p>
+				<dl>
+					<dt>Balance (required element)</dt>
+					<dd>amount of money in account (as of the specified date)</dd>
+					<dt>Bank (required element)</dt>
+					<dd>the institution at which the account is located (described
+				as a Core Data CompanyType)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AccountNumber" type="StringMax50"/>
+			<xs:element name="Balance" type="DatedCurrency"/>
+			<xs:element name="Bank" type="CompanyType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseTenant" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This abstract type defines all aspects of a tenant which are
+			common between corporate and non-corporate tenants.  It is designed
+			to extended by the CorporateTenant and Tenant types.  All of the
+			elements contained in this type have documentation in their
+			corresponding types, except for "LeaseID".</p>
+				<dl>
+					<dt>LeaseID (optional element)</dt>
+					<dd>Core Data IdentificationType, intended to be used to connect
+				CorporateTenant/Tenant elements to the appropriate LA_Lease
+				element <br/>
+						<strong>NOTE:</strong> This element is only intended to be used
+				in documents containing multiple LA_Lease elements; any document
+				with only a single LA_Lease should not use this element, as it
+				is assumed that all tenants within that document are connected
+				to that LA_Lease.</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="AccountingData" type="AccountingData" minOccurs="0"/>
+					<xs:element name="DocumentData" type="DocumentData" minOccurs="0"/>
+					<xs:element name="LeaseID" type="IdentificationType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Reference" type="Reference" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Charge">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single charge (which may or may not be
+			re-occurring, depending on the parent ChargeSet's Frequency
+			attribute) which has or will be billed to the tenant(s) (eg. rent,
+			pet rent, application fee).</p>
+				<dl>
+					<dt>Label (optional element)</dt>
+					<dd>the charge description in human-friendly terms</dd>
+					<dt>ChargeType (required attribute)</dt>
+					<dd>the charge description in semantic terms</dd>
+					<dt>Amount (required element)</dt>
+					<dd>the actual dollar amount the tenant(s) will be charged</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="Label" type="xs:string" minOccurs="0"/>
+					<xs:element name="Amount" type="MITS-Currency"/>
+				</xs:sequence>
+				<xs:attribute name="ChargeType" type="ChargeType" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ChargeSet">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the start date, end date, and/or frequency of
+			one or more Charge child elements.</p>
+				<dl>
+					<dt>Start (optional attribute)</dt>
+					<dd>defaults to the lease's "LeaseFrom" date; the first date
+				that the charges will be billed</dd>
+					<dt>Frequency (required attribute)</dt>
+					<dd>whether or not/how frequently the charge repeats</dd>
+					<dt> End (optional attribute)</dt>
+					<dd>the last date a repeating charge can be billed<br/>
+						<strong>NOTE:</strong> This attribute is meaningless for
+				one-time charges<br/>
+						<strong>NOTE #2:</strong> The "End" for a charge should be the
+			 	last date that the charge would naturally occur; if it is not,
+			 	the "true End" should be considered to be the last date the
+			 	charge could have occurred on before the specified "End"
+			 	date)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Charge" type="Charge" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Start" type="xs:date" use="required"/>
+		<xs:attribute name="End" type="xs:date"/>
+		<xs:attribute name="Frequency" type="Frequency" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="ChargeType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of a charge.  Most options should be
+			self explanatory, but one requires additional explanation.</p>
+				<dl>
+					<dt>Concession</dt>
+					<dd>This type can be used to describe a "move-in special",
+				"application fee waiver", or any other concession given by the
+				property.  As such, the Amount of any Charge with a type of
+				Concession is implied to be negative, but there is no constraint
+				enforcing this (as such a constraint is impossible using only
+				the W3C Schema language).</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Base Rent"/>
+			<xs:enumeration value="Concession"/>
+			<xs:enumeration value="Pet Rent"/>
+			<xs:enumeration value="Parking Rent"/>
+			<xs:enumeration value="Storage Rent"/>
+			<xs:enumeration value="Month-to-Month Fee"/>
+			<xs:enumeration value="Administrative Fee"/>
+			<xs:enumeration value="Application Fee"/>
+			<xs:enumeration value="Pet Fee"/>
+			<xs:enumeration value="Security Deposit"/>
+			<xs:enumeration value="Pet Deposit"/>
+			<xs:enumeration value="Key Deposit"/>
+			<xs:enumeration value="Storage Deposit"/>
+			<xs:enumeration value="Tax"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CorporateID">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type can be used to define a form of identification for a
+			corporate tenant (a real-world one, such as a tax id number, not a
+			database record key or similar digital id).</p>
+				<dl>
+					<dt>CorporateIDType (required attribute)</dt>
+					<dd>semantic definition of the ID's type</dd>
+					<dt>IDNumber (required element)</dt>
+					<dd>The actual identifying "number" (despite the implication
+				of its name, this may contain non-numeric characters)</dd>
+					<dt>IDIssuer (optional element)</dt>
+					<dd>the body that issued the ID (in human-friendly terms)</dd>
+					<dt>IDTitle (optional element)</dt>
+					<dd>the ID's official title (in human-friendly terms); for
+				instance, a California Taxpayer ID might have IDIssuer="State
+				of California" and IDTitle="Corporate Taxpayer ID Number"</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IDNumber" type="xs:string"/>
+			<xs:element name="IDIssuer" type="xs:string" minOccurs="0"/>
+			<xs:element name="IDTitle" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="CorporateIDType" type="CorporateIDType" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="CorporateIDType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of a corporate ID.</p>
+				<dl>
+					<dt>DUNS</dt>
+					<dd>Dunn and Bradstreet Number</dd>
+					<dt>FEIN</dt>
+					<dd>Federal Tax ID Number</dd>
+					<dt>Other</dt>
+					<dd>Any other form of corporate identification</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DUNS"/>
+			<xs:enumeration value="FEIN"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="CorporateTenant">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a corporate tenant (or applicant).
+			Documentation for all of its elements can be found in their
+			corresponding type definitions.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BaseTenant">
+				<xs:sequence>
+					<xs:element name="Company" type="CompanyType"/>
+					<xs:element name="CorporateID" type="CorporateID" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Representative" type="PersonType" minOccurs="0"/>
+					<xs:element name="RepresentativeTitle" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CriminalBackground">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the criminal background of an applicant.<br/>
+					<strong>NOTE:</strong> If this tenant's criminal background is
+			unknown, this element should be omitted entirely.  Conversely, if a
+			criminal background search has been conducted for this Tenant, and
+			no criminal records were found, then this element should be
+			included, without any CriminalRecord child elements.</p>
+				<dl>
+					<dt>CriminalRecord (optional element)</dt>
+					<dd>a single criminal record of a Tenant</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CriminalRecord" type="CriminalRecord" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CriminalRecord">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single criminal record of an applicant.</p>
+				<dl>
+					<dt>County (optional element)</dt>
+					<dd>the county where the criminal offense occurred</dd>
+					<dt>State (optional element)</dt>
+					<dd>the state where the criminal offense occurred</dd>
+					<dt>Description (required element)</dt>
+					<dd>the type and/or details of the offense itself</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="County" type="xs:string" minOccurs="0"/>
+			<xs:element name="State" type="xs:string" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DatedCurrency">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a dollar amount which was known to be that
+			amount as of a specific date.  It could be used to describe (for
+			instance) the value of a house (eg. assessed at $650,000 on
+			05/05/1995), the amount of money in a bank account (eg. account had
+			$7,832.57 on 02/18/2008), or any other dollar value that changes
+			over time (and thus requires an "as of" date).</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="MITS-Currency">
+				<xs:attribute name="AsOf" type="xs:date"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Device">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes one or more of a single type of access device
+			issued to the tenant(s).</p>
+				<dl>
+					<dt>Label (required attribute)</dt>
+					<dd>the type of access device (eg. "Apartment KeyCard", "Mailbox
+				Key", "Garage Door Opener")</dd>
+					<dt>Quantity (required element)</dt>
+					<dd>the number of devices issued to the tenant(s)</dd>
+					<dt>ReplacementCost (optional element)</dt>
+					<dd>the cost to replace ONE of that type of device (should the
+				tenant lose or damage their's)</dd>
+					<dt>SerialNumber (optional elements)</dt>
+					<dd>one or more of this element may be used to describe the
+				serial/identification numbers that correspond to the specific
+				device(s) issued to the tenant(s).</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Label" type="xs:string"/>
+			<xs:element name="Quantity" type="xs:int"/>
+			<xs:element name="ReplacementCost" type="MITS-Currency" minOccurs="0"/>
+			<xs:element name="SerialNumber" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Devices">
+		<xs:annotation>
+			<xs:documentation>This type is a simple container for Device elements.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Device" type="Device" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Document">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a document that is part of the tenant(s)'s
+			"lease package" (ie. the lease itself, any addenda, welcome letters,
+			etc.).</p>
+				<p>
+					<strong>NOTE:</strong> Because this type extends
+			IdentificationType, it may also use this for identifying the
+			particular document being referenced (in semantic terms).</p>
+				<dl>
+					<dt>DocumentType (optional attribute)</dt>
+					<dd>the type of the document in semantic terms</dd>
+					<dt>Label (optional attribute)</dt>
+					<dd>describes the document in human-friendly terms</dd>
+					<dt>Version (optional element)</dt>
+					<dd>The specific version (if there are multiple) of the
+				document</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="Signature" type="Signature" minOccurs="0"/>
+					<xs:element name="Version" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="Label" type="xs:string"/>
+				<xs:attribute name="DocumentType" type="DocumentType"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DocumentData">
+		<xs:annotation>
+			<xs:documentation>
+			This type is a simple container for DocumentField elements.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DocumentField" type="DocumentField" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentField">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type can be used to describe any further leasing/application
+			information that is not describable using this standard (the "other
+			20%").  The name of the type comes from the assumption that the vast
+			majority of uses of it will be to "fill in blanks" on specific
+			documents.  The optional Label attribute describes the information
+			in human-friendly terms, while computer-friendly IDs can be passed
+			using the standard Core Data Identification elements (these elements
+			can also be used to "link" DocumentField elements to Document
+			elements, if such "linking" is necessary).  The type must also have
+			one "value" element, which can be any one of those listed in the
+			xs:choice.  Each value element's name corresponds to a common data
+			type (from this standard, Core Data, or the W3C Schema standard),
+			and that element's contents must match its namesake type.</p>
+				<p>For instance, if you had an Asbestos addendum and needed to
+			transmit the fact that the tenant's unit does not have asbestos
+			(to fill out a "This unit ______(does/does not) have asbestos"
+			blank), you might send a DocumentField element with a Label
+			child element of "Asbestos in unit" and a Boolean child element
+			of "false".  If you instead wanted to transmit the address of
+			the closest hospital (to fill in a "Where To Go In An Emergency"
+			addenda), you might send a DocumentField with a Label child
+			element of "Closest Hospital", and an Address child element that
+			contained the address of the hospital.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:choice>
+					<xs:element name="Address" type="AddressType" minOccurs="0"/>
+					<xs:element name="Boolean" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="Company" type="CompanyType" minOccurs="0"/>
+					<xs:element name="Date" type="xs:date" minOccurs="0"/>
+					<xs:element name="Integer" type="xs:integer" minOccurs="0"/>
+					<xs:element name="Money" type="MITS-Currency" minOccurs="0"/>
+					<xs:element name="Name" type="Name" minOccurs="0"/>
+					<xs:element name="Percentage" type="Percent" minOccurs="0"/>
+					<xs:element name="Person" type="PersonType" minOccurs="0"/>
+					<xs:element name="Phone" type="PhoneType" minOccurs="0"/>
+					<xs:element name="String" type="xs:string" minOccurs="0"/>
+				</xs:choice>
+				<xs:attribute name="Label" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Documents">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type is a simple container of Document elements.</p>
+				<p>
+					<strong>NOTE:</strong> Unlike most MITS XML, the ordering of this
+			type's child elements is significant: it should be considered to be
+			the desired ordering of said documents when they are printed and
+			assembled to make the tenant(s)'s "lease package").</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Document" type="Document" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="DocumentType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of document being requested.</p>
+				<dl>
+					<dt>Lease</dt>
+					<dd>a lease agreement</dd>
+					<dt>Addendum</dt>
+					<dd>not the lease agreement, but a legal document that is signed
+				by the tenant(s) in conjunction with the lease agreement</dd>
+					<dt>Notice</dt>
+					<dd>any legal notice issued by the property to the tenant(s)
+				(eg. a "Thirty Day Pay or Quit" notice) which is not signed by
+				the tenant(s) as part of the lease agreement</dd>
+					<dt>Letter</dt>
+					<dd>any other communication from management to the tenant(s)
+				which has no legal significance (eg. a "Welcome Letter")</dd>
+					<dt>Other</dt>
+					<dd>any other document</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Letter"/>
+			<xs:enumeration value="Lease"/>
+			<xs:enumeration value="Addendum"/>
+			<xs:enumeration value="Notice"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Error">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes an error that occurred while transmitting
+			the document.</p>
+				<dl>
+					<dt>RetryPossible (optional attribute)</dt>
+					<dd>if the error was not related to the document's contents,
+				(eg. there was a network problem that interrupted the document's
+				transmission) the receiver may set this attribute to true to
+				suggest to the submitter that they should try re-sending their
+				request</dd>
+					<dt>Message (required element)</dt>
+					<dd>the description of the error</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="Message" type="xs:string"/>
+				</xs:sequence>
+				<xs:attribute name="RetryPossible" type="xs:boolean"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Fee">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a dollar amount which may or may not re-occur
+			every day (until a certain condition is met).  Within this standard,
+			it is only used by the Policy type, to specify a fee that will be
+			charged to the tenant(s) if they violate certain conditions
+			(specified inside the Policy element).</p>
+				<dl>
+					<dt>PerDay (optional element)</dt>
+					<dd>defaults to false; if true represents that the fee will be
+				charged to the tenant(s) daily (for each day they remain in
+				violation of the specified condition(s)).</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="MITS-Currency">
+				<xs:attribute name="PerDay" type="xs:boolean"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Finances">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the finances of a tenant (for the
+				purposes of evaluating whether or not said tenant meets the
+				income/asset requirements of the property).  It may contain any
+				number of Asset, BankAccount, IncomeSource or Occupation
+				elements, all of which are documented within their corresponding
+				types.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Asset" type="Asset" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BankAccount" type="BankAccount" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="IncomeSource" type="IncomeSource" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Occupation" type="Occupation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Frequency">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type defines the frequency with which a certain event
+			occurs.  Within this standard it is used both to describe the
+			frequency of re-occurring charges and of a tenant's salary.  For
+			instance, a tenant who makes $60,000 a year would use a Salary
+			element with a Frequency attribute of "Yearly", while a tenant's
+			monthly rent charges ChargeSet would instead have a Frequency
+			attribute of "Monthly".</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Yearly"/>
+			<xs:enumeration value="Quarterly"/>
+			<xs:enumeration value="Monthly"/>
+			<xs:enumeration value="Weekly"/>
+			<xs:enumeration value="One-Time"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="IncomeSource">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a tenant's non-salary income sources (such as
+			a trust fund, pension, etc.). It is essentially an identical copy of
+			the Salary type, except that it also contains a required Description
+			element, which can be used to describe the income source in
+			human-friendly terms (eg. "Arizona State Worker's Pension").</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Salary">
+				<xs:sequence>
+					<xs:element name="Description" type="StringMax50"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LA_Lease">
+		<xs:annotation>
+			<xs:documentation>
+				<p>The (tragically named, in this author's opinion) LA_Lease type is
+			very loosely based off the Lease sub-element of the Core Data
+			CustomerType.  It can either be used (like that element) to describe
+			a single lease, or to describe a single application for a lease (the
+			Status child element distinguishes between the two).  All child
+			elements are documented in their related type's definition.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="AccountingData" type="AccountingData" minOccurs="0"/>
+					<xs:element name="Devices" type="Devices" minOccurs="0"/>
+					<xs:element name="DocumentData" type="DocumentData" minOccurs="0"/>
+					<xs:element name="Documents" type="Documents" minOccurs="0"/>
+					<xs:element name="LeaseEvents" type="LeaseEvents" minOccurs="0"/>
+					<xs:element name="ParkingStorage" type="ParkingStorage" minOccurs="0"/>
+					<xs:element name="Pets" type="Pets" minOccurs="0"/>
+					<xs:element name="Policies" type="Policies" minOccurs="0"/>
+					<xs:element name="Property" type="PropertyType" minOccurs="0"/>
+					<xs:element name="Status" type="LeaseStatus" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Utilities" type="Utilities" minOccurs="0"/>
+					<xs:element name="Unit" type="UnitType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LeaseApplication">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type defines the root node of every Leasing/Application
+			document.  It may contain any number of CorporateTenant, Tenant,
+			Lease, CustomRecord, or Error elements (although if it contains
+			multiple Lease elements each CorporateTenant/Tenant element will
+			require an additional LeaseID child element, to distinguish which
+			tenants belong to which leases).</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Tenant" type="Tenant" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CorporateTenant" type="CorporateTenant" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="LA_Lease" type="LA_Lease" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Error" type="Error" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LeaseEvent">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single lease-related event.</p>
+				<dl>
+					<dt>Date (required attribute)</dt>
+					<dd>the date of the event</dd>
+					<dt>EventType (required attribute)</dt>
+					<dd>the type of event in semantic terms</dd>
+					<dt>Description (optional element)</dt>
+					<dd> If the EventType is "Other", or if a human-friendly label
+				is desired, this element may used to provide it</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Date" type="xs:date" use="required"/>
+		<xs:attribute name="EventType" type="LeaseEventType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="LeaseEvents">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type is a simple container for LeaseEvent elements</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="LeaseEvent" type="LeaseEvent" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="LeaseEventType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of a lease event (ie. what occurred
+			on the date of the event).</p>
+				<dl>
+					<dt>Application</dt>
+					<dd>tenant(s) applied for the unit</dd>
+					<dt>LeaseSigned</dt>
+					<dd>tenant(s) signed the lease agreement</dd>
+					<dt>LeaseFrom/LeaseTo</dt>
+					<dd>lease agreement actually begins/ends</dd>
+					<dt>ExpectedMoveIn/ExpectedMoveOut</dt>
+					<dd>tenant(s) planned to move in to/out of the unit</dd>
+					<dt>ActualMoveIn/ActualMoveOut</dt>
+					<dd>tenant(s) actually did move in to/out of the unit</dd>
+					<dt>EvictionNoticeGiven</dt>
+					<dd>management notified the tenant(s) of their eviction</dd>
+					<dt>MoveOutNoticeGiven</dt>
+					<dd>tenant(s) notified management that they would move out</dd>
+					<dt>Other</dt>
+					<dd>any other lease date</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Application"/>
+			<xs:enumeration value="LeaseSigned"/>
+			<xs:enumeration value="LeaseFrom"/>
+			<xs:enumeration value="LeaseTo"/>
+			<xs:enumeration value="ExpectedMoveIn"/>
+			<xs:enumeration value="ActualMoveIn"/>
+			<xs:enumeration value="EvictionNoticeGiven"/>
+			<xs:enumeration value="MoveOutNoticeGiven"/>
+			<xs:enumeration value="ExpectedMoveOut"/>
+			<xs:enumeration value="ActualMoveOut"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LeaseStatus">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes either approval history or the current status
+			of an application/lease.  If only one LeaseStatus element is present
+			within an LA_Lease, it should be considered to represent the current
+			status of that application/lease.  If multiple LeaseStatus elements
+			are present, the one with the most recent "ModifiedOn" element
+			should be considered to represent the current status, while the rest
+			should be considered to represent the approval history.</p>
+				<p>For instance, if an application was received on May 1st, then
+			approved on May 15th, its LA_Lease element would have two
+			LeaseStatus elements: one with an ApprovalStatus of "Pending" and a
+			ModifiedOn of "05-01-2008", and one with an ApprovalStatus of
+			"Approved" and a ModifiedOn of "05-15-2008".</p>
+				<dl>
+					<dt>ApprovalStatus (required element)</dt>
+					<dd>The status of the application/lease (for current status
+				elements) or the status the lease was changed to (for history
+				status elements)</dd>
+					<dt>ModifiedBy (optional element)</dt>
+					<dd>the leasing agent or other managing employee (described
+				as a Core Data PersonType) who approved/denied/etc. the
+				application/lease.</dd>
+					<dt>ModifiedOn (optional element)</dt>
+					<dd>the date the application/lease's status was changed</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ApprovalStatus" type="ApprovalStatus"/>
+			<xs:element name="ModifiedBy" type="PersonType" minOccurs="0"/>
+			<xs:element name="ModifiedOn" type="xs:date" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Name">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type actually belongs in Core Data (and if this document's
+			author has any say in it, it soon will be), because it is identical
+			to the type of the Name child element of the Core Data CustomerType
+			and PersonType.  However, since Core Data currently only defines it
+			as a child element of those types, we are forced to re-create it
+			here.  Because it is not in any way "new", its usage should be
+			self-explanatory.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="NamePrefix" type="StringMax50" minOccurs="0"/>
+			<xs:element name="FirstName" type="StringMax50"/>
+			<xs:element name="MiddleName" type="StringMax50" minOccurs="0"/>
+			<xs:element name="LastName" type="StringMax50"/>
+			<xs:element name="MaidenName" type="StringMax50" minOccurs="0"/>
+			<xs:element name="NameSuffix" type="StringMax50" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NoContent">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type represents a completely empty element (in other words,
+			an element that cannot have any attributes or content).  It is used
+			to define elements such as &lt;Eviction/&gt;, whose presence or
+			absence is all that is needed to convey the desired information.</p>
+			</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="Occupation">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single job of an applicant (for
+			qualification purposes).</p>
+				<p>
+					<strong>Note:</strong> Although an occupation may have both
+			an employer and a supervisor, in the vast majority of cases only
+			one of these elements should be used (as in most cases all that
+			will be needed is some form of contact information, so that the
+			applicant's occupation can be independently verified).</p>
+				<dl>
+					<dt>Title (optional element)</dt>
+					<dd>the job's title</dd>
+					<dt>Employer (optional element)</dt>
+					<dd>the applicant's employer (described as a Core Data
+				CompanyType</dd>
+					<dt>Supervisor (optional element)</dt>
+					<dd>the applicant's supervisor (described as a Core Data
+				PersonType)</dd>
+					<dt>Salary (required element)</dt>
+					<dd>the amount of money the applicant earns from this
+				job</dd>
+					<dt>Start (optional attribute))</dt>
+					<dd>when the applicant started working at this job</dd>
+					<dt>End (optional attribute))</dt>
+					<dd>when the applicant stopped working at this job</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Title" type="StringMax50" minOccurs="0"/>
+			<xs:element name="Employer" type="CompanyType" minOccurs="0"/>
+			<xs:element name="Supervisor" type="PersonType" minOccurs="0"/>
+			<xs:element name="Salary" type="Salary"/>
+		</xs:sequence>
+		<xs:attribute name="Start" type="xs:date"/>
+		<xs:attribute name="End" type="xs:date"/>
+	</xs:complexType>
+	<xs:complexType name="ParkingStorage">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type is a simple container for AdditionalSpace and Vehicle
+			elements.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AdditionalSpace" type="AdditionalSpace" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Vehicle" type="Vehicle" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Percent">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type represents a percentage amount, such as "50%" or
+			"32.7%" (although the "%" sign is considered implied, and may not be
+			included in this type's content).</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="100.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PersonalID">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type can be used to define a form of identification for a
+			non-corporate tenant (a real-world one, such as a social security
+			number, not a database record key or similar digital id).</p>
+				<dl>
+					<dt>PersonalIDType (required attribute)</dt>
+					<dd>the ID's type (in semantic terms)</dd>
+					<dt>IDNumber (required element)</dt>
+					<dd>The actual identifying "number" (despite the implication
+				of its name, this may contain non-numeric characters)</dd>
+					<dt>xIDIssuer (optional element)</dt>
+					<dd>the body that issued the ID (in human-friendly terms); for
+				instance, a Social Security Number might have IDIssuer="USA"
+				and a PersonalIDType attribute of "SocialSecurity", while a
+				California driver's license number might instead have
+				IDIssuer="State of California" and a PersonalIDType attribute of
+				"DriversLicense".</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IDNumber" type="xs:string"/>
+			<xs:element name="IDIssuer" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="PersonalIDType" type="PersonalIDType" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="PersonalIDType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of a form of personal
+			identification.</p>
+				<dl>
+					<dt>DriversLicense</dt>
+					<dd>a state-issued driver's license</dd>
+					<dt>School</dt>
+					<dd>a student ID # or other form of identification issued by an
+				academic institution</dd>
+					<dt>Military</dt>
+					<dd>a military ID</dd>
+					<dt>SocialSecurity</dt>
+					<dd>a social security number</dd>
+					<dt>Other</dt>
+					<dd>any other form of identification</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DriversLicense"/>
+			<xs:enumeration value="State"/>
+			<xs:enumeration value="School"/>
+			<xs:enumeration value="Military"/>
+			<xs:enumeration value="SocialSecurity"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PetType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single pet of a tenant or tenants.  It is
+			taken directly from the LeadManagement 3.0 specification (and you
+			should refer to that specification for any further documentation
+			on this type).</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="PetType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Dog"/>
+					<xs:enumeration value="Cat"/>
+					<xs:enumeration value="Bird"/>
+					<xs:enumeration value="Reptile"/>
+					<xs:enumeration value="Fish"/>
+					<xs:enumeration value="Other"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Description">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Count" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer"/>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Size">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Huge"/>
+					<xs:enumeration value="Large"/>
+					<xs:enumeration value="Medium"/>
+					<xs:enumeration value="Small"/>
+					<xs:enumeration value="Tiny"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Weight" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="Pets">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type is a simple container for Pet elements.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Pet" type="PetType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Policies">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type is a simple container for Policy elements.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Policy" type="Policy" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Policy">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single policy agreed to by the tenant(s) in
+			their lease (eg. "Tenant(s) will pay a $20 late fee on rent paid
+			after the 5th of the month"). Each Policy must contain at least one
+			"condition" element and one "result" element (but it may contain
+			multiples of either).  The "condition" elements describe certain
+			conditions that, when triggered, result in the effect(s) described
+			in the "results" element(s).</p>
+				<p>For instance, to describe "Tenant(s) will pay $500 if they are
+			found to have an unauthorized pet" you would use an
+			UnauthorizedPetFound element (with a value of 1, to signify that
+			finding an unauthorized pet even once triggers this condition) and a
+			Fee element of $500 (with a PerDay attribute of false).</p>
+				<p>If you instead wanted to say "Rent paid after the first of the
+			month will be considered late.  Rent paid after the fifth of the
+			month will be charged a $40 late fee, plus $5 per day it remains
+			unpaid", you would need two Policy elements.  The first would
+			contain a RentPaidOnOrAfter element with a value of 2 and an (empty)
+			RentIsLate element.  The second would contain a RentPaidOnOrAfter
+			with a value of 6 and two Fee elements (the first for $40 with
+			PerDay="false" and the second for $5 with PerDay="true").</p>
+				<p>
+					<strong>NOTE:</strong> Almost every condition expects an integer
+			for its content.  While the specific meaning of this integer is
+			described below for each condition, the general pattern (which
+			any later-added conditions should attempt to adhere to) is that the
+			number represents the number of times that condition must occur
+			for the "results" to occur.</p>
+				<p>
+					<strong>Conditions:</strong>
+				</p>
+				<dl>
+					<dt>GuestVisitsLongerThan</dt>
+					<dd>If an authorized guest stays in the unit for more than ___
+				consecutive days ...</dd>
+					<dt>LockedOut</dt>
+					<dd>If tenant(s) lock themself out of their unit and requires an
+				agent to assist them at least ___ times ...</dd>
+					<dt>LostKeys</dt>
+					<dd>If management must replace your keys for you at least ___
+				times ...</dd>
+					<dt>MoreGuestsThan</dt>
+					<dd>If you ever have more than ___ guests (authorized or
+				otherwise) in your apartment at the same time ...</dd>
+					<dt>NoticeServed</dt>
+					<dd>If management has to serve you with a legal notice at least
+				___ times ...</dd>
+					<dt>OtherCondition</dt>
+					<dd>"If ___ ..."; this condition can be used to describe any
+				condition not listed here (the description of that condition
+				should be the content of this element)</dd>
+					<dt>RentPaidLateMoreThan</dt>
+					<dd>If the rent is 'late' (ie. if the RentIsLate result occurs)
+				more than ___ times ...</dd>
+					<dt>RentPaidOnOrAfter</dt>
+					<dd>If the rent is paid on or after the ___th day of the month
+				...</dd>
+					<dt>ReturnedChecks</dt>
+					<dd>If the tenant's rent payment check bounces at least ___
+				times ...</dd>
+					<dt>TerminationAfterLessThan</dt>
+					<dd>If you quit your lease less than ___ days after the lease
+				agreement starts ...</dd>
+					<dt>TerminationEarlierThan</dt>
+					<dd>If you quit your lease earlier than ___ days before its
+				normal end date ...</dd>
+					<dt>UnauthorizedGuestVisitsLongerThan</dt>
+					<dd>If an unauthorized guest stays in your apartment for more
+				than ___ consecutive days ...</dd>
+					<dt>UnathorizedPetFound</dt>
+					<dd>If an unauthorized pet is found in your unit at least ___
+				times ...</dd>
+					<dt>UncleanedPetWaste</dt>
+					<dd>If you fail to clean up your dog's waste at least ___ times</dd>
+				</dl>
+				<p>
+					<strong>Results:</strong>
+				</p>
+				<dl>
+					<dt>Eviction</dt>
+					<dd>... you will be evicted</dd>
+					<dt>Fee</dt>
+					<dd>... you will be charged a ___ fee, (which does/does not
+				repeat for each day you are in violation, as determined by the
+				PerDay attribute)</dd>
+					<dt>RentIsLate</dt>
+					<dd>... your rent will be considered 'late'</dd>
+					<dt>OtherResult</dt>
+					<dd>"... ___ will occur"; this result can be used to describe
+				any result not listed here (the description of that result
+				should be the content of this element)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<!-- Conditions -->
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="GuestVisitsLongerThan" type="xs:integer" minOccurs="0"/>
+				<xs:element name="LockedOut" type="xs:integer" minOccurs="0"/>
+				<xs:element name="LostKeys" type="xs:integer" minOccurs="0"/>
+				<xs:element name="MoreGuestsThan" type="xs:integer" minOccurs="0"/>
+				<xs:element name="NoticeServed" type="xs:integer" minOccurs="0"/>
+				<xs:element name="OtherCondition" type="xs:string" minOccurs="0"/>
+				<xs:element name="RentPaidLateMoreThan" type="xs:integer" minOccurs="0"/>
+				<xs:element name="RentPaidOnOrAfter" type="xs:integer" minOccurs="0"/>
+				<xs:element name="ReturnedChecks" type="xs:integer" minOccurs="0"/>
+				<xs:element name="TerminationAfterLessThan" type="xs:integer" minOccurs="0"/>
+				<xs:element name="TerminationEarlierThan" type="xs:integer" minOccurs="0"/>
+				<xs:element name="UnauthorizedGuestVisitsLongerThan" type="xs:integer" minOccurs="0"/>
+				<xs:element name="UnathorizedPetFound" type="xs:integer" minOccurs="0"/>
+				<xs:element name="UncleanedPetWaste" type="xs:integer" minOccurs="0"/>
+			</xs:choice>
+			<!-- Result -->
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Eviction" type="NoContent" minOccurs="0"/>
+				<xs:element name="Fee" type="Fee" minOccurs="0"/>
+				<xs:element name="RentIsLate" type="NoContent" minOccurs="0"/>
+				<xs:element name="OtherAction" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Reference">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a reference that an applicant is using on
+			their application (eg. as part of their qualification, as an
+			emergency contact, or to verify their accounting).</p>
+				<dl>
+					<dt>ContactInfo (required element)</dt>
+					<dd>the reference's name and contact information (described as a
+				Core Data PersonType)</dd>
+					<dt>ReferenceType (required attribute)</dt>
+					<dd>the type of reference, in semantic terms</dd>
+					<dt>Description (optional element)</dt>
+					<dd>If the ReferenceType is "Other", this element can be used to
+				describe the Reference type</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ContactInfo" type="PersonType"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ReferenceType" type="ReferenceType" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="ReferenceType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of an applicant's reference.</p>
+				<dl>
+					<dt>Accountant</dt>
+					<dd>a personal accountant the applicant referenced to verif
+				their finances</dd>
+					<dt>EmergencyContact</dt>
+					<dd>the applicant's emergency contact (although this isn't
+				needed to qualify an applicant, many properties will save this
+				information if/when the applicant becomes a tenant)</dd>
+					<dt>PersonalReference</dt>
+					<dd>a reference that an applicant is using to verify their
+				character, who does not work with or have a professional
+				relationship to the applicant</dd>
+					<dt>ProfessionalReference</dt>
+					<dd>a reference who works with the applicant (or otherwise has
+				a "professional relationship" with them) that the applicant is
+				using to verify their character</dd>
+					<dt>Other</dt>
+					<dd>Any other reference type</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Accountant"/>
+			<xs:enumeration value="EmergencyContact"/>
+			<xs:enumeration value="PersonalReference"/>
+			<xs:enumeration value="ProfessionalReference"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Residence">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a residence that an applicant currently or
+			formerly lives/lived at.</p>
+				<p>
+					<strong>NOTE:</strong> This type contains both a Landlord and a
+			ManagementCompany element.  While both elements can technically
+			be used within the same Residence, in the vast majority of cases
+			each Residence will only have one of either Landlord or
+			ManagementCompany.  This is because both elements express
+			essentially the same information: the contact information for the
+			applicant's former landlord (so that their status as a "good former
+			tenant" can be verified for qualification purposes).  However,
+			because some "landlords" can better be described using a Core Data
+			CompanyType than a PersonType, the ManagementCompany element is
+			provided as an alternative way of describing the landlord.<br/>
+			Of course, an instance document author may wish to transmit both a
+			tenant's former property management company AND their leasing
+			agent/landlord at that company, so the standard allows for such a
+			scenario by not making Landlord and ManagmentCompany mutually
+			exclusive.</p>
+				<p>
+					<strong>NOTE #2:</strong> If the applicant does not remember
+				exactly when they moved in to or out of the residence (for
+				instance, if they only remember that it was "June of '06"),
+				there is technically no way to represent that in this standard.
+				Therefore, it is suggested that any unknown aspects of the date
+				be expressed as the minimum possible (so the previous example of
+				"June '06" could be transmitted as "06-01-2006", while an
+				applicant who only remembers "early '07" could be transmitted as
+				"01-01-2007").
+			</p>
+				<dl>
+					<dt>Address (required element)</dt>
+					<dd>the location of the residence</dd>
+					<dt>Landlord (optional element)</dt>
+					<dd>the applicant's current/former landlord (described as a Core
+				Data PersonType</dd>
+					<dt>ManagementCompany (optional element)</dt>
+					<dd>the applicant's current/former property management company
+				(described as a Core Data CompanyType)</dd>
+					<dt>Rent (optional attribute)</dt>
+					<dd>the applicant's monthly rent at this residence<br/>
+						<strong>NOTE:</strong> If an applicant's rent changed during
+				their stay at this residence, their most recent (and so probably
+				highest) rent should be used for this attribute.</dd>
+					<dt>MoveInDate (optional attribute)</dt>
+					<dd>The date the tenant moved in to this residence</dd>
+					<dt>MoveOutDate (optional attribute)</dt>
+					<dd>The date the tenant moved out of this residence.</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Address" type="AddressType"/>
+			<xs:element name="Landlord" type="PersonType" minOccurs="0"/>
+			<xs:element name="ManagementCompany" type="CompanyType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Rent" type="MITS-Currency"/>
+		<xs:attribute name="MoveInDate" type="xs:date"/>
+		<xs:attribute name="MoveOutDate" type="xs:date"/>
+	</xs:complexType>
+	<xs:simpleType name="ResidentType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type of an applicant/tenant, in terms
+			of whether or not they will occupy the unit and whether or not they
+			will be legally responsible for the lease.</p>
+				<dl>
+					<dt>Individual</dt>
+					<dd>responsible for the lease and occupies the unit</dd>
+					<dt>Occupant</dt>
+					<dd>NOT responsible for the lease, but does occupy the unit</dd>
+					<dt>Co-Signer</dt>
+					<dd>responsible for the lease, but does NOT occupy the unit
+				(ie. a "guarantor")</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Individual"/>
+			<xs:enumeration value="Occupant"/>
+			<xs:enumeration value="Co-Signer"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Salary">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes an amount of income which (potentially)
+			re-occurs.  It is used by both the IncomeSource and Occupation
+			elements to describe how much money is generated, and how frequently
+			it is generated, by the income sources/jobs represented by those
+			elements.</p>
+				<dl>
+					<dt>Amount (required element)</dt>
+					<dd>the specific dollar amount the applicant earns</dd>
+					<dt>Frequency (required attribute)</dt>
+					<dd>how often that dollar amount is earned</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Amount" type="MITS-Currency"/>
+		</xs:sequence>
+		<xs:attribute name="Frequency" type="Frequency" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="Signature">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single signature on a document from either
+			a tenant or the landlord.  This entity does not describe any
+			verification information for the signature, such as the IP address
+			it was made from (for an e-signature), or a digital scan of it (for
+			an actual signature).  However, such information may be provided in
+			one of two ways:</p>
+				<ol>
+					<li>by using the inherited Identification child element (to
+				specify a database record that contains further "proof" of the
+				signature's validity)</li>
+					<li>by using the Reference child element (to provide a URI/path
+				where further verification information can be found)</li>
+				</ol>
+				<p>Since Identification child elements can also be used to reference
+			entities in the document, a Signature may also contain an
+			Identification element which links it to the corresponding Tenant
+			element for the signature's creator (ie. the signer). Such
+			Identification elements should specify an IDType of "tenant ref",
+			"reference", or something similar, so that they can be clearly
+			differentiated from Identification elements that reference signature
+			verification information in a database record.</p>
+				<dl>
+					<dt>Description (optional element)</dt>
+					<dd>a human-friendly description of the signature; this
+				may be used to provide further details about the signature's
+				type (eg. if a company accepts two separate forms of electronic
+				signatures, this element could be used to differentiate between
+				them)</dd>
+					<dt>Reference (optional element)</dt>
+					<dd>a URI where this signature can be verified, or where further
+				information on how to verify this signature can be found; this
+				could be the URL of an image or PDF file containing the
+				signature, a "mailto" with the email address of the leasing
+				agent who has the signed document in their office, or even a
+				completely arbitrary URI (whose meaning is established by the
+				two companies that are transmitting the document)<br/>
+						<strong>NOTE:</strong> Specifying any login credentials
+				(username, password, etc.) necessary to access this URI is not
+				within the scope of this specification, as it is assumed that
+				the companies transmitting the document would have previously
+				communicated such information (but if they haven't, it could
+				always be provided by using DocumentData or a
+				CustomRecord).</dd>
+					<dt>Date (optional attribute)</dt>
+					<dd>the date the document was signed (by a particular tenant or
+				landlord)<br/>
+						<strong>NOTE:</strong> Because the document may have been signed
+				by the various signers on different dates, it is entirely
+				possible for several Signature elements under a single Document
+				to have differing Date attributes.</dd>
+					<dt>HardCopyExists (optional attribute)</dt>
+					<dd>a boolean which (if true) represents that a "hard" or
+				physical (ie. pen and paper) copy of the signature exists (as
+				opposed to "e-signatures", which have no hard copy)</dd>
+					<dt>IsLandlord (optional attribute)</dt>
+					<dd>a boolean which (if true) represents that this signature was
+				made by a member of the property management staff, and not by a
+				tenant</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="Description" type="xs:string" minOccurs="0"/>
+					<xs:element name="Reference" type="xs:anyURI" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="Date" type="xs:date"/>
+				<xs:attribute name="HardCopyExists" type="xs:boolean"/>
+				<xs:attribute name="IsLandlord" type="xs:boolean"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="StringMax50">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a very basic type that describes a string with a maximum
+			length of fifty characters.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Tenant">
+		<xs:annotation>
+			<xs:documentation>
+				<p>The tenant type defines an individual non-corporate tenant (or
+			applicant).  Documentation for most of its child elements can be
+			found in their corresponding type definitions, but two optional ones
+			require further explanation: GuarantorFor and Spouse.  Both of these
+			elements are simple IdentificationTypes, and are designed to be used
+			to link this Tenant to another Tenant that represents this Tenant's
+			spouse or guarantee.</p>
+				<p>In other words, if you had two applicant/tenants A and B who were
+			married you would add a Spouse element to A with B's ID as its
+			IDValue (IDRef), and vice versa (add one to B with A's ID). If you
+			had two more Tenants C and D, and C was co-signing for D, C you
+			would add a GuarantorFor element to C with D's ID as the IDValue
+			(IDRef).</p>
+				<p>
+					<strong>NOTE:</strong> If a co-signer/guarantor is guaranteeing
+			every other Tenant on a lease, this element need not be used (as it
+			can be implied from the guaranteeing Tenant's ResdentType of
+			"Co-Signer").  The GuarantorFor element is only needed when a
+			co-signer/guarantor is only "signing for" some of the applicants
+			(the most common example of this would be a group of college
+			students renting a house: each student's parent may wish to
+			guarantee their child, but not the other students on the lease).</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BaseTenant">
+				<xs:sequence>
+					<xs:element name="Name" type="Name"/>
+					<xs:element name="PersonalID" type="PersonalID" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="BirthDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="Residence" type="Residence" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Phone" type="PhoneType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Spouse" type="IdentificationType" minOccurs="0"/>
+					<xs:element name="GuarantorFor" type="IdentificationType" minOccurs="0"/>
+					<xs:element name="CriminalBackground" type="CriminalBackground" minOccurs="0"/>
+					<xs:element name="Finances" type="Finances" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="ResidentType" type="ResidentType"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Utilities">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type is a simple container of Utility elements.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Utility" type="Utility" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Utility">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a single utility that the applicant/tenant
+			receives or will receive (and may or may not be responsible for
+			paying for) at the property.</p>
+				<dl>
+					<dt>UtilityType (required element)</dt>
+					<dd>the type of utility, in semantic terms; if a property
+				combines several utility types in to a single "utility" for
+				billing purposes (eg. "Water/Garbage"), this element may be
+				repeated to describe such combinations</dd>
+					<dt>Name (optional element)</dt>
+					<dd>the utility in human-friendly terms (which should, in
+				general, match the name of the utility as it will appear on the
+				tenant's bill, if applicable)</dd>
+					<dt>Metering (optional attribute)</dt>
+					<dd>how the utility's usage will be measured (in semantic
+				terms)</dd>
+					<dt>UtilityResponsibility (required attribute)</dt>
+					<dd>who will be responsible for paying for the utility (the
+				tenant or the landlord)</dd>
+					<dt>PaidToLandlord</dt>
+					<dd>if the tenant is responsible for paying for the utility,
+				this element can be used to indicate that the tenant should send
+				their utility payment to their landlord/management company
+				(presumably at the same address they use to pay their rent)</dd>
+					<dt>PaidToCompany</dt>
+					<dd>if the tenant is responsible for paying for the utility,
+				this element can be used to describe (as a Core Data
+				CompanyType) the company and address that the tenant should send
+				their utility payment to</dd>
+					<dt>CommonArea (optional element)</dt>
+					<dd>if the property handles utility usage for a common area
+				separately (for instance, distributing 5% of the property's
+				total water bill between all tenants to pay for watering the
+				communal lawn), this element can be used to describe such an
+				arrangement.</dd>
+					<dt>Description (optional element)</dt>
+					<dd>if a UtilityType, Metering, and/or Responsibility of "Other"
+				is selected, this element can be used to describe the details
+				of that (or those) "other(s)".</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="CommonArea" type="UtilityCommonArea" minOccurs="0"/>
+					<xs:element name="Description" type="xs:string" minOccurs="0"/>
+					<xs:element name="Name" type="xs:string" minOccurs="0"/>
+					<xs:choice>
+						<xs:element name="PaidToCompany" type="CompanyType" minOccurs="0"/>
+						<xs:element name="PaidToLandlord" type="NoContent" minOccurs="0"/>
+					</xs:choice>
+					<xs:element name="UtilityType" type="UtilityType" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="Metering" type="UtilityMetering"/>
+				<xs:attribute name="Responsibility" type="UtilityResponsibility" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UtilityCommonArea">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type can be used within a Utility element to describe the
+			part of the property's total bill for a utility that will be handled
+			as a "Common Area" allotment.  An example of this would be a
+			property that divides 10% of its total water bill between all of its
+			tenants, to pay for shared lawn-watering, pool-refilling, and other
+			water usage in common areas.  The content of this element (which
+			must be a PercentType) should be the percentage of the property's
+			total bill (for this utility) which will be considered part of the
+			"common area usage".</p>
+				<dl>
+					<dt>Responsibility (required attribute)</dt>
+					<dd>who will pay for the common area; works identically to the
+				Responsibility attribute in Utility<br/>
+						<strong>NOTE:</strong> The Responsibility attribute may at first
+				seem redundant; however, some properties do in fact have
+				verbiage to the effect of "10% of the properties total water
+				bill will be considered common area usage and will be paid for
+				by management", and so the Responsibility attribute is needed to
+				describe them (as well as the more common case of the tenants
+				paying for the common area).</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="Percent">
+				<xs:attribute name="Responsibility" type="UtilityResponsibility" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="UtilityMetering">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes how a utility's usage is measured (for
+			billing purposes).</p>
+				<dl>
+					<dt>Flat</dt>
+					<dd>the utility is not metered; instead a flat fee (eg. "$50 per
+				month") is charged</dd>
+					<dt>Occupancy</dt>
+					<dd>a system where the number of occupants in the unit decides
+				the charge amount (eg. "$25 per person" or "$40 per month + $10
+				for each person in your unit over two")</dd>
+					<dt>SquareFootage</dt>
+					<dd>the unit's square footage will be used to determine the
+				utility billing (eg. "$2 per sq. foot" or "units between
+				500-800 sq. ft. wil pay $100 a month, units between ...")</dd>
+					<dt>Usage</dt>
+					<dd>a metering device of some sort is installed that will be
+				used to measure the tenant(s)'s usage of that utility (eg. "Gas
+				and electricity usage will be metered and billed directly by
+				Fake Gas and Electric Company ...")</dd>
+					<dt>Other</dt>
+					<dd>Any other metering system</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Flat"/>
+			<xs:enumeration value="Occupancy"/>
+			<xs:enumeration value="SquareFootage"/>
+			<xs:enumeration value="Usage"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UtilityResponsibility">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes who is responsible for paying for a single
+			utility.</p>
+				<dl>
+					<dt>Landord</dt>
+					<dd>the landlord/management company will be responsible for
+				paying for the utility</dd>
+					<dt>Tenant</dt>
+					<dd>the tenant(s) will be responsible for paying for the
+				utility</dd>
+					<dt>Other</dt>
+					<dd>any other form of responsibility (eg. the two split the bill
+				50/50)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Landlord"/>
+			<xs:enumeration value="Tenant"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UtilityType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes the type(s) of a utility in semantic terms.
+			Because its referencing element may be repeated, multiple types can
+			be combined to describe "combination utilities" (eg. "Gas and
+			Electricity" or "Water/Sewage").  All of the possible options should
+			be self explanatory, with a few notes:</p>
+				<dl>
+					<dt>Television</dt>
+					<dd>any sort of television service (cable, satellite, etc.)</dd>
+					<dt>Other</dt>
+					<dd>any utility which is not listed here (but should be detailed
+				in the related Utility element's Description child element)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AirConditioning"/>
+			<xs:enumeration value="Electricity"/>
+			<xs:enumeration value="Garbage"/>
+			<xs:enumeration value="Gas"/>
+			<xs:enumeration value="Heating"/>
+			<xs:enumeration value="Internet"/>
+			<xs:enumeration value="Sewage"/>
+			<xs:enumeration value="Television"/>
+			<xs:enumeration value="Telephone"/>
+			<xs:enumeration value="Water"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Vehicle">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This type describes a (motor) vehicle; within this specification
+			it is only used to describe an applicant/tenant's vehicle.  Most of
+			the fields describe the vehicle itself, and should be
+			self-explanatory, but there are a few exceptions.</p>
+				<dl>
+					<dt>Owner (optional element)</dt>
+					<dd>the vehicle's owner (described as a PersonType)<br/>
+						<strong>NOTE:</strong> If the owner is a Tenant then this
+				element may be nothing more than an IDRef (or may even be
+				ommitted entirely, if it is not necessary to "connect" vehicles
+				to specific tenants).  However, if the owner is not a tenant,
+				this element can be used to describe them and their contact
+				information.</dd>
+					<dt>PermitNumber (optional element)</dt>
+					<dd>This element intended for use by properties which allocate
+				parking via some sort of parking permit, rather than by assigned
+				spaces.  These types of properties can use this element to store
+				the identification "number" (which may include non-numeric
+				characters) of the parking permit issued for this vehicle.</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Color" type="xs:string" minOccurs="0"/>
+			<xs:element name="LicenseNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="LicenseState" type="xs:string" minOccurs="0"/>
+			<xs:element name="Make" type="xs:string" minOccurs="0"/>
+			<xs:element name="Model" type="xs:string" minOccurs="0"/>
+			<xs:element name="Owner" type="PersonType" minOccurs="0"/>
+			<xs:element name="PermitNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="Year" type="xs:gYear" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,2889 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MITS Property XML Standard v5.0  -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified"
+	attributeFormDefault="unqualified">
+	<xs:include schemaLocation="Core-Data-4.0.xsd"/>
+	<xs:include schemaLocation="MITSCustomExtension.xsd"/>
+	<xs:element name="PhysicalProperty">
+		<xs:annotation>
+			<xs:documentation>
+				<p>MITS Property v5.0 Draft 12/11/2024</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Management" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>
+							<p>Management Info</p>
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Identification">
+								<xs:sequence>
+									<xs:element name="PropertyContacts" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Node contians CompanyType and PersonType</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Companies" type="CompanyType"
+												minOccurs="0" maxOccurs="unbounded"/>
+												<xs:element name="Persons" type="PersonType"
+												minOccurs="0" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="File" type="FileType" minOccurs="0"
+										maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>FileID, Active</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Property" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Identification">
+								<xs:sequence>
+									<xs:element name="PropertyID">
+										<xs:annotation>
+											<xs:documentation>MITS 5.0 PropertyType</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="PropertyType"/>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="General_ID" type="Identification"
+										minOccurs="0" maxOccurs="10"/>
+									<xs:element name="ILS_Identification">
+										<xs:annotation>
+											<xs:documentation>ILS_IdentificationType, RentalType</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Latitude" type="xs:decimal"
+												minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>
+															<p>Latitude position of property</p>
+														</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Longitude" type="xs:decimal"
+												minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>
+															<p>Longitude position of property</p>
+														</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="DaylightSaving" type="xs:boolean"
+												minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>
+															<p>Daylight savings time for the selected time zone</p>
+														</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="TimeZone" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="LastUpdate" minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:attribute name="ILS_IdentificationType"
+												use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Apartment"/>
+												<xs:enumeration value="Condo"/>
+												<xs:enumeration value="Duplex"/>
+												<xs:enumeration value="Triplex"/>
+												<xs:enumeration value="4plex"/>
+												<xs:enumeration value="Senior"/>
+												<xs:enumeration value="Assisted Living"/>
+												<xs:enumeration value="Subsidized"/>
+												<xs:enumeration value="High Rise"/>
+												<xs:enumeration value="Garden Style"/>
+												<xs:enumeration value="Mid Rise"/>
+												<xs:enumeration value="Mixed Use"/>
+												<xs:enumeration value="Townhouse"/>
+												<xs:enumeration value="Vacation"/>
+												<xs:enumeration value="Campus"/>
+												<xs:enumeration value="Military"/>
+												<xs:enumeration value="House for Rent"/>
+												<xs:enumeration value="Corporate"/>
+												<xs:enumeration value="Unspecified"/>
+												</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											<xs:attribute name="RentalType" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Subsidized"/>
+												<xs:enumeration value="Assisted Senior"/>
+												<xs:enumeration value="Assisted Living"/>
+												<xs:enumeration value="Market Rate"/>
+												<xs:enumeration value="Unspecified"/>
+												<xs:enumeration value="Broker"/>
+												<xs:enumeration value="Student"/>
+												<xs:enumeration value="Temporary"/>
+												</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Information">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="StructureType">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Standard"/>
+												<xs:enumeration value="High Rise"/>
+												<xs:enumeration value="Garden Style"/>
+												<xs:enumeration value="Mid Rise"/>
+												<xs:enumeration value="Mixed Use"/>
+												<xs:enumeration value="Unspecified"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="BuildingCount" type="xs:integer"
+												minOccurs="0"/>
+												<xs:element name="UnitCount" type="xs:integer"/>
+												<xs:element name="NumberOfAcres" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="YearBuilt" type="xs:gYear"
+												minOccurs="0"/>
+												<xs:element name="YearRemodeled" type="xs:gYear"
+												minOccurs="0"/>
+												<xs:element name="AcquisitionDate" minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="OfficeHour" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="OpenTime">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="CloseTime">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Day">
+												<xs:annotation>
+												<xs:documentation>Days open: Su, M, T, W, Th, F, Sa </xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="ShortDescription" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="LongDescription" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="LeaseLength" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Rents" minOccurs="0">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="SalePrice" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="StartRent" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="StandardRent" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="CorporateRent" minOccurs="0">
+												<xs:complexType>
+												<xs:attribute name="Min" type="xs:decimal"
+												use="optional"/>
+												<xs:attribute name="Max" type="xs:decimal"
+												use="optional"/>
+												</xs:complexType>
+												</xs:element>
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="IncomeRentQual" minOccurs="0"
+												maxOccurs="6">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="IncomeLimit" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="QualifiedRent" type="xs:decimal"
+												minOccurs="0"/>
+												</xs:sequence>
+												<xs:attribute name="Persons" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:integer">
+												<xs:enumeration value="1"/>
+												<xs:enumeration value="2"/>
+												<xs:enumeration value="3"/>
+												<xs:enumeration value="4"/>
+												<xs:enumeration value="5"/>
+												<xs:enumeration value="6"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Parking" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Assigned" type="xs:boolean"
+												minOccurs="0"/>
+												<xs:element name="AssignedFee" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Free"/>
+												<xs:enumeration value="Paid"/>
+												<xs:enumeration value="Both"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="SpaceFee" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="Spaces" type="xs:integer"
+												minOccurs="0"/>
+												<xs:element name="Comment" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												</xs:sequence>
+												<xs:attribute name="ParkingType" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Surface Lot"/>
+												<xs:enumeration value="Garage Lot"/>
+												<xs:enumeration value="Covered Lot"/>
+												<xs:enumeration value="Street"/>
+												<xs:enumeration value="Other"/>
+												<xs:enumeration value="None"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="DrivingDirections" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Services" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Nearest</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Name">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="200"/>
+												<xs:enumeration value="Bus"/>
+												<xs:enumeration value="Elementary School"/>
+												<xs:enumeration value="Middle School"/>
+												<xs:enumeration value="High School"/>
+												<xs:enumeration value="Highway"/>
+												<xs:enumeration value="Laundromat"/>
+												<xs:enumeration value="Drycleaner"/>
+												<xs:enumeration value="Park"/>
+												<xs:enumeration value="Train"/>
+												<xs:enumeration value="University"/>
+												<xs:enumeration value="Other"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Detail" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="DistanceTo" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Comment" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												</xs:sequence>
+												<xs:attribute name="Nearest" type="xs:boolean"
+												use="required"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="PropertyAvailabilityURL"
+												minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="250"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Accounting" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="LiveDate">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="LiveFlag" type="xs:boolean"/>
+												<xs:element name="LastDayBegin">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="LastDayEnd">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="LastAccMthEnd">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="AcctMthEndFlag">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Preliminary"/>
+												<xs:enumeration value="Changes"/>
+												<xs:enumeration value="Month Closed"/>
+												<xs:enumeration value="None"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="LastInvoiceNumber" default="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="40"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="LastReceiptNumber">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="40"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="CashReserve" type="xs:decimal"/>
+												<xs:element name="EndOfYear">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="AccountsReceivable">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="AccountsPayable">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="GeneralLedger">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="CurrentAccountingPeriod">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="CurrentAccountingPeriodAR">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="CurrentAccountingPeriodAP">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="TaxCredit">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+
+									<xs:element name="Payment" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="RemitTo" type="xs:string"/>
+												<xs:element name="CheckPayable">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Method">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Cash"/>
+												<xs:enumeration value="Check"/>
+												<xs:enumeration value="CreditCard"/>
+												<xs:enumeration value="Insurance"/>
+												<xs:enumeration value="CorporateBilling"/>
+												<xs:enumeration value="PerDiem"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<!-- REMOVED AS PART OF 5.0
+									<xs:element name="Fee" minOccurs="0">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="FeeType">
+												<xs:sequence>
+												<xs:element name="AdminFee" type="xs:decimal"/>
+												<xs:element name="ApplicationFee"
+												type="xs:decimal"/>
+												<xs:element name="BrokerFee" type="xs:decimal"/>
+												</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Concession" minOccurs="0" maxOccurs="10">
+										<xs:annotation>
+											<xs:documentation>Active</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="ConcessionType"/>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>-->
+									<xs:element name="Amenity" type="GeneralAmenityType"
+										minOccurs="0" maxOccurs="unbounded"/>
+									<!-- REMOVED AS PART OF 5.0
+									<xs:element name="Deposit" type="DepositType" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Type</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Policy" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Pet" maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Allowed</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Pets" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Details about various prospect pets</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:complexContent>
+												<xs:extension base="PetType"/>
+												</xs:complexContent>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Comment" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Deposit" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="Fee" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="Rent" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="FeeRange" minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>Min, Max </xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:attribute name="Min" type="xs:decimal"
+												use="optional"/>
+												<xs:attribute name="Max" type="xs:decimal"
+												use="optional"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Restrictions" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="PetCare" type="xs:boolean"
+												minOccurs="0"/>
+												</xs:sequence>
+												<xs:attribute name="Allowed" type="xs:boolean"
+												use="required"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="General" minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>General Policy</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>-->
+									<xs:element name="Phase" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Identification">
+												<xs:sequence>
+												<xs:element name="Name">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Description">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="UnitCount" type="xs:integer"/>
+												<xs:element name="RentableUnits" type="xs:integer"/>
+												<xs:element name="TotalSquareFeet"
+												type="xs:integer"/>
+												<xs:element name="RentableSquareFeet"
+												type="xs:integer"/>
+												<xs:element name="Amenity"
+												type="GeneralAmenityType" minOccurs="0"
+												maxOccurs="unbounded"/>
+												<xs:element name="File" type="FileType"
+												minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Id, Active</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Promotional" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Promotional Bullet Points for ILS Listings</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element maxOccurs="unbounded" minOccurs="0"
+												name="ChargeOfferClass" type="ChargeOfferType"/>
+												</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Building" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Identification">
+												<xs:sequence>
+												<xs:element name="BuildingType" minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>
+																	<p>Building Type</p>
+																</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="High Rise"/>
+												<xs:enumeration value="Garden Style"/>
+												<xs:enumeration value="Mid Rise"/>
+												<xs:enumeration value="Mixed Use"/>
+												<xs:enumeration value="Standard"/>
+												<xs:enumeration value="Unspecified"/>
+												<xs:enumeration value="Low Rise"/>
+												<xs:enumeration value="House for Rent"/>
+												<xs:enumeration value="Condo for Rent"/>
+												<xs:enumeration value="Walkup"/>
+												<xs:enumeration value="Coach House"/>
+												<xs:enumeration value="Townhouse"/>
+												<xs:enumeration value="Courtyard"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Name">
+												<xs:annotation>
+												<xs:documentation>
+																	<p>Unique Identifier for building (it is unclear if this has independent value form PropertyID)</p>
+																</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Description">
+												<xs:annotation>
+												<xs:documentation>
+																	<p>Building Description</p>
+																</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="UnitCount" type="xs:integer">
+												<xs:annotation>
+												<xs:documentation>
+																	<p>Number of units in this building</p>
+																</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="SquareFeet" type="xs:integer">
+												<xs:annotation>
+												<xs:documentation>
+																	<p>Total external square footage of building</p>
+																</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Amenity"
+												type="GeneralAmenityType" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>
+																	<p>General Amenity Type</p>
+																</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="File" type="FileType"
+												minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Id, Active</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element maxOccurs="unbounded" minOccurs="0"
+												name="ChargeOfferClass" type="ChargeOfferType"/>
+												</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Floorplan" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Identification">
+												<xs:sequence>
+												<xs:element name="FloorplanType" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												<xs:enumeration value="Internal"/>
+												<xs:enumeration value="External"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Name">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Comment" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="UnitCount" type="xs:integer"/>
+												<xs:element name="FloorplanAvailabilityURL"
+												minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="250"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="UnitsAvailable"
+												type="xs:integer" minOccurs="0"/>
+												<xs:element name="DisplayedUnitsAvailable"
+												type="xs:integer" minOccurs="0"/>
+												<xs:element name="FloorCount" type="xs:integer"
+												minOccurs="0"/>
+												<xs:element name="TotalRoomCount"
+												type="xs:integer" minOccurs="0"/>
+												<xs:element name="Room" type="RoomType"
+												maxOccurs="unbounded"/>
+												<xs:element name="SquareFeet">
+												<xs:annotation>
+												<xs:documentation>Average, Min, Max</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-RangeGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="MarketRent">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-RangeGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="EffectiveRent">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-RangeGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="LeaseTerm" minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-RangeGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<!-- Removed as part of 5.0 
+												<xs:element name="Concession"
+												type="ConcessionType" minOccurs="0" maxOccurs="10">
+												<xs:annotation>
+												<xs:documentation>Active</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Deposit" type="DepositType"
+												minOccurs="0" maxOccurs="unbounded"/>
+												<xs:element name="Fee" minOccurs="0">
+												<xs:complexType>
+												<xs:complexContent>
+												<xs:extension base="FeeType">
+												<xs:sequence>
+												<xs:element name="AdminFee" type="xs:decimal"/>
+												<xs:element name="ApplicationFee"
+												type="xs:decimal"/>
+												<xs:element name="BrokerFee" type="xs:decimal"/>
+												</xs:sequence>
+												</xs:extension>
+												</xs:complexContent>
+												</xs:complexType>
+												</xs:element>
+												-->
+												<xs:element name="Amenity"
+												type="SpecificAmenityType" minOccurs="0"
+												maxOccurs="unbounded"/>
+												<xs:element name="File" type="FileType"
+												minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Id, Active</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Promotional" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Promotional Bullet Points for ILS Listings</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element maxOccurs="unbounded" minOccurs="0"
+												name="ChargeOfferClass" type="ChargeOfferType"/>
+												</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ILS_Unit" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Identification">
+												<xs:sequence>
+												<xs:element name="Units" type="UnitsType">
+												<xs:annotation>
+												<xs:documentation>MITS 5.0 UnitsType</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Comment" minOccurs="0"/>
+												<!-- Removed as part of 5.0
+												<xs:element name="Pricing" type="PricingType"
+												minOccurs="0"/>
+												<xs:element name="EffectiveRent" minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-RangeGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Concession"
+												type="ConcessionType" minOccurs="0" maxOccurs="10">
+												<xs:annotation>
+												<xs:documentation>Active</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												
+												<xs:element name="Deposit" type="DepositType"
+												minOccurs="0"/>
+												-->
+												<xs:element name="SpecialAccess" minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>Description of special accomodations for subject unit.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="EntryFloor" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="PriorMarket" type="xs:decimal"
+												minOccurs="0"/>
+												<xs:element name="ChangeDate" minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="StandardRenewal"
+												type="xs:decimal" minOccurs="0"/>
+												<xs:element name="UserOption" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="ProfitCenter" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="FloorLevel" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="NumberOfFloors" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="ApplianceColorCode"
+												minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="CarpetCode" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="50"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="CarpetReplacedDate"
+												minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="PaintedDate" minOccurs="0">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Affordable" minOccurs="0">
+												<xs:annotation>
+												<xs:documentation>Type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Program">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="ContractRent">
+												<xs:simpleType>
+												<xs:restriction base="xs:decimal"/>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="Allowance" type="xs:decimal"/>
+												</xs:sequence>
+												<xs:attribute name="AffordableType" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Tax Credit"/>
+												<xs:enumeration value="HUD"/>
+												<xs:enumeration value="Other"/>
+												<xs:enumeration value="Unspecified"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Availability" minOccurs="0">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="MoveOutCode" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="MoveOutDescription"
+												minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="CancellationCode" minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="100"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="CancellationDescription"
+												minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="1000"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="VacateDate">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="VacancyClass">
+												<xs:annotation>
+												<xs:documentation>Vacancy status of subject unit.</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:minLength value="0"/>
+												<xs:maxLength value="256"/>
+												<xs:enumeration value="Occupied"/>
+												<xs:enumeration value="Unoccupied"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="MadeReadyDate">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="UnitAvailabilityURL"
+												minOccurs="0">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="250"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												<xs:element name="Cancellation" minOccurs="0">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Reason">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												<!-- Removed for 5.0
+													<xs:element name="Fee" type="FeeType"
+												minOccurs="0"/>
+												<xs:element name="Amenity"
+												type="SpecificAmenityType" minOccurs="0"
+												maxOccurs="unbounded"/>
+												-->
+												<xs:element name="File" type="FileType"
+												minOccurs="0" maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Id, Active</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+												<xs:element name="Promotional" minOccurs="0"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>Promotional Bullet Points for ILS Listings</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element maxOccurs="unbounded" minOccurs="0"
+												name="ChargeOfferClass" type="ChargeOfferType"/>
+												</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Utility" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>MajorUtility</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="AirCon" type="xs:boolean"/>
+												<xs:element name="BroadbandInternet"
+												type="xs:boolean"/>
+												<xs:element name="Cable" type="xs:boolean"/>
+												<xs:element name="Electric" type="xs:boolean"/>
+												<xs:element name="Gas" type="xs:boolean"/>
+												<xs:element name="Heat" type="xs:boolean"/>
+												<xs:element name="HotWater" type="xs:boolean"/>
+												<xs:element name="Satellite" type="xs:boolean"/>
+												<xs:element name="Sewer" type="xs:boolean"/>
+												<xs:element name="Telephone" type="xs:boolean"/>
+												<xs:element name="Trash" type="xs:boolean"/>
+												<xs:element name="Water" type="xs:boolean"/>
+												<xs:element name="UtilityPortionIncluded"
+												type="xs:decimal" minOccurs="0"/>
+											</xs:sequence>
+											<xs:attribute name="MajorUtility" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:enumeration value="Some"/>
+												<xs:enumeration value="None"/>
+												<xs:enumeration value="Unspecified"/>
+												</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ILS" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Commission">
+												<xs:annotation>
+												<xs:documentation>Type</xs:documentation>
+												</xs:annotation>
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Amount" type="xs:integer"/>
+												<xs:element name="Minimum" type="xs:integer"/>
+												<xs:element name="AmountPosted" type="xs:decimal"/>
+												<xs:element name="ContractExpire">
+												<xs:complexType>
+												<xs:attributeGroup ref="MITS-DateGroup"/>
+												</xs:complexType>
+												</xs:element>
+												</xs:sequence>
+												<xs:attribute name="CommissionType" use="required">
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="200"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:attribute>
+												</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="File" type="FileType" minOccurs="0"
+										maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>Id, Active</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Promotional" minOccurs="0"
+										maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>Promotional Bullet Points for ILS Listings</xs:documentation>
+										</xs:annotation>
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="500"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="SeniorServices" type="SeniorLivingAmenityType"
+										minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="LeadChannelList" minOccurs="0" maxOccurs="1">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="LeadChannel"
+												type="LeadChannelType" minOccurs="1"
+												maxOccurs="unbounded">
+												<xs:annotation>
+												<xs:documentation>
+														LeadChannel defines a group of communication mechanisms to transmit leads for the parent property.  It is oriented along product lines.  For example, if the property is published at an ILS in the context of a certain product, it will have a number of LeadNotifications like email, or phone.  If it is published in the context of a different product, it might have a different set of LeadNotifications.
+												</xs:documentation>
+												</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element maxOccurs="unbounded" minOccurs="0"
+										name="ChargeOfferClasses" type="ChargeOfferType"/>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PropertyDataUploadResponse" type="PropertyDataUploadResponseType"
+					minOccurs="0"/>
+				<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="PropertyDataUploadResponseType">
+		<xs:annotation>
+			<xs:documentation>
+					Defines a group of nodes that identify the processing status of the uploaded property data.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="Property" type="PropertyTypeExtended"/>
+		</xs:all>
+		<xs:attribute name="completeDocumentRecieved" type="StatusTypes"/>
+	</xs:complexType>
+	<xs:complexType name="PropertyTypeExtended">
+		<xs:complexContent>
+			<xs:extension base="PropertyType">
+				<xs:sequence>
+					<xs:element name="Reason">
+						<xs:complexType>
+							<xs:attribute name="Code"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="status" type="StatusTypes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:attributeGroup name="MITS-DateGroup">
+		<xs:annotation>
+			<xs:documentation>Standard MITS date format</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Month" type="xs:string" use="required"/>
+		<xs:attribute name="Day" type="xs:string" use="required"/>
+		<xs:attribute name="Year" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="MITS-MonthYearGroup">
+		<xs:annotation>
+			<xs:documentation>Standard MITS month, year format</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Month" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="2"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Year" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="4"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<!-- Removed as part of 5.0
+	<xs:complexType name="ConcessionType">
+		<xs:sequence>
+			<xs:element name="Value" type="xs:decimal" minOccurs="0"/>
+			<xs:choice>
+				<xs:element name="Term" type="xs:integer" minOccurs="0"/>
+				<xs:element name="DateRange">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="StartDate" minOccurs="0">
+								<xs:complexType>
+									<xs:attributeGroup ref="MITS-DateGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EndDate" minOccurs="0">
+								<xs:complexType>
+									<xs:attributeGroup ref="MITS-DateGroup"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="DescriptionHeader" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DescriptionBody" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DescriptionFooter" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Active" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	
+	<xs:complexType name="FeeType">
+		<xs:sequence>
+			<xs:element name="ProrateType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+						<xs:enumeration value="Standard"/>
+						<xs:enumeration value="Annualized"/>
+						<xs:enumeration value="DaysInMonth"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LateType">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LatePercent" type="xs:decimal"/>
+			<xs:element name="LateMinFee" type="xs:decimal"/>
+			<xs:element name="LateFeePerDay" type="xs:decimal"/>
+			<xs:element name="NonRefundableHoldFee" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	-->
+	<xs:complexType name="GeneralAmenityType">
+		<xs:annotation>
+			<xs:documentation>Amenities that belongs to phase or community level 11/28/06</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Rank" type="xs:integer" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="AmenityType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="Availability24Hours"/>
+					<xs:enumeration value="AccentWalls"/>
+					<xs:enumeration value="BasketballCourt"/>
+					<xs:enumeration value="Bilingual"/>
+					<xs:enumeration value="BoatDocks"/>
+					<xs:enumeration value="BusinessCenter"/>
+					<xs:enumeration value="CarWashArea"/>
+					<xs:enumeration value="ChildCare"/>
+					<xs:enumeration value="ClubDiscount"/>
+					<xs:enumeration value="ClubHouse"/>
+					<xs:enumeration value="ConferenceRoom"/>
+					<xs:enumeration value="Concierge"/>
+					<xs:enumeration value="CoverPark"/>
+					<xs:enumeration value="DoorAttendant"/>
+					<xs:enumeration value="FitnessCenter"/>
+					<xs:enumeration value="Elevator"/>
+					<xs:enumeration value="FreeWeights"/>
+					<xs:enumeration value="FurnishedAvailable"/>
+					<xs:enumeration value="GamingStations"/>
+					<xs:enumeration value="Garage"/>
+					<xs:enumeration value="Gate"/>
+					<xs:enumeration value="GroceryService"/>
+					<xs:enumeration value="GroupExcercise"/>
+					<xs:enumeration value="GuestRoom"/>
+					<xs:enumeration value="HighSpeed"/>
+					<xs:enumeration value="Housekeeping"/>
+					<xs:enumeration value="HouseSitting"/>
+					<xs:enumeration value="JoggingWalkingTrails"/>
+					<xs:enumeration value="LakeFront"/>
+					<xs:enumeration value="LakeAccess"/>
+					<xs:enumeration value="Laundry"/>
+					<xs:enumeration value="Library"/>
+					<xs:enumeration value="MealService"/>
+					<xs:enumeration value="MediaRoom"/>
+					<xs:enumeration value="MultiUseRoom"/>
+					<xs:enumeration value="NightPatrol"/>
+					<xs:enumeration value="OnSiteMaintenance"/>
+					<xs:enumeration value="OnSiteManagement"/>
+					<xs:enumeration value="PackageReceiving"/>
+					<xs:enumeration value="PerDiemAccepted"/>
+					<xs:enumeration value="Pool"/>
+					<xs:enumeration value="PlayGround"/>
+					<xs:enumeration value="Racquetball"/>
+					<xs:enumeration value="RecRoom"/>
+					<xs:enumeration value="Recycling"/>
+					<xs:enumeration value="Sauna"/>
+					<xs:enumeration value="ShortTermLease"/>
+					<xs:enumeration value="SmokeFree"/>
+					<xs:enumeration value="Spa"/>
+					<xs:enumeration value="StorageSpace"/>
+					<xs:enumeration value="Sundeck"/>
+					<xs:enumeration value="TennisCourt"/>
+					<xs:enumeration value="Transportation"/>
+					<xs:enumeration value="TVLounge"/>
+					<xs:enumeration value="ValetTrash"/>
+					<xs:enumeration value="Vintage"/>
+					<xs:enumeration value="VolleyballCourt"/>
+					<xs:enumeration value="WirelessInternet"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="AmenitySubType" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Attached"/>
+					<xs:enumeration value="Detached"/>
+					<xs:enumeration value="Both"/>
+					<xs:enumeration value="SameLevelParking"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SpecificAmenityType">
+		<xs:annotation>
+			<xs:documentation>Amenities that belongs to unit or floorplan level 11/28/06</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Rank" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:integer"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="AmenityType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="AdditionalStorage"/>
+					<xs:enumeration value="AirConditioner"/>
+					<xs:enumeration value="Alarm"/>
+					<xs:enumeration value="Balcony"/>
+					<xs:enumeration value="Cable"/>
+					<xs:enumeration value="Carpet"/>
+					<xs:enumeration value="Carport"/>
+					<xs:enumeration value="CeilingFan"/>
+					<xs:enumeration value="ControlledAccess"/>
+					<xs:enumeration value="Courtyard"/>
+					<xs:enumeration value="DishWasher"/>
+					<xs:enumeration value="Disposal"/>
+					<xs:enumeration value="DoubleSinkVanity"/>
+					<xs:enumeration value="Dryer"/>
+					<xs:enumeration value="Fireplace"/>
+					<xs:enumeration value="FramedMirrors"/>
+					<xs:enumeration value="Furnished"/>
+					<xs:enumeration value="Garage"/>
+					<xs:enumeration value="Handrails"/>
+					<xs:enumeration value="HardwoodFlooring"/>
+					<xs:enumeration value="HardSurfaceCounterTops"/>
+					<xs:enumeration value="Heat"/>
+					<xs:enumeration value="IndividualClimateControl"/>
+					<xs:enumeration value="IslandKitchen"/>
+					<xs:enumeration value="LaminateCounterTops"/>
+					<xs:enumeration value="VinylFlooring"/>
+					<xs:enumeration value="LargeClosets"/>
+					<xs:enumeration value="LinenCloset"/>
+					<xs:enumeration value="Microwave"/>
+					<xs:enumeration value="Pantry"/>
+					<xs:enumeration value="Patio"/>
+					<xs:enumeration value="PrivateBalcony"/>
+					<xs:enumeration value="PrivatePatio"/>
+					<xs:enumeration value="Range"/>
+					<xs:enumeration value="Refrigerator"/>
+					<xs:enumeration value="Satellite"/>
+					<xs:enumeration value="Skylight"/>
+					<xs:enumeration value="TileFlooring"/>
+					<xs:enumeration value="VaultedCeiling"/>
+					<xs:enumeration value="View"/>
+					<xs:enumeration value="Washer"/>
+					<xs:enumeration value="WheelChair"/>
+					<xs:enumeration value="WD_Hookup"/>
+					<xs:enumeration value="WindowCoverings"/>
+					<xs:enumeration value="Other"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="AmenitySubType" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Central"/>
+					<xs:enumeration value="Window"/>
+					<xs:enumeration value="Wall"/>
+					<xs:enumeration value="Gas"/>
+					<xs:enumeration value="Gas or Electric"/>
+					<xs:enumeration value="Luxury"/>
+					<xs:enumeration value="Wood"/>
+					<xs:enumeration value="Electric"/>
+					<xs:enumeration value="Radiant"/>
+					<xs:enumeration value="Decorative"/>
+					<xs:enumeration value="Unspecified"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="SeniorLivingAmenityType">
+		<xs:annotation>
+			<xs:documentation>Amenities that belong to Properties with Senior Living Facilities</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Rank" type="xs:integer" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="AmenityType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Other"/>
+					<xs:enumeration value="SkilledNursing"/>
+					<xs:enumeration value="IndependentLiving"/>
+					<xs:enumeration value="ContinuedCareRetirement"/>
+					<xs:enumeration value="AdultDayCare"/>
+					<xs:enumeration value="AlzheimersMemoryCare"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- Removed for 5.0
+	<xs:complexType name="DepositType">
+		<xs:sequence>
+			<xs:element name="Amount" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ValueRange" type="CurrencyRangeType"/>
+					</xs:sequence>
+					<xs:attribute name="AmountType" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="MonthMultiple"/>
+								<xs:enumeration value="Minimum"/>
+								<xs:enumeration value="Maximum"/>
+								<xs:enumeration value="Actual"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Description" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PercentRefundable" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="PortionRefundable" type="xs:decimal" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="DepositType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	-->
+	<xs:complexType name="RoomType">
+		<xs:sequence>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="Count" type="xs:decimal"/>
+			<xs:element name="Comment" type="xs:string"/>
+			<xs:element name="Size" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="GeneralType" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="RoomType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Bedroom"/>
+					<xs:enumeration value="Bathroom"/>
+					<xs:enumeration value="Dining Room"/>
+					<xs:enumeration value="Kitchen"/>
+					<xs:enumeration value="Sunroom"/>
+					<xs:enumeration value="Eat in Kitchen"/>
+					<xs:enumeration value="Den"/>
+					<xs:enumeration value="Other"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:attributeGroup name="MITS-RangeGroup">
+		<xs:annotation>
+			<xs:documentation>Attribute group for avg, min, and max values</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Avg" type="xs:integer" use="optional"/>
+		<xs:attribute name="Min" type="xs:integer" use="required"/>
+		<xs:attribute name="Max" type="xs:integer" use="required"/>
+	</xs:attributeGroup>
+	<!-- Removed as part of 5.0
+	<xs:complexType name="PetType">
+		<xs:annotation>
+			<xs:documentation>Pet</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="PetType" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Dog"/>
+					<xs:enumeration value="Cat"/>
+					<xs:enumeration value="Bird"/>
+					<xs:enumeration value="Reptile"/>
+					<xs:enumeration value="Fish"/>
+					<xs:enumeration value="Other"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Description" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Count" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer"/>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Size" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Huge"/>
+					<xs:enumeration value="Large"/>
+					<xs:enumeration value="Medium"/>
+					<xs:enumeration value="Small"/>
+					<xs:enumeration value="Tiny"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Weight" type="xs:string" use="optional"/>
+	</xs:complexType>-->
+	<xs:complexType name="FileType">
+		<xs:annotation>
+			<xs:documentation>Use for attaching files to Property,Building,Floorplan,Unit, and Phase</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="FileType">
+				<xs:annotation>
+					<xs:documentation>Example: photo, floorplan, logo, etc.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+						<xs:enumeration value="Photo"/>
+						<xs:enumeration value="Floorplan"/>
+						<xs:enumeration value="Logo"/>
+						<xs:enumeration value="Video"/>
+						<xs:enumeration value="Blueprint"/>
+						<xs:enumeration value="Other"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="Name">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Caption" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Text description specified for subject</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="500"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Format">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Src">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Width" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Height" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Rank">
+				<xs:annotation>
+					<xs:documentation>Relative ranking of subject file among files of similar type</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AdID" minOccurs="0"/>
+			<xs:element name="AffiliateID" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="FileID" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="50"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Active" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="StatusTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Success"/>
+			<xs:enumeration value="Failure"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--
+	<xs:complexType name="PricingType">
+		<xs:sequence>
+			<xs:element name="MITS-OfferTerm" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="OfferTermType"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OfferTermType">
+		<xs:sequence>
+			<xs:element name="EffectiveRent" type="xs:decimal"/>
+			<xs:element name="Term" type="xs:integer"/>
+			<xs:element name="DateRange">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="StartDate" minOccurs="0">
+							<xs:complexType>
+								<xs:attributeGroup ref="MITS-DateGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="EndDate" minOccurs="0">
+							<xs:complexType>
+								<xs:attributeGroup ref="MITS-DateGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	-->
+	<xs:complexType name="LeadChannelType">
+		<xs:complexContent>
+			<xs:extension base="Identification">
+				<xs:sequence>
+					<xs:element name="LeadNotification" minOccurs="1" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>
+							LeadNotification contains the exact contact data for the specified notification type.  For example, if the notification type is ‘Email’, the  LeadNotification
+							 content would be the email address itself.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:simpleContent>
+								<xs:extension base="xs:string">
+									<xs:attribute name="NotificationType" type="NotificationType"
+										use="required"/>
+								</xs:extension>
+							</xs:simpleContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="Source" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:simpleType name="NotificationType">
+		<xs:annotation>
+			<xs:documentation>		
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Email"/>
+			<xs:enumeration value="Phone"/>
+			<xs:enumeration value="FTP"/>
+			<xs:enumeration value="Webservice"/>
+			<xs:enumeration value="Chat"/>
+			<xs:enumeration value="Text"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Added to 5.0 -->
+	<xs:complexType name="ChargeOfferType">
+		<xs:sequence>
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="Limits" type="LimitsType"/>
+			<xs:element name="ChargeOfferItem" type="ChargeOfferItemType"/>
+		</xs:sequence>
+		<xs:attribute name="Code" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="ACCOUNTING">
+						<xs:annotation>
+							<xs:documentation>Charges related to financial transactions and services provided to tenants. These fees are associated with the processing and management of payments and other financial activities.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="ADMIN">
+						<xs:annotation>
+							<xs:documentation>Administrative fees generally cover the costs associated with preparing the lease, setting up the resident in the property management system, and other logistical aspects of finalizing the lease process. These fees can sometimes include move-in preparation, such as unit inspections.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="AMENITY">
+						<xs:annotation>
+							<xs:documentation>Charges for using shared building amenities, such as fitness centers, swimming pools, clubhouses, rooftop decks, or lounges. These fees help maintain and manage these facilities.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="APPLICATION">
+						<xs:annotation>
+							<xs:documentation>Application fees cover the cost of processing the application, including background checks, credit checks, and verification of income and rental history.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="CLEAN">
+						<xs:annotation>
+							<xs:documentation>Fees for cleaning services after a resident moves out, ensuring the apartment is ready for the next resident. Some leases also have cleaning charges during tenancy if certain services are requested.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="DAMAGE">
+						<xs:annotation>
+							<xs:documentation>Costs to repair any damages to the apartment caused by the resident that go beyond normal wear and tear. These may cover repairs to walls, floors, appliances, or fixtures.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="GOVT">
+						<xs:annotation>
+							<xs:documentation>Charges imposed by a government entity or jurisdiction, for example LA-area SCEP fee, Hawaii GET Tax, or Rent Board Fee.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="HOLD">
+						<xs:annotation>
+							<xs:documentation>A fee to reserve the unit for the applicant, temporarily holding it off the market until the lease begins.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="INSURANCE">
+						<xs:annotation>
+							<xs:documentation>Some properties may require residents to carry renter’s insurance, and the landlord might charge a fee for providing an insurance policy if the resident does not obtain their own. This insurance typically covers resident liability and personal property protection.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="KEY">
+						<xs:annotation>
+							<xs:documentation>Fees and deposits for keys, fobs, access cards, or lock changes. Lost keys may incur additional charges, and some properties have fees for electronic access systems.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="LEASE">
+						<xs:annotation>
+							<xs:documentation>Monthly scheduled rent charges, including any concessions, late rent charges, early payment discounts etc.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="LEGAL">
+						<xs:annotation>
+							<xs:documentation>Charges to cover the landlord’s legal expenses if they need to pursue eviction or other legal actions due to non-compliance with the lease terms.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="OTHER">
+						<xs:annotation>
+							<xs:documentation>Other/miscellaneous fees and charges
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="PARKING">
+						<xs:annotation>
+							<xs:documentation>Fees for designated parking spaces, covered parking, garages, or visitor parking permits. Prices vary based on the type of parking offered.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="PET">
+						<xs:annotation>
+							<xs:documentation>These include monthly pet rent, pet deposits, or cleaning fees for residents with pets. Additional charges may apply for damages caused by pets.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="SERVICE">
+						<xs:annotation>
+							<xs:documentation>Broadly cover services like trash collection, pest control, common area maintenance, landscaping, or snow removal.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="STORAGE">
+						<xs:annotation>
+							<xs:documentation>Fees for storage units, bike storage spaces, or other designated storage areas on the property.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="TECH">
+						<xs:annotation>
+							<xs:documentation>Charges for optional internet, cable, or other connectivity services provided by the building. Some apartments bundle these into a technology fee or provide a third-party package option.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="TERM">
+						<xs:annotation>
+							<xs:documentation>Fees for breaking a lease before its expiration date. These may cover lost rent, re-leasing expenses, and sometimes a specific penalty amount.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="TRANSFER">
+						<xs:annotation>
+							<xs:documentation>Fees for residents who wish to transfer to a different unit within the same property. These cover administrative and preparation costs for the new unit.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="UPGRADE">
+						<xs:annotation>
+							<xs:documentation>Non-essential/optional improvements or additions to the unit that the tenant can make. These fees are for tenant-selected upgrades that go beyond the standard offerings.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="UTILITY">
+						<xs:annotation>
+							<xs:documentation>Charges for utilities like electricity, water, gas, and sewer (but not trash – see SERVICE). Some leases include utilities, while others bill usage based on direct consumption.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="VIOLATION">
+						<xs:annotation>
+							<xs:documentation>Charges imposed due to breaches of lease agreements or noncompliance with property rules and regulations. These fees are intended to address and rectify tenant actions that violate the terms of the lease or community standards. Examples include smoking and package service violations. Some violations may be included under the more specific classes instead, for example PET.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="LimitsType">
+		<xs:annotation>
+			<xs:documentation>Restrict the maximum number or the maximum amount of items that appear in the charge class, for example to restrict the total number of storage spaces, or the maximum monthly pet rent.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MaximumOccurences" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>The maximum number of items in the class, or – if Applies To or Characteristics are specified – the maximum number of items of the specified item types.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaximumAmount" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>The maximum total amount of items in the class, or – if Applies To or Characteristics are specified – the maximum number of items of the specified item types.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="AppliesTo">
+				<xs:annotation>
+					<xs:documentation>The specific item types (by Internal Code) that this maximum applies to. If omitted, it applies to all internal codes in the class meeting any Characteristic constraints.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="InternalCode"
+							type="xs:string">
+							<xs:annotation>
+								<xs:documentation>The internal code of the specific items that are included in this limit, e.g. PETDOG, PETCAT
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Characteristic" type="CharacteristicsType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CharacteristicsType">
+		<xs:annotation>
+			<xs:documentation>The specific characteristics of items that are included in this limit. Any characteristics that are not specified are assumed to be allowed any value. If omitted, the limit applies to all characteristics in the class meeting any Applies To constraint. For example, this could be used to place a maximum monetary amount on non-refundable monthly pet charges, without including deposit items.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ChargeRequirement">
+				<xs:annotation>
+					<xs:documentation>Included, Mandatory, Situational, Conditional, or Optional
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Included">
+							<xs:annotation>
+								<xs:documentation>This item is included – there is no additional charge. Typically used for items that are usually chargeable, rather than general amenities.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Mandatory">
+							<xs:annotation>
+								<xs:documentation>This item will be charged in all circumstances.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Situational">
+							<xs:annotation>
+								<xs:documentation>This item will be charged in certain situations – for example when damage is caused by pets, early termination, or late fees.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Optional">
+							<xs:annotation>
+								<xs:documentation>This item is used at the discretion of the resident, for example renting a party room, or guest suite.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Conditional">
+							<xs:annotation>
+								<xs:documentation>This Charge depends on the presence of another (optional) internal code. If the other code is present, then this conditional Charge is automatically included. 
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element maxOccurs="1" minOccurs="0" name="ConditionalAppliesTo">
+				<xs:annotation>
+					<xs:documentation>If the Charge Requirement is Conditional, this specifies the internal code(s) of the Charge Offer Item(s) the presence of (or any one of) will trigger the automatic inclusion of this Charge Offer Item
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" minOccurs="0" name="InternalCode"
+							type="xs:string">
+							<xs:annotation>
+								<xs:documentation>Charge Offer Item internal code
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RequirementDescription" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description of the conditions under which situational or optional charges will be applied.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Refundability">
+				<xs:annotation>
+					<xs:documentation>Determines whether this item is never refunded, expected to be refunded (e.g. a deposit), or possibly refunded (e.g. a hold fee).
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Non-refundable">
+							<xs:annotation>
+								<xs:documentation>This item is not refundable under any circumstances.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Deposit">
+							<xs:annotation>
+								<xs:documentation>This item is expected to be refunded providing the terms are not broken, for example a rent security deposit or pet damage deposit.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Refundable">
+							<xs:annotation>
+								<xs:documentation>This item is not expected to be refunded, but may be (either fully or partially) in some circumstances.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RefundabilityMaxType">
+				<xs:annotation>
+					<xs:documentation>Determines whether the maximum amount refundable is specified as an explicit amount or as a percentage of the amount paid.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Amount">
+							<xs:annotation>
+								<xs:documentation>The maximum refund of a fee is specified by an explicit monetary amount.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Percentage">
+							<xs:annotation>
+								<xs:documentation>The maximum refund of a fee is specified as a percentage of the fee paid.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RefundabilityMax" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>The maximum monetary amount (if Refundability Max Type is amount) or percentage (if Refundability Max Type is percentage) of this fee that could be refunded. For percentages, ‘1’ = 100%.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RefundabilityDescription" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description of the terms that apply to return of deposits or refunds.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element minOccurs="0" name="RefundabilityPerType">
+				<xs:annotation>
+					<xs:documentation>Where a refundability maximum is specified, and this item Amount Per Type is either Applicant or Person, this attribute specifies whether the refundability max applies to each per-entity (i.e. per applicant/per person) or whether the max applies to the aggregate of all applicants/people.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Item">
+							<xs:annotation>
+								<xs:documentation>The charge applies once in each item or occurrence.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Leaseholder">
+							<xs:annotation>
+								<xs:documentation>The charge will apply for each person applying, or – if the application is successful – each person named on the lease.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Person">
+							<xs:annotation>
+								<xs:documentation>The charge will apply for each person, for example for each guest in the guest suite, or for each person resident in the unit.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Period">
+							<xs:annotation>
+								<xs:documentation>The charge applies for each period, the duration of which is separately specified. For example, per day or per quarter.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Lifecycle">
+				<xs:annotation>
+					<xs:documentation>The stage in the lifecycle of the resident’s lease that this item relates to.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Pre-application">
+							<xs:annotation>
+								<xs:documentation>Anything prior to application submission.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="At Application">
+							<xs:annotation>
+								<xs:documentation>Application submission.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Approved Future Resident">
+							<xs:annotation>
+								<xs:documentation>Application approved, but not yet moving-in.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Move-in">
+							<xs:annotation>
+								<xs:documentation>Associated specifically with the move-in.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="During Term">
+							<xs:annotation>
+								<xs:documentation>Within the term-of the lease.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Renewal">
+							<xs:annotation>
+								<xs:documentation>Associated specifically with a renewal.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Move-out">
+							<xs:annotation>
+								<xs:documentation>Associated specifically with the move-out.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Past Resident">
+							<xs:annotation>
+								<xs:documentation>Lease now expired and move-out completed.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Transfer">
+							<xs:annotation>
+								<xs:documentation>Associated with a transfer from one unit to another.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Other">
+							<xs:annotation>
+								<xs:documentation>Other not in any of the above.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PaymentFrequency">
+				<xs:annotation>
+					<xs:documentation>The frequency on which the amounts specified in this item will be payable.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="One-time">
+							<xs:annotation>
+								<xs:documentation>Paid only once.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Per-occurrence">
+							<xs:annotation>
+								<xs:documentation>Paid each time an item is used or an event takes place.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Hourly">
+							<xs:annotation>
+								<xs:documentation>Paid per hour.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="24h">
+							<xs:annotation>
+								<xs:documentation>Paid once in each 24 hour period (e.g. daily or nightly).
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Weekly">
+							<xs:annotation>
+								<xs:documentation>Paid every week.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Bi-weekly">
+							<xs:annotation>
+								<xs:documentation>Paid every two weeks.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Monthly">
+							<xs:annotation>
+								<xs:documentation>Paid every month.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Bi-monthly">
+							<xs:annotation>
+								<xs:documentation>Paid every two months.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Quarterly">
+							<xs:annotation>
+								<xs:documentation>Paid every quarter.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Triannually">
+							<xs:annotation>
+								<xs:documentation>Paid three times per year.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Semi-annually">
+							<xs:annotation>
+								<xs:documentation>Paid twice per year.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Annually">
+							<xs:annotation>
+								<xs:documentation>Paid once per year.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Other">
+							<xs:annotation>
+								<xs:documentation>Some other payment frequency – see description.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChargeOfferItemType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Short name indicating what the charge is for, using the operator’s preferred customer-facing language.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Description of the charge explaining what the charge is for using the operator’s preferred customer-facing language, including what the resident gets for the charge, or why they are being charged. This can also include an explanation of fees that are variable (e.g. what the variability depends upon).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Group" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>In some cases, and operator may have a preferred grouping of fees. When this is the case, this preference should be provided here using the customer-facing name of the group under which this fee would preferably be listed.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Characteristics" type="CharacteristicsType">
+				<xs:annotation>
+					<xs:documentation>A set of additional characteristics (or metadata) about the charge that can be used to make it easier for the resident to see specific charges and to allow pricing calculators to treat each charge appropriately.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ItemMinimumOccurrences" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>If this item is subject to a minimum, it should be specified here. </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ItemMaximumOccurrences" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>If this item is subject to a maximum, it should be specified here. This can be used to limit items to one, or a specific number (e.g. pet dogs might be limited to a maximum of 2). If omitted, it is assumed that there is no limit on the number of individual items of this type that can be added. If class level limits are also specified, then the lowed of the two maximums is used.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountBasis">
+				<xs:annotation>
+					<xs:documentation>Explicit Amount, Percentage Of, Stepped, or Within Range
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Explicit Amount">
+							<xs:annotation>
+								<xs:documentation>The amount is specified as an explicit fixed monetary amount.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Percentage Of">
+							<xs:annotation>
+								<xs:documentation>The amount is calculated as a specified percentage of another Charge Offer amount.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Within Range">
+							<xs:annotation>
+								<xs:documentation>The amount will lie within a specified range of monetary amounts.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Stepped">
+							<xs:annotation>
+								<xs:documentation>The amount has specific stepped pricing for the first occurrence of the item and each subsequent occurrence.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Variable">
+							<xs:annotation>
+								<xs:documentation>The amount of the fee varies depending on some other factors, for example electricity usage.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PercentageOfCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>If Amount Basis is Percentage Of, the Internal Code that this Item is calculated as a percentage of.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AmountPerType">
+				<xs:annotation>
+					<xs:documentation>Specifies what triggers a repeat of this charge. For example, per Unit would mean the charge is only incurred once per unit (for example, ‘monthly rent’), whereas per Person would indicate the charge is repeated for each Person using an item or taking part in an event (for example ‘overnight stay in guest suite’).
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Item">
+							<xs:annotation>
+								<xs:documentation>The charge applies once in each item or occurrence.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Leaseholder">
+							<xs:annotation>
+								<xs:documentation>The charge will apply for each person applying, or – if the application is successful – each person named on the lease.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Person">
+							<xs:annotation>
+								<xs:documentation>The charge will apply for each person, for example for each guest in the guest suite, or for each person resident in the unit.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Period">
+							<xs:annotation>
+								<xs:documentation>The charge applies for each period, the duration of which is separately specified. For example, per day or per quarter.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AmountPerPeriod" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>For fees that have an Amount Per Type of Period, what is the duration of each period.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ApplicableToAffordableUnits">
+				<xs:annotation>
+					<xs:documentation>Indicates whether or not this specific fee applies to units that are identified as affordable. It may be omitted if there are no affordable units I the scope.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ChargeOfferAmount" type="ChargeOfferAmountType" maxOccurs="unbounded"
+				minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="InternalCode" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Internal Code, specific to each data publisher.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ParkingOfferItemType">
+		<xs:complexContent>
+			<xs:extension base="ChargeOfferItemType">
+				<xs:sequence>
+					<xs:element name="StructureType">
+						<xs:annotation>
+							<xs:documentation>Information about the structure that contains the parking.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Surface Lot">
+									<xs:annotation>
+										<xs:documentation>Uncovered parking, typically at ground level.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Garage Lot">
+									<xs:annotation>
+										<xs:documentation>Parking within a parking structure, usually comprising multiple levels with most or all covered.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Covered Lot">
+									<xs:annotation>
+										<xs:documentation>Parking that is open-sided but that has cover above.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Street">
+									<xs:annotation>
+										<xs:documentation>Parking is on the street.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Other"/>
+								<xs:enumeration value="Garage (attached)">
+									<xs:annotation>
+										<xs:documentation>Parking is in a private garage attached to the unit.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Garage (detached)">
+									<xs:annotation>
+										<xs:documentation>Parking is in a private garage that is separated from the unit.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="None">
+									<xs:annotation>
+										<xs:documentation>No parking is available.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="SizeType">
+						<xs:annotation>
+							<xs:documentation>Describes the general size of each parking space by reference to the kind of vehicle it is designed to accommodate.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Motorcycle">
+									<xs:annotation>
+										<xs:documentation>Suitably sized for a motorcycle.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Compact">
+									<xs:annotation>
+										<xs:documentation>Suitably sized for a compact car.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Car">
+									<xs:annotation>
+										<xs:documentation>Suitably sized for a car.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Extended (RV/Boat)">
+									<xs:annotation>
+										<xs:documentation>Suitably sized for an RV, boat or similar
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Other"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="RegularSpace">
+						<xs:annotation>
+							<xs:documentation>Specifies whether regular parking (i.e. not enhanced with EV or handicapped access) is available, and – if so – whether it is also reservable.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Available">
+									<xs:annotation>
+										<xs:documentation>This item type is available, but not reservable.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Reservable">
+									<xs:annotation>
+										<xs:documentation>This item type is available and reservable. This indicates that you are entitled to use any items of the specified type, and this is guaranteed.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="None">
+									<xs:annotation>
+										<xs:documentation>This item type is not available.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Handicapped">
+						<xs:annotation>
+							<xs:documentation>Specifies whether handicapped parking is available, and – if so – whether it is also reservable.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Available">
+									<xs:annotation>
+										<xs:documentation>This item type is available, but not reservable.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Reservable">
+									<xs:annotation>
+										<xs:documentation>This item type is available and reservable. This indicates that you are entitled to use any items of the specified type, and this is guaranteed.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="None">
+									<xs:annotation>
+										<xs:documentation>This item type is not available.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Electric">
+						<xs:annotation>
+							<xs:documentation>Specifies whether parking space with electric vehicle charging points are available, and – if so – whether they are also reservable.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Available">
+									<xs:annotation>
+										<xs:documentation>This item type is available, but not reservable.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Reservable">
+									<xs:annotation>
+										<xs:documentation>This item type is available and reservable. This indicates that you are entitled to use any items of the specified type, and this is guaranteed.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="None">
+									<xs:annotation>
+										<xs:documentation>This item type is not available.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="SpaceDescription" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>A narrative description of the space, include information about the mix of different types (e.g. “50 spaces in the surface lot, including 5 designated handicapped spaces, and 10 EV charging spaces”
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="StorageOfferItemType">
+		<xs:complexContent>
+			<xs:extension base="ChargeOfferItemType">
+				<xs:sequence>
+					<xs:element name="StorageType">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Bike">
+									<xs:annotation>
+										<xs:documentation>Storage for one bike.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Closet">
+									<xs:annotation>
+										<xs:documentation>A tall cupboard or wardrobe with a door.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Locker">
+									<xs:annotation>
+										<xs:documentation>A small lockable cupboard or compartment attached to the wall or floor.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Other"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="StorageUoM">
+						<xs:annotation>
+							<xs:documentation>The units of measurement used for the dimensions that follow
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Inch">
+									<xs:annotation>
+										<xs:documentation>Measurement specified in inches.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Foot">
+									<xs:annotation>
+										<xs:documentation>Measurement specified in feet.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Yard">
+									<xs:annotation>
+										<xs:documentation>Measurement specified in yards.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+								<xs:enumeration value="Meter">
+									<xs:annotation>
+										<xs:documentation>Measurement specified in meters.
+										</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Height" type="xs:decimal">
+						<xs:annotation>
+							<xs:documentation>The internal height of the storage space.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Width" type="xs:decimal">
+						<xs:annotation>
+							<xs:documentation>The internal width of the storage space.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Length" type="xs:decimal">
+						<xs:annotation>
+							<xs:documentation>The internal length of the storage space.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PetOfferItemType">
+		<xs:complexContent>
+			<xs:extension base="ChargeOfferItemType">
+				<xs:sequence>
+					<xs:element name="Allowed">
+						<xs:annotation>
+							<xs:documentation>Indicates whether the specified type of pet (or all pets if no type is specified) are allowed.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Yes"/>
+								<xs:enumeration value="No"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="PetBreedorType" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>The breed (e.g. Airedale Terrier) or type of pet (e.g. Snake) that this item applies to.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MaximumSize" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Describes the maximum size of the pet.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MaximumWeight" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Describes the maximum weight of the pet.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PetCare">
+						<xs:annotation>
+							<xs:documentation>Indicates whether pet care is available at the property.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Yes"/>
+								<xs:enumeration value="No"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ChargeOfferAmountType">
+		<xs:sequence>
+			<xs:element name="Amounts" type="xs:decimal" maxOccurs="unbounded" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If the Amount Basis is Fixed Amount, the list contains one specific amount.
+						
+						If the Amount Basis is Within Range, the list contains two amounts, the first being the lowest amount in the range and the second being the highest amount in the range.
+						
+						If the Amount Basis is Stepped, the list contains the amount for each subsequent item – i.e. the first amount is the price for the first occurrence, the second amount is for the second occurrence and so on. If there is no maximum number of occurrences, or if the maximum is greater than the number of amounts in the list, the last amount will be used for subsequent occurrences.
+						
+						Negative amounts indicate credits to the customer account (e.g. concessions). Positive amounts indicate debits (i.e. charges).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Percentage" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>If the Amount Basis is Percentage Of, the percentage.  Negative percentages indicate credits to the customer account (e.g. concessions). Positive percentages indicate debits (i.e. charges).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TermBasis">
+				<xs:annotation>
+					<xs:documentation>Whole Lease or Specific Term.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Whole Lease">
+							<xs:annotation>
+								<xs:documentation>The period for which the offer applies is the same as the term of the lease.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Specific Term">
+							<xs:annotation>
+								<xs:documentation>The period for which the offer applies is expressed as a duration (in months) and a start offset (in months) from the start of the lease.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="StartTermEarliest" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>If Term Basis is Specific Term, the start date of the specific term, or the earliest date in a range that the Specific Term start date lies. If omitted, any Specific Term start date preceding the Start Term Latest qualifies for this offer.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="StartTermLatest" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>If Term Basis is Specific Term, the latest date in a range that the Specific Term start date lies. If omitted, the Specific Term can start any time after the given Start Term Earliest. If the same as the Start Term Earliest date, then that is the only Specific Term start date on which this Charge Offer Amount applies.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Duration" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>The number of periods committed to, where the duration of each period is specified in the corresponding Charge Offer Item’s Payment Frequency.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Estimate" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>If true, this amount is an estimate, and the actual amount charged could therefore be different.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EstimationBasis" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>For estimated amounts, this narratively describes the basis of the estimation, for example utility company estimate, or average for the area.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MITS Collections Data Standard (draft 3.0e - 20080926) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCoreData30.xsd"/>
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCustomExtension.xsd"/>
+	<xs:element name="MITS-Collections">
+		<xs:annotation>
+			<xs:documentation>MITS Collections Data Standard (draft 3.0e - 20080926)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Summary" type="C_SummaryType">
+					<xs:annotation>
+						<xs:documentation>Summary data as a redundant check against concurrency, duplication and parsing errors</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PropertyFiles" type="C_PropertyFilesType">
+					<xs:annotation>
+						<xs:documentation>Property Data</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="C_SummaryType">
+		<xs:annotation>
+			<xs:documentation>Collections 'SummaryType' used to house elements as redundant checks against concurrency, duplication and parsing errors</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MITSDocVersion" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>MITS Collection Data Standard Version, (e.g. 3.0x)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GenerationTimeStamp" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Date and Time XML generated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SourceOrganization" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>From where the XML file originates</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalProperties" type="xs:int"/>
+			<xs:element name="TotalLeaseFiles" type="xs:int"/>
+			<xs:element name="TotalTenants" type="xs:int"/>
+			<xs:element name="TotalOpenAmount" type="MITS-Currency" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_PropertyFilesType">
+		<xs:annotation>
+			<xs:documentation>Collections 'PropertyFileTypes' used to group property details</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PropertyFile" type="C_PropertyFileType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_PropertyFileType">
+		<xs:annotation>
+			<xs:documentation>Collections 'PropertyFileType' used to describe property details</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Property" type="PropertyType">
+				<xs:annotation>
+					<xs:documentation>Property Details. (Mits Core Data 3.0 - PropertyType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PropertyManager" type="PersonType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Main contact at property pertaining to collections. (Mits Core Data 3.0 - PersonType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PropertyManagementCompany" type="CompanyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>PMC Details. (Mits Core Data 3.0 - CompanyType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OwnerChanged" type="C_OwnerChangedType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>If populated, then property ownership / management has changed</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LeaseFiles" type="C_LeaseFilesType">
+				<xs:annotation>
+					<xs:documentation>Lease Collection Data</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_OwnerChangedType">
+		<xs:annotation>
+			<xs:documentation>Collections 'OwnerChangedType' used to house the new owners information in the case where a property changes owners / property management company</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="NewOwner" type="CompanyType" minOccurs="0"/>
+			<xs:element name="ChangedOn" type="xs:date" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_LeaseFilesType">
+		<xs:annotation>
+			<xs:documentation>Collections 'LeaseFileType' used to describe lease/debt details</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="LeaseFile" type="C_LeaseFileType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_LeaseFileType">
+		<xs:annotation>
+			<xs:documentation>Collections 'LeaseFileType' used to describe lease/debt details</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:annotation>
+						<xs:documentation>
+Other ID's that can be added to the LeaseFile other than a uniquely identifying LeaseID are the following ID's: (BuildingID,UnitID,CollectionsReferenceID) and the common cases are described.
+BuildingID: Detailing the actual building to which this lease applies.
+UnitID: Detailing the actual unit to which this lease applies.
+CollectionsReferenceID: Optional unique reference ID used by collections agency when transmitting the any information back to the property / property management company.</xs:documentation>
+					</xs:annotation>
+					<xs:element name="CollectionStatus" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>Status of Collection Account (Active=True, Inactive=False)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CollectionStatusLastChangeDate" type="xs:date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Date of last Status change</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CollectionStatusDesc" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Description of account status</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="HousingType" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Description of type of housing</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="MoveInDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="MoveOutDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="NoticeToVacateDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="LeaseBegin" type="xs:date" minOccurs="0"/>
+					<xs:element name="LeaseEnd" type="xs:date" minOccurs="0"/>
+					<xs:element name="MonthlyRentAmount" type="xs:double" minOccurs="0"/>
+					<xs:element name="RentDueFromDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="RentDueToDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="LastPaymentDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="Tenants" type="C_TenantType" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>All tenants on lease</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FileTransactions" type="C_FileTransactionType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>All lease / other transactions that make up the open balance</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CollectionTransaction" type="C_CollectionTransactionType" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>All transactions on the account subsequent to placement with collections made by the collections agency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="C_FileTransactionType">
+		<xs:annotation>
+			<xs:documentation>Collections 'FileTransactionType' used to describe tenants charges and payments</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="TransDate" type="xs:date"/>
+					<xs:element name="TransTypeDesc" type="xs:string" minOccurs="0"/>
+					<xs:element name="TransType" type="C_TransactionType"/>
+					<xs:element name="TransAmount" type="MITS-Currency"/>
+					<xs:element name="OpenAmount" type="MITS-Currency" minOccurs="0"/>
+					<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="C_CollectionTransactionType">
+		<xs:annotation>
+			<xs:documentation>Collections 'CollectionTransactionType' used to describe tenants charges and payments after account has been placed with collections</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentificationType">
+				<xs:sequence>
+					<xs:element name="TransDate" type="xs:date"/>
+					<xs:element name="TransType" type="C_TransactionType"/>
+					<xs:element name="TransTypeDesc" type="xs:string" minOccurs="0"/>
+					<xs:element name="TransAmount" type="MITS-Currency"/>
+					<xs:element name="AgencyFee" type="MITS-Currency" minOccurs="0"/>
+					<xs:element name="AmountDueClient" type="MITS-Currency" minOccurs="0"/>
+					<xs:element name="CommissionPercentage" type="C_PercentageType" minOccurs="0"/>
+					<xs:element name="RemainingBalance" type="MITS-Currency" minOccurs="0"/>
+					<xs:element name="SalesTax" type="MITS-Currency" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Populated if applicable (may be required by State Law)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="FileTransactionIDRef" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Populated if applicable/possible to tie transaction to specific file charge</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="C_TenantType">
+		<xs:annotation>
+			<xs:documentation>Collections 'ResidentType' used to describe tenantresident</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PersonDetails" type="PersonType">
+				<xs:annotation>
+					<xs:documentation>Tenants Details. (Mits Core Data 3.0 - PersonType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DateOfBirth" type="xs:date" minOccurs="0"/>
+			<xs:element name="SSN" type="xs:string" minOccurs="0"/>
+			<xs:element name="DriversLicense" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankName" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankRoutingNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="BankAccountNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="Guarantor" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Set to True if tenant is guarantor</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Income" type="C_IncomeType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation>Incomes other than employment income</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Employer" type="C_EmployerType" minOccurs="0" maxOccurs="5"/>
+			<xs:element name="Contact" type="PersonType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation>Emergency Contact Details. (Mits Core Data 3.0 - PersonType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_EmployerType">
+		<xs:annotation>
+			<xs:documentation>Collections 'EmployerType' used to describe tenants employer</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="EmployerDetails" type="CompanyType">
+				<xs:annotation>
+					<xs:documentation>Employer Details (Mits Core Data 3.0 - CompanyType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Income" type="C_IncomeType" minOccurs="0" maxOccurs="5">
+				<xs:annotation>
+					<xs:documentation>Incomes derived from the employment in question</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JobTitle" type="xs:string" minOccurs="0"/>
+			<xs:element name="SupervisorName" type="xs:string" minOccurs="0"/>
+			<xs:element name="SupervisorContactNumber" type="PhoneType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Supervisor Contact Details. (Mits Core Data 3.0 - PhoneType)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LastDateEmployed" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If populated, implies that employment is not longer active</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="C_IncomeType">
+		<xs:annotation>
+			<xs:documentation>Collections 'IncomeType' used to describe sources of income</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IncomeSource" type="xs:string" minOccurs="0"/>
+			<xs:element name="IncomeAmount" type="xs:double"/>
+			<xs:element name="PaymentPeriod" type="C_PaymentPeriodType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="C_PaymentPeriodType">
+		<xs:annotation>
+			<xs:documentation>Collections 'PaymentPeriodType' used to describe frequency of payment</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Annually"/>
+			<xs:enumeration value="Quarterly"/>
+			<xs:enumeration value="Monthly"/>
+			<xs:enumeration value="BiWeekly"/>
+			<xs:enumeration value="Weekly"/>
+			<xs:enumeration value="Daily"/>
+			<xs:enumeration value="Hourly"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C_PercentageType">
+		<xs:annotation>
+			<xs:documentation>Collections 'PercentageType' used to describe a percentage amount, e.g. "12.34%" or "80% etc..."</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="100.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="C_TransactionType">
+		<xs:annotation>
+			<xs:documentation>Collections 'TransactionType' used to classify types of transactions</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Charge"/>
+			<xs:enumeration value="Payment"/>
+			<xs:enumeration value="Adjustment"/>
+			<xs:enumeration value="Cancellation"/>
+			<xs:enumeration value="Settlement"/>
+			<xs:enumeration value="DirectPayment"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
