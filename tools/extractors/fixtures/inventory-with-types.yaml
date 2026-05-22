@@ -1,0 +1,68 @@
+standard: example-xsd-standard
+module: example
+version: '1.0'
+source_artifact: tests/fixtures/example.xsd
+extractor: cora_extractors.xsd@0.0.0
+extracted_at: '2026-05-22T00:00:00Z'
+namespace_hint: https://example.org/standard/1.0#
+types:
+- name: Property
+  abstract: false
+  definition: A real-asset property record.
+  source_location: example.xsd:18
+- name: Address
+  abstract: false
+  definition: Postal address of a property.
+  source_location: example.xsd:42
+- name: ResidentialProperty
+  extends: Property
+  abstract: false
+  definition: Property held for residential use.
+  source_location: example.xsd:71
+fields:
+- path: Property/id
+  domain: Property
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Unique identifier of the property.
+  source_location: example.xsd:20
+- path: Property/address
+  domain: Property
+  range: Address
+  is_reference: true
+  cardinality: optional
+  definition: Postal address of the property.
+  source_location: example.xsd:23
+- path: Property/status
+  domain: Property
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Lifecycle status of the property record.
+  source_location: example.xsd:27
+  enumeration:
+  - active
+  - inactive
+  - archived
+- path: Property/tenants
+  domain: Property
+  range: xs:string
+  is_reference: false
+  cardinality: repeating
+  definition: Names of current tenants.
+  source_location: example.xsd:32
+- path: Address/street
+  domain: Address
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Street line of the address.
+  source_location: example.xsd:44
+- path: ResidentialProperty/owner_occupied
+  domain: ResidentialProperty
+  range: xs:boolean
+  is_reference: false
+  cardinality: optional
+  definition: True when the property is owner-occupied.
+  source_location: example.xsd:73

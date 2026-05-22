@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://coradata.org/schemas/inventory.schema.json",
+  "title": "CORA Field Inventory",
+  "description": "Normalized per-module field inventory extracted from a standard's native artifact. The wire serialization of cora_extractors.inventory.Inventory.",
+  "type": "object",
+  "required": ["standard", "module", "version", "source_artifact", "extractor", "extracted_at", "fields"],
+  "additionalProperties": false,
+  "properties": {
+    "standard": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short identifier of the standard (e.g. 'mits', 'ibpdi', 'redi')."
+    },
+    "module": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Module within the standard (e.g. 'property-marketing', 'lead-management', 'data-fields')."
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Version label of the source artifact this inventory was extracted from."
+    },
+    "source_artifact": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repo-relative path or URL of the native artifact this was extracted from."
+    },
+    "extractor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier of the extractor that produced this inventory, in the form 'module.name@version' (e.g. 'cora_extractors.xsd@0.0.0')."
+    },
+    "extracted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when this inventory was produced."
+    },
+    "namespace_hint": {
+      "type": "string",
+      "description": "Optional URI hint for the OWL/RDF projection's namespace. Has no effect at the inventory layer."
+    },
+    "types": {
+      "type": "array",
+      "description": "Complex types declared by this module. Required for standards with class hierarchies (XSD, SQL). May be empty or omitted for flat-table standards (Excel data dictionaries).",
+      "items": { "$ref": "#/$defs/typeEntry" }
+    },
+    "fields": {
+      "type": "array",
+      "description": "Field entries — every addressable leaf in this module.",
+      "items": { "$ref": "#/$defs/fieldEntry" }
+    }
+  },
+  "$defs": {
+    "typeEntry": {
+      "type": "object",
+      "required": ["name"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Type identifier, unique within the module."
+        },
+        "extends": {
+          "type": ["string", "null"],
+          "description": "Name of a parent type within this inventory's types[]. Becomes rdfs:subClassOf in the OWL projection."
+        },
+        "abstract": {
+          "type": "boolean",
+          "default": false,
+          "description": "True if this type cannot be instantiated directly."
+        },
+        "definition": {
+          "type": "string",
+          "default": "",
+          "description": "Human-readable description of the type. Sourced from xs:annotation/xs:documentation or equivalent."
+        },
+        "source_location": {
+          "type": ["string", "null"],
+          "description": "Reference back to the native artifact (e.g. file:line)."
+        }
+      }
+    },
+    "fieldEntry": {
+      "type": "object",
+      "required": ["path", "cardinality"],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical field reference constructed by cora_extractors.path.build. Crosswalks reference this value."
+        },
+        "concept_id": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z][a-z0-9_]*$",
+          "description": "Optional slugged crosswalk concept identifier."
+        },
+        "domain": {
+          "type": ["string", "null"],
+          "description": "Name of the containing type from types[]. Required when types[] is non-empty; optional in flat-table inventories."
+        },
+        "range": {
+          "type": ["string", "null"],
+          "description": "Either a primitive type name (e.g. 'xs:string') for datatype properties or a type name from types[] for object properties."
+        },
+        "is_reference": {
+          "type": "boolean",
+          "default": false,
+          "description": "True if this field is an object reference (owl:ObjectProperty); false if a datatype value (owl:DatatypeProperty)."
+        },
+        "cardinality": {
+          "type": "string",
+          "enum": ["required", "optional", "repeating"],
+          "description": "Occurrence semantics of this field on instances of its domain."
+        },
+        "definition": {
+          "type": "string",
+          "default": "",
+          "description": "Human-readable description of the field."
+        },
+        "source_location": {
+          "type": ["string", "null"],
+          "description": "Reference back to the native artifact (e.g. file:line or sheet!cell)."
+        },
+        "enumeration": {
+          "type": ["array", "null"],
+          "items": { "type": "string" },
+          "description": "Allowed values, if the source declares them."
+        }
+      }
+    }
+  }
+}

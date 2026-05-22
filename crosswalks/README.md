@@ -7,6 +7,8 @@ Cross-standard mappings between concepts. Each crosswalk records:
 - A confidence score per mapping: `exact`, `close`, `partial`, or `divergent`
 - A written narrative for any `divergent` mapping
 
+The `field` value in each `mappings.<standard>` block is an inventory `path` — see [`docs/field-inventory.md`](../docs/field-inventory.md) for the path grammar and where inventories live. Crosswalks should reference paths that resolve against the standard's committed inventory; the crosswalk-paths validator (Phase 4 of the inventory plan) enforces this in CI.
+
 Layout:
 
 ```
