@@ -6,7 +6,7 @@ CORA is a public, vendor-neutral home for the data standards that describe real 
 
 This repository is the canonical source for everything CORA publishes. The public-facing project home is [coradata.org](https://coradata.org).
 
-> **Status: bootstrap.** The repository is being initialized. License is Apache 2.0 + CC BY 4.0 (pending Legal review). The first content drop is a mirror of [IBPDI](https://github.com/ibpdi/cdm)'s Common Data Model under its existing CC BY 4.0 + MIT terms, which requires no upstream permission. [MITS](https://rettc.org/mits-data-models) has been onboarded as CORA's first participating standard under permission from RETTC; see [`standards/mits/`](standards/mits/).
+> **Status: bootstrap.** The repository is being initialized. License is Apache 2.0 + CC BY 4.0 (pending Legal review). The first content drop is a mirror of [IBPDI](https://github.com/ibpdi/cdm)'s Common Data Model under its existing CC BY 4.0 + MIT terms, which requires no upstream permission. [MITS](https://rettc.org/mits-data-models) has been onboarded as a participating standard under permission from RETTC; see [`standards/mits/`](standards/mits/). [REDI](https://realestatedatainitiative.netlify.app/) has been onboarded as a participating standard under permission from the REDI Data Model Sub-Committee; see [`standards/redi/`](standards/redi/).
 
 ---
 
@@ -54,13 +54,13 @@ Where CORA's scope touches one of these, the relationship is documented and the 
 
 ## Standards we are working with
 
-CORA goes live with two hosted standards: IBPDI (bootstrap mirror under upstream open licenses) and MITS (participating, under permission from RETTC). Everything else listed below is a future invitation, not an announcement. Each row reflects the actual state of the conversation, not an aspiration.
+CORA goes live with three hosted standards: IBPDI (bootstrap mirror under upstream open licenses), MITS (participating, under permission from RETTC), and REDI (participating, under permission from the REDI Data Model Sub-Committee). Everything else listed below is a future invitation, not an announcement. Each row reflects the actual state of the conversation, not an aspiration.
 
 | Standard | Owner | CORA status |
 |---|---|---|
 | [IBPDI CDM](https://github.com/ibpdi/cdm) | International Building Performance & Data Initiative | **Bootstrap mirror.** CC BY 4.0 + MIT licensing; no upstream permission required. CORA mirrors the CDM as published. |
 | [MITS](https://rettc.org/mits-data-models) | RETTC | **Participating.** Mirrored under permission from RETTC. Native XSD/XML schemas and supporting docs hosted as published; derived OWL/RDF, JSON-LD, and JSON Schema to follow once the derivation pipeline is operational. |
-| [REDI](https://realestatedatainitiative.netlify.app/) Data Model | Real Estate Data Initiative (LP-led) | **Future invitation.** REDI has a committee-approved model with INREV and NCREIF mappings, owned and operated by REDI's committee. If REDI chooses, CORA can host derived formats, crosswalks, and a drift register. The decision belongs to REDI. |
+| [REDI](https://realestatedatainitiative.netlify.app/) Data Model | Real Estate Data Initiative (LP-led) | **Participating.** Mirrored under permission from the REDI Data Model Sub-Committee. Native v1.0 workbook hosted as published; derived OWL/RDF, JSON-LD, and JSON Schema to follow once the derivation pipeline is operational. Native cross-mappings to NCREIF/PREA Reporting Standards and INREV preserved for future crosswalks. |
 | [OSCRE IDM](https://www.oscre.org/Industry-Data-Model) and Smart Data Highway | OSCRE | **Future invitation.** OSCRE's Smart Data Highway initiative is its own program. If OSCRE decides hosting infrastructure outside its own perimeter is useful, CORA can offer it. |
 | [NCREIF / PREA Reporting Standards](https://reportingstandards.info/), [INREV](https://www.inrev.org/standards), ANREV | NCREIF, INREV, ANREV, PREA | **Future invitation.** |
 | [CREFC IRP](https://www.crefc.org/irp) | CRE Finance Council | **Future invitation.** |
@@ -72,7 +72,7 @@ CORA goes live with two hosted standards: IBPDI (bootstrap mirror under upstream
 
 ### Current release status
 
-No CORA releases have shipped yet. The repository is being initialized. The IBPDI bootstrap mirror and the MITS participating mirror are both in `main`. The first tagged release will bundle them. Watch the [GitHub Releases](../../releases) page for updates.
+No CORA releases have shipped yet. The repository is being initialized. The IBPDI bootstrap mirror and the MITS and REDI participating mirrors are all in `main`. The first tagged release will bundle them. Watch the [GitHub Releases](../../releases) page for updates.
 
 ## How custodianship works
 
@@ -135,7 +135,7 @@ Each entry records the standards and versions involved, the precise location of 
 
 Resolution of any drift entry is the standards bodies' decision, not CORA's.
 
-> The drift register and its tooling ship with the first tagged release covering both IBPDI and MITS. Until then, the register is scaffolded but does not yet exercise inter-standard drift across the two hosted standards.
+> The drift register and its tooling ship with the first tagged release covering IBPDI, MITS, and REDI. Until then, the register is scaffolded but does not yet exercise inter-standard drift across the three hosted standards.
 
 ### Conflict resolution
 
@@ -156,7 +156,7 @@ CORA does not arbitrate disagreements between standards bodies about what a conc
       mapping.yaml
       CHANGELOG.md
   /mits/             (participating, mirrored under permission from RETTC)
-  /redi/             (placeholder)
+  /redi/             (participating, mirrored under permission from the REDI Data Model Sub-Committee)
   /oscre/            (placeholder)
   ...
 /crosswalks/
