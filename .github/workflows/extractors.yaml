@@ -27,7 +27,15 @@ jobs:
           cache-dependency-path: tools/extractors/pyproject.toml
       - name: Install package (with dev extras)
         run: pip install -e ".[dev]"
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema
       - name: Ruff
         run: ruff check .
+      - name: Mypy (strict)
+        run: mypy src/cora_extractors
       - name: Pytest
         run: pytest
+      - name: Inventory schema metaschema check
+        run: check-jsonschema --check-metaschema schema/inventory.schema.json
+      - name: Inventory fixtures validate against schema
+        run: check-jsonschema --schemafile schema/inventory.schema.json fixtures/inventory-with-types.yaml fixtures/inventory-flat.yaml

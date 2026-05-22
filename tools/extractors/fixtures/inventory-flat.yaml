@@ -1,0 +1,42 @@
+standard: example-excel-standard
+module: example
+version: '1.0'
+source_artifact: tests/fixtures/example.xlsx
+extractor: cora_extractors.excel_dictionary@0.0.0
+extracted_at: '2026-05-22T00:00:00Z'
+types: []
+fields:
+- path: tenant_name
+  range: text
+  is_reference: false
+  cardinality: required
+  definition: Full legal name of the tenant.
+  source_location: REDI Data Fields!B2
+- path: rent_amount
+  range: number
+  is_reference: false
+  cardinality: required
+  definition: Monthly rent in the property's reporting currency.
+  source_location: REDI Data Fields!B3
+- path: status
+  range: text
+  is_reference: false
+  cardinality: required
+  definition: Tenancy status as of the report date.
+  source_location: REDI Data Fields!B4
+  enumeration:
+  - current
+  - late
+  - delinquent
+- path: notes
+  range: text
+  is_reference: false
+  cardinality: optional
+  definition: Free-form notes from the property manager.
+  source_location: REDI Data Fields!B5
+- path: payment_history
+  range: text
+  is_reference: false
+  cardinality: repeating
+  definition: One row per historical payment record.
+  source_location: REDI Data Fields!B6
