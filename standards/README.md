@@ -25,6 +25,7 @@ Each subdirectory here holds a hosted real assets data standard. A directory exi
 |---|---|---|
 | `ibpdi/` | Bootstrap mirror | CC BY 4.0 + MIT, mirrored from github.com/ibpdi/cdm |
 | `mits/` | Participating | Mirrored from rettc.org/mits-data-models under permission from RETTC |
+| `redi/` | Participating | Mirrored from realestatedatainitiative.netlify.app under permission from the REDI Data Model Sub-Committee |
 | `_template/` | Onboarding template | Copy this when a new standard is being onboarded |
 
 ## Target corpus
@@ -36,7 +37,7 @@ The full list of standards CORA aims to host. A directory does not exist until p
 | IBPDI | Hosted (bootstrap mirror) | See `ibpdi/` |
 | RETTC MITS | Hosted (participating) | See `mits/` |
 | OSCRE | Future invitation | OSCRE owns Smart Data Highway; CORA does not produce a competing commercial RE ontology |
-| REDI | Future invitation | LP-led; INREV/NCREIF mappings already exist in their data model |
+| REDI | Hosted (participating) | See `redi/` |
 | NCREIF / PREA | Future invitation | |
 | INREV / ANREV | Future invitation | |
 | CREFC IRP | Future invitation | Commercial real estate debt |
