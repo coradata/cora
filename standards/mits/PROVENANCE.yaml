@@ -1,0 +1,29 @@
+standard: MITS (Multifamily Information & Transactions Standards)
+owner:
+  name: Real Estate Technology & Transaction Standards Consortium (RETTC)
+  url: https://rettc.org
+  github: N/A
+source:
+  repository: https://rettc.org/mits-data-models
+  upstream_version: multi-module (see current/CHANGELOG.md for module-level versions)
+  upstream_sha: N/A
+  upstream_date: N/A
+  fetched_at: 2026-05-21
+license:
+  terms: Permission obtained from owner (RETTC)
+  cora_redistribution_rights: full
+  attribution_required: true
+  notes: |
+    Mirror permission granted by RETTC. No public OSS license text accompanies
+    the upstream distribution; license basis is the permission grant rather
+    than a published open-source license. Attribution to RETTC required on
+    redistribution.
+status:
+  cora_tier: participating
+  participating: true
+  partnership_doc: TBD
+  notes: |
+    MITS is onboarded as a participating standards body under permission from
+    RETTC. Native files are mirrored bit-identically; structure of raw files
+    is not altered. Derivations (ontology, JSON-LD, JSON Schema) will ship
+    when the derivation pipeline is operational.

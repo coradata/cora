@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--<xs:include schemaLocation="MITSCoreData40.xsd"/> -->
+	<xs:include schemaLocation="http://www.mitsproject.com/Content/ServeFile.cfm?fileID=3864"/>
+	<xs:include schemaLocation="http://www.nmhc.info/MITS/MITSCustomExtension.xsd"/>
+	<xs:element name="AccountsPayable">
+		<xs:annotation>
+			<xs:documentation>Accounts Payable Data Transaction Set 4.0B (draft)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AccountsPayableRequest" maxOccurs="unbounded"/>
+				<xs:element ref="AccountsPayableResponse" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="CustomRecords" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AccountsPayableRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Vendor" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Vendor">
+		<xs:annotation>
+			<xs:documentation>Defines data related to vendor submitting accounts payable transaction</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="ActionType">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="InvoicePayment"/>
+							<xs:enumeration value="NewVendor"/>
+							<xs:enumeration value="UpdateVendor"/>
+							<xs:enumeration value="Other"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ActionTypeOtherDescription" minOccurs="0"/>
+				<xs:element name="Address" type="AddressType" minOccurs="0"/>
+				<xs:element name="AllowDiscountDaysAfterInvoice" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="ApartmentAccountNumer" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Identifies a property with a supplier.  Currently set to xs:string.  Need to review if there should be a max string size.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="ChangeOrderIdentifier" type="xs:string" minOccurs="0"/>
+				<xs:element name="CheckMemo" type="StringMax20Type" minOccurs="0"/>
+				<xs:element name="Contact" type="StringMax20Type" minOccurs="0"/>
+				<xs:element name="ConsolidatePayments" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="DiscountDays" type="xs:integer" minOccurs="0"/>
+				<xs:element name="DiscountPercent" type="Decimal6Digits4Fraction" minOccurs="0"/>
+				<xs:element name="Email" type="StringMax80Type" minOccurs="0"/>
+				<xs:element name="FirstName" type="StringMax40Type" minOccurs="0"/>
+				<xs:element name="GovernmentID" type="StringMax20Type" minOccurs="0"/>
+				<xs:element name="HoldPayments" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="IdentificationCode" type="StringMax12Type"/>
+				<xs:element name="IdRef" type="xs:string"/>
+				<xs:element name="InActive" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="InActiveDate" type="xs:date" minOccurs="0"/>
+				<xs:element name="Invoice" type="InvoiceType" minOccurs="0"/>
+				<xs:element name="InsuranceDetails" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Insurance" type="InsuranceType" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="LastName" type="StringMax40Type" minOccurs="0"/>
+				<!--<xs:element name="LiabilityExpirationDate" type="xs:date" minOccurs="0"/>
+								<xs:annotation><xs:documentation>Supported under Insurance Complex Type</xs:documentation></xs:annotation>
+				-->
+				<xs:element name="NoSignatureRequired" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="NoSignatureAmount" type="xs:double" minOccurs="0"/>
+				<xs:element name="PhaseCodeIdentifier" type="xs:string" minOccurs="0"/>
+				<xs:element name="PurchaseOrderRequired" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="Receive1099" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="RetentionPercent" type="Decimal6Digits4Fraction" minOccurs="0"/>
+				<xs:element name="Salutation" type="StringMax40Type" minOccurs="0"/>
+				<xs:element name="SalesTaxPercent" type="Decimal6Digits4Fraction" minOccurs="0"/>
+				<xs:element name="SubContractor" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="URL" type="StringMax100Type" minOccurs="0"/>
+				<xs:element name="UsualAccountIdentifier" type="StringMax40Type" minOccurs="0"/>
+				<!-- <xs:element name="WorkersCompensationExpirationDate" type="xs:date" minOccurs="0"/> 
+					<xs:annotation><xs:documentation>Supported under Insurance Complex Type</xs:documentation></xs:annotation>
+				-->
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AccountsPayableResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="VendorIdRef" type="xs:string"/>
+				<xs:element name="InvoiceIdRef" minOccurs="0"/>
+				<xs:element name="Status">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Success"/>
+							<xs:enumeration value="Failure"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="StatusDescription" type="xs:string" minOccurs="0"/>
+				<xs:element name="StatusCode" type="xs:string" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="InvoiceType">
+		<xs:annotation>
+			<xs:documentation>Defines data related to payable/invioce information</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="AccountsPayableAccountIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="Adjustment" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="BatchIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="CashAccountIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="CreditMemo" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="ConsolidateCheck" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="DueDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="DiscountDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="DiscountPercent" type="Decimal6Digits4Fraction" minOccurs="0"/>
+			<xs:element name="DiscountAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="ElectronicSuplierInvoiceFlag" minOccurs="0"/>
+			<xs:element name="ExemptFrom1099" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="FreightAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="IdRef" type="xs:string"/>
+			<xs:element name="ImageUrl" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Link back to the image of the invoice
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InvoiceDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>
+						Date of the invoice.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InvoiceDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="InvoiceDetail" type="InvoiceDetailType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvoiceNumber" type="StringMax20Type" minOccurs="0"/>
+			<xs:element name="Memo" type="MemoType"/>
+			<xs:element name="Notes" type="StringMax100Type" minOccurs="0"/>
+			<xs:element name="OrderDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Internal processing system order date</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OrderNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Internal processing system order number</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Payment" type="PaymentType" minOccurs="0"/>
+			<xs:element name="PostMonth" type="MonthNumberType" minOccurs="0"/>
+			<xs:element name="PurchaseOrderNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReferenceInvoiceNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Invoice or credit memo linked to a previous invoice or credit memo
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RemittanceSlipRequired" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="ServicePeriod" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="ServiceType" type="ServiceTypeEnum" minOccurs="0"/>
+			<xs:element name="ServiceTypeOtherDescription" type="StringMax20Type" minOccurs="0"/>
+			<xs:element name="SubTotal" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Total of all line item totals, before adding freight, tax, etc.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EndUserLocationIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="TaxAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Tax amount for each line item
+					</xs:documentation>					
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TotalAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="TotalAmountPaid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="TransactionIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="Unpaid" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="UserCode" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Identifies the buyer or user who submitted or processed the invoice
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="SkuType">
+		<xs:all>
+			<xs:element name="Identifier" type="xs:string"/>
+			<xs:element name="Description" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="InvoiceDetailType">
+		<xs:annotation>
+			<xs:documentation>Defines data related to the check information of a specific invoice. Aka:  Line Item</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Amount" type="xs:decimal"/>
+			<xs:element name="AccountIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="CheckPostMonth" type="MonthNumberType" minOccurs="0"/>
+			<xs:element name="CheckPostYear" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Post year from their accounting systems.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CategoryIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="ContractIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="ConstructionRetention" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="ConstructionRetentionAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="ConstructionCostCode" type="StringMax20Type" minOccurs="0"/>
+			<xs:element name="FreightAmount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Freight amount for each line item
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="JobIdentifier" type="StringMax40Type" minOccurs="0"/>
+			<xs:element name="LineNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="Notes" type="StringMax100Type" minOccurs="0"/>
+			<xs:element name="PaymentIdentifier" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Id reference for linking payment information.  Must match up with one of PaymentIdentifier's in Invoice/Payment node </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ProductQty" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Quantity of each line item
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PropertyIdentifier" type="Identification" minOccurs="0"/>
+			<xs:element name="SerialNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="Sku" type="SkuType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TaxAmount" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="UnitOfMeasure" type="xs:string" minOccurs="0"/>
+			<xs:element name="UnitPrice" type="xs:decimal" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>
+							Price per quantity unit
+						</xs:documentation>
+					</xs:annotation>
+			</xs:element>
+			<xs:element name="WarrantyInfo" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Serial number for the line item for warranty purposes.  
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaymentType">
+		<xs:all>
+			<xs:element name="AmountPaid" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="BankName" type="xs:string" minOccurs="0"/>
+			<xs:element name="CheckNumber" type="StringMax12Type" minOccurs="0"/>
+			<xs:element name="CheckDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="DocumentNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="PaymentIdentifier" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Id reference for linking payment information.  Must match up with PaymentIdentifier's in InvoiceDetail</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResolvedDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="SourceSystem" type="xs:string" minOccurs="0"/>
+			<xs:element name="Status" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Void"/>
+						<xs:enumeration value="Cleared"/>
+						<xs:enumeration value="Unknown"/>
+						<xs:enumeration value="Nss"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Terms" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="MemoType">
+		<xs:annotation>
+			<xs:documentation>Defines additional free form memo text related to invoice</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="EventType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Define enumerated list</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="EventTypeOtherDescription" minOccurs="0"/>
+			<xs:element name="EventDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="Responsible" type="xs:string" minOccurs="0"/>
+			<xs:element name="Text" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="250"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="InsuranceType">
+		<xs:all>
+			<xs:element name="Type" type="InsuranceTypeEnum"/>
+			<xs:element name="ExpirationDate" minOccurs="0"/>
+			<xs:element name="OtherDescription" minOccurs="0"/>
+			<xs:element name="InsuranceRequired" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="InsuranceTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Liability"/>
+			<xs:enumeration value="WorkersCompenstation"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MonthNumberType">
+		<xs:annotation>
+			<xs:documentation>Enumeration that represents calendar months in numeric form</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+			<xs:enumeration value="09"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="11"/>
+			<xs:enumeration value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Decimal6Digits4Fraction">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Decimal (6 Digits, 4 Fraction Digits)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="6"/>
+			<xs:fractionDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceTypeEnum">
+		<xs:annotation>
+			<xs:documentation>Describes the service be charged for.  If other is specified then ServiceTypeOtherDescription should have a value.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Electric"/>
+			<xs:enumeration value="Gas"/>
+			<xs:enumeration value="Water/Sewer"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

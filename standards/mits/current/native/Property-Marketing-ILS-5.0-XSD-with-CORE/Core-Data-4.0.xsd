@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 sp1 (http://www.altova.com) by TODD SWEDEEN (EVERGREEN SOLUTIONS, INC) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:annotation>
+		<xs:documentation>MITS CoreData 4.0 (proposed)</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="AddressType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This element describes a (real-world or e-mail) address</p>
+				<dl>
+					<dt>Description (optional)</dt>
+					<dd>String description for Other Address Type</dd>
+					<dt>AddressLine1 (optional)</dt>
+					<dd>PO Box or Street number, direction, street name, suffix</dd>
+					<dt>AddressLine2 (optional)</dt>
+					<dd>Additional address line</dd>
+					<dt>City  (optional)</dt>
+					<dd>City property is located in</dd>
+					<dt>State  (optional)</dt>
+					<dd>The State attribute describes the 2-3 character state code of the
+		            address, not the full state name.</dd>
+					<dt>Province  (optional)</dt>
+					<dd>Province if not US property</dd>
+					<dt>Postal Code   (optional)</dt>
+					<dd>Property postal code</dd>
+					<dt>Country   (optional)</dt>
+					<dd>Country property is located in</dd>
+					<dt>CountryName    (optional)</dt>
+					<dd>County common name</dd>
+					<dt>UnparsedAddress    (optional)</dt>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Description" type="StringMax100Type" minOccurs="0"/>
+			<xs:element name="AddressLine1" type="StringMax100Type" minOccurs="0"/>
+			<xs:element name="AddressLine2" type="StringMax100Type" minOccurs="0"/>
+			<xs:element name="City" type="StringMax60Type" minOccurs="0"/>
+			<xs:element name="State" type="StringMax3Type" minOccurs="0"/>
+			<xs:element name="Province" type="StringMax60Type" minOccurs="0"/>
+			<xs:element name="PostalCode" type="StringMax12Type" minOccurs="0"/>
+			<xs:element name="Country" type="StringMax50Type" minOccurs="0"/>
+			<xs:element name="CountyName" type="StringMax60Type" minOccurs="0"/>
+			<xs:element name="UnparsedAddress" type="StringMax500Type" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="AddressType" type="AddressInfo" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CompaniesType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a simple container for CompanyType</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Company" type="CompanyType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CompanyType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This element describes information about a Company</p>
+				<dl>
+					<dt>Company Name (required)</dt>
+					<dd>Name of Company</dd>
+					<dt>Address (optional)</dt>
+					<dd>Address of Company</dd>
+					<dt>Website (optional)</dt>
+					<dd>Company Website URL</dd>
+					<dt>Logo (optional)</dt>
+					<dd>Company Logo string</dd>
+					<dt>Phone (optional)</dt>
+					<dd>Company Phone number</dd>
+					<dt>Email    (optional)</dt>
+					<dd>Email address  (optional)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Identifiable">
+				<xs:sequence>
+					<xs:element name="CompanyName" type="StringMax50Type"/>
+					<xs:element name="Address" type="AddressType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="WebSite" type="StringMax100Type" minOccurs="0"/>
+					<xs:element name="Logo" type="StringMax100Type" minOccurs="0"/>
+					<xs:element name="Phone" type="PhoneType" minOccurs="0" maxOccurs="10"/>
+					<xs:element name="Email" type="StringMax80Type" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CompanyContactType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This element describes information about a Company Contact</p>
+				<dl>
+					<dt>CompanyRef (optional)</dt>
+					<dd>Company reference indentification </dd>
+					<dt>CompanyRole (optional)</dt>
+					<dd>Company Role</dd>
+					<dt>CompanyContacts (optional)</dt>
+					<dd>Company Contact person info</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyRef" type="Identifiable" minOccurs="0"/>
+			<xs:element name="CompanyRole" type="CompanyRoleType" minOccurs="0"/>
+			<xs:element name="CompanyContacts" type="CompanyContactsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CompanyContactsType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a simple container for CompanyContact</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CompanyContact" type="CompanyPersonContactType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CompanyPersonContactType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This element describes information about Company Contact Person</p>
+				<dl>
+					<dt>PersonContactRef (required)</dt>
+					<dd>Contact Person identification info</dd>
+					<dt>PersonContactRole (required)</dt>
+					<dd>Contact Person Role</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PersonContactRef" type="Identifiable"/>
+			<xs:element name="PersonContactRole" type="PersonCompanyRoleType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactsType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a container for Property, Company and Person Contacts</p>
+				<dl>
+					<dt>PropertyContacts</dt>
+					<dd>Property Contact info</dd>
+					<dt>Companies</dt>
+					<dd>Company Contact info</dd>
+					<dt>Persons</dt>
+					<dd>Person Contact info</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PropertyContacts" type="PropertyContactsType"/>
+			<xs:element name="Companies" type="CompaniesType"/>
+			<xs:element name="Persons" type="PersonsType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CurrencyRangeType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>A Range Of Currencies - pattern based
+		
+		The Min and Max attributes specify the minimum and maximum acceptable
+		amounts.  Alternatively, the Exact attribute can be used to specify an
+		exact amount.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Min" type="Money" use="optional"/>
+		<xs:attribute name="Max" type="Money" use="optional"/>
+		<xs:attribute name="Exact" type="Money" use="optional"/>
+		<xs:attribute name="Currency" type="Currency" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="CurrentNumberOccupantsType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Total number of Occupants, with number of children optional</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Total" type="xs:integer" use="required"/>
+		<xs:attribute name="Child" type="xs:integer" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="Identifiable">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Elements that extend this type (formerly "IdentificationType") can
+		describe their contents both in standard XML terms, and (optionally) in
+		terms of a reference to a database record or other identification
+		string.</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Identification" type="Identification" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Identification">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This tag may be used to describe database primary key, or other
+		identification string, which relates to the parent element.
+		Alternatively, it may also be used to reference another element (that
+		contains a non-reference Identification) in the instance document.</p>
+				<dl>
+					<dt>IDValue (required)</dt>
+					<dd>defines the actual identifications string</dd>
+					<dt>OrganizationName</dt>
+					<dd>Defines the organization that this
+		Identification pertains to</dd>
+					<dt>IDType</dt>
+					<dd>Specifies the type of ID, within the specified
+		organization, that is being represented.  For instance, if the ID in
+		question references a record in the property table of Example.com's
+		database, it would be appropriate to specify a type of "property" for
+		that Identification</dd>
+					<dt>IDRank </dt>
+					<dd>Specifies the rank of the Identification (relative
+		to other Identifications for the same entity)</dd>
+					<dt>IDScopeType</dt>
+					<dd>Specifies whether this Identification pertains
+		to the sender of this document, the receiver of it, or a third party
+		
+				The following example describes a reference to a record #555 in the
+		Lease table of Example.com's database:
+		
+		&lt;Identification OrganizationName="Example.com" IDType="Lease"
+			IDValue="55"/&gt;</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="IDValue" type="xs:string" use="required"/>
+		<xs:attribute name="OrganizationName" type="xs:string"/>
+		<xs:attribute name="IDType" type="StringMax50Type"/>
+		<xs:attribute name="IDRank" type="IDRank"/>
+		<xs:attribute name="IDScopeType" type="IDScopeType"/>
+	</xs:complexType>
+	<xs:complexType name="LeaseType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Elements describing Lease information</p>
+				<dl>
+					<dt>CurrentRent</dt>
+					<dd>Current Rent amount</dd>
+					<dt>ExpectedMoveInDate</dt>
+					<dd>Expected Move In date</dd>
+					<dt>ExpectedMoveOutDate</dt>
+					<dd>Expected Move Out date</dd>
+					<dt>ActualMoveIn</dt>
+					<dd>Actual Move In date</dd>
+					<dt>ActualMoveOut</dt>
+					<dd>Actual Move Out date</dd>
+					<dt>ResponsibleForLease</dt>
+					<dd>Respnsible for Lease? (Y/N)</dd>
+					<dt>LeaseSignDate</dt>
+					<dd>Date Lease signed</dd>
+					<dt>SpecialStatus</dt>
+					<dd>Special status</dd>
+					<dt>PaymentAccepted</dt>
+					<dd>Payment accepted</dd>
+					<dt>AccountNumber</dt>
+					<dd>Account Number</dd>
+					<dt>CurrentNumberOccupants</dt>
+					<dd>Total number of Occupants, with number of children optional</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Identifiable">
+				<xs:sequence>
+					<xs:element name="CurrentRent" type="xs:decimal" minOccurs="0"/>
+					<xs:element name="ExpectedMoveInDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="ExpectedMoveOutDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="LeaseFromDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="LeaseToDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="ActualMoveIn" type="xs:date" minOccurs="0"/>
+					<xs:element name="ActualMoveOut" type="xs:date" minOccurs="0"/>
+					<xs:element name="ResponsibleForLease" type="xs:boolean" minOccurs="0"/>
+					<xs:element name="LeaseSignDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="SpecialStatus" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="PaymentAccepted" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="AccountNumber" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="CurrentNumberOccupants" type="CurrentNumberOccupantsType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NameType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Elements describing Name information</p>
+				<dl>
+					<dt>NamePrefix (optional)</dt>
+					<dd>Name prefix</dd>
+					<dt>FirstName</dt>
+					<dd>First name</dd>
+					<dt>MiddleName (optional)</dt>
+					<dd>Middle name</dd>
+					<dt>LastName</dt>
+					<dd>Last name</dd>
+					<dt>MaidenName (optional)</dt>
+					<dd>Spouse Maiden name</dd>
+					<dt>NameSuffix (optional)</dt>
+					<dd>Name suffix</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="NamePrefix" type="StringMax50Type" minOccurs="0"/>
+			<xs:element name="FirstName" type="StringMax50Type"/>
+			<xs:element name="MiddleName" type="StringMax50Type" minOccurs="0"/>
+			<xs:element name="LastName" type="StringMax50Type"/>
+			<xs:element name="MaidenName" type="StringMax50Type" minOccurs="0"/>
+			<xs:element name="NameSuffix" type="StringMax50Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NumericRangeType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>A Range of Integers</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="Min" type="xs:integer" use="optional"/>
+		<xs:attribute name="Max" type="xs:integer" use="optional"/>
+		<xs:attribute name="Exact" type="xs:integer" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="PersonType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Name, Address, Phone and Email information for a Person</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Identifiable">
+				<xs:sequence>
+					<xs:element name="Name" type="NameType"/>
+					<xs:element name="Address" type="AddressType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Phone" type="PhoneType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Email" type="StringMax80Type" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PersonsType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a container for PersonType</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Person" type="PersonType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PhoneType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Description, Number and Extension information for a Phone contact</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PhoneDescription" type="StringMax50Type" minOccurs="0"/>
+			<xs:element name="PhoneNumber" type="StringMax20Type" minOccurs="0"/>
+			<xs:element name="Extension" type="StringMax20Type" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="PhoneType" type="PhoneInfo" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PropertiesType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a simple container for PropertyType</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Property" type="PropertyType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PropertyContactsType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a container for PropertyContactType</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PropertyContact" type="CompanyContactType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PropertyType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Element describes Property information, including identification</p>
+				<dl>
+					<dt>MarketingName</dt>
+					<dd>Property name used for marketing purposes</dd>
+					<dt>APN</dt>
+					<dd>APN</dd>
+					<dt>LegalName</dt>
+					<dd>Legal name of the property</dd>
+					<dt>MSA_Number</dt>
+					<dd>MSA Number</dd>
+					<dt>MSA_Name</dt>
+					<dd>MSA Name</dd>
+					<dt>StructureDescription</dt>
+					<dd>Type of building; lowrise, highrise, etc</dd>
+					<dt>WebSite</dt>
+					<dd>URL of the property web site</dd>
+					<dt>Address</dt>
+					<dd>Property address</dd>
+					<dt>Phone</dt>
+					<dd>Property phone number(s)</dd>
+					<dt>Email    (optional)</dt>
+					<dd>Email address  (optional)</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Identifiable">
+				<xs:sequence>
+					<xs:element name="MarketingName" type="StringMax120Type"/>
+					<xs:element name="APN" type="StringMax40Type" minOccurs="0"/>
+					<xs:element name="LegalName" type="StringMax120Type" minOccurs="0"/>
+					<xs:element name="MSA_Number" type="xs:integer" minOccurs="0"/>
+					<xs:element name="MSA_Name" type="StringMax60Type" minOccurs="0"/>
+					<xs:element name="StructureDescription" type="StringMax100Type" minOccurs="0"/>
+					<xs:element name="WebSite" type="StringMax100Type" minOccurs="0"/>
+					<xs:element name="Address" type="AddressType" minOccurs="0" maxOccurs="10"/>
+					<xs:element name="Phone" type="PhoneType" minOccurs="0" maxOccurs="10"/>
+					<xs:element name="Email" type="StringMax80Type" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UnitType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Element describes Unit information, including identification</p>
+				<dl>
+					<dt>MarketingName</dt>
+					<dd>Property name used for marketing purposes</dd>
+					<dt>UnitType</dt>
+					<dd>Unit Type</dd>
+					<dt>UnitBedrooms</dt>
+					<dd>Number of bedrooms in unit</dd>
+					<dt>UnitBathrooms</dt>
+					<dd>Number of bathrooms in unit</dd>
+					<dt>MinSquareFeet</dt>
+					<dd>Minimum Square ft. size of units with a range of sizes</dd>
+					<dt>MaxSquareFeet</dt>
+					<dd>Max Square ft. size of unit with a range of sizes</dd>
+					<dt>SquareFootType</dt>
+					<dd>Square foot of the unit as defined by the owner or manager</dd>
+					<dt>UnitRent</dt>
+					<dd>Unit effective rent</dd>
+					<dt>MarketRent</dt>
+					<dd>Market rent for this specific unit</dd>
+					<dt>UnitEconomicStatus</dt>
+					<dd>Economic status of the unit that describes the type of unit</dd>
+					<dt>UnitEconomicStatusDescription</dt>
+					<dd>Description of Other Economic Status</dd>
+					<dt>UnitOccupancyStatus</dt>
+					<dd>Occupied or Vacant Unit</dd>
+					<dt>UnitLeasedStatusDescription</dt>
+					<dd>Leased status of the unit</dd>
+					<dt>NumberOccupants</dt>
+					<dd>Current number of occupants, optional number of children</dd>
+					<dt>FloorplanName</dt>
+					<dd>Name of Floorplan for this unit</dd>
+					<dt>PhaseName</dt>
+					<dd>Name of Phase</dd>
+					<dt>BuildingName</dt>
+					<dd>Used in a case where buildings within a property are individually named</dd>
+					<dt>Address</dt>
+					<dd>Address of unit</dd>
+				</dl>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Identifiable">
+				<xs:sequence>
+					<xs:element name="MarketingName" type="StringMax120Type" minOccurs="0"/>
+					<xs:element name="UnitType" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="UnitBedrooms" type="Decimal4Digits2Fraction" minOccurs="0"/>
+					<xs:element name="UnitBathrooms" type="Decimal4Digits2Fraction" minOccurs="0"/>
+					<xs:element name="MinSquareFeet" type="Integer5Digit" minOccurs="0"/>
+					<xs:element name="MaxSquareFeet" type="Integer5Digit" minOccurs="0"/>
+					<xs:element name="SquareFootType" type="UnitSqftInfo" minOccurs="0"/>
+					<xs:element name="UnitRent" type="Decimal7Digits2Fraction" minOccurs="0"/>
+					<xs:element name="MarketRent" type="Decimal7Digits2Fraction" minOccurs="0"/>
+					<xs:element name="UnitEconomicStatus" type="UnitEconStatusInfo" minOccurs="0"/>
+					<xs:element name="UnitEconomicStatusDescription" type="StringMax100Type" minOccurs="0"/>
+					<xs:element name="UnitOccupancyStatus" type="UnitOccpStatusInfo" minOccurs="0"/>
+					<xs:element name="UnitLeasedStatus" type="UnitLeaseStatusInfo" minOccurs="0"/>
+					<xs:element name="UnitLeasedStatusDescription" type="StringMax100Type" minOccurs="0"/>
+					<xs:element name="NumberOccupants" type="CurrentNumberOccupantsType" minOccurs="0"/>
+					<xs:element name="FloorplanName" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="PhaseName" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="BuildingName" type="StringMax50Type" minOccurs="0"/>
+					<xs:element name="Address" type="AddressType" minOccurs="0" maxOccurs="10"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="UnitsType">
+		<xs:annotation>
+			<xs:documentation>
+				<p>This is a simple container for UnitType</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Unit" type="UnitType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="AddressInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="property"/>
+			<xs:enumeration value="mailing"/>
+			<xs:enumeration value="shipping"/>
+			<xs:enumeration value="billing"/>
+			<xs:enumeration value="current"/>
+			<xs:enumeration value="previous"/>
+			<xs:enumeration value="forwarding"/>
+			<xs:enumeration value="legal_notice"/>
+			<xs:enumeration value="termination_notice"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CompanyRoleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="management_company"/>
+			<xs:enumeration value="owner"/>
+			<xs:enumeration value="vendor"/>
+			<xs:enumeration value="asset_managment"/>
+			<xs:enumeration value="lending firm"/>
+			<xs:enumeration value="investment_company"/>
+			<xs:enumeration value="employer"/>
+			<xs:enumeration value="previous_employer"/>
+			<xs:enumeration value="bank"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Currency">
+		<xs:annotation>
+			<xs:documentation>
+				<p>A type of currency, specified by an ISO-4217 3-letter currency code.  Since enumerating a list of every possible currency type would be problematic, this type doesn't actually require a valid ISO code.  Instead, it validates only that its contents are 3 characters; the burden of validating the actual code is left to implementers.  Examples of common ISO currency codes are included below for reference purposes; the full list can be found at: <a href="http://en.wikipedia.org/wiki/ISO_4217">http://en.wikipedia.org/wiki/ISO_4217</a>.</p>
+				<dl>
+					<dt>AUD</dt>
+					<dd>Australian Dollar</dd>
+					<dt>BRL</dt>
+					<dd>Brazilian Real</dd>
+					<dt>CAD</dt>
+					<dd>Canadian Dollar</dd>
+					<dt>CNY</dt>
+					<dd>Chinese Renminbi</dd>
+					<dt>EUR</dt>
+					<dd>Euro</dd>
+					<dt>GBP</dt>
+					<dd>British Pound Sterling</dd>
+					<dt>INR</dt>
+					<dd>Indian Rupee</dd>
+					<dt>JPY</dt>
+					<dd>Japanese Yen</dd>
+					<dt>RUR</dt>
+					<dd>Russian Rouble</dd>
+					<dt>USD</dt>
+					<dd>United States Dollars</dd>
+				</dl>
+				<p>
+					<strong>NOTE:</strong> This type should only ever be used by optional attributes/elements.  If it is not specified, it should be assumed to "default" to USD (United States Dollars).</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CustomerInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="guest"/>
+			<xs:enumeration value="applicant"/>
+			<xs:enumeration value="customer"/>
+			<xs:enumeration value="current_resident"/>
+			<xs:enumeration value="former_resident"/>
+			<xs:enumeration value="future_resident"/>
+			<xs:enumeration value="prospect"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Decimal4Digits2Fraction">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Decimal (4 Digits, 2 Fraction Digits)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="4"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Decimal7Digits2Fraction">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Decimal (7 Digits, 2 Fraction Digits)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="7"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IDRank">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="primary"/>
+			<xs:enumeration value="secondary"/>
+			<xs:enumeration value="tertiary"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IDScopeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="sender"/>
+			<xs:enumeration value="recipient"/>
+			<xs:enumeration value="thirdparty"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Integer5Digit">
+		<xs:annotation>
+			<xs:documentation>
+				<p>Integer (5 Digits)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Money">
+		<xs:annotation>
+			<xs:documentation>
+				<p>An amount of money, which may be negative and may have up to two decimal places, of some currency.   The currency is assumed to be US dollars unless an accompanying Currency attribute specifies otherwise.  Valid examples include:</p>
+				<ul>
+					<li>12.34</li>
+					<li>-12.34</li>
+					<li>12</li>
+				</ul>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(\d*|\-\d*)?\.?(\d{2})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PersonCompanyRoleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="manager"/>
+			<xs:enumeration value="owner"/>
+			<xs:enumeration value="vendor"/>
+			<xs:enumeration value="accountant"/>
+			<xs:enumeration value="tax_accountant"/>
+			<xs:enumeration value="lawyer"/>
+			<xs:enumeration value="asset_manager"/>
+			<xs:enumeration value="lender"/>
+			<xs:enumeration value="investor"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="office"/>
+			<xs:enumeration value="cell"/>
+			<xs:enumeration value="fax"/>
+			<xs:enumeration value="personal"/>
+			<xs:enumeration value="home"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PropertyContactsInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="manager"/>
+			<xs:enumeration value="owner"/>
+			<xs:enumeration value="vendor"/>
+			<xs:enumeration value="accountant"/>
+			<xs:enumeration value="tax_accountant"/>
+			<xs:enumeration value="lawyer"/>
+			<xs:enumeration value="asset_manager"/>
+			<xs:enumeration value="lender"/>
+			<xs:enumeration value="investor"/>
+			<xs:enumeration value="employer"/>
+			<xs:enumeration value="previous_employer"/>
+			<xs:enumeration value="bank"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PropertyIDInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="market rate apt"/>
+			<xs:enumeration value="condominium"/>
+			<xs:enumeration value="cooperative"/>
+			<xs:enumeration value="senior"/>
+			<xs:enumeration value="assisted_living"/>
+			<xs:enumeration value="subsidized"/>
+			<xs:enumeration value="military"/>
+			<xs:enumeration value="nursing"/>
+			<xs:enumeration value="home"/>
+			<xs:enumeration value="student"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax3Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 3 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax12Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 12 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax20Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 20 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax40Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 40 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax50Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 50 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax60Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 60 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax80Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 80 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax100Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 100 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax120Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 120 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="120"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringMax500Type">
+		<xs:annotation>
+			<xs:documentation>
+				<p>String (Maximum 500 Characters)</p>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitEconStatusInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="residential"/>
+			<xs:enumeration value="commercial"/>
+			<xs:enumeration value="down"/>
+			<xs:enumeration value="model"/>
+			<xs:enumeration value="employee"/>
+			<xs:enumeration value="construction"/>
+			<xs:enumeration value="office"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitLeaseStatusInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="leased"/>
+			<xs:enumeration value="available"/>
+			<xs:enumeration value="approved"/>
+			<xs:enumeration value="reserved"/>
+			<xs:enumeration value="not_ready"/>
+			<xs:enumeration value="on_notice"/>
+			<xs:enumeration value="leased_on_notice"/>
+			<xs:enumeration value="leased_reserved"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOccpStatusInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="occupied"/>
+			<xs:enumeration value="vacant"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitSqftInfo">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="internal"/>
+			<xs:enumeration value="external"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
