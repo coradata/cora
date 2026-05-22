@@ -1,0 +1,32 @@
+standard: REDI (Real Estate Data Initiative) Data Model
+owner:
+  name: REDI Data Model Sub-Committee
+  url: https://realestatedatainitiative.netlify.app/
+  data_models_url: https://realestatedatainitiative.netlify.app/
+source:
+  distribution: https://realestatedatainitiative.netlify.app/
+  upstream_version: "1.0"
+  upstream_date: 2026-02-05
+  fetched_at: 2026-05-21T00:00:00Z
+  notes: |
+    REDI is distributed as a single XLSX workbook (Guide, REDI Data Fields,
+    REDI Lists) defining the data model and its mappings to NCREIF/PREA
+    Reporting Standards and INREV. There is no public Git upstream, so
+    commit-SHA provenance does not apply; provenance is pinned by upstream
+    version, upstream modification date, and the file contents in
+    current/native/.
+license:
+  terms: Permission obtained from owner (REDI Data Model Sub-Committee) to mirror in CORA
+  attribution_required: true
+  cora_redistribution_rights: granted by owner
+status:
+  cora_tier: participating
+  participating: true
+  notes: |
+    REDI is onboarded under permission from the REDI Data Model Sub-Committee.
+    Native files are mirrored bit-identically; structure of the raw workbook
+    is not altered. Derivations (ontology, JSON-LD, JSON Schema) will ship
+    when the derivation pipeline is operational. REDI carries native
+    cross-mappings to NCREIF/PREA Reporting Standards and INREV — these are
+    preserved in the native workbook and will inform CORA crosswalks once
+    those upstreams are onboarded.
