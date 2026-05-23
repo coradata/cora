@@ -1,0 +1,7 @@
+{
+  "elements": [
+    {"name": "owner", "type": "string", "required": true, "doc": "Owner of record."},
+    {"name": "valuation", "type": "number", "required": false, "doc": "Market valuation in USD."},
+    {"name": "status", "type": "string", "required": true, "doc": "Lifecycle status.", "values": ["draft", "active", "archived"]}
+  ]
+}

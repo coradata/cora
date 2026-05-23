@@ -5,7 +5,7 @@ import sys
 
 import pytest
 
-from cora_extractors import main
+from cora_extractors.cli import main
 
 
 def test_main_help_exits_clean(capsys: pytest.CaptureFixture[str]) -> None:
@@ -13,10 +13,10 @@ def test_main_help_exits_clean(capsys: pytest.CaptureFixture[str]) -> None:
         main(["--help"])
     assert exc_info.value.code == 0
     captured = capsys.readouterr()
-    assert "cora-extract" in captured.out
+    assert "cora" in captured.out
 
 
-def test_main_no_args_exits_clean() -> None:
+def test_main_no_args_prints_help() -> None:
     assert main([]) == 0
 
 
@@ -28,4 +28,4 @@ def test_console_script_help_exits_clean() -> None:
         check=False,
     )
     assert result.returncode == 0
-    assert "cora-extract" in result.stdout
+    assert "cora" in result.stdout

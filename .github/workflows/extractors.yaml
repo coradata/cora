@@ -4,11 +4,13 @@ on:
   pull_request:
     paths:
       - "tools/extractors/**"
+      - "standards/*/current/inventory/**"
       - ".github/workflows/extractors.yaml"
   push:
     branches: [main]
     paths:
       - "tools/extractors/**"
+      - "standards/*/current/inventory/**"
       - ".github/workflows/extractors.yaml"
 
 defaults:
@@ -33,9 +35,17 @@ jobs:
         run: ruff check .
       - name: Mypy (strict)
         run: mypy src/cora_extractors
-      - name: Pytest
-        run: pytest
+      - name: Pytest (with 80% coverage gate)
+        run: pytest --cov=cora_extractors --cov-fail-under=80
       - name: Inventory schema metaschema check
         run: check-jsonschema --check-metaschema schema/inventory.schema.json
       - name: Inventory fixtures validate against schema
         run: check-jsonschema --schemafile schema/inventory.schema.json fixtures/inventory-with-types.yaml fixtures/inventory-flat.yaml
+      - name: cora validate (inventory-schema runs on committed inventories, if any)
+        working-directory: .
+        run: |
+          if compgen -G "standards/*/current/inventory/*.yaml" > /dev/null; then
+            cd tools/extractors && python -m cora_extractors validate inventory-schema --repo-root ../..
+          else
+            echo "No committed inventories yet — skipping."
+          fi

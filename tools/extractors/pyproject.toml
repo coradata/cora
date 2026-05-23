@@ -17,6 +17,7 @@ dependencies = [
   "jsonschema>=4,<5",
   "pydantic>=2,<3",
   "xlrd>=2,<3",
+  "jsonpath-ng>=1.6,<2",
 ]
 
 [project.optional-dependencies]
@@ -26,10 +27,11 @@ dev = [
   "ruff>=0.6,<1",
   "mypy>=1,<2",
   "types-PyYAML>=6,<7",
+  "types-jsonschema>=4,<5",
 ]
 
 [project.scripts]
-cora-extract = "cora_extractors:main"
+cora = "cora_extractors.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
