@@ -30,6 +30,7 @@ from cora_extractors.extractor import Extractor
 from cora_extractors.json_catalog import JsonCatalogExtractor
 from cora_extractors.summary import summarize_file
 from cora_extractors.validator import Validator
+from cora_extractors.validators.field_count import FieldCountValidator
 from cora_extractors.validators.inventory_schema import InventorySchemaValidator
 from cora_extractors.xsd import XsdExtractor
 
@@ -47,6 +48,7 @@ CONFIG_TYPES: dict[str, type[ExtractorConfig]] = {
 
 VALIDATORS: dict[str, Validator] = {
     "inventory-schema": InventorySchemaValidator(),
+    "field-count": FieldCountValidator(),
 }
 
 
@@ -76,9 +78,25 @@ def _add_extract(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]
     p.add_argument("source", type=Path)
     p.add_argument("--config", type=Path, default=None)
     p.add_argument(
+        "--standard",
+        default=None,
+        help="Standard short name (e.g. mits, redi). Defaults to module value.",
+    )
+    p.add_argument(
         "--module",
         default=None,
         help="Override the module name (defaults to source stem).",
+    )
+    p.add_argument(
+        "--version",
+        default=None,
+        help="Override the version label (defaults to 'unknown').",
+    )
+    p.add_argument(
+        "--repo-root",
+        type=Path,
+        default=None,
+        help="Root used to make source_artifact relative; otherwise the absolute path is kept.",
     )
     p.add_argument("--output", type=Path, required=True)
     p.set_defaults(func=_cmd_extract)
@@ -120,6 +138,18 @@ def _cmd_extract(args: argparse.Namespace) -> int:
         config = None
 
     inventory = extractor.extract(args.source, config, module=args.module)
+    if args.standard:
+        inventory.standard = args.standard
+    if args.version:
+        inventory.version = args.version
+    if args.repo_root:
+        repo = args.repo_root.resolve()
+        try:
+            rel = args.source.resolve().relative_to(repo)
+            inventory.source_artifact = str(rel)
+        except ValueError:
+            pass  # source outside repo_root; keep what the extractor produced
+
     args.output.parent.mkdir(parents=True, exist_ok=True)
     inventory.to_yaml(args.output)
     return 0

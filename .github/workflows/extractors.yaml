@@ -41,11 +41,19 @@ jobs:
         run: check-jsonschema --check-metaschema schema/inventory.schema.json
       - name: Inventory fixtures validate against schema
         run: check-jsonschema --schemafile schema/inventory.schema.json fixtures/inventory-with-types.yaml fixtures/inventory-flat.yaml
-      - name: cora validate (inventory-schema runs on committed inventories, if any)
+      - name: cora validate inventory-schema (against committed inventories)
         working-directory: .
         run: |
           if compgen -G "standards/*/current/inventory/*.yaml" > /dev/null; then
             cd tools/extractors && python -m cora_extractors validate inventory-schema --repo-root ../..
+          else
+            echo "No committed inventories yet — skipping."
+          fi
+      - name: cora validate field-count (against committed inventories)
+        working-directory: .
+        run: |
+          if compgen -G "standards/*/current/inventory/*.yaml" > /dev/null; then
+            cd tools/extractors && python -m cora_extractors validate field-count --repo-root ../..
           else
             echo "No committed inventories yet — skipping."
           fi

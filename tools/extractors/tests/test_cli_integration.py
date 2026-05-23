@@ -34,6 +34,37 @@ def test_cli_extract_xsd(tmp_path: Path) -> None:
     assert {t.name for t in inv.types} >= {"Property", "Address", "ResidentialProperty"}
 
 
+def test_cli_extract_with_standard_version_and_repo_root(tmp_path: Path) -> None:
+    out = tmp_path / "out.yaml"
+    source = FIXTURES_PKG / "xsd" / "a" / "main.xsd"
+    repo_root = FIXTURES_PKG.parents[2]  # tools/extractors root sits above tests/
+    rc = main(
+        [
+            "extract",
+            "xsd",
+            str(source),
+            "--standard",
+            "demo",
+            "--module",
+            "core",
+            "--version",
+            "1.2",
+            "--repo-root",
+            str(repo_root),
+            "--output",
+            str(out),
+        ]
+    )
+    assert rc == 0
+    inv = Inventory.from_yaml(out)
+    assert inv.standard == "demo"
+    assert inv.module == "core"
+    assert inv.version == "1.2"
+    # source_artifact is repo-relative, not absolute.
+    assert not inv.source_artifact.startswith("/")
+    assert inv.source_artifact.endswith("main.xsd")
+
+
 def test_cli_extract_excel(tmp_path: Path) -> None:
     out = tmp_path / "out.yaml"
     rc = main(
