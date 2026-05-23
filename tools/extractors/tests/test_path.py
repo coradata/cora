@@ -5,7 +5,7 @@ from datetime import UTC, datetime
 import pytest
 
 from cora_extractors.inventory import FieldEntry, Inventory
-from cora_extractors.path import InvalidPathError, build, parse, resolve
+from cora_extractors.path import InvalidPathError, build, parse, resolve, slugify
 
 
 def test_build_simple() -> None:
@@ -14,6 +14,11 @@ def test_build_simple() -> None:
 
 def test_build_single_segment() -> None:
     assert build(["tenant_email"]) == "tenant_email"
+
+
+def test_build_preserves_pascal_case() -> None:
+    # MITS-style PascalCase passes through untouched.
+    assert build(["AddressType", "Description"]) == "AddressType/Description"
 
 
 def test_build_rejects_empty_parts() -> None:
@@ -26,9 +31,26 @@ def test_build_rejects_empty_segment() -> None:
         build(["a", "", "c"])
 
 
-def test_build_rejects_segment_with_separator() -> None:
+def test_build_slugifies_segment_with_separator() -> None:
+    # REDI label: "Number of Shares/ Units" — separator and whitespace become _.
+    assert build(["Property", "Number of Shares/ Units"]) == "Property/Number_of_Shares_Units"
+
+
+def test_build_slugifies_other_special_chars() -> None:
+    assert build(["Type & Form (v2)?"]) == "Type_Form_v2"
+
+
+def test_build_strips_leading_trailing_whitespace_and_underscores() -> None:
+    assert build(["  hello world  "]) == "hello_world"
+
+
+def test_build_rejects_segment_that_reduces_to_empty() -> None:
     with pytest.raises(InvalidPathError):
-        build(["a", "b/c"])
+        build(["???"])
+
+
+def test_slugify_collapses_runs() -> None:
+    assert slugify("a   b///c") == "a_b_c"
 
 
 def test_parse_simple() -> None:
@@ -49,9 +71,15 @@ def test_parse_rejects_double_separator() -> None:
         parse("a//c")
 
 
-def test_build_parse_round_trip() -> None:
+def test_build_parse_round_trip_canonical() -> None:
+    # build(parse(s)) is identity for already-canonical paths.
     for s in ["a", "a/b", "a/b/c", "PhysicalProperty/Property/Identification/IDValue"]:
         assert build(parse(s)) == s
+
+
+def test_build_idempotent_on_canonical_input() -> None:
+    canonical = "AddressType/Number_of_Shares_Units"
+    assert build(parse(canonical)) == canonical
 
 
 def _mk_inventory() -> Inventory:

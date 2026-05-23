@@ -1,0 +1,18 @@
+# Excel data-dictionary config for REDI's "REDI Data Fields" sheet.
+#
+# Column map (1-indexed labels from the workbook):
+#   A  REDI Field Type
+#   B  REDI Domain
+#   C  REDI Sub-Domain
+#   D  REDI Field Code
+#   E  REDI Field Name Key
+#   F  REDI Field UID
+#   G  REDI Field Name           <- field_name_column
+#   H  REDI Field Description    <- definition_column
+#   I  REDI Data Type            <- type_column
+#   J  List ID
+sheet: REDI Data Fields
+field_name_column: G
+definition_column: H
+type_column: I
+skip_rows: 1

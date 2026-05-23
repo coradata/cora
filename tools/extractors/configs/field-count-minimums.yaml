@@ -1,0 +1,11 @@
+# Per-inventory field-count minimums consumed by the field-count Validator
+# (cora_extractors.validators.field_count).
+#
+# Any inventory below its minimum fails CI. The default applies to inventories
+# without a specific override; per-inventory overrides let small modules ship
+# without lowering the global bar.
+default_minimum: 10
+overrides:
+  # Format: "<standard>/<module>: <minimum>"
+  mits/property-marketing: 100
+  redi/data-fields: 100

@@ -1,0 +1,1808 @@
+standard: mits
+module: property-marketing
+version: '5.0'
+source_artifact: standards/mits/current/native/Property-Marketing-ILS-5.0-XSD-with-CORE/Property-Marketing-ILS-5.0.xsd
+extractor: cora_extractors.xsd@0.0.0
+extracted_at: '2026-05-23T15:54:14.383842Z'
+types:
+- name: PropertyDataUploadResponseType
+  abstract: false
+  definition: Defines a group of nodes that identify the processing status of the
+    uploaded property data.
+  source_location: Property-Marketing-ILS-5.0.xsd:1237
+- name: PropertyTypeExtended
+  extends: PropertyType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1248
+- name: GeneralAmenityType
+  abstract: false
+  definition: Amenities that belongs to phase or community level 11/28/06
+  source_location: Property-Marketing-ILS-5.0.xsd:1365
+- name: SpecificAmenityType
+  abstract: false
+  definition: Amenities that belongs to unit or floorplan level 11/28/06
+  source_location: Property-Marketing-ILS-5.0.xsd:1455
+- name: SeniorLivingAmenityType
+  abstract: false
+  definition: Amenities that belong to Properties with Senior Living Facilities
+  source_location: Property-Marketing-ILS-5.0.xsd:1545
+- name: RoomType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1612
+- name: FileType
+  abstract: false
+  definition: Use for attaching files to Property,Building,Floorplan,Unit, and Phase
+  source_location: Property-Marketing-ILS-5.0.xsd:1685
+- name: LeadChannelType
+  extends: Identification
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1803
+- name: ChargeOfferType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1844
+- name: LimitsType
+  abstract: false
+  definition: Restrict the maximum number or the maximum amount of items that appear
+    in the charge class, for example to restrict the total number of storage spaces,
+    or the maximum monthly pet rent.
+  source_location: Property-Marketing-ILS-5.0.xsd:1994
+- name: CharacteristicsType
+  abstract: false
+  definition: The specific characteristics of items that are included in this limit.
+    Any characteristics that are not specified are assumed to be allowed any value.
+    If omitted, the limit applies to all characteristics in the class meeting any
+    Applies To constraint. For example, this could be used to place a maximum monetary
+    amount on non-refundable monthly pet charges, without including deposit items.
+  source_location: Property-Marketing-ILS-5.0.xsd:2032
+- name: ChargeOfferItemType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2356
+- name: ParkingOfferItemType
+  extends: ChargeOfferItemType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2494
+- name: StorageOfferItemType
+  extends: ChargeOfferItemType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2680
+- name: PetOfferItemType
+  extends: ChargeOfferItemType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2765
+- name: ChargeOfferAmountType
+  abstract: false
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2815
+- name: AddressType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:7
+- name: CompaniesType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:49
+- name: CompanyType
+  extends: Identifiable
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:59
+- name: CompanyContactType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:92
+- name: CompanyContactsType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:112
+- name: CompanyPersonContactType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:122
+- name: ContactsType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:139
+- name: CurrencyRangeType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:159
+- name: CurrentNumberOccupantsType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:174
+- name: Identifiable
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:183
+- name: Identification
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:196
+- name: LeaseType
+  extends: Identifiable
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:236
+- name: NameType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:286
+- name: NumericRangeType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:315
+- name: PersonType
+  extends: Identifiable
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:325
+- name: PersonsType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:342
+- name: PhoneType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:352
+- name: PropertiesType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:365
+- name: PropertyContactsType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:375
+- name: PropertyType
+  extends: Identifiable
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:385
+- name: UnitType
+  extends: Identifiable
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:430
+- name: UnitsType
+  abstract: false
+  definition: ''
+  source_location: Core-Data-4.0.xsd:500
+fields:
+- path: PropertyDataUploadResponseType/completeDocumentRecieved
+  domain: PropertyDataUploadResponseType
+  range: StatusTypes
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1246
+- path: PropertyTypeExtended/Reason
+  domain: PropertyTypeExtended
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1252
+- path: PropertyTypeExtended/status
+  domain: PropertyTypeExtended
+  range: StatusTypes
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1258
+- path: GeneralAmenityType/Description
+  domain: GeneralAmenityType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1370
+- path: GeneralAmenityType/Rank
+  domain: GeneralAmenityType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1377
+- path: GeneralAmenityType/AmenityType
+  domain: GeneralAmenityType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1379
+  enumeration:
+  - Other
+  - Availability24Hours
+  - AccentWalls
+  - BasketballCourt
+  - Bilingual
+  - BoatDocks
+  - BusinessCenter
+  - CarWashArea
+  - ChildCare
+  - ClubDiscount
+  - ClubHouse
+  - ConferenceRoom
+  - Concierge
+  - CoverPark
+  - DoorAttendant
+  - FitnessCenter
+  - Elevator
+  - FreeWeights
+  - FurnishedAvailable
+  - GamingStations
+  - Garage
+  - Gate
+  - GroceryService
+  - GroupExcercise
+  - GuestRoom
+  - HighSpeed
+  - Housekeeping
+  - HouseSitting
+  - JoggingWalkingTrails
+  - LakeFront
+  - LakeAccess
+  - Laundry
+  - Library
+  - MealService
+  - MediaRoom
+  - MultiUseRoom
+  - NightPatrol
+  - OnSiteMaintenance
+  - OnSiteManagement
+  - PackageReceiving
+  - PerDiemAccepted
+  - Pool
+  - PlayGround
+  - Racquetball
+  - RecRoom
+  - Recycling
+  - Sauna
+  - ShortTermLease
+  - SmokeFree
+  - Spa
+  - StorageSpace
+  - Sundeck
+  - TennisCourt
+  - Transportation
+  - TVLounge
+  - ValetTrash
+  - Vintage
+  - VolleyballCourt
+  - WirelessInternet
+- path: GeneralAmenityType/AmenitySubType
+  domain: GeneralAmenityType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1444
+  enumeration:
+  - Attached
+  - Detached
+  - Both
+  - SameLevelParking
+- path: SpecificAmenityType/Description
+  domain: SpecificAmenityType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1460
+- path: SpecificAmenityType/Rank
+  domain: SpecificAmenityType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1467
+- path: SpecificAmenityType/AmenityType
+  domain: SpecificAmenityType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1475
+  enumeration:
+  - Other
+  - AdditionalStorage
+  - AirConditioner
+  - Alarm
+  - Balcony
+  - Cable
+  - Carpet
+  - Carport
+  - CeilingFan
+  - ControlledAccess
+  - Courtyard
+  - DishWasher
+  - Disposal
+  - DoubleSinkVanity
+  - Dryer
+  - Fireplace
+  - FramedMirrors
+  - Furnished
+  - Garage
+  - Handrails
+  - HardwoodFlooring
+  - HardSurfaceCounterTops
+  - Heat
+  - IndividualClimateControl
+  - IslandKitchen
+  - LaminateCounterTops
+  - VinylFlooring
+  - LargeClosets
+  - LinenCloset
+  - Microwave
+  - Pantry
+  - Patio
+  - PrivateBalcony
+  - PrivatePatio
+  - Range
+  - Refrigerator
+  - Satellite
+  - Skylight
+  - TileFlooring
+  - VaultedCeiling
+  - View
+  - Washer
+  - WheelChair
+  - WD_Hookup
+  - WindowCoverings
+  - Other
+- path: SpecificAmenityType/AmenitySubType
+  domain: SpecificAmenityType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1527
+  enumeration:
+  - Central
+  - Window
+  - Wall
+  - Gas
+  - Gas or Electric
+  - Luxury
+  - Wood
+  - Electric
+  - Radiant
+  - Decorative
+  - Unspecified
+- path: SeniorLivingAmenityType/Description
+  domain: SeniorLivingAmenityType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1550
+- path: SeniorLivingAmenityType/Rank
+  domain: SeniorLivingAmenityType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1557
+- path: SeniorLivingAmenityType/AmenityType
+  domain: SeniorLivingAmenityType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1559
+  enumeration:
+  - Other
+  - SkilledNursing
+  - IndependentLiving
+  - ContinuedCareRetirement
+  - AdultDayCare
+  - AlzheimersMemoryCare
+- path: RoomType/Description
+  domain: RoomType
+  range: xs:string
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1614
+- path: RoomType/Count
+  domain: RoomType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1615
+- path: RoomType/Comment
+  domain: RoomType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1616
+- path: RoomType/Size
+  domain: RoomType
+  range: xs:decimal
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1617
+- path: RoomType/GeneralType
+  domain: RoomType
+  range: xs:string
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1618
+- path: RoomType/RoomType
+  domain: RoomType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1620
+  enumeration:
+  - Bedroom
+  - Bathroom
+  - Dining Room
+  - Kitchen
+  - Sunroom
+  - Eat in Kitchen
+  - Den
+  - Other
+- path: FileType/FileType
+  domain: FileType
+  is_reference: false
+  cardinality: required
+  definition: 'Example: photo, floorplan, logo, etc.'
+  source_location: Property-Marketing-ILS-5.0.xsd:1690
+  enumeration:
+  - Photo
+  - Floorplan
+  - Logo
+  - Video
+  - Blueprint
+  - Other
+- path: FileType/Description
+  domain: FileType
+  range: xs:string
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1706
+- path: FileType/Name
+  domain: FileType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1707
+- path: FileType/Caption
+  domain: FileType
+  is_reference: false
+  cardinality: optional
+  definition: Text description specified for subject
+  source_location: Property-Marketing-ILS-5.0.xsd:1714
+- path: FileType/Format
+  domain: FileType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1724
+- path: FileType/Src
+  domain: FileType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1731
+- path: FileType/Width
+  domain: FileType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1738
+- path: FileType/Height
+  domain: FileType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1739
+- path: FileType/Rank
+  domain: FileType
+  is_reference: false
+  cardinality: required
+  definition: Relative ranking of subject file among files of similar type
+  source_location: Property-Marketing-ILS-5.0.xsd:1740
+- path: FileType/AdID
+  domain: FileType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1750
+- path: FileType/AffiliateID
+  domain: FileType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1751
+- path: FileType/FileID
+  domain: FileType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1753
+- path: FileType/Active
+  domain: FileType
+  range: xs:boolean
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1760
+- path: LeadChannelType/LeadNotification
+  domain: LeadChannelType
+  is_reference: false
+  cardinality: repeating
+  definition: LeadNotification contains the exact contact data for the specified notification
+    type. For example, if the notification type is ‘Email’, the LeadNotification content
+    would be the email address itself.
+  source_location: Property-Marketing-ILS-5.0.xsd:1807
+- path: LeadChannelType/Source
+  domain: LeadChannelType
+  range: xs:string
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1824
+- path: ChargeOfferType/Limits
+  domain: ChargeOfferType
+  range: LimitsType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1846
+- path: ChargeOfferType/ChargeOfferItem
+  domain: ChargeOfferType
+  range: ChargeOfferItemType
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1847
+- path: ChargeOfferType/Code
+  domain: ChargeOfferType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:1849
+  enumeration:
+  - ACCOUNTING
+  - ADMIN
+  - AMENITY
+  - APPLICATION
+  - CLEAN
+  - DAMAGE
+  - GOVT
+  - HOLD
+  - INSURANCE
+  - KEY
+  - LEASE
+  - LEGAL
+  - OTHER
+  - PARKING
+  - PET
+  - SERVICE
+  - STORAGE
+  - TECH
+  - TERM
+  - TRANSFER
+  - UPGRADE
+  - UTILITY
+  - VIOLATION
+- path: LimitsType/MaximumOccurences
+  domain: LimitsType
+  range: xs:integer
+  is_reference: false
+  cardinality: required
+  definition: The maximum number of items in the class, or – if Applies To or Characteristics
+    are specified – the maximum number of items of the specified item types.
+  source_location: Property-Marketing-ILS-5.0.xsd:2000
+- path: LimitsType/MaximumAmount
+  domain: LimitsType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: The maximum total amount of items in the class, or – if Applies To or
+    Characteristics are specified – the maximum number of items of the specified item
+    types.
+  source_location: Property-Marketing-ILS-5.0.xsd:2006
+- path: LimitsType/AppliesTo
+  domain: LimitsType
+  is_reference: false
+  cardinality: optional
+  definition: The specific item types (by Internal Code) that this maximum applies
+    to. If omitted, it applies to all internal codes in the class meeting any Characteristic
+    constraints.
+  source_location: Property-Marketing-ILS-5.0.xsd:2012
+- path: LimitsType/Characteristic
+  domain: LimitsType
+  range: CharacteristicsType
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2029
+- path: CharacteristicsType/ChargeRequirement
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: required
+  definition: Included, Mandatory, Situational, Conditional, or Optional
+  source_location: Property-Marketing-ILS-5.0.xsd:2038
+  enumeration:
+  - Included
+  - Mandatory
+  - Situational
+  - Optional
+  - Conditional
+- path: CharacteristicsType/ConditionalAppliesTo
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: optional
+  definition: If the Charge Requirement is Conditional, this specifies the internal
+    code(s) of the Charge Offer Item(s) the presence of (or any one of) will trigger
+    the automatic inclusion of this Charge Offer Item
+  source_location: Property-Marketing-ILS-5.0.xsd:2078
+- path: CharacteristicsType/RequirementDescription
+  domain: CharacteristicsType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Description of the conditions under which situational or optional charges
+    will be applied.
+  source_location: Property-Marketing-ILS-5.0.xsd:2095
+- path: CharacteristicsType/Refundability
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: required
+  definition: Determines whether this item is never refunded, expected to be refunded
+    (e.g. a deposit), or possibly refunded (e.g. a hold fee).
+  source_location: Property-Marketing-ILS-5.0.xsd:2101
+  enumeration:
+  - Non-refundable
+  - Deposit
+  - Refundable
+- path: CharacteristicsType/RefundabilityMaxType
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: required
+  definition: Determines whether the maximum amount refundable is specified as an
+    explicit amount or as a percentage of the amount paid.
+  source_location: Property-Marketing-ILS-5.0.xsd:2129
+  enumeration:
+  - Amount
+  - Percentage
+- path: CharacteristicsType/RefundabilityMax
+  domain: CharacteristicsType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: The maximum monetary amount (if Refundability Max Type is amount) or
+    percentage (if Refundability Max Type is percentage) of this fee that could be
+    refunded. For percentages, ‘1’ = 100%.
+  source_location: Property-Marketing-ILS-5.0.xsd:2151
+- path: CharacteristicsType/RefundabilityDescription
+  domain: CharacteristicsType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Description of the terms that apply to return of deposits or refunds.
+  source_location: Property-Marketing-ILS-5.0.xsd:2157
+- path: CharacteristicsType/RefundabilityPerType
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: optional
+  definition: Where a refundability maximum is specified, and this item Amount Per
+    Type is either Applicant or Person, this attribute specifies whether the refundability
+    max applies to each per-entity (i.e. per applicant/per person) or whether the
+    max applies to the aggregate of all applicants/people.
+  source_location: Property-Marketing-ILS-5.0.xsd:2163
+  enumeration:
+  - Item
+  - Leaseholder
+  - Person
+  - Period
+- path: CharacteristicsType/Lifecycle
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: required
+  definition: The stage in the lifecycle of the resident’s lease that this item relates
+    to.
+  source_location: Property-Marketing-ILS-5.0.xsd:2197
+  enumeration:
+  - Pre-application
+  - At Application
+  - Approved Future Resident
+  - Move-in
+  - During Term
+  - Renewal
+  - Move-out
+  - Past Resident
+  - Transfer
+  - Other
+- path: CharacteristicsType/PaymentFrequency
+  domain: CharacteristicsType
+  is_reference: false
+  cardinality: required
+  definition: The frequency on which the amounts specified in this item will be payable.
+  source_location: Property-Marketing-ILS-5.0.xsd:2266
+  enumeration:
+  - One-time
+  - Per-occurrence
+  - Hourly
+  - 24h
+  - Weekly
+  - Bi-weekly
+  - Monthly
+  - Bi-monthly
+  - Quarterly
+  - Triannually
+  - Semi-annually
+  - Annually
+  - Other
+- path: ChargeOfferItemType/Name
+  domain: ChargeOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Short name indicating what the charge is for, using the operator’s preferred
+    customer-facing language.
+  source_location: Property-Marketing-ILS-5.0.xsd:2358
+- path: ChargeOfferItemType/Description
+  domain: ChargeOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Description of the charge explaining what the charge is for using the
+    operator’s preferred customer-facing language, including what the resident gets
+    for the charge, or why they are being charged. This can also include an explanation
+    of fees that are variable (e.g. what the variability depends upon).
+  source_location: Property-Marketing-ILS-5.0.xsd:2364
+- path: ChargeOfferItemType/Group
+  domain: ChargeOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: In some cases, and operator may have a preferred grouping of fees. When
+    this is the case, this preference should be provided here using the customer-facing
+    name of the group under which this fee would preferably be listed.
+  source_location: Property-Marketing-ILS-5.0.xsd:2370
+- path: ChargeOfferItemType/Characteristics
+  domain: ChargeOfferItemType
+  range: CharacteristicsType
+  is_reference: true
+  cardinality: required
+  definition: A set of additional characteristics (or metadata) about the charge that
+    can be used to make it easier for the resident to see specific charges and to
+    allow pricing calculators to treat each charge appropriately.
+  source_location: Property-Marketing-ILS-5.0.xsd:2376
+- path: ChargeOfferItemType/ItemMinimumOccurrences
+  domain: ChargeOfferItemType
+  range: xs:integer
+  is_reference: false
+  cardinality: required
+  definition: If this item is subject to a minimum, it should be specified here.
+  source_location: Property-Marketing-ILS-5.0.xsd:2382
+- path: ChargeOfferItemType/ItemMaximumOccurrences
+  domain: ChargeOfferItemType
+  range: xs:integer
+  is_reference: false
+  cardinality: required
+  definition: If this item is subject to a maximum, it should be specified here. This
+    can be used to limit items to one, or a specific number (e.g. pet dogs might be
+    limited to a maximum of 2). If omitted, it is assumed that there is no limit on
+    the number of individual items of this type that can be added. If class level
+    limits are also specified, then the lowed of the two maximums is used.
+  source_location: Property-Marketing-ILS-5.0.xsd:2387
+- path: ChargeOfferItemType/AmountBasis
+  domain: ChargeOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Explicit Amount, Percentage Of, Stepped, or Within Range
+  source_location: Property-Marketing-ILS-5.0.xsd:2393
+  enumeration:
+  - Explicit Amount
+  - Percentage Of
+  - Within Range
+  - Stepped
+  - Variable
+- path: ChargeOfferItemType/PercentageOfCode
+  domain: ChargeOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: If Amount Basis is Percentage Of, the Internal Code that this Item is
+    calculated as a percentage of.
+  source_location: Property-Marketing-ILS-5.0.xsd:2433
+- path: ChargeOfferItemType/AmountPerType
+  domain: ChargeOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Specifies what triggers a repeat of this charge. For example, per Unit
+    would mean the charge is only incurred once per unit (for example, ‘monthly rent’),
+    whereas per Person would indicate the charge is repeated for each Person using
+    an item or taking part in an event (for example ‘overnight stay in guest suite’).
+  source_location: Property-Marketing-ILS-5.0.xsd:2439
+  enumeration:
+  - Item
+  - Leaseholder
+  - Person
+  - Period
+- path: ChargeOfferItemType/AmountPerPeriod
+  domain: ChargeOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: For fees that have an Amount Per Type of Period, what is the duration
+    of each period.
+  source_location: Property-Marketing-ILS-5.0.xsd:2473
+- path: ChargeOfferItemType/ApplicableToAffordableUnits
+  domain: ChargeOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Indicates whether or not this specific fee applies to units that are
+    identified as affordable. It may be omitted if there are no affordable units I
+    the scope.
+  source_location: Property-Marketing-ILS-5.0.xsd:2479
+- path: ChargeOfferItemType/ChargeOfferAmount
+  domain: ChargeOfferItemType
+  range: ChargeOfferAmountType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2486
+- path: ChargeOfferItemType/InternalCode
+  domain: ChargeOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: optional
+  definition: The Internal Code, specific to each data publisher.
+  source_location: Property-Marketing-ILS-5.0.xsd:2488
+- path: ParkingOfferItemType/StructureType
+  domain: ParkingOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Information about the structure that contains the parking.
+  source_location: Property-Marketing-ILS-5.0.xsd:2498
+  enumeration:
+  - Surface Lot
+  - Garage Lot
+  - Covered Lot
+  - Street
+  - Other
+  - Garage (attached)
+  - Garage (detached)
+  - None
+- path: ParkingOfferItemType/SizeType
+  domain: ParkingOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Describes the general size of each parking space by reference to the
+    kind of vehicle it is designed to accommodate.
+  source_location: Property-Marketing-ILS-5.0.xsd:2551
+  enumeration:
+  - Motorcycle
+  - Compact
+  - Car
+  - Extended (RV/Boat)
+  - Other
+- path: ParkingOfferItemType/RegularSpace
+  domain: ParkingOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Specifies whether regular parking (i.e. not enhanced with EV or handicapped
+    access) is available, and – if so – whether it is also reservable.
+  source_location: Property-Marketing-ILS-5.0.xsd:2586
+  enumeration:
+  - Available
+  - Reservable
+  - None
+- path: ParkingOfferItemType/Handicapped
+  domain: ParkingOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Specifies whether handicapped parking is available, and – if so – whether
+    it is also reservable.
+  source_location: Property-Marketing-ILS-5.0.xsd:2614
+  enumeration:
+  - Available
+  - Reservable
+  - None
+- path: ParkingOfferItemType/Electric
+  domain: ParkingOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Specifies whether parking space with electric vehicle charging points
+    are available, and – if so – whether they are also reservable.
+  source_location: Property-Marketing-ILS-5.0.xsd:2642
+  enumeration:
+  - Available
+  - Reservable
+  - None
+- path: ParkingOfferItemType/SpaceDescription
+  domain: ParkingOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: A narrative description of the space, include information about the
+    mix of different types (e.g. “50 spaces in the surface lot, including 5 designated
+    handicapped spaces, and 10 EV charging spaces”
+  source_location: Property-Marketing-ILS-5.0.xsd:2670
+- path: StorageOfferItemType/StorageType
+  domain: StorageOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Property-Marketing-ILS-5.0.xsd:2684
+  enumeration:
+  - Bike
+  - Closet
+  - Locker
+  - Other
+- path: StorageOfferItemType/StorageUoM
+  domain: StorageOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: The units of measurement used for the dimensions that follow
+  source_location: Property-Marketing-ILS-5.0.xsd:2709
+  enumeration:
+  - Inch
+  - Foot
+  - Yard
+  - Meter
+- path: StorageOfferItemType/Height
+  domain: StorageOfferItemType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: The internal height of the storage space.
+  source_location: Property-Marketing-ILS-5.0.xsd:2743
+- path: StorageOfferItemType/Width
+  domain: StorageOfferItemType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: The internal width of the storage space.
+  source_location: Property-Marketing-ILS-5.0.xsd:2749
+- path: StorageOfferItemType/Length
+  domain: StorageOfferItemType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: The internal length of the storage space.
+  source_location: Property-Marketing-ILS-5.0.xsd:2755
+- path: PetOfferItemType/Allowed
+  domain: PetOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Indicates whether the specified type of pet (or all pets if no type
+    is specified) are allowed.
+  source_location: Property-Marketing-ILS-5.0.xsd:2769
+  enumeration:
+  - 'Yes'
+  - 'No'
+- path: PetOfferItemType/PetBreedorType
+  domain: PetOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: The breed (e.g. Airedale Terrier) or type of pet (e.g. Snake) that this
+    item applies to.
+  source_location: Property-Marketing-ILS-5.0.xsd:2781
+- path: PetOfferItemType/MaximumSize
+  domain: PetOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Describes the maximum size of the pet.
+  source_location: Property-Marketing-ILS-5.0.xsd:2787
+- path: PetOfferItemType/MaximumWeight
+  domain: PetOfferItemType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: Describes the maximum weight of the pet.
+  source_location: Property-Marketing-ILS-5.0.xsd:2793
+- path: PetOfferItemType/PetCare
+  domain: PetOfferItemType
+  is_reference: false
+  cardinality: required
+  definition: Indicates whether pet care is available at the property.
+  source_location: Property-Marketing-ILS-5.0.xsd:2799
+  enumeration:
+  - 'Yes'
+  - 'No'
+- path: ChargeOfferAmountType/Amounts
+  domain: ChargeOfferAmountType
+  range: xs:decimal
+  is_reference: false
+  cardinality: repeating
+  definition: If the Amount Basis is Fixed Amount, the list contains one specific
+    amount. If the Amount Basis is Within Range, the list contains two amounts, the
+    first being the lowest amount in the range and the second being the highest amount
+    in the range. If the Amount Basis is Stepped, the list contains the amount for
+    each subsequent item – i.e. the first amount is the price for the first occurrence,
+    the second amount is for the second occurrence and so on. If there is no maximum
+    number of occurrences, or if the maximum is greater than the number of amounts
+    in the list, the last amount will be used for subsequent occurrences. Negative
+    amounts indicate credits to the customer account (e.g. concessions). Positive
+    amounts indicate debits (i.e. charges).
+  source_location: Property-Marketing-ILS-5.0.xsd:2817
+- path: ChargeOfferAmountType/Percentage
+  domain: ChargeOfferAmountType
+  range: xs:decimal
+  is_reference: false
+  cardinality: required
+  definition: If the Amount Basis is Percentage Of, the percentage. Negative percentages
+    indicate credits to the customer account (e.g. concessions). Positive percentages
+    indicate debits (i.e. charges).
+  source_location: Property-Marketing-ILS-5.0.xsd:2829
+- path: ChargeOfferAmountType/TermBasis
+  domain: ChargeOfferAmountType
+  is_reference: false
+  cardinality: required
+  definition: Whole Lease or Specific Term.
+  source_location: Property-Marketing-ILS-5.0.xsd:2835
+  enumeration:
+  - Whole Lease
+  - Specific Term
+- path: ChargeOfferAmountType/StartTermEarliest
+  domain: ChargeOfferAmountType
+  range: xs:date
+  is_reference: false
+  cardinality: required
+  definition: If Term Basis is Specific Term, the start date of the specific term,
+    or the earliest date in a range that the Specific Term start date lies. If omitted,
+    any Specific Term start date preceding the Start Term Latest qualifies for this
+    offer.
+  source_location: Property-Marketing-ILS-5.0.xsd:2857
+- path: ChargeOfferAmountType/StartTermLatest
+  domain: ChargeOfferAmountType
+  range: xs:date
+  is_reference: false
+  cardinality: required
+  definition: If Term Basis is Specific Term, the latest date in a range that the
+    Specific Term start date lies. If omitted, the Specific Term can start any time
+    after the given Start Term Earliest. If the same as the Start Term Earliest date,
+    then that is the only Specific Term start date on which this Charge Offer Amount
+    applies.
+  source_location: Property-Marketing-ILS-5.0.xsd:2863
+- path: ChargeOfferAmountType/Duration
+  domain: ChargeOfferAmountType
+  range: xs:integer
+  is_reference: false
+  cardinality: required
+  definition: The number of periods committed to, where the duration of each period
+    is specified in the corresponding Charge Offer Item’s Payment Frequency.
+  source_location: Property-Marketing-ILS-5.0.xsd:2869
+- path: ChargeOfferAmountType/Estimate
+  domain: ChargeOfferAmountType
+  range: xs:boolean
+  is_reference: false
+  cardinality: required
+  definition: If true, this amount is an estimate, and the actual amount charged could
+    therefore be different.
+  source_location: Property-Marketing-ILS-5.0.xsd:2875
+- path: ChargeOfferAmountType/EstimationBasis
+  domain: ChargeOfferAmountType
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: For estimated amounts, this narratively describes the basis of the estimation,
+    for example utility company estimate, or average for the area.
+  source_location: Property-Marketing-ILS-5.0.xsd:2881
+- path: AddressType/Description
+  domain: AddressType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:36
+- path: AddressType/AddressLine1
+  domain: AddressType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:37
+- path: AddressType/AddressLine2
+  domain: AddressType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:38
+- path: AddressType/City
+  domain: AddressType
+  range: StringMax60Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:39
+- path: AddressType/State
+  domain: AddressType
+  range: StringMax3Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:40
+- path: AddressType/Province
+  domain: AddressType
+  range: StringMax60Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:41
+- path: AddressType/PostalCode
+  domain: AddressType
+  range: StringMax12Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:42
+- path: AddressType/Country
+  domain: AddressType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:43
+- path: AddressType/CountyName
+  domain: AddressType
+  range: StringMax60Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:44
+- path: AddressType/UnparsedAddress
+  domain: AddressType
+  range: StringMax500Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:45
+- path: AddressType/AddressType
+  domain: AddressType
+  range: AddressInfo
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:47
+- path: CompaniesType/Company
+  domain: CompaniesType
+  range: CompanyType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:56
+- path: CompanyType/CompanyName
+  domain: CompanyType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:82
+- path: CompanyType/Address
+  domain: CompanyType
+  range: AddressType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:83
+- path: CompanyType/WebSite
+  domain: CompanyType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:84
+- path: CompanyType/Logo
+  domain: CompanyType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:85
+- path: CompanyType/Phone
+  domain: CompanyType
+  range: PhoneType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:86
+- path: CompanyType/Email
+  domain: CompanyType
+  range: StringMax80Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:87
+- path: CompanyContactType/CompanyRef
+  domain: CompanyContactType
+  range: Identifiable
+  is_reference: true
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:107
+- path: CompanyContactType/CompanyRole
+  domain: CompanyContactType
+  range: CompanyRoleType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:108
+- path: CompanyContactType/CompanyContacts
+  domain: CompanyContactType
+  range: CompanyContactsType
+  is_reference: true
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:109
+- path: CompanyContactsType/CompanyContact
+  domain: CompanyContactsType
+  range: CompanyPersonContactType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:119
+- path: CompanyPersonContactType/PersonContactRef
+  domain: CompanyPersonContactType
+  range: Identifiable
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:135
+- path: CompanyPersonContactType/PersonContactRole
+  domain: CompanyPersonContactType
+  range: PersonCompanyRoleType
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:136
+- path: ContactsType/PropertyContacts
+  domain: ContactsType
+  range: PropertyContactsType
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:154
+- path: ContactsType/Companies
+  domain: ContactsType
+  range: CompaniesType
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:155
+- path: ContactsType/Persons
+  domain: ContactsType
+  range: PersonsType
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:156
+- path: CurrencyRangeType/Min
+  domain: CurrencyRangeType
+  range: Money
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:169
+- path: CurrencyRangeType/Max
+  domain: CurrencyRangeType
+  range: Money
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:170
+- path: CurrencyRangeType/Exact
+  domain: CurrencyRangeType
+  range: Money
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:171
+- path: CurrencyRangeType/Currency
+  domain: CurrencyRangeType
+  range: Currency
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:172
+- path: CurrentNumberOccupantsType/Total
+  domain: CurrentNumberOccupantsType
+  range: xs:integer
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:180
+- path: CurrentNumberOccupantsType/Child
+  domain: CurrentNumberOccupantsType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:181
+- path: Identifiable/Identification
+  domain: Identifiable
+  range: Identification
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:193
+- path: Identification/IDValue
+  domain: Identification
+  range: xs:string
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:230
+- path: Identification/OrganizationName
+  domain: Identification
+  range: xs:string
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:231
+- path: Identification/IDType
+  domain: Identification
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:232
+- path: Identification/IDRank
+  domain: Identification
+  range: IDRank
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:233
+- path: Identification/IDScopeType
+  domain: Identification
+  range: IDScopeType
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:234
+- path: LeaseType/CurrentRent
+  domain: LeaseType
+  range: xs:decimal
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:269
+- path: LeaseType/ExpectedMoveInDate
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:270
+- path: LeaseType/ExpectedMoveOutDate
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:271
+- path: LeaseType/LeaseFromDate
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:272
+- path: LeaseType/LeaseToDate
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:273
+- path: LeaseType/ActualMoveIn
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:274
+- path: LeaseType/ActualMoveOut
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:275
+- path: LeaseType/ResponsibleForLease
+  domain: LeaseType
+  range: xs:boolean
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:276
+- path: LeaseType/LeaseSignDate
+  domain: LeaseType
+  range: xs:date
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:277
+- path: LeaseType/SpecialStatus
+  domain: LeaseType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:278
+- path: LeaseType/PaymentAccepted
+  domain: LeaseType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:279
+- path: LeaseType/AccountNumber
+  domain: LeaseType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:280
+- path: LeaseType/CurrentNumberOccupants
+  domain: LeaseType
+  range: CurrentNumberOccupantsType
+  is_reference: true
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:281
+- path: NameType/NamePrefix
+  domain: NameType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:307
+- path: NameType/FirstName
+  domain: NameType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:308
+- path: NameType/MiddleName
+  domain: NameType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:309
+- path: NameType/LastName
+  domain: NameType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:310
+- path: NameType/MaidenName
+  domain: NameType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:311
+- path: NameType/NameSuffix
+  domain: NameType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:312
+- path: NumericRangeType/Min
+  domain: NumericRangeType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:321
+- path: NumericRangeType/Max
+  domain: NumericRangeType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:322
+- path: NumericRangeType/Exact
+  domain: NumericRangeType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:323
+- path: PersonType/Name
+  domain: PersonType
+  range: NameType
+  is_reference: true
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:334
+- path: PersonType/Address
+  domain: PersonType
+  range: AddressType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:335
+- path: PersonType/Phone
+  domain: PersonType
+  range: PhoneType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:336
+- path: PersonType/Email
+  domain: PersonType
+  range: StringMax80Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:337
+- path: PersonsType/Person
+  domain: PersonsType
+  range: PersonType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:349
+- path: PhoneType/PhoneDescription
+  domain: PhoneType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:359
+- path: PhoneType/PhoneNumber
+  domain: PhoneType
+  range: StringMax20Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:360
+- path: PhoneType/Extension
+  domain: PhoneType
+  range: StringMax20Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:361
+- path: PhoneType/PhoneType
+  domain: PhoneType
+  range: PhoneInfo
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:363
+- path: PropertiesType/Property
+  domain: PropertiesType
+  range: PropertyType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:372
+- path: PropertyContactsType/PropertyContact
+  domain: PropertyContactsType
+  range: CompanyContactType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:382
+- path: PropertyType/MarketingName
+  domain: PropertyType
+  range: StringMax120Type
+  is_reference: false
+  cardinality: required
+  definition: ''
+  source_location: Core-Data-4.0.xsd:416
+- path: PropertyType/APN
+  domain: PropertyType
+  range: StringMax40Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:417
+- path: PropertyType/LegalName
+  domain: PropertyType
+  range: StringMax120Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:418
+- path: PropertyType/MSA_Number
+  domain: PropertyType
+  range: xs:integer
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:419
+- path: PropertyType/MSA_Name
+  domain: PropertyType
+  range: StringMax60Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:420
+- path: PropertyType/StructureDescription
+  domain: PropertyType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:421
+- path: PropertyType/WebSite
+  domain: PropertyType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:422
+- path: PropertyType/Address
+  domain: PropertyType
+  range: AddressType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:423
+- path: PropertyType/Phone
+  domain: PropertyType
+  range: PhoneType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:424
+- path: PropertyType/Email
+  domain: PropertyType
+  range: StringMax80Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:425
+- path: UnitType/MarketingName
+  domain: UnitType
+  range: StringMax120Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:477
+- path: UnitType/UnitType
+  domain: UnitType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:478
+- path: UnitType/UnitBedrooms
+  domain: UnitType
+  range: Decimal4Digits2Fraction
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:479
+- path: UnitType/UnitBathrooms
+  domain: UnitType
+  range: Decimal4Digits2Fraction
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:480
+- path: UnitType/MinSquareFeet
+  domain: UnitType
+  range: Integer5Digit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:481
+- path: UnitType/MaxSquareFeet
+  domain: UnitType
+  range: Integer5Digit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:482
+- path: UnitType/SquareFootType
+  domain: UnitType
+  range: UnitSqftInfo
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:483
+- path: UnitType/UnitRent
+  domain: UnitType
+  range: Decimal7Digits2Fraction
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:484
+- path: UnitType/MarketRent
+  domain: UnitType
+  range: Decimal7Digits2Fraction
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:485
+- path: UnitType/UnitEconomicStatus
+  domain: UnitType
+  range: UnitEconStatusInfo
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:486
+- path: UnitType/UnitEconomicStatusDescription
+  domain: UnitType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:487
+- path: UnitType/UnitOccupancyStatus
+  domain: UnitType
+  range: UnitOccpStatusInfo
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:488
+- path: UnitType/UnitLeasedStatus
+  domain: UnitType
+  range: UnitLeaseStatusInfo
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:489
+- path: UnitType/UnitLeasedStatusDescription
+  domain: UnitType
+  range: StringMax100Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:490
+- path: UnitType/NumberOccupants
+  domain: UnitType
+  range: CurrentNumberOccupantsType
+  is_reference: true
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:491
+- path: UnitType/FloorplanName
+  domain: UnitType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:492
+- path: UnitType/PhaseName
+  domain: UnitType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:493
+- path: UnitType/BuildingName
+  domain: UnitType
+  range: StringMax50Type
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Core-Data-4.0.xsd:494
+- path: UnitType/Address
+  domain: UnitType
+  range: AddressType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:495
+- path: UnitsType/Unit
+  domain: UnitsType
+  range: UnitType
+  is_reference: true
+  cardinality: repeating
+  definition: ''
+  source_location: Core-Data-4.0.xsd:507
