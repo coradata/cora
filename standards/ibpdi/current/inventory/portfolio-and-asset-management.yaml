@@ -1,0 +1,650 @@
+standard: ibpdi
+module: portfolio-and-asset-management
+version: '1.0'
+source_artifact: standards/ibpdi/current/native/Schema Documents/core/portfolioAndAssetManagement/portfolioAndAssetManagement.manifest.cdm.json
+extractor: cora_extractors.cdm_json@0.0.0
+extracted_at: '2026-05-23T21:57:35.981794Z'
+types:
+- name: Portfolio
+  extends: CdmEntity
+  abstract: false
+  definition: Grouping of real estate assets
+  source_location: Portfolio.cdm.json
+- name: PortfolioBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Portfolio and Building
+  source_location: PortfolioBuilding.cdm.json
+- name: PortfolioLand
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Portfolio and Land
+  source_location: PortfolioLand.cdm.json
+- name: PortfolioSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Portfolio and Site
+  source_location: PortfolioSite.cdm.json
+- name: PortfolioStrategy
+  extends: CdmEntity
+  abstract: false
+  definition: Strategy and strategic targets for the use of real estate assets in
+    a portfolio
+  source_location: PortfolioStrategy.cdm.json
+- name: PortfolioUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Portfolio and Unit
+  source_location: PortfolioUnit.cdm.json
+- name: Valuation
+  extends: CdmEntity
+  abstract: false
+  definition: Financial valuation of buildings or whole portfolios
+  source_location: Valuation.cdm.json
+- name: ValuationBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Valuation and Building
+  source_location: ValuationBuilding.cdm.json
+- name: ValuationIndividualAccount
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Valuation and IndividualAccount
+  source_location: ValuationIndividualAccount.cdm.json
+- name: ValuationLand
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Valuation and Land
+  source_location: ValuationLand.cdm.json
+- name: ValuationOperationalMeasurement
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Valuation and OperationalMeasurement
+  source_location: ValuationOperationalMeasurement.cdm.json
+fields:
+- path: Portfolio/PortfolioId
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Customer ID from previous system (ID before onboarding data to CDM)
+  source_location: Portfolio.cdm.json
+- path: Portfolio/PortfolioCode
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: 'User specific Portfolio Code e.g: MR003'
+  source_location: Portfolio.cdm.json
+- path: Portfolio/AssetCategory
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Describes the asset category
+  source_location: Portfolio.cdm.json
+- path: Portfolio/OwnershipType
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Describes the ownership structure of the portfolio
+  source_location: Portfolio.cdm.json
+- path: Portfolio/PrimaryUsageType
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Definition of the primary usage type/asset class of the portfolio (individual
+    by portfolio owner)
+  source_location: Portfolio.cdm.json
+- path: Portfolio/SecondaryUsageType
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Definition of the secondary usage type/asset class of the portfolio
+    (individual by portfolio owner)
+  source_location: Portfolio.cdm.json
+- path: Portfolio/MarketValue
+  domain: Portfolio
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Current market value of Portfolio
+  source_location: Portfolio.cdm.json
+- path: Portfolio/Currency
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Main/default currency of portfolio (depending on user it should be able
+    to change this)
+  source_location: Portfolio.cdm.json
+  enumeration:
+  - AFN
+  - ALL
+  - DZD
+  - USD
+  - EUR
+  - AOA
+  - XCD
+  - ARS
+  - AMD
+  - AWG
+  - AUD
+  - AZN
+  - BSD
+  - BHD
+  - BDT
+  - BBD
+  - BYN
+  - BZD
+  - XOF
+  - BMD
+  - BTN
+  - INR
+  - BOB
+  - BOV
+  - BAM
+  - BWP
+  - NOK
+  - BRL
+  - BND
+  - BGN
+  - BIF
+  - CVE
+  - KHR
+  - XAF
+  - CAD
+  - KYD
+  - CLF
+  - CLP
+  - CNY
+  - COP
+  - COU
+  - KMF
+  - CDF
+  - NZD
+  - CRC
+  - HRK
+  - CUC
+  - CUP
+  - ANG
+  - CZK
+  - DKK
+  - DJF
+  - DOP
+  - EGP
+  - SVC
+  - ERN
+  - ETB
+  - FKP
+  - FJD
+  - XPF
+  - GMD
+  - GEL
+  - GHS
+  - GIP
+  - GTQ
+  - GBP
+  - GNF
+  - GYD
+  - HTG
+  - HNL
+  - HKD
+  - HUF
+  - ISK
+  - IDR
+  - XDR
+  - IRR
+  - IQD
+  - ILS
+  - JMD
+  - JPY
+  - JOD
+  - KZT
+  - KES
+  - KPW
+  - KRW
+  - KWD
+  - KGS
+  - LAK
+  - LBP
+  - LSL
+  - ZAR
+  - LRD
+  - LYD
+  - CHF
+  - MOP
+  - MGA
+  - MWK
+  - MYR
+  - MVR
+  - MRU
+  - MUR
+  - XUA
+  - MXN
+  - MXV
+  - MDL
+  - MNT
+  - MAD
+  - MZN
+  - MMK
+  - NAD
+  - NPR
+  - NIO
+  - NGN
+  - OMR
+  - PKR
+  - PAB
+  - PGK
+  - PYG
+  - PEN
+  - PHP
+  - PLN
+  - QAR
+  - MKD
+  - RON
+  - RUB
+  - RWF
+  - SHP
+  - WST
+  - STN
+  - SAR
+  - RSD
+  - SCR
+  - SLL
+  - SGD
+  - XSU
+  - SBD
+  - SOS
+  - SSP
+  - LKR
+  - SDG
+  - SRD
+  - SZL
+  - SEK
+  - CHE
+  - CHW
+  - SYP
+  - TWD
+  - TJS
+  - TZS
+  - THB
+  - TOP
+  - TTD
+  - TND
+  - TRY
+  - TMT
+  - UGX
+  - UAH
+  - AED
+  - USN
+  - UYI
+  - UYU
+  - UZS
+  - VUV
+  - VEF
+  - VED
+  - VND
+  - YER
+  - ZMW
+  - ZWL
+- path: Portfolio/ReportingDate
+  domain: Portfolio
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Reporting date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)
+  source_location: Portfolio.cdm.json
+- path: Portfolio/ReportingCycle
+  domain: Portfolio
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: 'Reporting cycle which is used to determine the next reporting date '
+  source_location: Portfolio.cdm.json
+- path: PortfolioBuilding/PortfolioId
+  domain: PortfolioBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioBuilding.cdm.json
+- path: PortfolioBuilding/BuildingId
+  domain: PortfolioBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioBuilding.cdm.json
+- path: PortfolioLand/PortfolioId
+  domain: PortfolioLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioLand.cdm.json
+- path: PortfolioLand/LandId
+  domain: PortfolioLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioLand.cdm.json
+- path: PortfolioSite/PortfolioId
+  domain: PortfolioSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioSite.cdm.json
+- path: PortfolioSite/SiteId
+  domain: PortfolioSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioSite.cdm.json
+- path: PortfolioStrategy/PortfolioStrategyId
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Customer ID from previous system (ID before onboarding data to CDM)
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/PortfolioId
+  domain: PortfolioStrategy
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/InvestmentType
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of Strategy
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/StrategyObjectiveTargetsSteering
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Steering target type of Portfolio Strategy
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/StrategyObjectiveValuesSteering
+  domain: PortfolioStrategy
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Value of the portfolio strategy steering targets
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/StrategyObjectiveUnitSteering
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of strategy objective values steering
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/StrategyObjectiveTargets
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Target type of Portfolio Strategy
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/StrategyObjectiveValues
+  domain: PortfolioStrategy
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Value of the portfolio strategy targets
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/StrategyObjectiveUnit
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of strategy objective values
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioStrategy/Source
+  domain: PortfolioStrategy
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Source of Portfolio strategy
+  source_location: PortfolioStrategy.cdm.json
+- path: PortfolioUnit/PortfolioId
+  domain: PortfolioUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioUnit.cdm.json
+- path: PortfolioUnit/UnitId
+  domain: PortfolioUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: PortfolioUnit.cdm.json
+- path: Valuation/ValuationId
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Valuation.cdm.json
+- path: Valuation/PreviousValuationId
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: Valuation.cdm.json
+- path: Valuation/Description
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Description of valuation implementation
+  source_location: Valuation.cdm.json
+- path: Valuation/Text
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Text field
+  source_location: Valuation.cdm.json
+- path: Valuation/Keywords
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Important keywords
+  source_location: Valuation.cdm.json
+- path: Valuation/Url
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: URL if existent
+  source_location: Valuation.cdm.json
+- path: Valuation/JurisdictionType
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of Jurisdiction
+  source_location: Valuation.cdm.json
+- path: Valuation/ProfessionalStandard
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Name of professional valuation standard used
+  source_location: Valuation.cdm.json
+- path: Valuation/AccountingStandard
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Name of Accounting standard used
+  source_location: Valuation.cdm.json
+- path: Valuation/JurisdictionStandard
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Name of Jurisdiction type used
+  source_location: Valuation.cdm.json
+- path: Valuation/Value
+  domain: Valuation
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Value of Valuation
+  source_location: Valuation.cdm.json
+- path: Valuation/Unit
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of valuation
+  source_location: Valuation.cdm.json
+- path: Valuation/Assumptions
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Concluded assumptions
+  source_location: Valuation.cdm.json
+- path: Valuation/SpecialAssumptions
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Concluded special assumptions
+  source_location: Valuation.cdm.json
+- path: Valuation/Constrains
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Existing constrains
+  source_location: Valuation.cdm.json
+- path: Valuation/Approach
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Valuation approach
+  source_location: Valuation.cdm.json
+- path: Valuation/MaintenanceBacklog
+  domain: Valuation
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Does a maintenance backlog exist (Y/N)
+  source_location: Valuation.cdm.json
+- path: Valuation/SingleTenant
+  domain: Valuation
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Valuation of single tenant building (Y/N)
+  source_location: Valuation.cdm.json
+- path: Valuation/DiscountRate
+  domain: Valuation
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Discount rate included
+  source_location: Valuation.cdm.json
+- path: Valuation/DiscountPremiums
+  domain: Valuation
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Discount premiums included
+  source_location: Valuation.cdm.json
+- path: Valuation/Uncertainty
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: LoV for uncertainty
+  source_location: Valuation.cdm.json
+- path: Valuation/Liquidity
+  domain: Valuation
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Amount of cash
+  source_location: Valuation.cdm.json
+- path: Valuation/SpaceEfficiency
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Space usage efficiency
+  source_location: Valuation.cdm.json
+- path: Valuation/EnergyEfficiency
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Stating the energy efficiency class
+  source_location: Valuation.cdm.json
+- path: Valuation/DocumentId
+  domain: Valuation
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: Valuation.cdm.json
+- path: ValuationBuilding/ValuationId
+  domain: ValuationBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationBuilding.cdm.json
+- path: ValuationBuilding/BuildingId
+  domain: ValuationBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationBuilding.cdm.json
+- path: ValuationIndividualAccount/ValuationId
+  domain: ValuationIndividualAccount
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationIndividualAccount.cdm.json
+- path: ValuationIndividualAccount/IndividualAccountId
+  domain: ValuationIndividualAccount
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationIndividualAccount.cdm.json
+- path: ValuationLand/ValuationId
+  domain: ValuationLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationLand.cdm.json
+- path: ValuationLand/LandId
+  domain: ValuationLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationLand.cdm.json
+- path: ValuationOperationalMeasurement/ValuationId
+  domain: ValuationOperationalMeasurement
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationOperationalMeasurement.cdm.json
+- path: ValuationOperationalMeasurement/OperationalMeasurementId
+  domain: ValuationOperationalMeasurement
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ValuationOperationalMeasurement.cdm.json

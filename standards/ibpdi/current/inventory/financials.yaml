@@ -1,0 +1,568 @@
+standard: ibpdi
+module: financials
+version: '1.0'
+source_artifact: standards/ibpdi/current/native/Schema Documents/core/financials/financials.manifest.cdm.json
+extractor: cora_extractors.cdm_json@0.0.0
+extracted_at: '2026-05-23T21:57:34.346275Z'
+types:
+- name: Account
+  extends: CdmEntity
+  abstract: false
+  definition: IBPDI defined account number based on standardized chart of account
+  source_location: Account.cdm.json
+- name: CostCenter
+  extends: CdmEntity
+  abstract: false
+  definition: Function or department within a company which is not directly going
+    to generate
+  source_location: CostCenter.cdm.json
+- name: CostCenterBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CostCenter and Building
+  source_location: CostCenterBuilding.cdm.json
+- name: CostCenterLand
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CostCenter and Land
+  source_location: CostCenterLand.cdm.json
+- name: CostCenterPortfolio
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CostCenter and Portfolio
+  source_location: CostCenterPortfolio.cdm.json
+- name: CostCenterRentalUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CostCenter and RentalUnit
+  source_location: CostCenterRentalUnit.cdm.json
+- name: CostCenterSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CostCenter and Site
+  source_location: CostCenterSite.cdm.json
+- name: IndividualAccount
+  extends: CdmEntity
+  abstract: false
+  definition: Company account number based on specific chart of account
+  source_location: IndividualAccount.cdm.json
+- name: IndividualAccountBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between IndividualAccount and Building
+  source_location: IndividualAccountBuilding.cdm.json
+- name: IndividualAccountPortfolio
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between IndividualAccount and Portfolio
+  source_location: IndividualAccountPortfolio.cdm.json
+- name: IndividualAccountSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between IndividualAccount and Site
+  source_location: IndividualAccountSite.cdm.json
+- name: Transaction
+  extends: CdmEntity
+  abstract: false
+  definition: Individual transaction or account balance at specific reporting date
+  source_location: Transaction.cdm.json
+fields:
+- path: Account/AccountId
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Account.cdm.json
+- path: Account/IbpdiProject
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account type (project aligned with RICS naming convention)
+  source_location: Account.cdm.json
+  enumeration:
+  - Assets
+  - Liabilities
+  - Equity
+  - Revenue
+  - Expenses
+  - Other (Non-Operating) Income and expenses
+- path: Account/IbpdiCategory
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account category according to IBPDI charts of accounts (category aligned
+    with RICS naming convention)
+  source_location: Account.cdm.json
+- path: Account/IbpdiGroup
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account group according IBPDI charts of accounts (group aligned with
+    RICS naming convention)
+  source_location: Account.cdm.json
+- path: Account/StatementType
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Statement type (Balance statement or P&L account)
+  source_location: Account.cdm.json
+  enumeration:
+  - BalanceStatement
+  - P&L
+- path: Account/RecordType
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Record type (Debit or Credit)
+  source_location: Account.cdm.json
+  enumeration:
+  - Debit
+  - Credit
+- path: Account/Version
+  domain: Account
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account version
+  source_location: Account.cdm.json
+- path: CostCenter/CostCenterId
+  domain: CostCenter
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: CostCenter.cdm.json
+- path: CostCenter/OrganisationId
+  domain: CostCenter
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenter.cdm.json
+- path: CostCenter/Type
+  domain: CostCenter
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of cost center
+  source_location: CostCenter.cdm.json
+- path: CostCenterBuilding/CostCenterId
+  domain: CostCenterBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterBuilding.cdm.json
+- path: CostCenterBuilding/BuildingId
+  domain: CostCenterBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterBuilding.cdm.json
+- path: CostCenterLand/CostCenterId
+  domain: CostCenterLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterLand.cdm.json
+- path: CostCenterLand/LandId
+  domain: CostCenterLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterLand.cdm.json
+- path: CostCenterPortfolio/CostCenterId
+  domain: CostCenterPortfolio
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterPortfolio.cdm.json
+- path: CostCenterPortfolio/PortfolioId
+  domain: CostCenterPortfolio
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterPortfolio.cdm.json
+- path: CostCenterRentalUnit/CostCenterId
+  domain: CostCenterRentalUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterRentalUnit.cdm.json
+- path: CostCenterRentalUnit/RentalUnitId
+  domain: CostCenterRentalUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterRentalUnit.cdm.json
+- path: CostCenterSite/CostCenterId
+  domain: CostCenterSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterSite.cdm.json
+- path: CostCenterSite/SiteId
+  domain: CostCenterSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CostCenterSite.cdm.json
+- path: IndividualAccount/IndividualAccountId
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/AccountId
+  domain: IndividualAccount
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/OrganisationId
+  domain: IndividualAccount
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/Project
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Individual Account project (project aligned with RICS naming convention)
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/Category
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account category according to IBPDI charts of accounts (category aligned
+    with RICS naming convention)
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/Group
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account group according IBPDI charts of accounts (group aligned with
+    RICS naming convention)
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/StatementType
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Statement type (Balance statement or P&L account)
+  source_location: IndividualAccount.cdm.json
+  enumeration:
+  - BalanceStatement
+  - P&L
+- path: IndividualAccount/RecordType
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Record type (Debit or Credit)
+  source_location: IndividualAccount.cdm.json
+  enumeration:
+  - Debit
+  - Credit
+- path: IndividualAccount/Version
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Account version
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccount/GAAP
+  domain: IndividualAccount
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: GAAP type used (if applicable)
+  source_location: IndividualAccount.cdm.json
+- path: IndividualAccountBuilding/IndividualAccountId
+  domain: IndividualAccountBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccountBuilding.cdm.json
+- path: IndividualAccountBuilding/BuildingId
+  domain: IndividualAccountBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccountBuilding.cdm.json
+- path: IndividualAccountPortfolio/IndividualAccountId
+  domain: IndividualAccountPortfolio
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccountPortfolio.cdm.json
+- path: IndividualAccountPortfolio/PortfolioId
+  domain: IndividualAccountPortfolio
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccountPortfolio.cdm.json
+- path: IndividualAccountSite/IndividualAccountId
+  domain: IndividualAccountSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccountSite.cdm.json
+- path: IndividualAccountSite/SiteId
+  domain: IndividualAccountSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: IndividualAccountSite.cdm.json
+- path: Transaction/TransactionId
+  domain: Transaction
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Transaction.cdm.json
+- path: Transaction/IndividualAccountId
+  domain: Transaction
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Transaction.cdm.json
+- path: Transaction/CostCenterId
+  domain: Transaction
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Transaction.cdm.json
+- path: Transaction/Type
+  domain: Transaction
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of transaction
+  source_location: Transaction.cdm.json
+  enumeration:
+  - Actual
+  - Budget
+  - Forecast
+- path: Transaction/BookingType
+  domain: Transaction
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Booking type
+  source_location: Transaction.cdm.json
+  enumeration:
+  - debit
+  - credit
+- path: Transaction/Value
+  domain: Transaction
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Cost/Income value of specific transaction
+  source_location: Transaction.cdm.json
+- path: Transaction/BookingCurrency
+  domain: Transaction
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Currency code according to Iso 4217
+  source_location: Transaction.cdm.json
+  enumeration:
+  - AFN
+  - ALL
+  - DZD
+  - USD
+  - EUR
+  - AOA
+  - XCD
+  - ARS
+  - AMD
+  - AWG
+  - AUD
+  - AZN
+  - BSD
+  - BHD
+  - BDT
+  - BBD
+  - BYN
+  - BZD
+  - XOF
+  - BMD
+  - BTN
+  - INR
+  - BOB
+  - BOV
+  - BAM
+  - BWP
+  - NOK
+  - BRL
+  - BND
+  - BGN
+  - BIF
+  - CVE
+  - KHR
+  - XAF
+  - CAD
+  - KYD
+  - CLF
+  - CLP
+  - CNY
+  - COP
+  - COU
+  - KMF
+  - CDF
+  - NZD
+  - CRC
+  - HRK
+  - CUC
+  - CUP
+  - ANG
+  - CZK
+  - DKK
+  - DJF
+  - DOP
+  - EGP
+  - SVC
+  - ERN
+  - ETB
+  - FKP
+  - FJD
+  - XPF
+  - GMD
+  - GEL
+  - GHS
+  - GIP
+  - GTQ
+  - GBP
+  - GNF
+  - GYD
+  - HTG
+  - HNL
+  - HKD
+  - HUF
+  - ISK
+  - IDR
+  - XDR
+  - IRR
+  - IQD
+  - ILS
+  - JMD
+  - JPY
+  - JOD
+  - KZT
+  - KES
+  - KPW
+  - KRW
+  - KWD
+  - KGS
+  - LAK
+  - LBP
+  - LSL
+  - ZAR
+  - LRD
+  - LYD
+  - CHF
+  - MOP
+  - MGA
+  - MWK
+  - MYR
+  - MVR
+  - MRU
+  - MUR
+  - XUA
+  - MXN
+  - MXV
+  - MDL
+  - MNT
+  - MAD
+  - MZN
+  - MMK
+  - NAD
+  - NPR
+  - NIO
+  - NGN
+  - OMR
+  - PKR
+  - PAB
+  - PGK
+  - PYG
+  - PEN
+  - PHP
+  - PLN
+  - QAR
+  - MKD
+  - RON
+  - RUB
+  - RWF
+  - SHP
+  - WST
+  - STN
+  - SAR
+  - RSD
+  - SCR
+  - SLL
+  - SGD
+  - XSU
+  - SBD
+  - SOS
+  - SSP
+  - LKR
+  - SDG
+  - SRD
+  - SZL
+  - SEK
+  - CHE
+  - CHW
+  - SYP
+  - TWD
+  - TJS
+  - TZS
+  - THB
+  - TOP
+  - TTD
+  - TND
+  - TRY
+  - TMT
+  - UGX
+  - UAH
+  - AED
+  - USN
+  - UYI
+  - UYU
+  - UZS
+  - VUV
+  - VEF
+  - VED
+  - VND
+  - YER
+  - ZMW
+  - ZWL
+- path: Transaction/PostingDate
+  domain: Transaction
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date transaction is posted in yyyy-mm-ddThh:mm:ssZ form (conform to
+    ISO 8061)
+  source_location: Transaction.cdm.json
+- path: Transaction/DocumentId
+  domain: Transaction
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Reference to document
+  source_location: Transaction.cdm.json

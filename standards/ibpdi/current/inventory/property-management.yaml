@@ -1,0 +1,481 @@
+standard: ibpdi
+module: property-management
+version: '1.0'
+source_artifact: standards/ibpdi/current/native/Schema Documents/core/propertyManagement/propertyManagement.manifest.cdm.json
+extractor: cora_extractors.cdm_json@0.0.0
+extracted_at: '2026-05-23T21:57:36.748603Z'
+types:
+- name: Dunning
+  extends: CdmEntity
+  abstract: false
+  definition: Information about outstanding rent receivables
+  source_location: Dunning.cdm.json
+- name: RentalContract
+  extends: CdmEntity
+  abstract: false
+  definition: Agreement identifying all information regarding the rental relationship
+  source_location: RentalContract.cdm.json
+- name: RentalContractRentalUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalContract and RentalUnit
+  source_location: RentalContractRentalUnit.cdm.json
+- name: RentalOption
+  extends: CdmEntity
+  abstract: false
+  definition: Information about rental option of rental contract
+  source_location: RentalOption.cdm.json
+- name: RentalPayment
+  extends: CdmEntity
+  abstract: false
+  definition: Information about payments related to rental contract
+  source_location: RentalPayment.cdm.json
+- name: RentalUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Structure or part of a structure rented out to a third party as a home,
+    residence, office or for any other use
+  source_location: RentalUnit.cdm.json
+- name: RentalUnitBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalUnit and Building
+  source_location: RentalUnitBuilding.cdm.json
+- name: RentalUnitFloor
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalUnit and Floor
+  source_location: RentalUnitFloor.cdm.json
+- name: RentalUnitLand
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalUnit and Land
+  source_location: RentalUnitLand.cdm.json
+- name: RentalUnitSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalUnit and Site
+  source_location: RentalUnitSite.cdm.json
+- name: RentalUnitSpace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalUnit and Space
+  source_location: RentalUnitSpace.cdm.json
+- name: RentalUnitUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between RentalUnit and Unit
+  source_location: RentalUnitUnit.cdm.json
+- name: TenantCommunication
+  extends: CdmEntity
+  abstract: false
+  definition: Communication between different parties involved in operation, control,
+    and oversight of the real estate
+  source_location: TenantCommunication.cdm.json
+fields:
+- path: Dunning/DunningId
+  domain: Dunning
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Dunning.cdm.json
+- path: Dunning/RentalPaymentId
+  domain: Dunning
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Dunning.cdm.json
+- path: Dunning/DunningLevel
+  domain: Dunning
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Dunning level
+  source_location: Dunning.cdm.json
+- path: Dunning/DunningAmount
+  domain: Dunning
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Dunning Amount
+  source_location: Dunning.cdm.json
+- path: Dunning/PaymentAmount
+  domain: Dunning
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Value of payment
+  source_location: Dunning.cdm.json
+- path: Dunning/InitialDueDate
+  domain: Dunning
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Initial due date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)
+  source_location: Dunning.cdm.json
+- path: Dunning/PaymentDate
+  domain: Dunning
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Payment date in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)
+  source_location: Dunning.cdm.json
+- path: RentalContract/RentalContractId
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: RentalContract.cdm.json
+- path: RentalContract/MainContractId
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Main contract code
+  source_location: RentalContract.cdm.json
+- path: RentalContract/ContractCode
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Contract Code (e.g. SAP)
+  source_location: RentalContract.cdm.json
+- path: RentalContract/ContractType
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Contract type
+  source_location: RentalContract.cdm.json
+- path: RentalContract/CompanyCode
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Company Code (e.g. SAP code)
+  source_location: RentalContract.cdm.json
+- path: RentalContract/ContractName
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Contract name
+  source_location: RentalContract.cdm.json
+- path: RentalContract/ContractGroup
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Contract group
+  source_location: RentalContract.cdm.json
+- path: RentalContract/RentBeginDate
+  domain: RentalContract
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date original contract starts in yyyy-mm-ddThh:mm:ssZ form (conform
+    to ISO 8061)
+  source_location: RentalContract.cdm.json
+- path: RentalContract/RentEndDate
+  domain: RentalContract
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date original contract ends in yyyy-mm-ddThh:mm:ssZ form (conform to
+    ISO 8061)
+  source_location: RentalContract.cdm.json
+- path: RentalContract/PeriodOfNotice
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Period of notice e.g. monthly; 3 month; 6 month etc.
+  source_location: RentalContract.cdm.json
+- path: RentalContract/PaymentInAdvance
+  domain: RentalContract
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Does the payment have to be conducted in advance (Y/N)
+  source_location: RentalContract.cdm.json
+- path: RentalContract/PaymentFrequency
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Frequency of payment e.g. weekly, monthly, quarterly etc.
+  source_location: RentalContract.cdm.json
+- path: RentalContract/ShortTermLease
+  domain: RentalContract
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Is this a short term lease (Y/N)
+  source_location: RentalContract.cdm.json
+- path: RentalContract/TenantSector
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Sector / Business area of the tenant
+  source_location: RentalContract.cdm.json
+- path: RentalContract/TurnoverReportingInterval
+  domain: RentalContract
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: 'If turnover rent, reporting interval for the tenant turnover: monthly,
+    quarterly, etc.'
+  source_location: RentalContract.cdm.json
+- path: RentalContractRentalUnit/RentalContractId
+  domain: RentalContractRentalUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalContractRentalUnit.cdm.json
+- path: RentalContractRentalUnit/RentalUnitId
+  domain: RentalContractRentalUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalContractRentalUnit.cdm.json
+- path: RentalOption/RentalOptionId
+  domain: RentalOption
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: RentalOption.cdm.json
+- path: RentalOption/RentalContractId
+  domain: RentalOption
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalOption.cdm.json
+- path: RentalOption/SubType
+  domain: RentalOption
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Subtype of the option
+  source_location: RentalOption.cdm.json
+- path: RentalOption/DocumentId
+  domain: RentalOption
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Reference to document
+  source_location: RentalOption.cdm.json
+- path: RentalPayment/RentalPaymentId
+  domain: RentalPayment
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: RentalPayment.cdm.json
+- path: RentalPayment/RentalContractId
+  domain: RentalPayment
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalPayment.cdm.json
+- path: RentalPayment/ValueMonth
+  domain: RentalPayment
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Value of payment per month
+  source_location: RentalPayment.cdm.json
+- path: RentalPayment/ValueYear
+  domain: RentalPayment
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Value of payment per year
+  source_location: RentalPayment.cdm.json
+- path: RentalPayment/DiscountInPercentage
+  domain: RentalPayment
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Discount percentage of payment
+  source_location: RentalPayment.cdm.json
+- path: RentalPayment/VatOpted
+  domain: RentalPayment
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Is the vat payable  (Y/N)
+  source_location: RentalPayment.cdm.json
+- path: RentalPayment/IndexId
+  domain: RentalPayment
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Reference to index table
+  source_location: RentalPayment.cdm.json
+- path: RentalUnit/RentalUnitId
+  domain: RentalUnit
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: RentalUnit.cdm.json
+- path: RentalUnit/RentalUnitCode
+  domain: RentalUnit
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific RentalUnit Code
+  source_location: RentalUnit.cdm.json
+- path: RentalUnit/RentedOut
+  domain: RentalUnit
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Is the RentalUnit rented out (Y/N)
+  source_location: RentalUnit.cdm.json
+- path: RentalUnit/UsageType
+  domain: RentalUnit
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Usage type of the rental unit
+  source_location: RentalUnit.cdm.json
+- path: RentalUnit/Vacancy
+  domain: RentalUnit
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Is the rental unit vacant (Y/N)
+  source_location: RentalUnit.cdm.json
+- path: RentalUnitBuilding/RentalUnitId
+  domain: RentalUnitBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitBuilding.cdm.json
+- path: RentalUnitBuilding/BuildingId
+  domain: RentalUnitBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitBuilding.cdm.json
+- path: RentalUnitFloor/RentalUnitId
+  domain: RentalUnitFloor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitFloor.cdm.json
+- path: RentalUnitFloor/FloorId
+  domain: RentalUnitFloor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitFloor.cdm.json
+- path: RentalUnitLand/RentalUnitId
+  domain: RentalUnitLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitLand.cdm.json
+- path: RentalUnitLand/LandId
+  domain: RentalUnitLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitLand.cdm.json
+- path: RentalUnitSite/RentalUnitId
+  domain: RentalUnitSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitSite.cdm.json
+- path: RentalUnitSite/SiteId
+  domain: RentalUnitSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitSite.cdm.json
+- path: RentalUnitSpace/RentalUnitId
+  domain: RentalUnitSpace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitSpace.cdm.json
+- path: RentalUnitSpace/SpaceId
+  domain: RentalUnitSpace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitSpace.cdm.json
+- path: RentalUnitUnit/RentalUnitId
+  domain: RentalUnitUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitUnit.cdm.json
+- path: RentalUnitUnit/UnitId
+  domain: RentalUnitUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: RentalUnitUnit.cdm.json
+- path: TenantCommunication/TenantCommunicationId
+  domain: TenantCommunication
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: TenantCommunication.cdm.json
+- path: TenantCommunication/RentalUnitId
+  domain: TenantCommunication
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: TenantCommunication.cdm.json
+- path: TenantCommunication/Medium
+  domain: TenantCommunication
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Medium of communication
+  source_location: TenantCommunication.cdm.json
+- path: TenantCommunication/Description
+  domain: TenantCommunication
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Description of communciation
+  source_location: TenantCommunication.cdm.json
+- path: TenantCommunication/ValidFrom
+  domain: TenantCommunication
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date communication occurred in yyyy-mm-ddThh:mm:ssZ form (conform to
+    ISO 8061)
+  source_location: TenantCommunication.cdm.json
+- path: TenantCommunication/ValidUntil
+  domain: TenantCommunication
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date communication is valid until in yyyy-mm-ddThh:mm:ssZ form (conform
+    to ISO 8061)
+  source_location: TenantCommunication.cdm.json
+- path: TenantCommunication/Status
+  domain: TenantCommunication
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Status of communication
+  source_location: TenantCommunication.cdm.json

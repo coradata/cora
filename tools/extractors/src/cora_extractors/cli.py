@@ -19,7 +19,9 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from cora_extractors import __version__
+from cora_extractors.cdm_json import CdmJsonExtractor
 from cora_extractors.config import (
+    CdmJsonConfig,
     ExcelDictionaryConfig,
     ExtractorConfig,
     JsonCatalogConfig,
@@ -38,12 +40,14 @@ EXTRACTORS: dict[str, Extractor] = {
     "xsd": XsdExtractor(),
     "json": JsonCatalogExtractor(),
     "excel": ExcelDictionaryExtractor(),
+    "cdm-json": CdmJsonExtractor(),
 }
 
 CONFIG_TYPES: dict[str, type[ExtractorConfig]] = {
     "xsd": XsdConfig,
     "json": JsonCatalogConfig,
     "excel": ExcelDictionaryConfig,
+    "cdm-json": CdmJsonConfig,
 }
 
 VALIDATORS: dict[str, Validator] = {

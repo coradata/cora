@@ -1,0 +1,1414 @@
+standard: ibpdi
+module: energy-and-resources
+version: '1.0'
+source_artifact: standards/ibpdi/current/native/Schema Documents/core/energyAndResources/energyAndResources.manifest.cdm.json
+extractor: cora_extractors.cdm_json@0.0.0
+extracted_at: '2026-05-23T21:57:33.518801Z'
+types:
+- name: Climate
+  extends: CdmEntity
+  abstract: false
+  definition: Regional information on past and future amount of heating and cooling
+    degree days (for potential climate normalisation and projection of energy demand)
+  source_location: Climate.cdm.json
+- name: ClimateBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Climate and Building
+  source_location: ClimateBuilding.cdm.json
+- name: ClimateSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Climate and Site
+  source_location: ClimateSite.cdm.json
+- name: EmissionFactor
+  extends: CdmEntity
+  abstract: false
+  definition: Emission factors that are applied to convert energy consumption data
+    into greenhouse gas emissions. The entity also includes global warming potential
+    data for non-CO2 greenhouse gases in order to calculate CO2-equivalents (CO2e)
+  source_location: EmissionFactor.cdm.json
+- name: EmissionFactorBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between EmissionFactor and Building
+  source_location: EmissionFactorBuilding.cdm.json
+- name: EmissionFactorOperationalMeasurement
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between EmissionFactor and OperationalMeasurement
+  source_location: EmissionFactorOperationalMeasurement.cdm.json
+- name: EmissionFactorSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between EmissionFactor and Site
+  source_location: EmissionFactorSite.cdm.json
+- name: GhgEmission
+  extends: CdmEntity
+  abstract: false
+  definition: Greenhouse gas (Ghg) emissions (in CO2e) corresponding to individual
+    operational measurements.
+  source_location: GhgEmission.cdm.json
+- name: GhgEmissionBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between GhgEmission and Building
+  source_location: GhgEmissionBuilding.cdm.json
+- name: GhgEmissionEmissionFactor
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between GhgEmission and EmissionFactor
+  source_location: GhgEmissionEmissionFactor.cdm.json
+- name: GhgEmissionSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between GhgEmission and Site
+  source_location: GhgEmissionSite.cdm.json
+- name: OperationalMeasurement
+  extends: CdmEntity
+  abstract: false
+  definition: Represents individual data on energy consumption, water consumption/withdrawal,
+    waste output or fugitive emissions including various further information (procured
+    by, subtypes, purpose, covered time period)
+  source_location: OperationalMeasurement.cdm.json
+- name: OperationalMeasurementBuilding
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and Building
+  source_location: OperationalMeasurementBuilding.cdm.json
+- name: OperationalMeasurementFloor
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and Floor
+  source_location: OperationalMeasurementFloor.cdm.json
+- name: OperationalMeasurementLand
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and Land
+  source_location: OperationalMeasurementLand.cdm.json
+- name: OperationalMeasurementRentalUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and RentalUnit
+  source_location: OperationalMeasurementRentalUnit.cdm.json
+- name: OperationalMeasurementSite
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and Site
+  source_location: OperationalMeasurementSite.cdm.json
+- name: OperationalMeasurementSpace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and Space
+  source_location: OperationalMeasurementSpace.cdm.json
+- name: OperationalMeasurementUnit
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between OperationalMeasurement and Unit
+  source_location: OperationalMeasurementUnit.cdm.json
+- name: SustainabilityIndicator
+  extends: CdmEntity
+  abstract: false
+  definition: 'Sustainability-related information on building-level: energy consumption,
+    net energy demand, carbon emissions (total, separated in emissions scopes, market-
+    and location-based, alignment with targets, excess emissions, carbon costs and
+    penalties)'
+  source_location: SustainabilityIndicator.cdm.json
+- name: SustainabilityIndicatorEmissionFactor
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between SustainabilityIndicator and EmissionFactor
+  source_location: SustainabilityIndicatorEmissionFactor.cdm.json
+fields:
+- path: Climate/ClimateId
+  domain: Climate
+  range: guid
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: Climate.cdm.json
+- path: Climate/Experiment
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of simulation of regional climate model e.g. Historical, Evaluation,
+    RCP2.6
+  source_location: Climate.cdm.json
+- path: Climate/TemporalResolution
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Temporal resolution of data (can be the time period over which raw data
+    is aggregated)
+  source_location: Climate.cdm.json
+- path: Climate/SpatialResolution
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Spatial resolution of data
+  source_location: Climate.cdm.json
+- path: Climate/GlobalCirculationModel
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Global circulation model used
+  source_location: Climate.cdm.json
+- path: Climate/RegionalClimateModel
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Regional climate model used
+  source_location: Climate.cdm.json
+- path: Climate/SimulationVersion
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Run number of certain climate model or model combination
+  source_location: Climate.cdm.json
+- path: Climate/EnsembleMember
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Information on members of a model ensemble and changed conditions ('realisation',
+    'initialisation', 'physics'). Control member; 'r1i1p1'
+  source_location: Climate.cdm.json
+- path: Climate/Unit
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of observed value
+  source_location: Climate.cdm.json
+- path: Climate/LocationType
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of spatial reference e.g. Zip code or geographic coordinates
+  source_location: Climate.cdm.json
+  enumeration:
+  - NUTS3
+  - Zip Code
+  - Geographic coordinates
+  - Projected coordinates
+- path: Climate/CoordinateSystem
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Specific coordinate system used
+  source_location: Climate.cdm.json
+- path: Climate/Location
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Localisation of observed data in case of non-grid location types
+  source_location: Climate.cdm.json
+- path: Climate/Latitude
+  domain: Climate
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Latitude coordinate in case of geographic coordinates
+  source_location: Climate.cdm.json
+- path: Climate/Longitude
+  domain: Climate
+  range: decimal
+  is_reference: false
+  cardinality: optional
+  definition: Longitude coordinate in case of geographic coordinates
+  source_location: Climate.cdm.json
+- path: Climate/PosX
+  domain: Climate
+  range: integer
+  is_reference: false
+  cardinality: optional
+  definition: Vertical coordinate in case of projected coordinates
+  source_location: Climate.cdm.json
+- path: Climate/PosY
+  domain: Climate
+  range: integer
+  is_reference: false
+  cardinality: optional
+  definition: Vertical coordinate in case of projected coordinates
+  source_location: Climate.cdm.json
+- path: Climate/Variable
+  domain: Climate
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Observed variable
+  source_location: Climate.cdm.json
+- path: ClimateBuilding/ClimateId
+  domain: ClimateBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ClimateBuilding.cdm.json
+- path: ClimateBuilding/BuildingId
+  domain: ClimateBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ClimateBuilding.cdm.json
+- path: ClimateSite/ClimateId
+  domain: ClimateSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ClimateSite.cdm.json
+- path: ClimateSite/SiteId
+  domain: ClimateSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: ClimateSite.cdm.json
+- path: EmissionFactor/EmissionFactorId
+  domain: EmissionFactor
+  range: guid
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: EmissionFactor.cdm.json
+- path: EmissionFactor/Name
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific emission factor name (this can also be the name of a scenario)
+  source_location: EmissionFactor.cdm.json
+- path: EmissionFactor/Country
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Sovereign nations and their dependent territories, anything with an ISO-3166
+    ALPHA-2 code
+  source_location: EmissionFactor.cdm.json
+  enumeration:
+  - AF
+  - AL
+  - DZ
+  - AS
+  - AD
+  - AO
+  - AI
+  - AQ
+  - AG
+  - AR
+  - AM
+  - AW
+  - AU
+  - AT
+  - AZ
+  - BS
+  - BH
+  - BD
+  - BB
+  - BY
+  - BE
+  - BZ
+  - BJ
+  - BM
+  - BT
+  - BO
+  - BQ
+  - BA
+  - BW
+  - BV
+  - BR
+  - IO
+  - BN
+  - BG
+  - BF
+  - BI
+  - CV
+  - KH
+  - CM
+  - CA
+  - KY
+  - CF
+  - TD
+  - CL
+  - CN
+  - CX
+  - CC
+  - CO
+  - KM
+  - CD
+  - CG
+  - CK
+  - CR
+  - HR
+  - CU
+  - CW
+  - CY
+  - CZ
+  - CI
+  - DK
+  - DJ
+  - DM
+  - DO
+  - EC
+  - EG
+  - SV
+  - GQ
+  - ER
+  - EE
+  - SZ
+  - ET
+  - FK
+  - FO
+  - FJ
+  - FI
+  - FR
+  - GF
+  - PF
+  - TF
+  - GA
+  - GM
+  - GE
+  - DE
+  - GH
+  - GI
+  - GR
+  - GL
+  - GD
+  - GP
+  - GU
+  - GT
+  - GG
+  - GN
+  - GW
+  - GY
+  - HT
+  - HM
+  - VA
+  - HN
+  - HK
+  - HU
+  - IS
+  - IN
+  - ID
+  - IR
+  - IQ
+  - IE
+  - IM
+  - IL
+  - IT
+  - JM
+  - JP
+  - JE
+  - JO
+  - KZ
+  - KE
+  - KI
+  - KP
+  - KR
+  - KW
+  - KG
+  - LA
+  - LV
+  - LB
+  - LS
+  - LR
+  - LY
+  - LI
+  - LT
+  - LU
+  - MO
+  - MG
+  - MW
+  - MY
+  - MV
+  - ML
+  - MT
+  - MH
+  - MQ
+  - MR
+  - MU
+  - YT
+  - MX
+  - FM
+  - MD
+  - MC
+  - MN
+  - ME
+  - MS
+  - MA
+  - MZ
+  - MM
+  - NA
+  - NR
+  - NP
+  - NL
+  - NC
+  - NZ
+  - NI
+  - NE
+  - NG
+  - NU
+  - NF
+  - MP
+  - 'NO'
+  - OM
+  - PK
+  - PW
+  - PS
+  - PA
+  - PG
+  - PY
+  - PE
+  - PH
+  - PN
+  - PL
+  - PT
+  - PR
+  - QA
+  - MK
+  - RO
+  - RU
+  - RW
+  - RE
+  - BL
+  - SH
+  - KN
+  - LC
+  - MF
+  - PM
+  - VC
+  - WS
+  - SM
+  - ST
+  - SA
+  - SN
+  - RS
+  - SC
+  - SL
+  - SG
+  - SX
+  - SK
+  - SI
+  - SB
+  - SO
+  - ZA
+  - GS
+  - SS
+  - ES
+  - LK
+  - SD
+  - SR
+  - SJ
+  - SE
+  - CH
+  - SY
+  - TW
+  - TJ
+  - TZ
+  - TH
+  - TL
+  - TG
+  - TK
+  - TO
+  - TT
+  - TN
+  - TR
+  - TM
+  - TC
+  - TV
+  - UG
+  - UA
+  - AE
+  - GB
+  - UM
+  - US
+  - UY
+  - UZ
+  - VU
+  - VE
+  - VN
+  - VG
+  - VI
+  - WF
+  - EH
+  - YE
+  - ZM
+  - ZW
+  - AX
+- path: EmissionFactor/Type
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Specific type of emission factor e.g. district heating or water discharge
+  source_location: EmissionFactor.cdm.json
+  enumeration:
+  - Electricity from grid (green electricity contract)
+  - Electricity self-generated & exported
+  - Electricity self-generated & consumed
+  - Electricity (unspecified)
+  - REC
+  - Natural gas (standard mix)
+  - Green natural gas
+  - Natural gas (unspecified)
+  - Oil-based fuels
+  - Fuel (unspecified)
+  - District heating
+  - District cooling
+  - Biomass
+  - Solar thermal
+  - Fresh water (municipal water supply)
+  - Ground water (collected on site)
+  - Rain water (collected on site)
+  - Reclaimed water
+  - Water discharge
+  - Water consumption (unspecified)
+  - 'Recycling: non-hazardous'
+  - 'Incineration: non-hazardous'
+  - 'Waste to energy: non-hazardous'
+  - 'Other/Unknown: hazardous'
+  - 'Other/Unknown: non-hazardous'
+  - Electricity from grid (normal contract)
+  - Carbon dioxide (CO2)
+  - Methane (CH4)
+  - Nitrous oxide (N2O)
+  - R-11 | CFC-11 | Trichlorofluoromethane (CCI3F)
+  - R-12 | CFC-12 | Dichlorofluoromethane (CCI2F2)
+  - R-13 | CFC-13 | Chlorodifluoromethane (CCIF3)
+  - R-113 | CFC-113 | 1,1,2-Trichloro-1,2,2-trifluoroethane (C2CI3F3)
+  - R-114 | CFC-114 | Halon-242 | 1,2-Dichlorotetrafluoroethane (C2Cl2F4)
+  - R-115 | CFC-115 | Chloropentafluoroethane (C2ClF5)
+  - R13 B1 | Halon-1301 | Bromotrifluoromethane (CBrF3)
+  - R-12B1 | Halon-1211 | Bromochlorodifluoromethane (CBrCIF2)
+  - R 114B2 | Halon-2402 | 1,2-Dibromotetrafluoroethane (C2Br2F4)
+  - R-10 | Carbon tetrachloride (CCl4)
+  - Bromomethane | Methyl bromide (CH3Br)
+  - R-140a | 1,1,1- Trichloroethane | Methyl chloroform (C2H3Cl3)
+  - R-21 | HCFC-21 | Dichlorofluoromethane (CHCl2F)
+  - R-22 | HCFC-22 | Chlorodifluoromethane (CHClF2)
+  - R-123 | HCFC-123 | 2,2-Dichloro-1,1,1-trifluoroethane (C2Cl2F3)
+  - R-124 | HCFC-124| 1-Chloro-1,2,2,2-tetrafluoroethane (C2ClF4)
+  - R-141b | HCFC-141b |1,1,-Dichloro-1-1-fluoroethane (C2H3Cl2F)
+  - R-142b | HCFC-142b | 1-Chloro-1,1,-difluoroethane (C2ClF2)
+  - R-225ca | HCFC-225ca | 3.3-dichloro-1,1,1,2,2-pentafluoropropane (C3HCl2F5)
+  - R-225cb | HCFC-225cb | 1,3-Dichloro-1,1,2,2,3-pentafluoropropane (C3HCl2F5)
+  - R-23 | HFC-23 |
+  - R-32 | HFC-32 |
+  - R-41 | HFC-41 |
+  - R-125 | HFC-125 |
+  - R-134 | HFC-134 |
+  - R-134a | HFC-134a |
+  - R-143 | HFC-143 |
+  - R-143a | HFC-143a |
+  - R-152 | HFC-152 |
+  - R-152a | HFC-152a |
+  - R-161 | HFC-161 |
+  - R-227ea | HFC-227ea |
+  - R-236cb | HFC-236cb |
+  - R-236ea | HFC-236ea |
+  - R-236fa | HFC-236fa |
+  - R-245ca | HFC-245ca |
+  - R-245fa | HFC-245fa |
+  - R-365mfc | HFC-365mfc |
+  - R-43-10mee | HFC-43-10mee |
+  - Sulfur hexafluoride (SF6)
+  - Nitrogen trifluoride (NF3)
+  - Water supply
+  - 'Landfill: non-hazardous'
+  - 'Reuse: non-hazardous'
+  - 'Waste to energy: hazardous'
+  - 'Incineration: hazardous'
+  - 'Landfill: hazardous'
+  - 'Recycling: hazardous'
+  - 'Reuse: hazardous'
+- path: EmissionFactor/Unit
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of emission factor in terms of kgCO2e per unit of resource consumption
+  source_location: EmissionFactor.cdm.json
+  enumeration:
+  - kgCO2e/kWh
+  - kgCO2e/kg
+  - kgCO2e/cubm
+- path: EmissionFactor/Source
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Source of emission factor e.g. 'International Energy Agency'
+  source_location: EmissionFactor.cdm.json
+- path: EmissionFactor/SpaceType
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Differentiated emission factor for certain space type (within a building)
+  source_location: EmissionFactor.cdm.json
+  enumeration:
+  - Shared services/Common spaces
+  - Tenant space
+  - Landlord space
+  - Whole building
+  - Unspecified
+  - Shared services
+  - Common spaces
+  - Outdoor
+  - Exterior area
+  - Parking
+- path: EmissionFactor/Region
+  domain: EmissionFactor
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Areas that are broadly divided by physical characteristics, human impact
+    characteristics, and the interaction of humanity and the environment
+  source_location: EmissionFactor.cdm.json
+- path: EmissionFactor/City
+  domain: EmissionFactor
+  range: city
+  is_reference: false
+  cardinality: optional
+  definition: Any official settlement including cities, towns, villages, hamlets,
+    localities, etc
+  source_location: EmissionFactor.cdm.json
+- path: EmissionFactorBuilding/EmissionFactorId
+  domain: EmissionFactorBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: EmissionFactorBuilding.cdm.json
+- path: EmissionFactorBuilding/BuildingId
+  domain: EmissionFactorBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: EmissionFactorBuilding.cdm.json
+- path: EmissionFactorOperationalMeasurement/EmissionFactorId
+  domain: EmissionFactorOperationalMeasurement
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: EmissionFactorOperationalMeasurement.cdm.json
+- path: EmissionFactorOperationalMeasurement/OperationalMeasurementId
+  domain: EmissionFactorOperationalMeasurement
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: EmissionFactorOperationalMeasurement.cdm.json
+- path: EmissionFactorSite/EmissionFactorId
+  domain: EmissionFactorSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: EmissionFactorSite.cdm.json
+- path: EmissionFactorSite/SiteId
+  domain: EmissionFactorSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: EmissionFactorSite.cdm.json
+- path: GhgEmission/GhgEmissionId
+  domain: GhgEmission
+  range: guid
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: GhgEmission.cdm.json
+- path: GhgEmission/OperationalMeasurementId
+  domain: GhgEmission
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmission.cdm.json
+- path: GhgEmission/EmissionScope
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Emission scope 1, 2 or 3 according to the Greenhouse Gas Protocol
+  source_location: GhgEmission.cdm.json
+- path: GhgEmission/ReportingType
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: 'Approach of reporting emissions e.g. from ''green electricity consumption'':
+    Market-based or location-based'
+  source_location: GhgEmission.cdm.json
+  enumeration:
+  - Location-based
+  - Market-based
+- path: GhgEmission/Type
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: General source of emission e.g. energy, water or waste
+  source_location: GhgEmission.cdm.json
+  enumeration:
+  - Energy
+  - Fugitive
+  - Waste
+  - Water discharge
+  - Water supply
+- path: GhgEmission/SubType
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Specific type of ghg emission generation e.g. district heating or water
+    discharge
+  source_location: GhgEmission.cdm.json
+  enumeration:
+  - Electricity from grid (green electricity contract)
+  - Electricity self-generated & exported
+  - Electricity self-generated & consumed
+  - Electricity (unspecified)
+  - REC
+  - Natural gas (standard mix)
+  - Green natural gas
+  - Natural gas (unspecified)
+  - Oil-based fuels
+  - Fuel (unspecified)
+  - District heating
+  - District cooling
+  - Biomass
+  - Solar thermal
+  - Fresh water (municipal water supply)
+  - Ground water (collected on site)
+  - Rain water (collected on site)
+  - Reclaimed water
+  - Water discharge
+  - Water consumption (unspecified)
+  - 'Recycling: non-hazardous'
+  - 'Incineration: non-hazardous'
+  - 'Waste to energy: non-hazardous'
+  - 'Other/Unknown: hazardous'
+  - 'Other/Unknown: non-hazardous'
+  - Electricity from grid (normal contract)
+  - Carbon dioxide (CO2)
+  - Methane (CH4)
+  - Nitrous oxide (N2O)
+  - R-11 | CFC-11 | Trichlorofluoromethane (CCI3F)
+  - R-12 | CFC-12 | Dichlorofluoromethane (CCI2F2)
+  - R-13 | CFC-13 | Chlorodifluoromethane (CCIF3)
+  - R-113 | CFC-113 | 1,1,2-Trichloro-1,2,2-trifluoroethane (C2CI3F3)
+  - R-114 | CFC-114 | Halon-242 | 1,2-Dichlorotetrafluoroethane (C2Cl2F4)
+  - R-115 | CFC-115 | Chloropentafluoroethane (C2ClF5)
+  - R13 B1 | Halon-1301 | Bromotrifluoromethane (CBrF3)
+  - R-12B1 | Halon-1211 | Bromochlorodifluoromethane (CBrCIF2)
+  - R 114B2 | Halon-2402 | 1,2-Dibromotetrafluoroethane (C2Br2F4)
+  - R-10 | Carbon tetrachloride (CCl4)
+  - Bromomethane | Methyl bromide (CH3Br)
+  - R-140a | 1,1,1- Trichloroethane | Methyl chloroform (C2H3Cl3)
+  - R-21 | HCFC-21 | Dichlorofluoromethane (CHCl2F)
+  - R-22 | HCFC-22 | Chlorodifluoromethane (CHClF2)
+  - R-123 | HCFC-123 | 2,2-Dichloro-1,1,1-trifluoroethane (C2Cl2F3)
+  - R-124 | HCFC-124| 1-Chloro-1,2,2,2-tetrafluoroethane (C2ClF4)
+  - R-141b | HCFC-141b |1,1,-Dichloro-1-1-fluoroethane (C2H3Cl2F)
+  - R-142b | HCFC-142b | 1-Chloro-1,1,-difluoroethane (C2ClF2)
+  - R-225ca | HCFC-225ca | 3.3-dichloro-1,1,1,2,2-pentafluoropropane (C3HCl2F5)
+  - R-225cb | HCFC-225cb | 1,3-Dichloro-1,1,2,2,3-pentafluoropropane (C3HCl2F5)
+  - R-23 | HFC-23 |
+  - R-32 | HFC-32 |
+  - R-41 | HFC-41 |
+  - R-125 | HFC-125 |
+  - R-134 | HFC-134 |
+  - R-134a | HFC-134a |
+  - R-143 | HFC-143 |
+  - R-143a | HFC-143a |
+  - R-152 | HFC-152 |
+  - R-152a | HFC-152a |
+  - R-161 | HFC-161 |
+  - R-227ea | HFC-227ea |
+  - R-236cb | HFC-236cb |
+  - R-236ea | HFC-236ea |
+  - R-236fa | HFC-236fa |
+  - R-245ca | HFC-245ca |
+  - R-245fa | HFC-245fa |
+  - R-365mfc | HFC-365mfc |
+  - R-43-10mee | HFC-43-10mee |
+  - Sulfur hexafluoride (SF6)
+  - Nitrogen trifluoride (NF3)
+  - Water supply
+  - 'Landfill: non-hazardous'
+  - 'Reuse: non-hazardous'
+  - 'Waste to energy: hazardous'
+  - 'Incineration: hazardous'
+  - 'Landfill: hazardous'
+  - 'Recycling: hazardous'
+  - 'Reuse: hazardous'
+- path: GhgEmission/LifeCycleAssessment
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Related life cycle assessment stage according to ISO 14040
+  source_location: GhgEmission.cdm.json
+  enumeration:
+  - A1
+  - A2
+  - A3
+  - A4
+  - A5
+  - B1
+  - B2
+  - B3
+  - B4
+  - B5
+  - B6
+  - B7
+  - C1
+  - C2
+  - C3
+  - C4
+  - D
+- path: GhgEmission/Unit
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: 'Unit of emission value: kgCO2e'
+  source_location: GhgEmission.cdm.json
+  enumeration:
+  - kgCO2e
+- path: GhgEmission/Accuracy
+  domain: GhgEmission
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Information on accuracy of value e.g. 'metered' or 'extrapolated'
+  source_location: GhgEmission.cdm.json
+  enumeration:
+  - Calculated based on estimated data
+  - Calculated based on metered data
+  - Calculated based on extrapolated data
+  - Calculated based on planed data
+  - Calculated based on simulated data
+  - Calculated based on data with unspecified accuracy
+  - Calculated based on projected estimated data
+  - Calculated based on projected metered data
+  - Calculated based on projected extrapolated data
+  - Calculated based on projected planned data
+  - Calculated based on projected simulated data
+  - Calculated based on projected data with unspecified accuracy
+  - Estimated
+  - Metered
+  - Extrapolated
+  - Planned
+  - Unspecified
+  - Simulated
+  - Projection based on estimated data
+  - Projection based on metered data
+  - Projection based on extrapolated data
+  - Projection based on planned data
+  - Projection based on data with unspecified accuracy
+  - Projection based on simulated data
+  - Missing
+  - Retrofit scenario
+- path: GhgEmissionBuilding/GhgEmissionId
+  domain: GhgEmissionBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmissionBuilding.cdm.json
+- path: GhgEmissionBuilding/BuildingId
+  domain: GhgEmissionBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmissionBuilding.cdm.json
+- path: GhgEmissionEmissionFactor/GhgEmissionId
+  domain: GhgEmissionEmissionFactor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmissionEmissionFactor.cdm.json
+- path: GhgEmissionEmissionFactor/EmissionFactorId
+  domain: GhgEmissionEmissionFactor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmissionEmissionFactor.cdm.json
+- path: GhgEmissionSite/GhgEmissionId
+  domain: GhgEmissionSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmissionSite.cdm.json
+- path: GhgEmissionSite/SiteId
+  domain: GhgEmissionSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: GhgEmissionSite.cdm.json
+- path: OperationalMeasurement/OperationalMeasurementId
+  domain: OperationalMeasurement
+  range: guid
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: OperationalMeasurement.cdm.json
+- path: OperationalMeasurement/Purpose
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Specific purpose of resource consumption e.g. 'space heating' in case
+    of burning natural gas
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - Space heating
+  - Water heating
+  - Heating (unspecified)
+  - Cooling
+  - Lighting
+  - Elevator
+  - Appliances
+  - Heat pump
+  - Other
+  - Unspecified
+- path: OperationalMeasurement/Accuracy
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Information on accuracy of value e.g. 'metered' or 'extrapolated'
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - Estimated
+  - Metered
+  - Extrapolated
+  - Planned
+  - Simulated
+  - Unspecified
+  - Projection based on estimated data
+  - Projection based on metered data
+  - Projection based on extrapolated data
+  - Projection based on planned data
+  - Projection based on simulated data
+  - Projection based on data with unspecified accuracy
+  - Missing
+- path: OperationalMeasurement/Type
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: General type of operational measurement e.g. energy, water or waste
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - Energy
+  - Water
+  - Waste
+  - Fugitive
+- path: OperationalMeasurement/SubType
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Specific type of operational measurement e.g. district heating or water
+    discharge
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - Electricity from grid (green electricity contract)
+  - Electricity self-generated & exported
+  - Electricity self-generated & consumed
+  - Electricity (unspecified)
+  - REC
+  - Natural gas (standard mix)
+  - Green natural gas
+  - Natural gas (unspecified)
+  - Oil-based fuels
+  - Fuel (unspecified)
+  - District heating
+  - District cooling
+  - Biomass
+  - Solar thermal
+  - Fresh water (municipal water supply)
+  - Ground water (collected on site)
+  - Rain water (collected on site)
+  - Reclaimed water
+  - Water discharge
+  - Water consumption (unspecified)
+  - 'Recycling: non-hazardous'
+  - 'Incineration: non-hazardous'
+  - 'Waste to energy: non-hazardous'
+  - 'Other/Unknown: hazardous'
+  - 'Other/Unknown: non-hazardous'
+  - Electricity from grid (normal contract)
+  - Carbon dioxide (CO2)
+  - Methane (CH4)
+  - Nitrous oxide (N2O)
+  - R-11 | CFC-11 | Trichlorofluoromethane (CCI3F)
+  - R-12 | CFC-12 | Dichlorofluoromethane (CCI2F2)
+  - R-13 | CFC-13 | Chlorodifluoromethane (CCIF3)
+  - R-113 | CFC-113 | 1,1,2-Trichloro-1,2,2-trifluoroethane (C2CI3F3)
+  - R-114 | CFC-114 | Halon-242 | 1,2-Dichlorotetrafluoroethane (C2Cl2F4)
+  - R-115 | CFC-115 | Chloropentafluoroethane (C2ClF5)
+  - R13 B1 | Halon-1301 | Bromotrifluoromethane (CBrF3)
+  - R-12B1 | Halon-1211 | Bromochlorodifluoromethane (CBrCIF2)
+  - R 114B2 | Halon-2402 | 1,2-Dibromotetrafluoroethane (C2Br2F4)
+  - R-10 | Carbon tetrachloride (CCl4)
+  - Bromomethane | Methyl bromide (CH3Br)
+  - R-140a | 1,1,1- Trichloroethane | Methyl chloroform (C2H3Cl3)
+  - R-21 | HCFC-21 | Dichlorofluoromethane (CHCl2F)
+  - R-22 | HCFC-22 | Chlorodifluoromethane (CHClF2)
+  - R-123 | HCFC-123 | 2,2-Dichloro-1,1,1-trifluoroethane (C2Cl2F3)
+  - R-124 | HCFC-124| 1-Chloro-1,2,2,2-tetrafluoroethane (C2ClF4)
+  - R-141b | HCFC-141b |1,1,-Dichloro-1-1-fluoroethane (C2H3Cl2F)
+  - R-142b | HCFC-142b | 1-Chloro-1,1,-difluoroethane (C2ClF2)
+  - R-225ca | HCFC-225ca | 3.3-dichloro-1,1,1,2,2-pentafluoropropane (C3HCl2F5)
+  - R-225cb | HCFC-225cb | 1,3-Dichloro-1,1,2,2,3-pentafluoropropane (C3HCl2F5)
+  - R-23 | HFC-23 |
+  - R-32 | HFC-32 |
+  - R-41 | HFC-41 |
+  - R-125 | HFC-125 |
+  - R-134 | HFC-134 |
+  - R-134a | HFC-134a |
+  - R-143 | HFC-143 |
+  - R-143a | HFC-143a |
+  - R-152 | HFC-152 |
+  - R-152a | HFC-152a |
+  - R-161 | HFC-161 |
+  - R-227ea | HFC-227ea |
+  - R-236cb | HFC-236cb |
+  - R-236ea | HFC-236ea |
+  - R-236fa | HFC-236fa |
+  - R-245ca | HFC-245ca |
+  - R-245fa | HFC-245fa |
+  - R-365mfc | HFC-365mfc |
+  - R-43-10mee | HFC-43-10mee |
+  - Sulfur hexafluoride (SF6)
+  - Nitrogen trifluoride (NF3)
+  - Water supply
+  - 'Landfill: non-hazardous'
+  - 'Reuse: non-hazardous'
+  - 'Waste to energy: hazardous'
+  - 'Incineration: hazardous'
+  - 'Landfill: hazardous'
+  - 'Recycling: hazardous'
+  - 'Reuse: hazardous'
+- path: OperationalMeasurement/Name
+  domain: OperationalMeasurement
+  range: entityName
+  is_reference: false
+  cardinality: optional
+  definition: Name of entity.
+  source_location: OperationalMeasurement.cdm.json
+- path: OperationalMeasurement/Unit
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of operational measurement e.g. 'kWh' or 'cubm'
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - kWh
+  - cubm
+  - kg
+- path: OperationalMeasurement/ProcuredBy
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Information on operational control ('who bought it?') of resource consumption
+    according to Greenhouse Gas Protocol
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - Procured by third party
+  - Self-procured
+  - Unspecified
+- path: OperationalMeasurement/SpaceType
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Reference to specific space type (or 'whole building')
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - Shared services/Common spaces
+  - Tenant space
+  - Landlord space
+  - Whole building
+  - Unspecified
+  - Shared services
+  - Common spaces
+  - Outdoor
+  - Exterior area
+  - Parking
+- path: OperationalMeasurement/LifeCycleAssessment
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Related life cycle assessment stage according to ISO 14040
+  source_location: OperationalMeasurement.cdm.json
+  enumeration:
+  - A1
+  - A2
+  - A3
+  - A4
+  - A5
+  - B1
+  - B2
+  - B3
+  - B4
+  - B5
+  - B6
+  - B7
+  - C1
+  - C2
+  - C3
+  - C4
+  - D
+- path: OperationalMeasurement/PostingDate
+  domain: OperationalMeasurement
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date of measurement posting in yyyy-mm-ddThh:mm:ssZ form (conform to
+    ISO 8061)
+  source_location: OperationalMeasurement.cdm.json
+- path: OperationalMeasurement/MeasurementDate
+  domain: OperationalMeasurement
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date of measurement was taken in yyyy-mm-ddThh:mm:ssZ form (conform
+    to ISO 8061)
+  source_location: OperationalMeasurement.cdm.json
+- path: OperationalMeasurement/SensorId
+  domain: OperationalMeasurement
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: OperationalMeasurement.cdm.json
+- path: OperationalMeasurementBuilding/OperationalMeasurementId
+  domain: OperationalMeasurementBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementBuilding.cdm.json
+- path: OperationalMeasurementBuilding/BuildingId
+  domain: OperationalMeasurementBuilding
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementBuilding.cdm.json
+- path: OperationalMeasurementFloor/OperationalMeasurementId
+  domain: OperationalMeasurementFloor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementFloor.cdm.json
+- path: OperationalMeasurementFloor/FloorId
+  domain: OperationalMeasurementFloor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementFloor.cdm.json
+- path: OperationalMeasurementLand/OperationalMeasurementId
+  domain: OperationalMeasurementLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementLand.cdm.json
+- path: OperationalMeasurementLand/LandId
+  domain: OperationalMeasurementLand
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementLand.cdm.json
+- path: OperationalMeasurementRentalUnit/OperationalMeasurementId
+  domain: OperationalMeasurementRentalUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementRentalUnit.cdm.json
+- path: OperationalMeasurementRentalUnit/RentalUnitId
+  domain: OperationalMeasurementRentalUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementRentalUnit.cdm.json
+- path: OperationalMeasurementSite/OperationalMeasurementId
+  domain: OperationalMeasurementSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementSite.cdm.json
+- path: OperationalMeasurementSite/SiteId
+  domain: OperationalMeasurementSite
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementSite.cdm.json
+- path: OperationalMeasurementSpace/OperationalMeasurementId
+  domain: OperationalMeasurementSpace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementSpace.cdm.json
+- path: OperationalMeasurementSpace/SpaceId
+  domain: OperationalMeasurementSpace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementSpace.cdm.json
+- path: OperationalMeasurementUnit/OperationalMeasurementId
+  domain: OperationalMeasurementUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementUnit.cdm.json
+- path: OperationalMeasurementUnit/UnitId
+  domain: OperationalMeasurementUnit
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: OperationalMeasurementUnit.cdm.json
+- path: SustainabilityIndicator/SustainabilityIndicatorId
+  domain: SustainabilityIndicator
+  range: guid
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be define
+  source_location: SustainabilityIndicator.cdm.json
+- path: SustainabilityIndicator/BuildingId
+  domain: SustainabilityIndicator
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: SustainabilityIndicator.cdm.json
+- path: SustainabilityIndicator/Category
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Overall category of sustainability indicator e.g. energy, greenhouse
+    gas emissions or costs
+  source_location: SustainabilityIndicator.cdm.json
+  enumeration:
+  - Costs
+  - Energy
+  - Ghg
+  - Area
+- path: SustainabilityIndicator/Type
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of sustainability indicator e.g. absolute or intensity figures
+    or stranding
+  source_location: SustainabilityIndicator.cdm.json
+  enumeration:
+  - Absolute
+  - Intensity
+  - Excess emissions
+  - Stranding
+  - Target
+  - Budget
+  - Direct emissions
+  - Indirect emissions
+- path: SustainabilityIndicator/SubType
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Subtype of sustainability indicator e.g. net-energy or  emission scope
+  source_location: SustainabilityIndicator.cdm.json
+- path: SustainabilityIndicator/Source
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Operational source of energy or emission figures e.g. electricity or
+    water
+  source_location: SustainabilityIndicator.cdm.json
+  enumeration:
+  - Energy
+  - All
+  - Fuels
+  - Electricity
+  - District heating
+  - District cooling
+  - Fugitive
+  - Water supply
+  - Water discharge
+  - Water
+  - Waste
+  - District heating & fuel
+  - F-gases
+- path: SustainabilityIndicator/ReferenceArea
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Reference area of building used as denominator in intensity calculation
+  source_location: SustainabilityIndicator.cdm.json
+  enumeration:
+  - Net rentable area
+  - Gross internal area
+- path: SustainabilityIndicator/ReportingType
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: 'Approach of reporting emissions e.g. from ''green electricity consumption'':
+    Market-based or location-based'
+  source_location: SustainabilityIndicator.cdm.json
+  enumeration:
+  - Location-based
+  - Market-based
+- path: SustainabilityIndicator/BaseYear
+  domain: SustainabilityIndicator
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Base year of values projected into the future in yyyy-mm-ddThh:mm:ssZ
+    form (conform to ISO 8061). In case no exact date is used please use xxxx-01-01
+    00:00:00.
+  source_location: SustainabilityIndicator.cdm.json
+- path: SustainabilityIndicator/Unit
+  domain: SustainabilityIndicator
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unit of sustainability indicator value
+  source_location: SustainabilityIndicator.cdm.json
+  enumeration:
+  - kgCO2e
+  - kgCO2e/sqm
+  - kWh
+  - kWh/sqm
+  - EUR
+  - sqm
+- path: SustainabilityIndicatorEmissionFactor/SustainabilityIndicatorId
+  domain: SustainabilityIndicatorEmissionFactor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: SustainabilityIndicatorEmissionFactor.cdm.json
+- path: SustainabilityIndicatorEmissionFactor/EmissionFactorId
+  domain: SustainabilityIndicatorEmissionFactor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: SustainabilityIndicatorEmissionFactor.cdm.json

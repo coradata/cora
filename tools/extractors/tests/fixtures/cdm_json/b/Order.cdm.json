@@ -1,0 +1,22 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "definitions": [
+    {
+      "entityName": "Order",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "name": "OrderId",
+          "dataType": "string",
+          "description": "Order identifier."
+        },
+        {
+          "name": "Total",
+          "dataType": "decimal",
+          "description": "Order total in reporting currency."
+        }
+      ],
+      "description": "A customer order."
+    }
+  ]
+}

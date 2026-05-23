@@ -1,0 +1,18 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "definitions": [
+    {
+      "entityName": "Gadget",
+      "extendsEntity": "Widget",
+      "hasAttributes": [
+        {
+          "name": "Power",
+          "purpose": "hasA",
+          "dataType": "decimal",
+          "description": "Power draw in watts."
+        }
+      ],
+      "description": "A specialised widget with measurable power draw."
+    }
+  ]
+}

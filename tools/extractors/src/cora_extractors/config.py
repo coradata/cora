@@ -65,6 +65,25 @@ class JsonCatalogConfig(ExtractorConfig):
     namespace_hint: str | None = None
 
 
+class CdmJsonConfig(ExtractorConfig):
+    """Configuration for the Microsoft Common Data Model (CDM) JSON extractor.
+
+    CDM JSON is a defined format (one entity per ``*.cdm.json`` file, attributes
+    nested under ``definitions[].hasAttributes[]``), so the extractor is largely
+    generic-by-construction. This config exists for the few choices that vary
+    per source.
+    """
+
+    namespace_hint: str | None = None
+    # Treat references to this base type as the "no real parent" marker. CDM
+    # entities typically extend ``CdmEntity`` (a framework-level base type)
+    # which has no application-domain meaning. By default we keep the
+    # reference as a cross-inventory pointer (it will surface in
+    # ``Inventory.external_references()``); set to a different value if a
+    # corpus uses a different root.
+    inheritance_root: str = "CdmEntity"
+
+
 class ExcelDictionaryConfig(ExtractorConfig):
     """Configuration for the Excel data dictionary extractor (primary mode)."""
 

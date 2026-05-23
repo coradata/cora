@@ -1,0 +1,496 @@
+standard: ibpdi
+module: user-and-customer-experience
+version: '1.0'
+source_artifact: standards/ibpdi/current/native/Schema Documents/core/userAndCustomerExperience/userAndCustomerExperience.manifest.cdm.json
+extractor: cora_extractors.cdm_json@0.0.0
+extracted_at: '2026-05-23T21:57:37.586105Z'
+types:
+- name: AvailableResource
+  extends: CdmEntity
+  abstract: false
+  definition: 'Available resources on workspace '
+  source_location: AvailableResource.cdm.json
+- name: AvailableResourceWorkspace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between AvailableResources and Workspace
+  source_location: AvailableResourceWorkspace.cdm.json
+- name: Booking
+  extends: CdmEntity
+  abstract: false
+  definition: Information about bookings
+  source_location: Booking.cdm.json
+- name: BookingWorkspace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Booking and Workspace
+  source_location: BookingWorkspace.cdm.json
+- name: Characteristic
+  extends: CdmEntity
+  abstract: false
+  definition: Characteristics of workspace
+  source_location: Characteristic.cdm.json
+- name: CharacteristicNeighbourhood
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Characteristics and Neighbourhood
+  source_location: CharacteristicNeighbourhood.cdm.json
+- name: CharacteristicWorkspace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Characteristics and Workspace
+  source_location: CharacteristicWorkspace.cdm.json
+- name: CustomerFile
+  extends: CdmEntity
+  abstract: false
+  definition: Information about customer files
+  source_location: CustomerFile.cdm.json
+- name: CustomerFileWorkArea
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CustomerFile and WorkArea
+  source_location: CustomerFileWorkArea.cdm.json
+- name: CustomerFileWorkspace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between CustomerFile and Workspace
+  source_location: CustomerFileWorkspace.cdm.json
+- name: Neighbourhood
+  extends: CdmEntity
+  abstract: false
+  definition: A group of workspaces that can be assigned to one or many organisational
+    departments
+  source_location: Neighbourhood.cdm.json
+- name: NeighbourhoodWorkspace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Neighbourhood and Workspace
+  source_location: NeighbourhoodWorkspace.cdm.json
+- name: Tag
+  extends: CdmEntity
+  abstract: false
+  definition: User defined tag information on neighbourhood
+  source_location: Tag.cdm.json
+- name: TagNeighbourhood
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between Tag and Neighbourhood
+  source_location: TagNeighbourhood.cdm.json
+- name: WorkArea
+  extends: CdmEntity
+  abstract: false
+  definition: Work area that represents area used for certain functions within the
+    organisation
+  source_location: WorkArea.cdm.json
+- name: WorkAreaFloor
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between WorkArea and Floor
+  source_location: WorkAreaFloor.cdm.json
+- name: WorkAreaSpace
+  extends: CdmEntity
+  abstract: false
+  definition: Linking entity between WorkArea and Space
+  source_location: WorkAreaSpace.cdm.json
+- name: WorkAreaType
+  extends: CdmEntity
+  abstract: false
+  definition: Type of work area
+  source_location: WorkAreaType.cdm.json
+- name: Workspace
+  extends: CdmEntity
+  abstract: false
+  definition: 'All workplace related information ranging from the number of workplaces
+    to security regulations that need to be in place within a work environment. '
+  source_location: Workspace.cdm.json
+- name: WorkspaceSensor
+  extends: CdmEntity
+  abstract: false
+  definition: 'Linking entity between Workspace and Sensor. The sensor represents
+    the sensor measurement area which can be different from the physical location '
+  source_location: WorkspaceSensor.cdm.json
+fields:
+- path: AvailableResource/AvailableResourceId
+  domain: AvailableResource
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Available resources workplace
+  source_location: AvailableResource.cdm.json
+- path: AvailableResource/Name
+  domain: AvailableResource
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of workplace
+  source_location: AvailableResource.cdm.json
+- path: AvailableResourceWorkspace/AvailableResourceId
+  domain: AvailableResourceWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: AvailableResourceWorkspace.cdm.json
+- path: AvailableResourceWorkspace/WorkspaceId
+  domain: AvailableResourceWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: AvailableResourceWorkspace.cdm.json
+- path: Booking/BookingId
+  domain: Booking
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Booking.cdm.json
+- path: Booking/BookingDate
+  domain: Booking
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Date booking was created in yyyy-mm-ddThh:mm:ssZ form (conform to ISO
+    8061)
+  source_location: Booking.cdm.json
+- path: Booking/Cancelled
+  domain: Booking
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Has the reservation been cancelled
+  source_location: Booking.cdm.json
+- path: Booking/CheckInTime
+  domain: Booking
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Check in time yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)
+  source_location: Booking.cdm.json
+- path: Booking/CheckOutTime
+  domain: Booking
+  range: dateTime
+  is_reference: false
+  cardinality: optional
+  definition: Check out time yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)
+  source_location: Booking.cdm.json
+- path: BookingWorkspace/BookingId
+  domain: BookingWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: BookingWorkspace.cdm.json
+- path: BookingWorkspace/WorkspaceId
+  domain: BookingWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: BookingWorkspace.cdm.json
+- path: Characteristic/CharacteristicId
+  domain: Characteristic
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Characteristic.cdm.json
+- path: Characteristic/Name
+  domain: Characteristic
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of workplace
+  source_location: Characteristic.cdm.json
+- path: CharacteristicNeighbourhood/CharacteristicId
+  domain: CharacteristicNeighbourhood
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CharacteristicNeighbourhood.cdm.json
+- path: CharacteristicNeighbourhood/NeighbourhoodId
+  domain: CharacteristicNeighbourhood
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CharacteristicNeighbourhood.cdm.json
+- path: CharacteristicWorkspace/CharacteristicId
+  domain: CharacteristicWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CharacteristicWorkspace.cdm.json
+- path: CharacteristicWorkspace/WorkspaceId
+  domain: CharacteristicWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CharacteristicWorkspace.cdm.json
+- path: CustomerFile/CustomerFileId
+  domain: CustomerFile
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: CustomerFile.cdm.json
+- path: CustomerFile/Name
+  domain: CustomerFile
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name for file
+  source_location: CustomerFile.cdm.json
+- path: CustomerFile/Link
+  domain: CustomerFile
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Link to file location
+  source_location: CustomerFile.cdm.json
+- path: CustomerFile/FileType
+  domain: CustomerFile
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of file
+  source_location: CustomerFile.cdm.json
+- path: CustomerFile/Metadata
+  domain: CustomerFile
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Metadata information about the file stored in JSON format. This could
+    be for example resolution and ordinal for an image. For different file types different
+    metadata can be stored here
+  source_location: CustomerFile.cdm.json
+- path: CustomerFileWorkArea/CustomerFileId
+  domain: CustomerFileWorkArea
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CustomerFileWorkArea.cdm.json
+- path: CustomerFileWorkArea/WorkAreaId
+  domain: CustomerFileWorkArea
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CustomerFileWorkArea.cdm.json
+- path: CustomerFileWorkspace/CustomerFileId
+  domain: CustomerFileWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CustomerFileWorkspace.cdm.json
+- path: CustomerFileWorkspace/WorkspaceId
+  domain: CustomerFileWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: CustomerFileWorkspace.cdm.json
+- path: Neighbourhood/NeighbourhoodId
+  domain: Neighbourhood
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Neighbourhood.cdm.json
+- path: Neighbourhood/OrganisationId
+  domain: Neighbourhood
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Neighbourhood.cdm.json
+- path: Neighbourhood/Name
+  domain: Neighbourhood
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of neighbourhood
+  source_location: Neighbourhood.cdm.json
+- path: Neighbourhood/Color
+  domain: Neighbourhood
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific color code
+  source_location: Neighbourhood.cdm.json
+- path: NeighbourhoodWorkspace/NeighbourhoodId
+  domain: NeighbourhoodWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: NeighbourhoodWorkspace.cdm.json
+- path: NeighbourhoodWorkspace/WorkspaceId
+  domain: NeighbourhoodWorkspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: NeighbourhoodWorkspace.cdm.json
+- path: Tag/TagId
+  domain: Tag
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Tag.cdm.json
+- path: Tag/Name
+  domain: Tag
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of tag
+  source_location: Tag.cdm.json
+- path: TagNeighbourhood/TagId
+  domain: TagNeighbourhood
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: TagNeighbourhood.cdm.json
+- path: TagNeighbourhood/NeighbourhoodId
+  domain: TagNeighbourhood
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: TagNeighbourhood.cdm.json
+- path: WorkArea/WorkAreaId
+  domain: WorkArea
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: WorkArea.cdm.json
+- path: WorkArea/WorkAreaTypeId
+  domain: WorkArea
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkArea.cdm.json
+- path: WorkArea/AreaMeasurementId
+  domain: WorkArea
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkArea.cdm.json
+- path: WorkArea/Name
+  domain: WorkArea
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of work space
+  source_location: WorkArea.cdm.json
+- path: WorkArea/WorkAreaCode
+  domain: WorkArea
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific work area code
+  source_location: WorkArea.cdm.json
+- path: WorkAreaFloor/WorkAreaId
+  domain: WorkAreaFloor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkAreaFloor.cdm.json
+- path: WorkAreaFloor/FloorId
+  domain: WorkAreaFloor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkAreaFloor.cdm.json
+- path: WorkAreaSpace/WorkAreaId
+  domain: WorkAreaSpace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkAreaSpace.cdm.json
+- path: WorkAreaSpace/SpaceId
+  domain: WorkAreaSpace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkAreaSpace.cdm.json
+- path: WorkAreaType/WorkAreaTypeId
+  domain: WorkAreaType
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: WorkAreaType.cdm.json
+- path: WorkAreaType/Name
+  domain: WorkAreaType
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of work space template ("type of workspace")
+  source_location: WorkAreaType.cdm.json
+- path: WorkAreaType/Color
+  domain: WorkAreaType
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Color code of specific workspace template
+  source_location: WorkAreaType.cdm.json
+- path: Workspace/WorkspaceId
+  domain: Workspace
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Unique identifier either coming from previous system otherwise it needs
+    to be defined
+  source_location: Workspace.cdm.json
+- path: Workspace/WorkAreaId
+  domain: Workspace
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: Workspace.cdm.json
+- path: Workspace/Name
+  domain: Workspace
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific name of workplace
+  source_location: Workspace.cdm.json
+- path: Workspace/WorkspaceCode
+  domain: Workspace
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: User specific work space code
+  source_location: Workspace.cdm.json
+- path: Workspace/Type
+  domain: Workspace
+  range: string
+  is_reference: false
+  cardinality: optional
+  definition: Type of workplace
+  source_location: Workspace.cdm.json
+- path: Workspace/Capacity
+  domain: Workspace
+  range: integer
+  is_reference: false
+  cardinality: optional
+  definition: Capacity of workplace
+  source_location: Workspace.cdm.json
+- path: Workspace/Bookable
+  domain: Workspace
+  range: boolean
+  is_reference: false
+  cardinality: optional
+  definition: Is the workplace bookable (Y/N)
+  source_location: Workspace.cdm.json
+- path: WorkspaceSensor/WorkspaceId
+  domain: WorkspaceSensor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkspaceSensor.cdm.json
+- path: WorkspaceSensor/SensorId
+  domain: WorkspaceSensor
+  is_reference: false
+  cardinality: optional
+  definition: ''
+  source_location: WorkspaceSensor.cdm.json
