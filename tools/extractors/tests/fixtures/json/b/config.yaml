@@ -1,0 +1,5 @@
+fields_jsonpath: "$.schema.fields[*]"
+name_key: key
+type_key: datatype
+definition_key: description
+cardinality_key: cardinality

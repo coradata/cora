@@ -1,0 +1,13 @@
+fields_jsonpath: "$.elements[*]"
+name_key: name
+type_key: type
+definition_key: doc
+cardinality_key: required
+enumeration_key: values
+cardinality_map:
+  "True": required
+  "False": optional
+default_cardinality: optional
+type_map:
+  string: text
+  number: numeric

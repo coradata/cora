@@ -1,0 +1,7 @@
+sheet: Fields
+field_name_column: A
+type_column: B
+definition_column: C
+cardinality_column: D
+enumeration_column: E
+skip_rows: 1

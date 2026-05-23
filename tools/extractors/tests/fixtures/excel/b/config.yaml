@@ -1,0 +1,5 @@
+sheet: Catalog
+field_name_column: A
+definition_column: B
+type_column: C
+skip_rows: 2

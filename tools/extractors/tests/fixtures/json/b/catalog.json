@@ -1,0 +1,10 @@
+{
+  "schema": {
+    "name": "loans",
+    "fields": [
+      {"key": "loan_id", "datatype": "id", "description": "Loan identifier.", "cardinality": "required"},
+      {"key": "principal", "datatype": "money", "description": "Principal amount.", "cardinality": "required"},
+      {"key": "term_months", "datatype": "int", "description": "Loan term in months.", "cardinality": "optional"}
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified">
+  <xs:complexType name="Asset">
+    <xs:annotation>
+      <xs:documentation>An infrastructure asset record.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="serial" type="xs:string"/>
+      <xs:element name="kind">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="solar"/>
+            <xs:enumeration value="wind"/>
+            <xs:enumeration value="battery"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="capacity_mw" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
