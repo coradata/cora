@@ -1,0 +1,46 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "definitions": [
+    {
+      "entityName": "Widget",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "name": "WidgetId",
+          "purpose": "identifiedBy",
+          "dataType": "string",
+          "description": "Unique identifier."
+        },
+        {
+          "attributeGroupReference": "Audit"
+        },
+        {
+          "name": "Color",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Widget color choice.",
+          "valueConstrainedToList": true,
+          "appliedTraits": [
+            {
+              "traitReference": "does.haveDefault",
+              "arguments": [
+                {
+                  "entityReference": {
+                    "entityShape": "listLookupValues",
+                    "constantValues": [
+                      ["en", "Red", "Red", "0"],
+                      ["en", "Green", "Green", "1"],
+                      ["en", "Blue", "Blue", "2"]
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "displayName": "Widget",
+      "description": "A test widget entity."
+    }
+  ]
+}

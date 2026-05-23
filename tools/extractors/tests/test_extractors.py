@@ -41,6 +41,8 @@ def _fixture_specs() -> list[tuple[str, Path, Path | None]]:
             FIXTURES / "excel" / "b" / "dictionary.xlsx",
             FIXTURES / "excel" / "b" / "config.yaml",
         ),
+        ("cdm-json", FIXTURES / "cdm_json" / "a" / "widgets.manifest.cdm.json", None),
+        ("cdm-json", FIXTURES / "cdm_json" / "b" / "orders.manifest.cdm.json", None),
     ]
 
 

@@ -1,0 +1,15 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "$schema": "CdmManifest.cdm.json",
+  "documentVersion": "1.0",
+  "manifestName": "orders",
+  "explanation": "Second CDM JSON fixture proving the adapter is generic.",
+  "entities": [
+    {
+      "type": "LocalEntity",
+      "entityName": "Order",
+      "entityPath": "Order.cdm.json/Order",
+      "dataPartitionPatterns": []
+    }
+  ]
+}
