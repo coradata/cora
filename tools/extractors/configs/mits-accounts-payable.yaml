@@ -1,0 +1,11 @@
+# XsdConfig for the MITS Accounts Payable 4.0 module.
+#
+# Schema lives in native/Accounts-Payable-4.0/, so include_remap paths are
+# resolved against that directory (note the leading `..`).
+#
+# References Core-Data via a download endpoint URL and MITSCustomExtension
+# via the canonical NMHC URL. Both remapped to local copies in the
+# Property-Marketing-ILS-5.0-XSD-with-CORE bundle.
+include_remap:
+  http://www.mitsproject.com/Content/ServeFile.cfm?fileID=3864: ../Property-Marketing-ILS-5.0-XSD-with-CORE/Core-Data-4.0.xsd
+  http://www.nmhc.info/MITS/MITSCustomExtension.xsd: ../Property-Marketing-ILS-5.0-XSD-with-CORE/MITSCustomExtension.xsd

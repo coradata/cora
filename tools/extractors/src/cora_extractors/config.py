@@ -29,11 +29,16 @@ class XsdConfig(ExtractorConfig):
     """Optional configuration for the XSD extractor.
 
     The XSD extractor is largely generic-by-construction; this config exists
-    for forward-compatibility (namespace overrides, include-resolution roots,
-    etc.) and may be empty for typical sources.
+    for forward-compatibility and for redirecting ``xs:include`` /
+    ``xs:import`` ``schemaLocation`` values that point at remote URLs the
+    extractor cannot fetch (e.g., MITS modules that reference
+    ``http://www.nmhc.info/MITS/MITSCoreData30.xsd`` even though the file
+    is shipped locally elsewhere in the corpus).
     """
 
     namespace_hint: str | None = None
+    include_remap: dict[str, str] = {}
+    skip_unmapped_remote_includes: bool = True
 
 
 class JsonCatalogConfig(ExtractorConfig):

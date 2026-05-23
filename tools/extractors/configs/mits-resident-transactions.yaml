@@ -1,0 +1,12 @@
+# XsdConfig for the MITS Resident Transactions 3.0 module.
+#
+# Schema lives in native/Resident-Transactions-3.0/, so include_remap paths
+# are resolved against that directory (note the leading `..`).
+#
+# References Core-Data 3.0 and MITSCustomExtension via canonical NMHC URLs.
+# Remapped to the local Core-Data 4.0 + custom extension shipped in the
+# Property-Marketing bundle. The 3.0 → 4.0 substitution is a best-effort
+# approximation; documented in MITS CHANGELOG.
+include_remap:
+  http://www.nmhc.info/MITS/MITSCoreData30.xsd: ../Property-Marketing-ILS-5.0-XSD-with-CORE/Core-Data-4.0.xsd
+  http://www.nmhc.info/MITS/MITSCustomExtension.xsd: ../Property-Marketing-ILS-5.0-XSD-with-CORE/MITSCustomExtension.xsd
