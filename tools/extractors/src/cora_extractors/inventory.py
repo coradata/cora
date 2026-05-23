@@ -90,7 +90,18 @@ class Inventory(BaseModel):
             )
 
     def validate_structure(self) -> None:
-        """Check structural invariants beyond JSON Schema. Raises StructuralError.
+        """Check hard structural invariants. Raises StructuralError.
+
+        Only checks invariants that must hold WITHIN a single inventory:
+
+        - When ``types[]`` is non-empty, every field must declare a ``domain``.
+        - A field's ``domain`` must reference a type defined in this inventory.
+
+        Cross-inventory references (``type.extends`` or object-reference
+        ``field.range`` pointing at a type defined in another standard or
+        module) are *not* errors — inventories are per-module, and shared
+        Core-Data types live elsewhere by design. ``external_references()``
+        surfaces such pointers for informational reporting.
 
         Named ``validate_structure`` rather than ``validate`` to avoid shadowing
         pydantic v1's deprecated ``BaseModel.validate`` classmethod, which mypy
@@ -98,14 +109,8 @@ class Inventory(BaseModel):
         """
         issues: list[str] = []
         type_names = {t.name for t in self.types}
-
-        for t in self.types:
-            if t.extends is not None and t.extends not in type_names:
-                issues.append(
-                    f"type {t.name!r} extends unknown type {t.extends!r}"
-                )
-
         has_types = bool(self.types)
+
         for f in self.fields:
             if has_types and f.domain is None:
                 issues.append(
@@ -113,15 +118,33 @@ class Inventory(BaseModel):
                 )
             if f.domain is not None and has_types and f.domain not in type_names:
                 issues.append(
-                    f"field {f.path!r} domain {f.domain!r} not in types[]"
-                )
-            if f.is_reference and f.range is not None and has_types and f.range not in type_names:
-                issues.append(
-                    f"field {f.path!r} object reference range {f.range!r} not in types[]"
+                    f"field {f.path!r} domain {f.domain!r} not in this inventory's types[]"
                 )
 
         if issues:
             raise StructuralError(issues)
+
+    def external_references(self) -> list[str]:
+        """Return human-readable descriptions of cross-inventory references.
+
+        These are *not* errors — Core-Data types referenced by other MITS
+        modules, for example. Useful for reporting and for the future drift
+        register; the validator may surface them as warnings.
+        """
+        out: list[str] = []
+        type_names = {t.name for t in self.types}
+
+        for t in self.types:
+            if t.extends is not None and t.extends not in type_names:
+                out.append(
+                    f"type {t.name!r} extends external type {t.extends!r}"
+                )
+        for f in self.fields:
+            if f.is_reference and f.range is not None and f.range not in type_names:
+                out.append(
+                    f"field {f.path!r} references external type {f.range!r}"
+                )
+        return out
 
     def merge(self, other: Inventory, *, match_by: MatchBy) -> Inventory:
         """Structural merge: definitions/metadata from `other` enrich `self`.

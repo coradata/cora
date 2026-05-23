@@ -1,0 +1,13 @@
+# XsdConfig for the MITS Lead Management 4.0.1 module.
+#
+# Schema lives in native/Lead-Management-4.0/, so include_remap paths are
+# resolved against that directory (note the leading `..`).
+#
+# This module is MITS 4.x and references MITSCoreData40.xsd (as a bare
+# filename, which is not a remote URL — but the file isn't shipped next
+# to the schema). It also references MITSCustomExtension via the NMHC
+# URL. Both are remapped to the local copies in the Property-Marketing
+# bundle.
+include_remap:
+  http://www.nmhc.info/MITS/MITSCustomExtension.xsd: ../Property-Marketing-ILS-5.0-XSD-with-CORE/MITSCustomExtension.xsd
+  MITSCoreData40.xsd: ../Property-Marketing-ILS-5.0-XSD-with-CORE/Core-Data-4.0.xsd

@@ -1,0 +1,14 @@
+# XsdConfig for the MITS Collections 3.0 module.
+#
+# Collections-Schema-Version-3.0-xsd.xml references Core-Data 3.0 and the
+# MITS custom extension via canonical NMHC URLs that cannot be fetched. We
+# remap both to the local files shipped with the Property-Marketing-ILS-5.0
+# bundle (Core-Data 4.0 + the custom extension).
+#
+# The 3.0 → 4.0 substitution is a best-effort approximation. Type names
+# referenced by the Collections schema (PropertyType, AddressType, etc.)
+# exist in both versions; subtle definitional differences may apply.
+# Documented honestly in MITS CHANGELOG.
+include_remap:
+  http://www.nmhc.info/MITS/MITSCoreData30.xsd: Property-Marketing-ILS-5.0-XSD-with-CORE/Core-Data-4.0.xsd
+  http://www.nmhc.info/MITS/MITSCustomExtension.xsd: Property-Marketing-ILS-5.0-XSD-with-CORE/MITSCustomExtension.xsd

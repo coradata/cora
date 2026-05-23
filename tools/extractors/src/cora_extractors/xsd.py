@@ -22,6 +22,7 @@ Coverage in v1:
 
 from __future__ import annotations
 
+import sys
 from collections.abc import Iterable
 from datetime import UTC, datetime
 from pathlib import Path
@@ -55,11 +56,10 @@ class XsdExtractor:
         if config is not None and not isinstance(config, XsdConfig):
             raise TypeError("XsdExtractor.extract requires XsdConfig or None")
 
-        roots = list(_load_schemas(source))
+        xsd_config = config if isinstance(config, XsdConfig) else XsdConfig()
+        roots = list(_load_schemas(source, xsd_config))
         types = list(_extract_types(roots))
         fields = list(_extract_fields(roots))
-
-        namespace_hint = config.namespace_hint if isinstance(config, XsdConfig) else None
 
         return Inventory(
             standard=module or source.stem,
@@ -68,13 +68,56 @@ class XsdExtractor:
             source_artifact=str(source),
             extractor=EXTRACTOR_ID,
             extracted_at=datetime.now(tz=UTC),
-            namespace_hint=namespace_hint,
+            namespace_hint=xsd_config.namespace_hint,
             types=types,
             fields=fields,
         )
 
 
-def _load_schemas(source: Path) -> Iterable[Any]:
+def _is_remote(schema_location: str) -> bool:
+    return schema_location.startswith(("http://", "https://"))
+
+
+def _resolve_schema_location(
+    base_dir: Path, schema_location: str, config: XsdConfig
+) -> Path | None:
+    """Resolve a schemaLocation to a local path, applying include_remap.
+
+    include_remap is consulted first for every schemaLocation (remote or
+    local) so a config can redirect any reference — useful for both NMHC
+    URLs that can't be fetched and for bare filenames whose target ships
+    elsewhere in the corpus.
+
+    Returns None if the location is a remote URL with no remap entry and
+    the config asks us to skip unmapped remote includes; raises if the
+    location is a remote URL with no remap entry and skip is disabled.
+    Local-but-missing references fall through to ``etree.parse`` which
+    raises a clear error.
+    """
+    remapped = config.include_remap.get(schema_location)
+    if remapped is not None:
+        candidate = Path(remapped)
+        if not candidate.is_absolute():
+            candidate = base_dir / candidate
+        return candidate.resolve()
+
+    if _is_remote(schema_location):
+        if config.skip_unmapped_remote_includes:
+            print(
+                f"warning: skipping unmapped remote xs:include {schema_location!r}",
+                file=sys.stderr,
+            )
+            return None
+        raise ValueError(
+            f"remote xs:include {schema_location!r} has no entry in include_remap "
+            f"and skip_unmapped_remote_includes is False"
+        )
+
+    # Local relative path — let the downstream parser error if it's missing.
+    return (base_dir / schema_location).resolve()
+
+
+def _load_schemas(source: Path, config: XsdConfig) -> Iterable[Any]:
     """Parse the root XSD and every transitively xs:include'd/xs:import'ed schema."""
     visited: set[Path] = set()
     queue: list[Path] = [source.resolve()]
@@ -93,7 +136,9 @@ def _load_schemas(source: Path) -> Iterable[Any]:
             loc = ref.get("schemaLocation")
             if not loc:
                 continue
-            queue.append((path.parent / loc).resolve())
+            resolved = _resolve_schema_location(path.parent, loc, config)
+            if resolved is not None:
+                queue.append(resolved)
 
 
 def _annotation_text(node: Any) -> str:

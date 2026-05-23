@@ -50,7 +50,11 @@ def test_validate_accepts_well_formed_inventories() -> None:
     Inventory.from_yaml(FIXTURES / "inventory-flat.yaml").validate_structure()
 
 
-def test_validate_rejects_dangling_extends() -> None:
+def test_validate_tolerates_external_extends() -> None:
+    """Cross-inventory ``extends`` is informational, not a hard error.
+
+    See Inventory.external_references() for the warning-level surface.
+    """
     inv = Inventory(
         standard="x",
         module="m",
@@ -61,9 +65,9 @@ def test_validate_rejects_dangling_extends() -> None:
         types=[TypeEntry(name="A", extends="Nonexistent")],
         fields=[FieldEntry(path="A/x", domain="A", cardinality="required")],
     )
-    with pytest.raises(StructuralError) as exc:
-        inv.validate_structure()
-    assert any("Nonexistent" in issue for issue in exc.value.issues)
+    inv.validate_structure()
+    externals = inv.external_references()
+    assert any("Nonexistent" in r for r in externals)
 
 
 def test_validate_rejects_field_without_domain_when_types_present() -> None:
@@ -98,7 +102,8 @@ def test_validate_rejects_unknown_domain() -> None:
     assert any("domain 'B'" in issue for issue in exc.value.issues)
 
 
-def test_validate_rejects_unknown_object_reference_range() -> None:
+def test_validate_tolerates_external_object_reference_range() -> None:
+    """Cross-inventory object-reference range is informational, not an error."""
     inv = Inventory(
         standard="x",
         module="m",
@@ -117,9 +122,9 @@ def test_validate_rejects_unknown_object_reference_range() -> None:
             ),
         ],
     )
-    with pytest.raises(StructuralError) as exc:
-        inv.validate_structure()
-    assert any("Nonexistent" in issue for issue in exc.value.issues)
+    inv.validate_structure()
+    externals = inv.external_references()
+    assert any("Nonexistent" in r for r in externals)
 
 
 def _base_inv(fields: list[FieldEntry], types: list[TypeEntry] | None = None) -> Inventory:
