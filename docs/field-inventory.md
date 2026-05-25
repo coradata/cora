@@ -36,8 +36,10 @@ The wire format is JSON Schema. See [`tools/extractors/schema/inventory.schema.j
 | `extractor` | yes | `module.name@version` (e.g. `cora_extractors.xsd@0.0.0`) |
 | `extracted_at` | yes | ISO 8601 timestamp |
 | `namespace_hint` | no | URI hint for the future OWL projection |
+| `source_label` | no | Short stable identifier for this inventory's primary source (`xsd`, `excel`, `cdm-json`, …). Set by each extractor; required when calling `Inventory.enrich`. |
 | `types` | no | Complex types declared by this module (required for XSD/SQL; empty or omitted for flat-table sources) |
 | `fields` | yes | Every addressable leaf field in this module |
+| `unmatched_enrichments` | no | Audit list of `other.fields` rows that found no `(domain, leaf-name)` match during enrich. Recorded in-place so reviewers see typos/sheet-mapping errors in the YAML diff. |
 
 ### Type entries
 
@@ -109,9 +111,63 @@ Inventories that legitimately have no class hierarchy (Excel-primary sources lik
 
 ## How extractors produce inventories
 
-Each format gets a typed extractor adapter at the `Extractor` seam (defined in Phase 2 of the inventory plan). The XSD extractor walks `xs:complexType` definitions into `types[]` and `xs:element`/`xs:attribute` declarations into `fields[]`. The JSON catalog extractor reads a JSONPath-described shape per a per-source config. The Excel data dictionary extractor reads one sheet per inventory module.
+Each format gets a typed extractor adapter at the `Extractor` seam (defined in Phase 2 of the inventory plan). The XSD extractor walks `xs:complexType` definitions into `types[]` and `xs:element`/`xs:attribute` declarations into `fields[]`. The JSON catalog extractor reads a JSONPath-described shape per a per-source config. The Excel data dictionary extractor reads one sheet per inventory module. The Excel multi-sheet extractor (Phase 3c) reads MITS-style workbooks where each sheet documents one shared type.
 
-The MITS pattern (XSD primary, Excel data dictionary secondary) uses `Inventory.merge(other, match_by='name')` to enrich XSD-derived inventories with Excel-sourced definitions. The merge raises `MergeConflict` if the two sources disagree on type, cardinality, or enumeration — better to surface the disagreement than silently pick one.
+Every extractor sets `source_label` on the inventory it produces (`"xsd"`, `"excel"`, `"cdm-json"`, …) so the same data wears the same label in every operation that consumes it.
+
+## Combining inventories: `merge` vs `enrich`
+
+Two different operations, two methods. Pick by what the two sides represent.
+
+**`Inventory.merge(other, *, match_by)`** — symmetric combination of two inventories of equal authority. Raises `MergeConflict` on any attested disagreement. Use when combining two halves of the same conceptual source (e.g., XSD's `domain` view + `extends` view).
+
+**`Inventory.enrich(other, *, attributes)`** — asymmetric type-scoped fill-in from a secondary source. `self` is authoritative; `other` contributes values for the named attributes only. Matches on `(field.domain, field.path.split("/")[-1])`. Never raises. The MITS XSD + Excel data dictionary flow uses this:
+
+```python
+xsd_inv = Inventory.from_yaml(...)
+excel_inv = Inventory.from_yaml(...)
+enriched = xsd_inv.enrich(excel_inv, attributes={"definition", "enumeration"})
+```
+
+The `attributes` parameter is the **trust list** — "I trust `other` for these facts; ignore its claims about anything else." Future PDF / SQL DDL enrichment uses the same primitive.
+
+CLI: `cora inventory merge --into A.yaml --from B.yaml --attribute definition --output M.yaml`.
+
+See [ADR-0001](adr/0001-enrich-vs-merge.md) for the full design rationale.
+
+### Provenance — the in-place audit trail
+
+When `enrich` finds that ≥2 sources both attested a value for the same attribute on the same field, the merged inventory records both claims in a `provenance` block on the `FieldEntry`:
+
+```yaml
+- path: EventType/Description
+  domain: EventType
+  definition: "An event recorded in the lead lifecycle."
+  source_location: lead-management.xsd:146
+  provenance:
+    - attribute: definition
+      claims:
+        - source: xsd
+          value: EventType
+          location: lead-management.xsd:146
+        - source: excel
+          value: An event recorded in the lead lifecycle.
+          location: lead-management.xls!Lead Management 4.0!23
+      chosen: excel
+```
+
+- `claims[]` is always ≥2 entries (single-source attestations don't get provenance; the top-level value carries them).
+- `chosen` is present only when claims disagree, naming whichever source's value lives at the top level.
+- Untrusted disagreements are still recorded — the trust list controls what wins at the top level, not what's recorded. This makes the YAML diff a complete lineage between regenerations.
+
+`Inventory.unmatched_enrichments` at the top level captures `other` rows that found no match — the audit for typos and sheet-mapping errors.
+
+Inspect any enriched inventory:
+
+```bash
+tools/extractors/.venv/bin/python tools/extractors/scripts/show_disagreements.py \
+  standards/mits/current/inventory/lead-management.yaml
+```
 
 ## Status
 

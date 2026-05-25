@@ -77,6 +77,7 @@ class CdmJsonExtractor:
             extractor=EXTRACTOR_ID,
             extracted_at=datetime.now(tz=UTC),
             namespace_hint=cdm_config.namespace_hint,
+            source_label="cdm-json",
             types=types,
             fields=fields,
         )

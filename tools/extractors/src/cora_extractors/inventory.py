@@ -10,13 +10,24 @@ from __future__ import annotations
 
 from datetime import datetime
 from pathlib import Path
-from typing import Literal
+from typing import Any, Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field
 
 Cardinality = Literal["required", "optional", "repeating"]
 MatchBy = Literal["name", "path"]
+
+# Attributes that `Inventory.enrich` can flow from `other` into `self`.
+# Excluded: `path` (immutable key), `domain` (match-key prefix; agreement is
+# structural so provenance would be tautological noise), `source_location`
+# (per-source by definition — each source has its own; the SourceClaim's own
+# `location` field captures it), `cardinality` and `is_reference` (always
+# attested, defaulted; would clutter provenance on every field). See
+# cora/docs/adr/0001-enrich-vs-merge.md.
+ENRICHABLE_ATTRIBUTES: frozenset[str] = frozenset(
+    {"definition", "enumeration", "range", "concept_id"}
+)
 
 
 class StructuralError(ValueError):
@@ -35,6 +46,41 @@ class MergeConflict(ValueError):
         super().__init__("; ".join(conflicts))
 
 
+class SourceClaim(BaseModel):
+    """A single source's attestation of an attribute value."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source: str
+    value: Any
+    location: str | None = None
+
+
+class AttributeProvenance(BaseModel):
+    """Multi-source provenance for one attribute on one field/type.
+
+    Present whenever ≥2 sources attest a value. ``chosen`` names the source
+    whose value lives at the top level; absent when all claims agree.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    attribute: str
+    claims: list[SourceClaim] = Field(min_length=2)
+    chosen: str | None = None
+
+
+class UnmatchedEnrichment(BaseModel):
+    """A row from `other` that found no match during enrich."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source: str
+    domain: str | None = None
+    field: str
+    location: str | None = None
+
+
 class TypeEntry(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -43,6 +89,7 @@ class TypeEntry(BaseModel):
     abstract: bool = False
     definition: str = ""
     source_location: str | None = None
+    provenance: list[AttributeProvenance] | None = None
 
 
 class FieldEntry(BaseModel):
@@ -57,6 +104,7 @@ class FieldEntry(BaseModel):
     definition: str = ""
     source_location: str | None = None
     enumeration: list[str] | None = None
+    provenance: list[AttributeProvenance] | None = None
 
 
 class Inventory(BaseModel):
@@ -69,8 +117,10 @@ class Inventory(BaseModel):
     extractor: str
     extracted_at: datetime
     namespace_hint: str | None = None
+    source_label: str | None = None
     types: list[TypeEntry] = Field(default_factory=list)
     fields: list[FieldEntry]
+    unmatched_enrichments: list[UnmatchedEnrichment] | None = None
 
     @classmethod
     def from_yaml(cls, path: Path) -> Inventory:
@@ -192,9 +242,158 @@ class Inventory(BaseModel):
             extractor=self.extractor,
             extracted_at=self.extracted_at,
             namespace_hint=self.namespace_hint,
+            source_label=self.source_label,
             types=merged_types,
             fields=merged_fields,
+            unmatched_enrichments=self.unmatched_enrichments,
         )
+
+    def enrich(self, other: Inventory, *, attributes: set[str]) -> Inventory:
+        """Asymmetric type-scoped fill-in from ``other`` into ``self``.
+
+        Match key: ``(field.domain, field.path.split("/")[-1])``. For attributes
+        in ``attributes`` (the trust list), ``other`` wins at the top level if
+        attested. Untrusted attributes are left as-is on ``self``. Provenance
+        is recorded on every field where ≥2 sources attest an attribute, even
+        for untrusted attributes — the inventory becomes the full lineage record.
+
+        Unmatched ``other.fields`` rows are recorded in the returned
+        inventory's ``unmatched_enrichments`` list rather than appended to
+        ``fields``. ``types[]`` is left untouched on ``self`` (future
+        deepening for PDF-style type-level enrichment).
+
+        Never raises a conflict. See ADR-0001 for the design rationale.
+        """
+        unknown = attributes - ENRICHABLE_ATTRIBUTES
+        if unknown:
+            raise ValueError(
+                f"unknown enrich attributes: {sorted(unknown)}; "
+                f"valid: {sorted(ENRICHABLE_ATTRIBUTES)}"
+            )
+        if self.source_label is None or other.source_label is None:
+            raise ValueError(
+                "enrich requires source_label set on both inventories"
+            )
+
+        self_label = self.source_label
+        other_label = other.source_label
+
+        def field_key(f: FieldEntry) -> tuple[str | None, str]:
+            return (f.domain, f.path.split("/")[-1])
+
+        other_by_key: dict[tuple[str | None, str], FieldEntry] = {
+            field_key(f): f for f in other.fields
+        }
+        matched_keys: set[tuple[str | None, str]] = set()
+
+        new_fields: list[FieldEntry] = []
+        for s in self.fields:
+            k = field_key(s)
+            o = other_by_key.get(k)
+            if o is None:
+                new_fields.append(s)
+                continue
+            matched_keys.add(k)
+            new_fields.append(_enrich_field(s, o, attributes, self_label, other_label))
+
+        new_unmatched: list[UnmatchedEnrichment] = []
+        for o in other.fields:
+            if field_key(o) not in matched_keys:
+                new_unmatched.append(
+                    UnmatchedEnrichment(
+                        source=other_label,
+                        domain=o.domain,
+                        field=o.path.split("/")[-1],
+                        location=o.source_location,
+                    )
+                )
+
+        combined_unmatched = [*(self.unmatched_enrichments or []), *new_unmatched]
+        return Inventory(
+            standard=self.standard,
+            module=self.module,
+            version=self.version,
+            source_artifact=self.source_artifact,
+            extractor=self.extractor,
+            extracted_at=self.extracted_at,
+            namespace_hint=self.namespace_hint,
+            source_label=self.source_label,
+            types=self.types,
+            fields=new_fields,
+            unmatched_enrichments=combined_unmatched or None,
+        )
+
+
+def _is_attested(value: Any) -> bool:
+    """Return True if a value counts as an attested attribute."""
+    if value is None:
+        return False
+    if isinstance(value, str) and value == "":
+        return False
+    if isinstance(value, list) and not value:
+        return False
+    return True
+
+
+def _enrich_field(
+    s: FieldEntry,
+    o: FieldEntry,
+    attributes: set[str],
+    self_label: str,
+    other_label: str,
+) -> FieldEntry:
+    """Apply enrichment from one matched ``other`` field onto a ``self`` field."""
+    updates: dict[str, Any] = {}
+    provenance_by_attr: dict[str, AttributeProvenance] = {
+        p.attribute: p for p in (s.provenance or [])
+    }
+
+    for attr in ENRICHABLE_ATTRIBUTES:
+        self_val = getattr(s, attr)
+        other_val = getattr(o, attr)
+        self_attested = _is_attested(self_val)
+        other_attested = _is_attested(other_val)
+
+        if not other_attested:
+            continue
+
+        if attr in attributes:
+            updates[attr] = other_val
+
+        if not self_attested:
+            continue
+
+        existing = provenance_by_attr.get(attr)
+        other_claim = SourceClaim(
+            source=other_label, value=other_val, location=o.source_location
+        )
+        if existing is None:
+            self_claim = SourceClaim(
+                source=self_label, value=self_val, location=s.source_location
+            )
+            claims = [self_claim, other_claim]
+        else:
+            claims = [*existing.claims, other_claim]
+
+        values = [c.value for c in claims]
+        all_equal = all(v == values[0] for v in values[1:])
+        chosen: str | None
+        if all_equal:
+            chosen = None
+        else:
+            chosen = other_label if attr in attributes else self_label
+
+        provenance_by_attr[attr] = AttributeProvenance(
+            attribute=attr, claims=claims, chosen=chosen
+        )
+
+    new_values = s.model_dump()
+    new_values.update(updates)
+    sorted_provenance = [
+        provenance_by_attr[k] for k in sorted(provenance_by_attr.keys())
+    ]
+    new_values["provenance"] = sorted_provenance or None
+    return FieldEntry(**new_values)
 
 
 def _merge_field(s: FieldEntry, o: FieldEntry) -> tuple[FieldEntry, list[str]]:

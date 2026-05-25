@@ -1,5 +1,24 @@
 # MITS — CORA mirror changelog
 
+## 2026-05-25 — Lead-Management, Resident-Screening, Resident-Transactions, Accounts-Payable enriched from Excel dictionaries
+
+The four modules with shipped Excel data dictionaries are now enriched via the new `Inventory.enrich` operation (see [ADR-0001](../../../docs/adr/0001-enrich-vs-merge.md)). Each module's XSD-derived inventory was merged with an Excel-derived inventory produced by the new `excel_multisheet` extractor, with trust list `{definition, enumeration}`. Untrusted Excel claims (e.g., `range="Complex"`) are dropped at the top level but recorded in `provenance` blocks so the YAML diff carries the full lineage.
+
+| Module | Multi-source enriched | Excel-only new defs | Unmatched (audit) |
+|---|---|---|---|
+| Lead-Management | 15 | (some) | 28 |
+| Resident-Screening | 8 | (some) | 56 |
+| Resident-Transactions | 38 | 11+ | 136 |
+| Accounts-Payable | 28 | (some) | 61 |
+
+The four definition-level disagreements that surfaced (all in Accounts-Payable: `FreightAmount`, `PaymentIdentifier`, `ProductQty`, `UnitPrice`) are mostly trivial wording / typo differences and visible in each affected field's `provenance` block.
+
+**Why so many unmatched?** Excel dictionaries document fields by *usage in nested context* (e.g., `Person Type` sheet listing `IDValue` as a row even though IDValue actually lives on the `Identification` type in XSD); XSD models fields by *type definition*. The current type-scoped enrich matches the well-aligned sheets cleanly and lets the rest fall into `unmatched_enrichments` for audit. Promoting Excel's nested-context rows to their true XSD domains is a future deepening.
+
+All inventories also gained the new optional `source_label: xsd` field this PR introduced.
+
+Run `tools/extractors/.venv/bin/python tools/extractors/scripts/show_disagreements.py <inventory>.yaml` to spot-check provenance disagreements and unmatched rows on any enriched inventory.
+
 ## 2026-05-23 — Remaining six module inventories extracted
 
 The six MITS modules that reference Core-Data via canonical NMHC URLs (the ones deferred from the prior entry) now ship inventories:

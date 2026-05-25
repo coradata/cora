@@ -4,6 +4,7 @@ version: '3.0'
 source_artifact: standards/mits/current/native/Resident-Transactions-3.0/Resident-Transactions-Schema-Version-3.0-xsd1.xml
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T16:31:54.839880Z'
+source_label: xsd
 types:
 - name: ServiceDetail
   abstract: false
@@ -418,15 +419,35 @@ fields:
   range: StringMax50Type
   is_reference: false
   cardinality: required
-  definition: ''
+  definition: Name of company
   source_location: Core-Data-4.0.xsd:82
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:82
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!12
+    chosen: xsd
 - path: CompanyType/Address
   domain: CompanyType
   range: AddressType
   is_reference: true
   cardinality: repeating
-  definition: ''
+  definition: PO Box or Street number, direction, street name, suffix
   source_location: Core-Data-4.0.xsd:83
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: AddressType
+      location: Core-Data-4.0.xsd:83
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!16
+    chosen: xsd
 - path: CompanyType/WebSite
   domain: CompanyType
   range: StringMax100Type
@@ -439,8 +460,18 @@ fields:
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Logo
   source_location: Core-Data-4.0.xsd:85
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:85
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!26
+    chosen: xsd
 - path: CompanyType/Phone
   domain: CompanyType
   range: PhoneType
@@ -453,8 +484,18 @@ fields:
   range: StringMax80Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Email address
   source_location: Core-Data-4.0.xsd:87
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax80Type
+      location: Core-Data-4.0.xsd:87
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!24
+    chosen: xsd
 - path: CompanyContactType/CompanyRef
   domain: CompanyContactType
   range: Identifiable
@@ -572,36 +613,94 @@ fields:
   range: xs:string
   is_reference: false
   cardinality: required
-  definition: ''
+  definition: Actual ID value
   source_location: Core-Data-4.0.xsd:230
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Core-Data-4.0.xsd:230
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!IdentificationType!9
 - path: Identification/OrganizationName
   domain: Identification
   range: xs:string
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Defines the ID Scope in terms of sender, receiver, or other third party
   source_location: Core-Data-4.0.xsd:231
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Core-Data-4.0.xsd:231
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!IdentificationType!10
 - path: Identification/IDType
   domain: Identification
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: ID Type attribute should mirror the element it describes or be used
+    as an IDRef for a Company or Person in Contacts
   source_location: Core-Data-4.0.xsd:232
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:232
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!IdentificationType!6
+    chosen: xsd
 - path: Identification/IDRank
   domain: Identification
   range: IDRank
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Ranking value
   source_location: Core-Data-4.0.xsd:233
+  enumeration:
+  - primary
+  - secondary
+  - tertiary
+  - other
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: IDRank
+      location: Core-Data-4.0.xsd:233
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!IdentificationType!8
+    chosen: xsd
 - path: Identification/IDScopeType
   domain: Identification
   range: IDScopeType
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Where ID originates from
   source_location: Core-Data-4.0.xsd:234
+  enumeration:
+  - sender
+  - recipient
+  - third party
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: IDScopeType
+      location: Core-Data-4.0.xsd:234
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!IdentificationType!7
+    chosen: xsd
 - path: LeaseType/CurrentRent
   domain: LeaseType
   range: xs:decimal
@@ -768,8 +867,18 @@ fields:
   range: AddressType
   is_reference: true
   cardinality: repeating
-  definition: ''
+  definition: PO Box or Street number, direction, street name, suffix
   source_location: Core-Data-4.0.xsd:335
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: AddressType
+      location: Core-Data-4.0.xsd:335
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!23
+    chosen: xsd
 - path: PersonType/Phone
   domain: PersonType
   range: PhoneType
@@ -782,8 +891,18 @@ fields:
   range: StringMax80Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Email address
   source_location: Core-Data-4.0.xsd:337
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax80Type
+      location: Core-Data-4.0.xsd:337
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!31
+    chosen: xsd
 - path: PersonsType/Person
   domain: PersonsType
   range: PersonType
@@ -838,57 +957,136 @@ fields:
   range: StringMax120Type
   is_reference: false
   cardinality: required
-  definition: ''
+  definition: Property name used for marketing purposes
   source_location: Core-Data-4.0.xsd:416
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax120Type
+      location: Core-Data-4.0.xsd:416
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!12
+    chosen: xsd
 - path: PropertyType/APN
   domain: PropertyType
   range: StringMax40Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: APN
   source_location: Core-Data-4.0.xsd:417
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax40Type
+      location: Core-Data-4.0.xsd:417
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!13
+    chosen: xsd
 - path: PropertyType/LegalName
   domain: PropertyType
   range: StringMax120Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Legal name of the property
   source_location: Core-Data-4.0.xsd:418
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax120Type
+      location: Core-Data-4.0.xsd:418
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!14
+    chosen: xsd
 - path: PropertyType/MSA_Number
   domain: PropertyType
   range: xs:integer
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: MSA_Number
   source_location: Core-Data-4.0.xsd:419
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:integer
+      location: Core-Data-4.0.xsd:419
+    - source: excel
+      value: xs:integer
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!15
 - path: PropertyType/MSA_Name
   domain: PropertyType
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: MSA_Name
   source_location: Core-Data-4.0.xsd:420
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:420
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!16
+    chosen: xsd
 - path: PropertyType/StructureDescription
   domain: PropertyType
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Type of building; lowrise, highrise, etc.
   source_location: Core-Data-4.0.xsd:421
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:421
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!17
+    chosen: xsd
 - path: PropertyType/WebSite
   domain: PropertyType
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: URL of the property web site
   source_location: Core-Data-4.0.xsd:422
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:422
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!18
+    chosen: xsd
 - path: PropertyType/Address
   domain: PropertyType
   range: AddressType
   is_reference: true
   cardinality: repeating
-  definition: ''
+  definition: PO Box or Street number, direction, street name, suffix
   source_location: Core-Data-4.0.xsd:423
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: AddressType
+      location: Core-Data-4.0.xsd:423
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!22
+    chosen: xsd
 - path: PropertyType/Phone
   domain: PropertyType
   range: PhoneType
@@ -901,15 +1099,36 @@ fields:
   range: StringMax80Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Email address
   source_location: Core-Data-4.0.xsd:425
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax80Type
+      location: Core-Data-4.0.xsd:425
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!30
+    chosen: xsd
 - path: UnitType/MarketingName
   domain: UnitType
   range: StringMax120Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Name of the property as the property is presented in advertising and
+    the marketplace
   source_location: Core-Data-4.0.xsd:477
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax120Type
+      location: Core-Data-4.0.xsd:477
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!13
+    chosen: xsd
 - path: UnitType/UnitType
   domain: UnitType
   range: StringMax50Type
@@ -922,120 +1141,315 @@ fields:
   range: Decimal4Digits2Fraction
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Number of bedrooms in unit
   source_location: Core-Data-4.0.xsd:479
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Decimal4Digits2Fraction
+      location: Core-Data-4.0.xsd:479
+    - source: excel
+      value: xs:decimal
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!15
+    chosen: xsd
 - path: UnitType/UnitBathrooms
   domain: UnitType
   range: Decimal4Digits2Fraction
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Number of bathrooms in unit
   source_location: Core-Data-4.0.xsd:480
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Decimal4Digits2Fraction
+      location: Core-Data-4.0.xsd:480
+    - source: excel
+      value: xs:decimal
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!16
+    chosen: xsd
 - path: UnitType/MinSquareFeet
   domain: UnitType
   range: Integer5Digit
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Minimum Square ft. size of units with a range of sizes
   source_location: Core-Data-4.0.xsd:481
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Integer5Digit
+      location: Core-Data-4.0.xsd:481
+    - source: excel
+      value: xs:integer
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!17
+    chosen: xsd
 - path: UnitType/MaxSquareFeet
   domain: UnitType
   range: Integer5Digit
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Max Square ft. size of unit with a range of sizes
   source_location: Core-Data-4.0.xsd:482
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Integer5Digit
+      location: Core-Data-4.0.xsd:482
+    - source: excel
+      value: xs:integer
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!18
+    chosen: xsd
 - path: UnitType/SquareFootType
   domain: UnitType
   range: UnitSqftInfo
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Square foot of the unit as defined by the owner or manager
   source_location: Core-Data-4.0.xsd:483
+  enumeration:
+  - internal
+  - external
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: UnitSqftInfo
+      location: Core-Data-4.0.xsd:483
+    - source: excel
+      value: Enumerated
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!19
+    chosen: xsd
 - path: UnitType/UnitRent
   domain: UnitType
   range: Decimal7Digits2Fraction
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Unit effective rent
   source_location: Core-Data-4.0.xsd:484
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Decimal7Digits2Fraction
+      location: Core-Data-4.0.xsd:484
+    - source: excel
+      value: xs:decimal
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!20
+    chosen: xsd
 - path: UnitType/MarketRent
   domain: UnitType
   range: Decimal7Digits2Fraction
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Market rent for this specific unit
   source_location: Core-Data-4.0.xsd:485
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Decimal7Digits2Fraction
+      location: Core-Data-4.0.xsd:485
+    - source: excel
+      value: xs:decimal
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!21
+    chosen: xsd
 - path: UnitType/UnitEconomicStatus
   domain: UnitType
   range: UnitEconStatusInfo
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Economic status of the unit that describes the type of unit
   source_location: Core-Data-4.0.xsd:486
+  enumeration:
+  - residential
+  - commercial
+  - down
+  - model
+  - employee
+  - construction
+  - office
+  - other
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: UnitEconStatusInfo
+      location: Core-Data-4.0.xsd:486
+    - source: excel
+      value: Enumerated
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!22
+    chosen: xsd
 - path: UnitType/UnitEconomicStatusDescription
   domain: UnitType
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Description of Other Economic Status
   source_location: Core-Data-4.0.xsd:487
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:487
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!23
+    chosen: xsd
 - path: UnitType/UnitOccupancyStatus
   domain: UnitType
   range: UnitOccpStatusInfo
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Occupied or Vacant Unit
   source_location: Core-Data-4.0.xsd:488
+  enumeration:
+  - occupied
+  - vacant
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: UnitOccpStatusInfo
+      location: Core-Data-4.0.xsd:488
+    - source: excel
+      value: Enumerated
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!24
+    chosen: xsd
 - path: UnitType/UnitLeasedStatus
   domain: UnitType
   range: UnitLeaseStatusInfo
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Leased status of the unit
   source_location: Core-Data-4.0.xsd:489
+  enumeration:
+  - leased
+  - available
+  - approved
+  - reserved
+  - not ready
+  - on notice
+  - leased on notice
+  - leased reserved
+  - other
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: UnitLeaseStatusInfo
+      location: Core-Data-4.0.xsd:489
+    - source: excel
+      value: Enumerated
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!25
+    chosen: xsd
 - path: UnitType/UnitLeasedStatusDescription
   domain: UnitType
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Description of Other unit Leased Status
   source_location: Core-Data-4.0.xsd:490
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:490
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!26
+    chosen: xsd
 - path: UnitType/NumberOccupants
   domain: UnitType
   range: CurrentNumberOccupantsType
   is_reference: true
   cardinality: optional
-  definition: ''
+  definition: Current number
   source_location: Core-Data-4.0.xsd:491
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: CurrentNumberOccupantsType
+      location: Core-Data-4.0.xsd:491
+    - source: excel
+      value: Complex
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!27
+    chosen: xsd
 - path: UnitType/FloorplanName
   domain: UnitType
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Name of Floorplan for this unit
   source_location: Core-Data-4.0.xsd:492
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:492
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!30
+    chosen: xsd
 - path: UnitType/PhaseName
   domain: UnitType
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Name of Phase
   source_location: Core-Data-4.0.xsd:493
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:493
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!31
+    chosen: xsd
 - path: UnitType/BuildingName
   domain: UnitType
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Used in a case where buildings within a property are individually named
   source_location: Core-Data-4.0.xsd:494
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:494
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!32
+    chosen: xsd
 - path: UnitType/Address
   domain: UnitType
   range: AddressType
   is_reference: true
   cardinality: repeating
-  definition: ''
+  definition: PO Box or Street number, direction, street name, suffix
   source_location: Core-Data-4.0.xsd:495
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: AddressType
+      location: Core-Data-4.0.xsd:495
+    - source: excel
+      value: xs:string
+      location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!35
+    chosen: xsd
 - path: UnitsType/Unit
   domain: UnitsType
   range: UnitType
@@ -1043,3 +1457,548 @@ fields:
   cardinality: repeating
   definition: ''
   source_location: Core-Data-4.0.xsd:507
+unmatched_enrichments:
+- source: excel
+  domain: PropertyType
+  field: Identification
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!6
+- source: excel
+  domain: PropertyType
+  field: IDType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!7
+- source: excel
+  domain: PropertyType
+  field: IDScopeType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!8
+- source: excel
+  domain: PropertyType
+  field: IDRank
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!9
+- source: excel
+  domain: PropertyType
+  field: IDValue
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!10
+- source: excel
+  domain: PropertyType
+  field: OrganizationName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!11
+- source: excel
+  domain: PropertyType
+  field: AddressType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!20
+- source: excel
+  domain: PropertyType
+  field: Description
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!21
+- source: excel
+  domain: PropertyType
+  field: City
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!23
+- source: excel
+  domain: PropertyType
+  field: State
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!24
+- source: excel
+  domain: PropertyType
+  field: Province
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!25
+- source: excel
+  domain: PropertyType
+  field: PostalCode
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!26
+- source: excel
+  domain: PropertyType
+  field: Country
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!27
+- source: excel
+  domain: PropertyType
+  field: CountyName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!28
+- source: excel
+  domain: PropertyType
+  field: UnparsedAddress
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!29
+- source: excel
+  domain: PropertyType
+  field: PhoneType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!32
+- source: excel
+  domain: PropertyType
+  field: PhoneDescription
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!33
+- source: excel
+  domain: PropertyType
+  field: PhoneNumber
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!34
+- source: excel
+  domain: PropertyType
+  field: Extension
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PropertyType!35
+- source: excel
+  domain: CompanyType
+  field: Identification
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!6
+- source: excel
+  domain: CompanyType
+  field: IDType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!7
+- source: excel
+  domain: CompanyType
+  field: IDScopeType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!8
+- source: excel
+  domain: CompanyType
+  field: IDRank
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!9
+- source: excel
+  domain: CompanyType
+  field: IDValue
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!10
+- source: excel
+  domain: CompanyType
+  field: OrganizationName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!11
+- source: excel
+  domain: CompanyType
+  field: AddressType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!14
+- source: excel
+  domain: CompanyType
+  field: Description
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!15
+- source: excel
+  domain: CompanyType
+  field: City
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!17
+- source: excel
+  domain: CompanyType
+  field: State
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!18
+- source: excel
+  domain: CompanyType
+  field: Province
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!19
+- source: excel
+  domain: CompanyType
+  field: PostalCode
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!20
+- source: excel
+  domain: CompanyType
+  field: Country
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!21
+- source: excel
+  domain: CompanyType
+  field: CountyName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!22
+- source: excel
+  domain: CompanyType
+  field: UnparsedAddress
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!23
+- source: excel
+  domain: CompanyType
+  field: Web_site
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!25
+- source: excel
+  domain: CompanyType
+  field: PhoneType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!28
+- source: excel
+  domain: CompanyType
+  field: PhoneDescription
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!29
+- source: excel
+  domain: CompanyType
+  field: PhoneNumber
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!30
+- source: excel
+  domain: CompanyType
+  field: Extension
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CompanyType!31
+- source: excel
+  domain: PersonType
+  field: Identification
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!6
+- source: excel
+  domain: PersonType
+  field: IDType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!7
+- source: excel
+  domain: PersonType
+  field: IDScopeType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!8
+- source: excel
+  domain: PersonType
+  field: IDRank
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!9
+- source: excel
+  domain: PersonType
+  field: IDValue
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!10
+- source: excel
+  domain: PersonType
+  field: OrganizationName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!11
+- source: excel
+  domain: PersonType
+  field: NameType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!13
+- source: excel
+  domain: PersonType
+  field: NamePrefix
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!14
+- source: excel
+  domain: PersonType
+  field: FirstName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!15
+- source: excel
+  domain: PersonType
+  field: MiddleName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!16
+- source: excel
+  domain: PersonType
+  field: LastName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!17
+- source: excel
+  domain: PersonType
+  field: MaidenName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!18
+- source: excel
+  domain: PersonType
+  field: NameSuffix
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!19
+- source: excel
+  domain: PersonType
+  field: AddressType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!21
+- source: excel
+  domain: PersonType
+  field: Description
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!22
+- source: excel
+  domain: PersonType
+  field: City
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!24
+- source: excel
+  domain: PersonType
+  field: State
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!25
+- source: excel
+  domain: PersonType
+  field: Province
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!26
+- source: excel
+  domain: PersonType
+  field: PostalCode
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!27
+- source: excel
+  domain: PersonType
+  field: Country
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!28
+- source: excel
+  domain: PersonType
+  field: CountyName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!29
+- source: excel
+  domain: PersonType
+  field: UnparsedAddress
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!30
+- source: excel
+  domain: PersonType
+  field: PhoneType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!33
+- source: excel
+  domain: PersonType
+  field: PhoneDescription
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!34
+- source: excel
+  domain: PersonType
+  field: PhoneNumber
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!35
+- source: excel
+  domain: PersonType
+  field: Extension
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!PersonType!36
+- source: excel
+  domain: CustomersType
+  field: Customer
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!5
+- source: excel
+  domain: CustomersType
+  field: Identification
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!6
+- source: excel
+  domain: CustomersType
+  field: IDType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!7
+- source: excel
+  domain: CustomersType
+  field: IDScopeType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!8
+- source: excel
+  domain: CustomersType
+  field: IDRank
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!9
+- source: excel
+  domain: CustomersType
+  field: IDValue
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!10
+- source: excel
+  domain: CustomersType
+  field: OrganizationName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!11
+- source: excel
+  domain: CustomersType
+  field: Description
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!12
+- source: excel
+  domain: CustomersType
+  field: Name
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!13
+- source: excel
+  domain: CustomersType
+  field: NamePrefix
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!14
+- source: excel
+  domain: CustomersType
+  field: FirstName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!15
+- source: excel
+  domain: CustomersType
+  field: MiddleName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!16
+- source: excel
+  domain: CustomersType
+  field: LastName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!17
+- source: excel
+  domain: CustomersType
+  field: MaidenName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!18
+- source: excel
+  domain: CustomersType
+  field: NameSuffix
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!19
+- source: excel
+  domain: CustomersType
+  field: Address
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!20
+- source: excel
+  domain: CustomersType
+  field: AddressType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!21
+- source: excel
+  domain: CustomersType
+  field: Description
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!22
+- source: excel
+  domain: CustomersType
+  field: Address
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!23
+- source: excel
+  domain: CustomersType
+  field: City
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!24
+- source: excel
+  domain: CustomersType
+  field: State
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!25
+- source: excel
+  domain: CustomersType
+  field: Province
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!26
+- source: excel
+  domain: CustomersType
+  field: PostalCode
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!27
+- source: excel
+  domain: CustomersType
+  field: Country
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!28
+- source: excel
+  domain: CustomersType
+  field: CountyName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!29
+- source: excel
+  domain: CustomersType
+  field: UnparsedAddress
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!30
+- source: excel
+  domain: CustomersType
+  field: Email
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!31
+- source: excel
+  domain: CustomersType
+  field: Phone
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!32
+- source: excel
+  domain: CustomersType
+  field: PhoneType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!33
+- source: excel
+  domain: CustomersType
+  field: PhoneDescription
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!34
+- source: excel
+  domain: CustomersType
+  field: PhoneNumber
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!35
+- source: excel
+  domain: CustomersType
+  field: Extension
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!36
+- source: excel
+  domain: CustomersType
+  field: Lease
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!37
+- source: excel
+  domain: CustomersType
+  field: Identification
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!38
+- source: excel
+  domain: CustomersType
+  field: IDType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!39
+- source: excel
+  domain: CustomersType
+  field: IDScopeType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!40
+- source: excel
+  domain: CustomersType
+  field: IDRank
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!41
+- source: excel
+  domain: CustomersType
+  field: IDValue
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!42
+- source: excel
+  domain: CustomersType
+  field: OrganizationName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!43
+- source: excel
+  domain: CustomersType
+  field: CurrentRent
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!44
+- source: excel
+  domain: CustomersType
+  field: ExpectedMoveInDate
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!45
+- source: excel
+  domain: CustomersType
+  field: ExpectedMoveOutDate
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!46
+- source: excel
+  domain: CustomersType
+  field: LeaseFromDate
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!47
+- source: excel
+  domain: CustomersType
+  field: LeaseToDate
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!48
+- source: excel
+  domain: CustomersType
+  field: Actual_MoveIn
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!49
+- source: excel
+  domain: CustomersType
+  field: Actual_MoveOut
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!50
+- source: excel
+  domain: CustomersType
+  field: ResponsibleForLease
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!51
+- source: excel
+  domain: CustomersType
+  field: LeaseSignDate
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!52
+- source: excel
+  domain: CustomersType
+  field: SpecialStatus
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!53
+- source: excel
+  domain: CustomersType
+  field: PaymentAccepted
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!54
+- source: excel
+  domain: CustomersType
+  field: AccountNumber
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!55
+- source: excel
+  domain: CustomersType
+  field: CurrentNumberOccupants
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!56
+- source: excel
+  domain: CustomersType
+  field: Total
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!57
+- source: excel
+  domain: CustomersType
+  field: Child
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!CustomersType!58
+- source: excel
+  domain: UnitType
+  field: Identification
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!7
+- source: excel
+  domain: UnitType
+  field: IDType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!8
+- source: excel
+  domain: UnitType
+  field: IDScopeType
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!9
+- source: excel
+  domain: UnitType
+  field: IDRank
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!10
+- source: excel
+  domain: UnitType
+  field: IDValue
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!11
+- source: excel
+  domain: UnitType
+  field: OrganizationName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!12
+- source: excel
+  domain: UnitType
+  field: Total
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!28
+- source: excel
+  domain: UnitType
+  field: Child
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!29
+- source: excel
+  domain: UnitType
+  field: Description
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!34
+- source: excel
+  domain: UnitType
+  field: City
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!36
+- source: excel
+  domain: UnitType
+  field: State
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!37
+- source: excel
+  domain: UnitType
+  field: Province
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!38
+- source: excel
+  domain: UnitType
+  field: PostalCode
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!39
+- source: excel
+  domain: UnitType
+  field: Country
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!40
+- source: excel
+  domain: UnitType
+  field: CountyName
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!41
+- source: excel
+  domain: UnitType
+  field: UnparsedAddress
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!42
+- source: excel
+  domain: UnitType
+  field: Email
+  location: Resident-Transactions-Data-Dictionary-Version-3.0-xls.xls!UnitType!43

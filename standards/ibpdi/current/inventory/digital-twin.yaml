@@ -4,6 +4,7 @@ version: '1.0'
 source_artifact: standards/ibpdi/current/native/Schema Documents/core/digitalTwin/digitalTwin.manifest.cdm.json
 extractor: cora_extractors.cdm_json@0.0.0
 extracted_at: '2026-05-23T21:57:31.417781Z'
+source_label: cdm-json
 types:
 - name: AccessPanel
   extends: CdmEntity
