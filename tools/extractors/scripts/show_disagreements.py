@@ -63,7 +63,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  filtered to attributes: {sorted(attr_filter)}")
     print(f"  disagreements: {len(rows)}")
     for domain, leaf, attr, claims in rows:
-        chosen = next((c[0] for c in claims if c[1] == _short(_get_top_level(inv, domain, leaf, attr))), "?")
+        top_value = _short(_get_top_level(inv, domain, leaf, attr))
+        chosen = next((c[0] for c in claims if c[1] == top_value), "?")
         print(f"\n  [{attr}] {domain}/{leaf}  (chosen: {chosen})")
         for source, value in claims:
             marker = "* " if source == chosen else "  "
