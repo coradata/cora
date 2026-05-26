@@ -4,6 +4,7 @@ version: '1.0'
 source_artifact: standards/redi/current/native/REDI Data Model 1.0.xlsx
 extractor: cora_extractors.excel_dictionary@0.0.0
 extracted_at: '2026-05-23T15:57:58.583565Z'
+source_label: excel
 types: []
 fields:
 - path: Reporting_Quarter

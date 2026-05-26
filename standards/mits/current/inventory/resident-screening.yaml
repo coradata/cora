@@ -4,6 +4,7 @@ version: '3.0'
 source_artifact: standards/mits/current/native/Resident-Screening-3.0/Resident-Screening-3.0-xsd.xml
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T16:31:46.236737Z'
+source_label: xsd
 types:
 - name: AddressType
   abstract: false
@@ -104,8 +105,18 @@ fields:
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: String description for Other Address Type
   source_location: Core-Data-4.0.xsd:36
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:36
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!6
+    chosen: xsd
 - path: AddressType/AddressLine1
   domain: AddressType
   range: StringMax100Type
@@ -125,50 +136,120 @@ fields:
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: City property is located in
   source_location: Core-Data-4.0.xsd:39
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:39
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!8
+    chosen: xsd
 - path: AddressType/State
   domain: AddressType
   range: StringMax3Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: State property is located in (Three character state code)
   source_location: Core-Data-4.0.xsd:40
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax3Type
+      location: Core-Data-4.0.xsd:40
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!9
+    chosen: xsd
 - path: AddressType/Province
   domain: AddressType
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Province if not US property
   source_location: Core-Data-4.0.xsd:41
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:41
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!10
+    chosen: xsd
 - path: AddressType/PostalCode
   domain: AddressType
   range: StringMax12Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Property postalcode
   source_location: Core-Data-4.0.xsd:42
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax12Type
+      location: Core-Data-4.0.xsd:42
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!11
+    chosen: xsd
 - path: AddressType/Country
   domain: AddressType
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Country property is located in
   source_location: Core-Data-4.0.xsd:43
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:43
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!12
+    chosen: xsd
 - path: AddressType/CountyName
   domain: AddressType
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: County common name
   source_location: Core-Data-4.0.xsd:44
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:44
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!13
+    chosen: xsd
 - path: AddressType/UnparsedAddress
   domain: AddressType
   range: StringMax500Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Unparsed address
   source_location: Core-Data-4.0.xsd:45
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax500Type
+      location: Core-Data-4.0.xsd:45
+    - source: excel
+      value: xs:string
+      location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!14
+    chosen: xsd
 - path: AddressType/AddressType
   domain: AddressType
   range: AddressInfo
@@ -813,3 +894,228 @@ fields:
   cardinality: repeating
   definition: ''
   source_location: Core-Data-4.0.xsd:507
+unmatched_enrichments:
+- source: excel
+  domain: CustomersType
+  field: Customer
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!5
+- source: excel
+  domain: CustomersType
+  field: Identification
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!6
+- source: excel
+  domain: CustomersType
+  field: IDType
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!7
+- source: excel
+  domain: CustomersType
+  field: IDScopeType
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!8
+- source: excel
+  domain: CustomersType
+  field: IDRank
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!9
+- source: excel
+  domain: CustomersType
+  field: IDValue
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!10
+- source: excel
+  domain: CustomersType
+  field: OrganizationName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!11
+- source: excel
+  domain: CustomersType
+  field: Description
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!12
+- source: excel
+  domain: CustomersType
+  field: Name
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!13
+- source: excel
+  domain: CustomersType
+  field: NamePrefix
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!14
+- source: excel
+  domain: CustomersType
+  field: FirstName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!15
+- source: excel
+  domain: CustomersType
+  field: MiddleName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!16
+- source: excel
+  domain: CustomersType
+  field: LastName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!17
+- source: excel
+  domain: CustomersType
+  field: MaidenName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!18
+- source: excel
+  domain: CustomersType
+  field: NameSuffix
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!19
+- source: excel
+  domain: CustomersType
+  field: Address
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!20
+- source: excel
+  domain: CustomersType
+  field: AddressType
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!21
+- source: excel
+  domain: CustomersType
+  field: Description
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!22
+- source: excel
+  domain: CustomersType
+  field: Address
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!23
+- source: excel
+  domain: CustomersType
+  field: City
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!24
+- source: excel
+  domain: CustomersType
+  field: State
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!25
+- source: excel
+  domain: CustomersType
+  field: Province
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!26
+- source: excel
+  domain: CustomersType
+  field: PostalCode
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!27
+- source: excel
+  domain: CustomersType
+  field: Country
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!28
+- source: excel
+  domain: CustomersType
+  field: CountyName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!29
+- source: excel
+  domain: CustomersType
+  field: UnparsedAddress
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!30
+- source: excel
+  domain: CustomersType
+  field: Email
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!31
+- source: excel
+  domain: CustomersType
+  field: Phone
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!32
+- source: excel
+  domain: CustomersType
+  field: PhoneType
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!33
+- source: excel
+  domain: CustomersType
+  field: PhoneDescription
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!34
+- source: excel
+  domain: CustomersType
+  field: PhoneNumber
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!35
+- source: excel
+  domain: CustomersType
+  field: Extension
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!36
+- source: excel
+  domain: CustomersType
+  field: Lease
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!37
+- source: excel
+  domain: CustomersType
+  field: Identification
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!38
+- source: excel
+  domain: CustomersType
+  field: IDType
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!39
+- source: excel
+  domain: CustomersType
+  field: IDScopeType
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!40
+- source: excel
+  domain: CustomersType
+  field: IDRank
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!41
+- source: excel
+  domain: CustomersType
+  field: IDValue
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!42
+- source: excel
+  domain: CustomersType
+  field: OrganizationName
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!43
+- source: excel
+  domain: CustomersType
+  field: CurrentRent
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!44
+- source: excel
+  domain: CustomersType
+  field: ExpectedMoveInDate
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!45
+- source: excel
+  domain: CustomersType
+  field: ExpectedMoveOutDate
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!46
+- source: excel
+  domain: CustomersType
+  field: LeaseFromDate
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!47
+- source: excel
+  domain: CustomersType
+  field: LeaseToDate
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!48
+- source: excel
+  domain: CustomersType
+  field: Actual_MoveIn
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!49
+- source: excel
+  domain: CustomersType
+  field: Actual_MoveOut
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!50
+- source: excel
+  domain: CustomersType
+  field: ResponsibleForLease
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!51
+- source: excel
+  domain: CustomersType
+  field: LeaseSignDate
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!52
+- source: excel
+  domain: CustomersType
+  field: SpecialStatus
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!53
+- source: excel
+  domain: CustomersType
+  field: PaymentAccepted
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!54
+- source: excel
+  domain: CustomersType
+  field: AccountNumber
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!55
+- source: excel
+  domain: CustomersType
+  field: CurrentNumberOccupants
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!56
+- source: excel
+  domain: CustomersType
+  field: Total
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!57
+- source: excel
+  domain: CustomersType
+  field: Child
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS CustomersType!58
+- source: excel
+  domain: AddressType
+  field: Address
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!7
+- source: excel
+  domain: AddressType
+  field: Email
+  location: Resident-Screening-Data-Dictionary-Version-3.0-xls.xls!MITS AddressType!15

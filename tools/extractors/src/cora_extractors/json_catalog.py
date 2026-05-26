@@ -59,6 +59,7 @@ class JsonCatalogExtractor:
             extractor=EXTRACTOR_ID,
             extracted_at=datetime.now(tz=UTC),
             namespace_hint=config.namespace_hint,
+            source_label="json",
             types=types,
             fields=fields,
         )

@@ -4,6 +4,7 @@ version: '3.0'
 source_artifact: standards/mits/current/native/Collections-Schema-Version-3.0-xsd.xml
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T16:25:20.758214Z'
+source_label: xsd
 types:
 - name: C_SummaryType
   abstract: false

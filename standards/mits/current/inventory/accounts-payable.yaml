@@ -4,6 +4,7 @@ version: '4.0'
 source_artifact: standards/mits/current/native/Accounts-Payable-4.0/Accounts-Payable-4.0-xsd.xml
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T16:32:04.827592Z'
+source_label: xsd
 types:
 - name: InvoiceType
   abstract: false
@@ -131,6 +132,15 @@ fields:
   cardinality: required
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:216
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:decimal
+      location: Accounts-Payable-4.0-xsd.xml:216
+    - source: excel
+      value: xs:decimal
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!2
 - path: InvoiceDetailType/AccountIdentifier
   domain: InvoiceDetailType
   range: StringMax40Type
@@ -138,6 +148,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:217
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax40Type
+      location: Accounts-Payable-4.0-xsd.xml:217
+    - source: excel
+      value: StringMax40
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!3
+    chosen: xsd
 - path: InvoiceDetailType/CheckPostMonth
   domain: InvoiceDetailType
   range: MonthNumberType
@@ -145,6 +165,15 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:218
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: MonthNumberType
+      location: Accounts-Payable-4.0-xsd.xml:218
+    - source: excel
+      value: MonthNumberType
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!4
 - path: InvoiceDetailType/CheckPostYear
   domain: InvoiceDetailType
   range: xs:string
@@ -152,6 +181,15 @@ fields:
   cardinality: optional
   definition: Post year from their accounting systems.
   source_location: Accounts-Payable-4.0-xsd.xml:219
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Accounts-Payable-4.0-xsd.xml:219
+    - source: excel
+      value: xs:string
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!5
 - path: InvoiceDetailType/CategoryIdentifier
   domain: InvoiceDetailType
   range: StringMax40Type
@@ -159,6 +197,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:226
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax40Type
+      location: Accounts-Payable-4.0-xsd.xml:226
+    - source: excel
+      value: StringMax40
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!6
+    chosen: xsd
 - path: InvoiceDetailType/ContractIdentifier
   domain: InvoiceDetailType
   range: StringMax40Type
@@ -166,6 +214,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:227
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax40Type
+      location: Accounts-Payable-4.0-xsd.xml:227
+    - source: excel
+      value: StringMax40
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!7
+    chosen: xsd
 - path: InvoiceDetailType/ConstructionRetention
   domain: InvoiceDetailType
   range: xs:boolean
@@ -187,13 +245,41 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:230
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax20Type
+      location: Accounts-Payable-4.0-xsd.xml:230
+    - source: excel
+      value: StringMax20
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!10
+    chosen: xsd
 - path: InvoiceDetailType/FreightAmount
   domain: InvoiceDetailType
   range: xs:decimal
   is_reference: false
   cardinality: optional
-  definition: Freight amount for each line item
+  definition: Per line item freight amount
   source_location: Accounts-Payable-4.0-xsd.xml:231
+  provenance:
+  - attribute: definition
+    claims:
+    - source: xsd
+      value: Freight amount for each line item
+      location: Accounts-Payable-4.0-xsd.xml:231
+    - source: excel
+      value: Per line item freight amount
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!11
+    chosen: excel
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:decimal
+      location: Accounts-Payable-4.0-xsd.xml:231
+    - source: excel
+      value: xs:decimal
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!11
 - path: InvoiceDetailType/JobIdentifier
   domain: InvoiceDetailType
   range: StringMax40Type
@@ -201,6 +287,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:238
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax40Type
+      location: Accounts-Payable-4.0-xsd.xml:238
+    - source: excel
+      value: StringMax40
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!12
+    chosen: xsd
 - path: InvoiceDetailType/LineNumber
   domain: InvoiceDetailType
   range: xs:string
@@ -208,6 +304,15 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:239
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Accounts-Payable-4.0-xsd.xml:239
+    - source: excel
+      value: xs:string
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!13
 - path: InvoiceDetailType/Notes
   domain: InvoiceDetailType
   range: StringMax100Type
@@ -215,21 +320,70 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:240
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Accounts-Payable-4.0-xsd.xml:240
+    - source: excel
+      value: StringMax100
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!14
+    chosen: xsd
 - path: InvoiceDetailType/PaymentIdentifier
   domain: InvoiceDetailType
   range: xs:string
   is_reference: false
   cardinality: repeating
-  definition: Id reference for linking payment information. Must match up with one
+  definition: Id reference for linking payment information.  Must match up with one
     of PaymentIdentifier's in Invoice/Payment node
   source_location: Accounts-Payable-4.0-xsd.xml:241
+  provenance:
+  - attribute: definition
+    claims:
+    - source: xsd
+      value: Id reference for linking payment information. Must match up with one
+        of PaymentIdentifier's in Invoice/Payment node
+      location: Accounts-Payable-4.0-xsd.xml:241
+    - source: excel
+      value: Id reference for linking payment information.  Must match up with one
+        of PaymentIdentifier's in Invoice/Payment node
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!15
+    chosen: excel
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Accounts-Payable-4.0-xsd.xml:241
+    - source: excel
+      value: xs:string
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!15
 - path: InvoiceDetailType/ProductQty
   domain: InvoiceDetailType
   range: xs:string
   is_reference: false
   cardinality: optional
-  definition: Quantity of each line item
+  definition: Per line item quanitity
   source_location: Accounts-Payable-4.0-xsd.xml:246
+  provenance:
+  - attribute: definition
+    claims:
+    - source: xsd
+      value: Quantity of each line item
+      location: Accounts-Payable-4.0-xsd.xml:246
+    - source: excel
+      value: Per line item quanitity
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!16
+    chosen: excel
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Accounts-Payable-4.0-xsd.xml:246
+    - source: excel
+      value: xs:decimal
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!16
+    chosen: xsd
 - path: InvoiceDetailType/PropertyIdentifier
   domain: InvoiceDetailType
   range: Identification
@@ -237,6 +391,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:253
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Identification
+      location: Accounts-Payable-4.0-xsd.xml:253
+    - source: excel
+      value: CoreData - Identification
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!17
+    chosen: xsd
 - path: InvoiceDetailType/SerialNumber
   domain: InvoiceDetailType
   range: xs:string
@@ -251,27 +415,73 @@ fields:
   cardinality: repeating
   definition: ''
   source_location: Accounts-Payable-4.0-xsd.xml:255
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: SkuType
+      location: Accounts-Payable-4.0-xsd.xml:255
+    - source: excel
+      value: Complex - SkuType
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!19
+    chosen: xsd
 - path: InvoiceDetailType/TaxAmount
   domain: InvoiceDetailType
   range: xs:decimal
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Per line item tax amount
   source_location: Accounts-Payable-4.0-xsd.xml:256
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:decimal
+      location: Accounts-Payable-4.0-xsd.xml:256
+    - source: excel
+      value: xs:decimal
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!18
 - path: InvoiceDetailType/UnitOfMeasure
   domain: InvoiceDetailType
   range: xs:string
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Unit of measure
   source_location: Accounts-Payable-4.0-xsd.xml:257
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Accounts-Payable-4.0-xsd.xml:257
+    - source: excel
+      value: xs:string
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!21
 - path: InvoiceDetailType/UnitPrice
   domain: InvoiceDetailType
   range: xs:decimal
   is_reference: false
   cardinality: optional
-  definition: Price per quantity unit
+  definition: Price per quanitity unit
   source_location: Accounts-Payable-4.0-xsd.xml:258
+  provenance:
+  - attribute: definition
+    claims:
+    - source: xsd
+      value: Price per quantity unit
+      location: Accounts-Payable-4.0-xsd.xml:258
+    - source: excel
+      value: Price per quanitity unit
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!20
+    chosen: excel
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:decimal
+      location: Accounts-Payable-4.0-xsd.xml:258
+    - source: excel
+      value: xs:decimal
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!20
 - path: InvoiceDetailType/WarrantyInfo
   domain: InvoiceDetailType
   range: xs:string
@@ -284,64 +494,155 @@ fields:
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: string description for other address type
   source_location: Core-Data-4.0.xsd:36
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:36
+    - source: excel
+      value: StringMax100
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!3
+    chosen: xsd
 - path: AddressType/AddressLine1
   domain: AddressType
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: PO Box or Street number, direction, street name, suffix
   source_location: Core-Data-4.0.xsd:37
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:37
+    - source: excel
+      value: StringMax100
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!4
+    chosen: xsd
 - path: AddressType/AddressLine2
   domain: AddressType
   range: StringMax100Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Additional address line
   source_location: Core-Data-4.0.xsd:38
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax100Type
+      location: Core-Data-4.0.xsd:38
+    - source: excel
+      value: StringMax100
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!5
+    chosen: xsd
 - path: AddressType/City
   domain: AddressType
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: City property is located in
   source_location: Core-Data-4.0.xsd:39
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:39
+    - source: excel
+      value: StringMax60
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!6
+    chosen: xsd
 - path: AddressType/State
   domain: AddressType
   range: StringMax3Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: The State attribute describes the 2-3 character state code of the address,
+    not the full state name.
   source_location: Core-Data-4.0.xsd:40
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax3Type
+      location: Core-Data-4.0.xsd:40
+    - source: excel
+      value: StringMax3
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!7
+    chosen: xsd
 - path: AddressType/Province
   domain: AddressType
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Province if not US property
   source_location: Core-Data-4.0.xsd:41
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:41
+    - source: excel
+      value: StringMax60
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!8
+    chosen: xsd
 - path: AddressType/PostalCode
   domain: AddressType
   range: StringMax12Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Property postal code
   source_location: Core-Data-4.0.xsd:42
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax12Type
+      location: Core-Data-4.0.xsd:42
+    - source: excel
+      value: StringMax12
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!9
+    chosen: xsd
 - path: AddressType/Country
   domain: AddressType
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Country property is located in
   source_location: Core-Data-4.0.xsd:43
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:43
+    - source: excel
+      value: StringMax50
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!10
+    chosen: xsd
 - path: AddressType/CountyName
   domain: AddressType
   range: StringMax60Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: County common name
   source_location: Core-Data-4.0.xsd:44
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax60Type
+      location: Core-Data-4.0.xsd:44
+    - source: excel
+      value: StringMax60
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!11
+    chosen: xsd
 - path: AddressType/UnparsedAddress
   domain: AddressType
   range: StringMax500Type
@@ -349,6 +650,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Core-Data-4.0.xsd:45
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax500Type
+      location: Core-Data-4.0.xsd:45
+    - source: excel
+      value: StringMax500
+      location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Address Type!12
+    chosen: xsd
 - path: AddressType/AddressType
   domain: AddressType
   range: AddressInfo
@@ -993,3 +1304,248 @@ fields:
   cardinality: repeating
   definition: ''
   source_location: Core-Data-4.0.xsd:507
+unmatched_enrichments:
+- source: excel
+  domain: InvoiceType
+  field: AccountsPayableAccountIdentifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!2
+- source: excel
+  domain: InvoiceType
+  field: Adjustment
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!3
+- source: excel
+  domain: InvoiceType
+  field: BatchIdentifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!4
+- source: excel
+  domain: InvoiceType
+  field: CashAccountIdentifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!5
+- source: excel
+  domain: InvoiceType
+  field: CreditMemo
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!6
+- source: excel
+  domain: InvoiceType
+  field: ConsolidateCheck
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!7
+- source: excel
+  domain: InvoiceType
+  field: DueDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!8
+- source: excel
+  domain: InvoiceType
+  field: DiscountDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!9
+- source: excel
+  domain: InvoiceType
+  field: DiscountPercent
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!10
+- source: excel
+  domain: InvoiceType
+  field: DiscountAmount
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!11
+- source: excel
+  domain: InvoiceType
+  field: FreightAmount
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!12
+- source: excel
+  domain: InvoiceType
+  field: IdRef
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!13
+- source: excel
+  domain: InvoiceType
+  field: TransactionIdentifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!14
+- source: excel
+  domain: InvoiceType
+  field: ImageURL
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!15
+- source: excel
+  domain: InvoiceType
+  field: InvoiceNumber
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!16
+- source: excel
+  domain: InvoiceType
+  field: OrderDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!17
+- source: excel
+  domain: InvoiceType
+  field: OrderNumber
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!18
+- source: excel
+  domain: InvoiceType
+  field: Payment
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!19
+- source: excel
+  domain: InvoiceType
+  field: PostMonth
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!20
+- source: excel
+  domain: InvoiceType
+  field: PurchaseOrderNumber
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!21
+- source: excel
+  domain: InvoiceType
+  field: ReferenceInvoiceNumber
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!22
+- source: excel
+  domain: InvoiceType
+  field: ServicePeriod
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!23
+- source: excel
+  domain: InvoiceType
+  field: ServiceType
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!24
+- source: excel
+  domain: InvoiceType
+  field: ServiceTypeOtherDescription
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!25
+- source: excel
+  domain: InvoiceType
+  field: SubTotal
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!26
+- source: excel
+  domain: InvoiceType
+  field: EndUserLocationIdentifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!27
+- source: excel
+  domain: InvoiceType
+  field: Unpaid
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!28
+- source: excel
+  domain: InvoiceType
+  field: RemittanceSlipRequired
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!29
+- source: excel
+  domain: InvoiceType
+  field: TaxAmount
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!30
+- source: excel
+  domain: InvoiceType
+  field: TotalAmount
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!31
+- source: excel
+  domain: InvoiceType
+  field: TotalAmountPaid
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!32
+- source: excel
+  domain: InvoiceType
+  field: Notes
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!33
+- source: excel
+  domain: InvoiceType
+  field: ExcemptFrom1099
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!34
+- source: excel
+  domain: InvoiceType
+  field: InvoiceDetail
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!35
+- source: excel
+  domain: InvoiceType
+  field: Memo
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!36
+- source: excel
+  domain: InvoiceType
+  field: UserCode
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InvoiceType!37
+- source: excel
+  domain: PaymentType
+  field: AmountPaid
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!2
+- source: excel
+  domain: PaymentType
+  field: BankName
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!3
+- source: excel
+  domain: PaymentType
+  field: CheckNumber
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!4
+- source: excel
+  domain: PaymentType
+  field: CheckDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!5
+- source: excel
+  domain: PaymentType
+  field: Description
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!6
+- source: excel
+  domain: PaymentType
+  field: DocumentNumber
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!7
+- source: excel
+  domain: PaymentType
+  field: PaymentIdentifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!8
+- source: excel
+  domain: PaymentType
+  field: ResolvedDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!9
+- source: excel
+  domain: PaymentType
+  field: Status
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!10
+- source: excel
+  domain: PaymentType
+  field: SourceSystem
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!11
+- source: excel
+  domain: PaymentType
+  field: Terms
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Payment Type!12
+- source: excel
+  domain: InvoiceDetailType
+  field: ConstructionRentention
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!8
+- source: excel
+  domain: InvoiceDetailType
+  field: ConstructionRententionAmount
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!9
+- source: excel
+  domain: InvoiceDetailType
+  field: WarrantySerialNo
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Invoice Detail Type!22
+- source: excel
+  domain: MemoType
+  field: EventType
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Memo Type!2
+- source: excel
+  domain: MemoType
+  field: EventTypeOtherDescription
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Memo Type!3
+- source: excel
+  domain: MemoType
+  field: EventDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Memo Type!4
+- source: excel
+  domain: MemoType
+  field: Responsible
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Memo Type!5
+- source: excel
+  domain: MemoType
+  field: Text
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!Memo Type!6
+- source: excel
+  domain: SkuType
+  field: Identifier
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!SkuType!2
+- source: excel
+  domain: SkuType
+  field: Description
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!SkuType!3
+- source: excel
+  domain: InsuranceType
+  field: Type
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InsuranceType!2
+- source: excel
+  domain: InsuranceType
+  field: ExpirationDate
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InsuranceType!3
+- source: excel
+  domain: InsuranceType
+  field: OtherDescription
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InsuranceType!4
+- source: excel
+  domain: InsuranceType
+  field: InsuranceRequired
+  location: Accounts-Payable-Data-Dictionary-4.0-xls.xlsx!InsuranceType!5

@@ -69,6 +69,7 @@ class XsdExtractor:
             extractor=EXTRACTOR_ID,
             extracted_at=datetime.now(tz=UTC),
             namespace_hint=xsd_config.namespace_hint,
+            source_label="xsd",
             types=types,
             fields=fields,
         )

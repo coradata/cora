@@ -4,6 +4,7 @@ version: '1.0'
 source_artifact: standards/mits/current/native/Lease-Application-Standard-xsd.xml
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T16:25:28.827460Z'
+source_label: xsd
 types:
 - name: AccountingData
   abstract: false

@@ -4,6 +4,7 @@ version: 4.0.1
 source_artifact: standards/mits/current/native/Lead-Management-4.0/Lead-Management-4.0.1-Schema-xsd.xml
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T16:31:37.952152Z'
+source_label: xsd
 types:
 - name: EventType
   abstract: false
@@ -612,22 +613,52 @@ fields:
   range: Money
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Min
   source_location: Core-Data-4.0.xsd:169
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Money
+      location: Core-Data-4.0.xsd:169
+    - source: excel
+      value: MITS:Money
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!CurrencyRangeType!6
+    chosen: xsd
 - path: CurrencyRangeType/Max
   domain: CurrencyRangeType
   range: Money
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Max
   source_location: Core-Data-4.0.xsd:170
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Money
+      location: Core-Data-4.0.xsd:170
+    - source: excel
+      value: MITS:Money
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!CurrencyRangeType!7
+    chosen: xsd
 - path: CurrencyRangeType/Exact
   domain: CurrencyRangeType
   range: Money
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Exact
   source_location: Core-Data-4.0.xsd:171
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Money
+      location: Core-Data-4.0.xsd:171
+    - source: excel
+      value: MITS:Money
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!CurrencyRangeType!8
+    chosen: xsd
 - path: CurrencyRangeType/Currency
   domain: CurrencyRangeType
   range: Currency
@@ -635,6 +666,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Core-Data-4.0.xsd:172
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: Currency
+      location: Core-Data-4.0.xsd:172
+    - source: excel
+      value: MITS:Currency
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!CurrencyRangeType!9
+    chosen: xsd
 - path: CurrentNumberOccupantsType/Total
   domain: CurrentNumberOccupantsType
   range: xs:integer
@@ -661,36 +702,94 @@ fields:
   range: xs:string
   is_reference: false
   cardinality: required
-  definition: ''
+  definition: Actual ID value
   source_location: Core-Data-4.0.xsd:230
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Core-Data-4.0.xsd:230
+    - source: excel
+      value: xs:string
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Identification Type!9
 - path: Identification/OrganizationName
   domain: Identification
   range: xs:string
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Defines the ID Scope in terms of sender, receiver, or other third party
   source_location: Core-Data-4.0.xsd:231
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:string
+      location: Core-Data-4.0.xsd:231
+    - source: excel
+      value: xs:string
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Identification Type!10
 - path: Identification/IDType
   domain: Identification
   range: StringMax50Type
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: ID Type attribute should mirror the element it describes or be used
+    as an IDRef for a Company or Person in Contacts
   source_location: Core-Data-4.0.xsd:232
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax50Type
+      location: Core-Data-4.0.xsd:232
+    - source: excel
+      value: xs:string
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Identification Type!6
+    chosen: xsd
 - path: Identification/IDRank
   domain: Identification
   range: IDRank
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Ranking value
   source_location: Core-Data-4.0.xsd:233
+  enumeration:
+  - primary
+  - secondary
+  - tertiary
+  - other
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: IDRank
+      location: Core-Data-4.0.xsd:233
+    - source: excel
+      value: xs:string
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Identification Type!8
+    chosen: xsd
 - path: Identification/IDScopeType
   domain: Identification
   range: IDScopeType
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Where ID originates from
   source_location: Core-Data-4.0.xsd:234
+  enumeration:
+  - sender
+  - recipient
+  - third party
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: IDScopeType
+      location: Core-Data-4.0.xsd:234
+    - source: excel
+      value: xs:string
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Identification Type!7
+    chosen: xsd
 - path: LeaseType/CurrentRent
   domain: LeaseType
   range: xs:decimal
@@ -829,43 +928,93 @@ fields:
   range: xs:integer
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Min
   source_location: Core-Data-4.0.xsd:321
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:integer
+      location: Core-Data-4.0.xsd:321
+    - source: excel
+      value: 'xs: integer'
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!NumericRangeType!6
+    chosen: xsd
 - path: NumericRangeType/Max
   domain: NumericRangeType
   range: xs:integer
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Max
   source_location: Core-Data-4.0.xsd:322
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:integer
+      location: Core-Data-4.0.xsd:322
+    - source: excel
+      value: 'xs: integer'
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!NumericRangeType!7
+    chosen: xsd
 - path: NumericRangeType/Exact
   domain: NumericRangeType
   range: xs:integer
   is_reference: false
   cardinality: optional
-  definition: ''
+  definition: Exact
   source_location: Core-Data-4.0.xsd:323
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: xs:integer
+      location: Core-Data-4.0.xsd:323
+    - source: excel
+      value: 'xs: integer'
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!NumericRangeType!8
+    chosen: xsd
 - path: PersonType/Name
   domain: PersonType
   range: NameType
   is_reference: true
   cardinality: required
-  definition: ''
+  definition: Elements describing a persons name
   source_location: Core-Data-4.0.xsd:334
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: NameType
+      location: Core-Data-4.0.xsd:334
+    - source: excel
+      value: Complex
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!12
+    chosen: xsd
 - path: PersonType/Address
   domain: PersonType
   range: AddressType
   is_reference: true
   cardinality: repeating
-  definition: ''
+  definition: Element describs a (real-world or email) address
   source_location: Core-Data-4.0.xsd:335
 - path: PersonType/Phone
   domain: PersonType
   range: PhoneType
   is_reference: true
   cardinality: repeating
-  definition: ''
+  definition: Description, Number and Extension information for a phone contact
   source_location: Core-Data-4.0.xsd:336
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: PhoneType
+      location: Core-Data-4.0.xsd:336
+    - source: excel
+      value: Complex
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!31
+    chosen: xsd
 - path: PersonType/Email
   domain: PersonType
   range: StringMax80Type
@@ -873,6 +1022,16 @@ fields:
   cardinality: optional
   definition: ''
   source_location: Core-Data-4.0.xsd:337
+  provenance:
+  - attribute: range
+    claims:
+    - source: xsd
+      value: StringMax80Type
+      location: Core-Data-4.0.xsd:337
+    - source: excel
+      value: xs:string
+      location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!36
+    chosen: xsd
 - path: PersonsType/Person
   domain: PersonsType
   range: PersonType
@@ -1132,3 +1291,116 @@ fields:
   cardinality: repeating
   definition: ''
   source_location: Core-Data-4.0.xsd:507
+unmatched_enrichments:
+- source: excel
+  domain: PersonType
+  field: Person
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!5
+- source: excel
+  domain: PersonType
+  field: Identification
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!6
+- source: excel
+  domain: PersonType
+  field: IDValue
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!7
+- source: excel
+  domain: PersonType
+  field: OrganizationName
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!8
+- source: excel
+  domain: PersonType
+  field: IDType
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!9
+- source: excel
+  domain: PersonType
+  field: IDRank
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!10
+- source: excel
+  domain: PersonType
+  field: IDScopeType
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!11
+- source: excel
+  domain: PersonType
+  field: NamePrefix
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!13
+- source: excel
+  domain: PersonType
+  field: FirstName
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!14
+- source: excel
+  domain: PersonType
+  field: MiddleName
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!15
+- source: excel
+  domain: PersonType
+  field: LastName
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!16
+- source: excel
+  domain: PersonType
+  field: MaidenName
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!17
+- source: excel
+  domain: PersonType
+  field: NameSuffix
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!18
+- source: excel
+  domain: PersonType
+  field: AddressType
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!20
+- source: excel
+  domain: PersonType
+  field: Description
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!21
+- source: excel
+  domain: PersonType
+  field: AddressLine1
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!22
+- source: excel
+  domain: PersonType
+  field: AddressLine2
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!23
+- source: excel
+  domain: PersonType
+  field: City
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!24
+- source: excel
+  domain: PersonType
+  field: State
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!25
+- source: excel
+  domain: PersonType
+  field: Province
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!26
+- source: excel
+  domain: PersonType
+  field: PostalCode
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!27
+- source: excel
+  domain: PersonType
+  field: Country
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!28
+- source: excel
+  domain: PersonType
+  field: CountyName
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!29
+- source: excel
+  domain: PersonType
+  field: UnparsedAddress
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!30
+- source: excel
+  domain: PersonType
+  field: PhoneType
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!32
+- source: excel
+  domain: PersonType
+  field: PhoneDescription
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!33
+- source: excel
+  domain: PersonType
+  field: PhoneNumber
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!34
+- source: excel
+  domain: PersonType
+  field: Extension
+  location: Lead-Management-4.0-Data-Dictionary-xls.xls!Person Type!35

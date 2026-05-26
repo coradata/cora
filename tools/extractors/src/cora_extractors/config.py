@@ -96,3 +96,37 @@ class ExcelDictionaryConfig(ExtractorConfig):
     skip_rows: int = 1
     path_prefix: list[str] = []
     namespace_hint: str | None = None
+
+
+class ExcelMultiSheetDictionaryConfig(ExtractorConfig):
+    """Configuration for the multi-sheet MITS data-dictionary extractor.
+
+    A MITS dictionary workbook has one "top" sheet documenting the module
+    tree (currently skipped — the XSD inventory doesn't model the module
+    root as a type, so there's nothing to enrich against) plus one sheet
+    per shared type (``PersonType``, ``AddressType``, etc.). Each type
+    sheet emits per-field rows with ``domain`` set to the target type
+    name, so ``Inventory.enrich`` can match them against the XSD-derived
+    fields type-scoped.
+
+    The extractor auto-detects the header row by scanning for
+    ``header_marker`` in column A of the first ``header_search_rows`` rows
+    of each type sheet, then counts consecutive ``hierarchy_marker`` cells
+    after it to derive hierarchy depth. Defaults match the MITS
+    convention; override if a workbook deviates.
+    """
+
+    type_sheets: dict[str, str]
+    """Map of sheet name → target type name (the ``domain`` to claim)."""
+
+    header_marker: str = "Common Root Element"
+    hierarchy_marker: str = "Child Element/Attribute"
+    header_search_rows: int = 10
+
+    description_column_name: str = "Description"
+    data_type_column_name: str = "Data Type"
+    required_column_name: str = "Req"
+    max_occurs_column_name: str = "Max occurs"
+    values_column_name: str = "Values"
+
+    namespace_hint: str | None = None

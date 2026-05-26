@@ -4,6 +4,7 @@ version: '5.0'
 source_artifact: standards/mits/current/native/Property-Marketing-ILS-5.0-XSD-with-CORE/Property-Marketing-ILS-5.0.xsd
 extractor: cora_extractors.xsd@0.0.0
 extracted_at: '2026-05-23T15:54:14.383842Z'
+source_label: xsd
 types:
 - name: PropertyDataUploadResponseType
   abstract: false

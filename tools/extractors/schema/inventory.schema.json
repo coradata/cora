@@ -41,6 +41,10 @@
       "type": "string",
       "description": "Optional URI hint for the OWL/RDF projection's namespace. Has no effect at the inventory layer."
     },
+    "source_label": {
+      "type": ["string", "null"],
+      "description": "Short stable identifier for this inventory's primary source (e.g. 'xsd', 'excel', 'pdf'). Set by the extractor at construction time. Carried on the inventory so the same data wears the same label everywhere it appears. Required when calling Inventory.enrich."
+    },
     "types": {
       "type": "array",
       "description": "Complex types declared by this module. Required for standards with class hierarchies (XSD, SQL). May be empty or omitted for flat-table standards (Excel data dictionaries).",
@@ -50,9 +54,80 @@
       "type": "array",
       "description": "Field entries — every addressable leaf in this module.",
       "items": { "$ref": "#/$defs/fieldEntry" }
+    },
+    "unmatched_enrichments": {
+      "type": ["array", "null"],
+      "description": "Records of `other.fields` rows that found no match during enrich. Surfaces typos and sheet-mapping errors without polluting fields[].",
+      "items": { "$ref": "#/$defs/unmatchedEnrichment" }
     }
   },
   "$defs": {
+    "sourceClaim": {
+      "type": "object",
+      "required": ["source", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Source label of the inventory that attested this value."
+        },
+        "value": {
+          "description": "The attested value. Type matches the attribute being recorded (string, list[string], etc.)."
+        },
+        "location": {
+          "type": ["string", "null"],
+          "description": "Source-side source_location reference for this claim."
+        }
+      }
+    },
+    "attributeProvenance": {
+      "type": "object",
+      "required": ["attribute", "claims"],
+      "additionalProperties": false,
+      "properties": {
+        "attribute": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Name of the field/type attribute this provenance describes (e.g. 'definition', 'range')."
+        },
+        "claims": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/sourceClaim" },
+          "description": "Every source that attested a value for this attribute on this field. Always ≥2; single-source attestations are not recorded here (the top-level value carries them)."
+        },
+        "chosen": {
+          "type": ["string", "null"],
+          "description": "Source label whose value lives at the top level. Present only when claims disagree; absent when all claims agree."
+        }
+      }
+    },
+    "unmatchedEnrichment": {
+      "type": "object",
+      "required": ["source", "field"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Source label of the inventory the unmatched row came from."
+        },
+        "domain": {
+          "type": ["string", "null"],
+          "description": "Domain of the unmatched row, if any."
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Leaf field name from the unmatched row."
+        },
+        "location": {
+          "type": ["string", "null"],
+          "description": "Source-side source_location reference."
+        }
+      }
+    },
     "typeEntry": {
       "type": "object",
       "required": ["name"],
@@ -80,6 +155,11 @@
         "source_location": {
           "type": ["string", "null"],
           "description": "Reference back to the native artifact (e.g. file:line)."
+        },
+        "provenance": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/attributeProvenance" },
+          "description": "Multi-source attestation records for this type's attributes. Present only when ≥2 sources attested."
         }
       }
     },
@@ -129,6 +209,11 @@
           "type": ["array", "null"],
           "items": { "type": "string" },
           "description": "Allowed values, if the source declares them."
+        },
+        "provenance": {
+          "type": ["array", "null"],
+          "items": { "$ref": "#/$defs/attributeProvenance" },
+          "description": "Multi-source attestation records for this field's attributes. Present only when ≥2 sources attested for at least one attribute. Untrusted claims (from sources not in the enrich trust list) are still recorded here, giving reviewers a full lineage."
         }
       }
     }

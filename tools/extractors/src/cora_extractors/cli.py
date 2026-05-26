@@ -23,12 +23,15 @@ from cora_extractors.cdm_json import CdmJsonExtractor
 from cora_extractors.config import (
     CdmJsonConfig,
     ExcelDictionaryConfig,
+    ExcelMultiSheetDictionaryConfig,
     ExtractorConfig,
     JsonCatalogConfig,
     XsdConfig,
 )
 from cora_extractors.excel_dictionary import ExcelDictionaryExtractor
+from cora_extractors.excel_multisheet import ExcelMultiSheetDictionaryExtractor
 from cora_extractors.extractor import Extractor
+from cora_extractors.inventory import ENRICHABLE_ATTRIBUTES, Inventory
 from cora_extractors.json_catalog import JsonCatalogExtractor
 from cora_extractors.summary import summarize_file
 from cora_extractors.validator import Validator
@@ -40,6 +43,7 @@ EXTRACTORS: dict[str, Extractor] = {
     "xsd": XsdExtractor(),
     "json": JsonCatalogExtractor(),
     "excel": ExcelDictionaryExtractor(),
+    "excel-multisheet": ExcelMultiSheetDictionaryExtractor(),
     "cdm-json": CdmJsonExtractor(),
 }
 
@@ -47,6 +51,7 @@ CONFIG_TYPES: dict[str, type[ExtractorConfig]] = {
     "xsd": XsdConfig,
     "json": JsonCatalogConfig,
     "excel": ExcelDictionaryConfig,
+    "excel-multisheet": ExcelMultiSheetDictionaryConfig,
     "cdm-json": CdmJsonConfig,
 }
 
@@ -131,6 +136,26 @@ def _add_inventory(subparsers: argparse._SubParsersAction[argparse.ArgumentParse
     s.add_argument("path", type=Path)
     s.set_defaults(func=_cmd_inventory_summary)
 
+    m = inv_subs.add_parser(
+        "merge",
+        help=(
+            "Enrich one inventory with another via Inventory.enrich. "
+            "Asymmetric, type-scoped fill-in; see docs/adr/0001-enrich-vs-merge.md."
+        ),
+    )
+    m.add_argument("--into", type=Path, required=True, help="Primary inventory (self).")
+    m.add_argument("--from", dest="from_", type=Path, required=True, help="Secondary inventory.")
+    m.add_argument(
+        "--attribute",
+        action="append",
+        default=[],
+        choices=sorted(ENRICHABLE_ATTRIBUTES),
+        required=True,
+        help="Trust-list attribute; pass once per attribute (e.g., --attribute definition).",
+    )
+    m.add_argument("--output", type=Path, required=True)
+    m.set_defaults(func=_cmd_inventory_merge)
+
 
 def _cmd_extract(args: argparse.Namespace) -> int:
     extractor = EXTRACTORS[args.format]
@@ -174,6 +199,15 @@ def _cmd_validate(args: argparse.Namespace) -> int:
 
 def _cmd_inventory_summary(args: argparse.Namespace) -> int:
     print(summarize_file(args.path).render())
+    return 0
+
+
+def _cmd_inventory_merge(args: argparse.Namespace) -> int:
+    primary = Inventory.from_yaml(args.into)
+    secondary = Inventory.from_yaml(args.from_)
+    merged = primary.enrich(secondary, attributes=set(args.attribute))
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    merged.to_yaml(args.output)
     return 0
 
 

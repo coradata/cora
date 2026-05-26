@@ -1,0 +1,7 @@
+type_sheets:
+  PropertyType: PropertyType
+  CompanyType: CompanyType
+  PersonType: PersonType
+  CustomersType: CustomersType
+  UnitType: UnitType
+  IdentificationType: Identification
