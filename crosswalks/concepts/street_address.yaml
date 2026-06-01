@@ -1,0 +1,36 @@
+concept: street_address
+canonical_definition: >-
+  The first line of a postal address — typically a street number and street name,
+  PO box, or other primary delivery line. Excludes secondary descriptors (unit
+  number, suite) which often appear on a second address line.
+aliases:
+  - address_line_1
+  - street
+  - delivery_address_line_1
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-01'
+mappings:
+  mits:
+    field: AddressType/AddressLine1
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS Core-Data 4.0 ``AddressType`` documents AddressLine1 as "PO Box or
+      Street number, direction, street name, suffix" — combines primary street
+      address with PO box semantics, so this is ``close`` rather than ``exact``.
+  ibpdi:
+    field: Address/StreetName
+    version: '1.0'
+    confidence: partial
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+    notes: >-
+      IBPDI splits an address into ``StreetName``, ``HouseNumber``, and
+      ``HouseNumberSupplement`` rather than carrying a single composed first
+      line. Mapped to ``StreetName`` as the closest single-field equivalent;
+      consumers reconstructing a one-line address would concat the three.
+  redi:
+    field: Street_Address
+    version: '1.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml

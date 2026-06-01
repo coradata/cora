@@ -1,0 +1,39 @@
+concept: lease_end_date
+canonical_definition: >-
+  The date on which a lease or rental contract terminates. Distinct from the
+  start date and from any actual move-out date (which may differ from the
+  contractually agreed end).
+aliases:
+  - lease_expiration_date
+  - rent_end_date
+  - tenancy_end
+  - contract_end_date
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-01'
+mappings:
+  mits:
+    field: LeaseType/ExpectedMoveOutDate
+    version: '4.0'
+    confidence: partial
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS distinguishes ``ExpectedMoveOutDate`` (contractual / planned) from
+      ``ActualMoveOut`` (observed). The crosswalk targets the contractual end
+      — consumers wanting move-out-as-observed should reference ``ActualMoveOut``.
+      Confidence ``partial`` reflects this contractual-vs-observed ambiguity.
+  ibpdi:
+    field: RentalContract/RentEndDate
+    version: '1.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/property-management.yaml
+    notes: >-
+      IBPDI ``RentalContract.RentEndDate`` is documented as "Date original
+      contract ends" — matches contractual end semantics.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is LP-investment-reporting flavored and aggregates lease activity
+      (e.g., ``Contract_Rent_Qtr``) rather than tracking per-lease term dates.
+      Individual lease end dates fall outside REDI's reporting unit.

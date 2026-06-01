@@ -1,0 +1,39 @@
+concept: email_address
+canonical_definition: >-
+  An RFC 5321 / RFC 5322 electronic mail address (local-part @ domain) used to
+  reach a person, organization, or role. Does not constrain ownership semantics
+  (personal vs. shared vs. role inbox).
+aliases:
+  - email
+  - e_mail
+  - mail_address
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-01'
+mappings:
+  mits:
+    field: PersonType/Email
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS carries ``Email`` as a string field on ``PersonType``,
+      ``CompanyType``, ``PropertyType``, and others. Mapped to ``PersonType``
+      as the prototypical person-bound case; the same crosswalk applies to the
+      other domains.
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      IBPDI's organisational-management cluster carries ``Contact`` with first
+      / last name but no email attribute in v1.0. Contact reachability is left
+      to systems integrating IBPDI rather than modelled in the standard.
+  redi:
+    field: Contact_Email_Address
+    version: '1.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      REDI scopes email explicitly to a contact role (``Contact_Email_Address``);
+      MITS doesn't qualify role in the field name. Semantically equivalent for
+      most consumers.
