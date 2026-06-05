@@ -6,6 +6,7 @@ on:
       - "tools/extractors/**"
       - "standards/*/current/inventory/**"
       - "crosswalks/concepts/**"
+      - "docs/generated/**"
       - ".github/workflows/extractors.yaml"
   push:
     branches: [main]
@@ -13,6 +14,7 @@ on:
       - "tools/extractors/**"
       - "standards/*/current/inventory/**"
       - "crosswalks/concepts/**"
+      - "docs/generated/**"
       - ".github/workflows/extractors.yaml"
 
 defaults:
@@ -67,3 +69,6 @@ jobs:
           else
             echo "No committed crosswalks yet — skipping."
           fi
+      - name: cora docs check (drift gate against docs/generated/)
+        working-directory: .
+        run: cd tools/extractors && python -m cora_extractors docs check --repo-root ../..
