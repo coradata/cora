@@ -10,6 +10,7 @@ Module-private (underscored). Anything used by ≥2 generators lives here:
 
 from __future__ import annotations
 
+import re
 from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -86,6 +87,17 @@ def standards_in(crosswalks: Sequence[Crosswalk]) -> list[str]:
     for cw in crosswalks:
         out.update(cw.mappings.keys())
     return sorted(out)
+
+
+def normalize_blanks(text: str) -> str:
+    """Collapse 3+ consecutive newlines to exactly 2 (single blank line).
+
+    Generators concatenate section parts with their own ``\\n``; the natural
+    result puts two blanks between sections. markdownlint MD012 forbids more
+    than one consecutive blank line, so we normalise after rendering and
+    before writing.
+    """
+    return re.sub(r"\n{3,}", "\n\n", text)
 
 
 def md_table(headers: Sequence[str], rows: Sequence[Sequence[str]]) -> str:

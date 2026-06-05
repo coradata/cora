@@ -13,6 +13,7 @@ from pathlib import Path
 from cora_extractors.generators._common import (
     DO_NOT_EDIT_FOOTER,
     load_crosswalks,
+    normalize_blanks,
 )
 
 OUTPUT_PATH = Path("concept-overview.md")
@@ -55,7 +56,7 @@ class ConceptGraphsGenerator:
         body = "\n".join(lines)
         out = output_dir / OUTPUT_PATH
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(body)
+        out.write_text(normalize_blanks(body))
         return [OUTPUT_PATH]
 
 

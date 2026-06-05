@@ -19,6 +19,7 @@ from cora_extractors.generators._common import (
     DO_NOT_EDIT_FOOTER,
     load_inventories,
     md_table,
+    normalize_blanks,
 )
 from cora_extractors.inventory import Inventory
 
@@ -35,7 +36,7 @@ class InventoryPagesGenerator:
             for inv in invs:
                 relative = Path("inventories") / std / f"{inv.module}.md"
                 (output_dir / relative).parent.mkdir(parents=True, exist_ok=True)
-                (output_dir / relative).write_text(_render(inv, std))
+                (output_dir / relative).write_text(normalize_blanks(_render(inv, std)))
                 written.append(relative)
         return sorted(written)
 

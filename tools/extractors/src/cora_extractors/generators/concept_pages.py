@@ -17,6 +17,7 @@ from cora_extractors.generators._common import (
     load_crosswalks,
     load_inventories,
     md_table,
+    normalize_blanks,
     resolve_field_in_inventories,
 )
 from cora_extractors.inventory import Inventory
@@ -34,7 +35,7 @@ class ConceptPagesGenerator:
         for cw in crosswalks:
             relative = Path("concepts") / f"{cw.concept}.md"
             (output_dir / relative).parent.mkdir(parents=True, exist_ok=True)
-            (output_dir / relative).write_text(_render(cw, inventories))
+            (output_dir / relative).write_text(normalize_blanks(_render(cw, inventories)))
             written.append(relative)
         return sorted(written)
 

@@ -13,6 +13,7 @@ from cora_extractors.generators._common import (
     DO_NOT_EDIT_FOOTER,
     load_crosswalks,
     load_inventories,
+    normalize_blanks,
 )
 
 OUTPUT_PATH = Path("README.md")
@@ -75,5 +76,5 @@ class IndexGenerator:
 
         out = output_dir / OUTPUT_PATH
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text("\n".join(parts))
+        out.write_text(normalize_blanks("\n".join(parts)))
         return [OUTPUT_PATH]

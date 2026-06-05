@@ -14,6 +14,7 @@ from cora_extractors.generators._common import (
     DO_NOT_EDIT_FOOTER,
     load_crosswalks,
     md_table,
+    normalize_blanks,
     standards_in,
 )
 
@@ -50,7 +51,7 @@ class CoverageMatrixGenerator:
 
         out = output_dir / OUTPUT_PATH
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(body)
+        out.write_text(normalize_blanks(body))
         return [OUTPUT_PATH]
 
 
