@@ -5,12 +5,14 @@ on:
     paths:
       - "tools/extractors/**"
       - "standards/*/current/inventory/**"
+      - "crosswalks/concepts/**"
       - ".github/workflows/extractors.yaml"
   push:
     branches: [main]
     paths:
       - "tools/extractors/**"
       - "standards/*/current/inventory/**"
+      - "crosswalks/concepts/**"
       - ".github/workflows/extractors.yaml"
 
 defaults:
@@ -56,4 +58,12 @@ jobs:
             cd tools/extractors && python -m cora_extractors validate field-count --repo-root ../..
           else
             echo "No committed inventories yet — skipping."
+          fi
+      - name: cora validate crosswalk-paths (against committed crosswalks)
+        working-directory: .
+        run: |
+          if compgen -G "crosswalks/concepts/*.yaml" > /dev/null; then
+            cd tools/extractors && python -m cora_extractors validate crosswalk-paths --repo-root ../..
+          else
+            echo "No committed crosswalks yet — skipping."
           fi

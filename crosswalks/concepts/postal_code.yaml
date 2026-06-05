@@ -1,0 +1,31 @@
+concept: postal_code
+canonical_definition: >-
+  The postal sorting code used by the jurisdiction's postal service to route
+  mail to its destination. US ZIP, Canadian postal code, UK postcode, and
+  similar are all postal codes in this sense.
+aliases:
+  - zip_code
+  - zip
+  - postcode
+  - postal_zip
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-01'
+mappings:
+  mits:
+    field: AddressType/PostalCode
+    version: '4.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+  ibpdi:
+    field: Address/PostalCode
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+  redi:
+    field: Zip_Postal_Code
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      REDI's field name combines US ZIP and international postal-code wording
+      (``Zip_Postal_Code``). Semantically identical to ``PostalCode``.

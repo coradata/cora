@@ -1,0 +1,31 @@
+concept: city
+canonical_definition: >-
+  The city, town, or municipality where a real-estate address is located. The
+  governmental unit immediately above postal code in most jurisdictions; below
+  state/province. Excludes neighborhood, county, and country.
+aliases:
+  - town
+  - municipality
+  - locality
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-01'
+mappings:
+  mits:
+    field: AddressType/City
+    version: '4.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+  ibpdi:
+    field: Address/City
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+  redi:
+    field: City_Town
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      Field name is ``City_Town`` rather than ``City``; semantics are identical
+      (REDI's data dictionary clarifies the field accepts town names where
+      applicable).

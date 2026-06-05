@@ -35,6 +35,7 @@ from cora_extractors.inventory import ENRICHABLE_ATTRIBUTES, Inventory
 from cora_extractors.json_catalog import JsonCatalogExtractor
 from cora_extractors.summary import summarize_file
 from cora_extractors.validator import Validator
+from cora_extractors.validators.crosswalk_paths import CrosswalkPathsValidator
 from cora_extractors.validators.field_count import FieldCountValidator
 from cora_extractors.validators.inventory_schema import InventorySchemaValidator
 from cora_extractors.xsd import XsdExtractor
@@ -58,6 +59,7 @@ CONFIG_TYPES: dict[str, type[ExtractorConfig]] = {
 VALIDATORS: dict[str, Validator] = {
     "inventory-schema": InventorySchemaValidator(),
     "field-count": FieldCountValidator(),
+    "crosswalk-paths": CrosswalkPathsValidator(),
 }
 
 
