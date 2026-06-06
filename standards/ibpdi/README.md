@@ -10,6 +10,12 @@ This directory holds CORA's bootstrap mirror of the [IBPDI Common Data Model](ht
 
 **Canonical source.** The authoritative IBPDI CDM lives at [github.com/ibpdi/cdm](https://github.com/ibpdi/cdm). CORA mirrors. CORA does not author.
 
+## Documentation
+
+- **Concepts and CLI** — [coradata.github.io/cora](https://coradata.github.io/cora/) (authored docs site)
+- **Browse IBPDI inventories** — [`docs/generated/inventories/ibpdi/`](../../docs/generated/) (one Markdown per cluster)
+- **Concept crosswalks** — [`docs/generated/coverage-matrix.md`](../../docs/generated/coverage-matrix.md)
+
 ## Layout
 
 ```

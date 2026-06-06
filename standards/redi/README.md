@@ -10,6 +10,12 @@ This directory holds CORA's mirror of the [REDI Data Model](https://realestateda
 
 **Canonical source.** The authoritative REDI distribution lives at [realestatedatainitiative.netlify.app](https://realestatedatainitiative.netlify.app/). CORA mirrors. CORA does not author. Native files are kept bit-identical to the upstream distribution — no structural changes.
 
+## Documentation
+
+- **Concepts and CLI** — [coradata.github.io/cora](https://coradata.github.io/cora/) (authored docs site)
+- **Browse REDI inventory** — [`docs/generated/inventories/redi/data-fields.md`](../../docs/generated/inventories/redi/data-fields.md)
+- **Concept crosswalks** — [`docs/generated/coverage-matrix.md`](../../docs/generated/coverage-matrix.md)
+
 ## Layout
 
 ```

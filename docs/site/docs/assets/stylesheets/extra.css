@@ -1,0 +1,445 @@
+/*
+ * CORA Material theme overrides.
+ *
+ * Aligns with the coradata.org palette and IBM Plex typography.
+ * Light + dark schemes both supplied; the toggle in the header switches
+ * between them.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Light scheme (default)
+ * --------------------------------------------------------------------------*/
+
+:root,
+[data-md-color-scheme="default"] {
+  /* Brand palette — sourced from coradata.org */
+  --cora-bg: #fafaf8;
+  --cora-surface: #f5f3ee;
+  --cora-surface-alt: #f1eee6;
+  --cora-text: #1a1a1a;
+  --cora-text-secondary: #4a4845;
+  --cora-text-tertiary: #8a8580;
+  --cora-accent: #2b4257;
+  --cora-accent-hover: #1f3243;
+  --cora-border: #d4d0c7;
+  --cora-border-light: #e8e4dc;
+  --cora-sage: #5f7a5a;
+  --cora-status-green: #1f5c42;
+  --cora-status-amber: #8c6b1f;
+
+  /* Material primary (header, tabs background) */
+  --md-primary-fg-color: var(--cora-accent);
+  --md-primary-fg-color--light: #3a5470;
+  --md-primary-fg-color--dark: var(--cora-accent-hover);
+  --md-primary-bg-color: var(--cora-bg);
+  --md-primary-bg-color--light: rgba(250, 250, 248, 0.8);
+
+  /* Material accent (links, hover, focus) */
+  --md-accent-fg-color: var(--cora-accent);
+  --md-accent-fg-color--transparent: rgba(43, 66, 87, 0.1);
+  --md-accent-bg-color: var(--cora-bg);
+
+  /* Body links — pin to the accent color in both schemes. Material defaults
+     --md-typeset-a-color to --md-primary-fg-color, which we repurpose for
+     the dark header chrome in slate; without this override, slate-mode
+     links inherit the near-bg surface color and disappear. */
+  --md-typeset-a-color: var(--cora-accent);
+
+  /* Page surfaces */
+  --md-default-bg-color: var(--cora-bg);
+  --md-default-fg-color: var(--cora-text);
+  --md-default-fg-color--light: var(--cora-text-secondary);
+  --md-default-fg-color--lighter: var(--cora-text-tertiary);
+  --md-default-fg-color--lightest: var(--cora-border-light);
+
+  /* Code blocks + inline code */
+  --md-code-bg-color: var(--cora-surface);
+  --md-code-fg-color: var(--cora-text);
+
+  /* Tables */
+  --md-typeset-table-color: var(--cora-border);
+}
+
+/* ----------------------------------------------------------------------------
+ * Dark scheme (slate)
+ * --------------------------------------------------------------------------*/
+
+[data-md-color-scheme="slate"] {
+  --cora-bg: #121211;
+  --cora-surface: #1a1a18;
+  --cora-surface-alt: #1f1f1d;
+  --cora-text: #eceae4;
+  --cora-text-secondary: #b8b5ad;
+  --cora-text-tertiary: #807c74;
+  --cora-accent: #9cb6ce;
+  --cora-accent-hover: #b6cadd;
+  --cora-border: #3a3a36;
+  --cora-border-light: #2a2a27;
+  --cora-sage: #8faa88;
+  --cora-status-green: #6bae8a;
+  --cora-status-amber: #c6a35f;
+
+  --md-primary-fg-color: var(--cora-surface);
+  --md-primary-fg-color--light: var(--cora-surface-alt);
+  --md-primary-fg-color--dark: #0e0e0d;
+  --md-primary-bg-color: var(--cora-text);
+
+  --md-accent-fg-color: var(--cora-accent);
+  --md-accent-fg-color--transparent: rgba(156, 182, 206, 0.15);
+  --md-typeset-a-color: var(--cora-accent);
+
+  --md-default-bg-color: var(--cora-bg);
+  --md-default-fg-color: var(--cora-text);
+  --md-default-fg-color--light: var(--cora-text-secondary);
+  --md-default-fg-color--lighter: var(--cora-text-tertiary);
+  --md-default-fg-color--lightest: var(--cora-border-light);
+
+  --md-code-bg-color: var(--cora-surface);
+  --md-code-fg-color: var(--cora-text);
+
+  --md-typeset-table-color: var(--cora-border);
+}
+
+/* ----------------------------------------------------------------------------
+ * Typography refinements
+ * --------------------------------------------------------------------------*/
+
+/* Headings: tighter letter-spacing matches the wordmark feel */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.md-typeset h1 {
+  font-weight: 400;
+  font-size: 2.2rem;
+  letter-spacing: -0.02em;
+}
+
+/* Definition-list term — used on the home page for the section signposts */
+.md-typeset dl dt {
+  font-weight: 500;
+  color: var(--cora-text);
+}
+
+/* Block quotes: subtle left rule in the accent color, no italic */
+.md-typeset blockquote {
+  border-left: 2px solid var(--cora-accent);
+  color: var(--cora-text-secondary);
+  font-style: normal;
+  padding-left: 1rem;
+}
+
+/* Inline code: tighter, less visually loud */
+.md-typeset code {
+  background-color: var(--cora-surface-alt);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+  font-size: 0.92em;
+}
+
+/* Copy-to-clipboard icon: Material binds this to --md-default-fg-color--lightest,
+   which we map to --cora-border-light (near-bg) for divider strokes — invisible
+   when reused as an icon. Pin to a real mid-gray so it's discoverable in both
+   schemes; hover still uses --md-accent-fg-color (the brand accent).
+   !important because Material's own selector (`.md-typeset .md-clipboard`) has
+   higher specificity than a bare `.md-clipboard`. */
+.md-clipboard,
+.md-typeset .md-clipboard {
+  color: var(--cora-text-secondary) !important;
+}
+
+.md-clipboard:hover,
+.md-typeset .md-clipboard:hover {
+  color: var(--cora-accent) !important;
+}
+
+/* Tables: cleaner borders, eyebrow-style headers */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--cora-border);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--cora-surface);
+  color: var(--cora-text);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  border-color: var(--cora-border-light);
+}
+
+/* ----------------------------------------------------------------------------
+ * Mermaid diagrams
+ *
+ * Material renders every mermaid block into a CLOSED Shadow DOM
+ * (`r.attachShadow({mode:"closed"})`), which means external CSS in this file
+ * cannot reach the SVG's nodes, edges, or labels. The only two things that
+ * cross the shadow boundary are:
+ *   1. CSS custom properties (--var) — they inherit through.
+ *   2. CSS injected via mermaid's `themeCSS` init directive in each diagram.
+ *
+ * So this section sets the --md-mermaid-* variables that Material's bundled
+ * themeCSS reads, and that's it. Per-class overrides for navy-fill nodes
+ * (seam/op/concept) live in each diagram's `%%{init}%%` block.
+ * --------------------------------------------------------------------------*/
+
+:root,
+[data-md-color-scheme="default"] {
+  --md-mermaid-font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --md-mermaid-edge-color: var(--cora-text-secondary);
+  --md-mermaid-node-bg-color: var(--cora-surface);
+  --md-mermaid-node-fg-color: var(--cora-text);
+  --md-mermaid-label-bg-color: var(--cora-bg);
+  --md-mermaid-label-fg-color: #1a1a1a;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-mermaid-font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --md-mermaid-edge-color: var(--cora-text-secondary);
+  --md-mermaid-node-bg-color: var(--cora-surface);
+  --md-mermaid-node-fg-color: var(--cora-text);
+  --md-mermaid-label-bg-color: var(--cora-bg);
+  --md-mermaid-label-fg-color: #1a1a1a;
+}
+
+/* These target the host <pre.mermaid> wrapper, which lives in the light DOM,
+   so they're safe (and necessary — sizing/centering happens outside the
+   shadow). */
+.mermaid {
+  text-align: center;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  max-height: calc(100vh - 8rem);
+  width: auto;
+  height: auto;
+}
+
+/* ----------------------------------------------------------------------------
+ * Header — replicates coradata.org's chrome
+ * --------------------------------------------------------------------------*/
+
+/* Header background: warm off-white with a subtle glass effect.
+   Matches `header.site` on coradata.org (92% bg + backdrop blur). */
+.md-header {
+  background-color: color-mix(in oklab, var(--cora-bg) 92%, transparent);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  backdrop-filter: saturate(140%) blur(8px);
+  color: var(--cora-text);
+  box-shadow: none;
+  border-bottom: 1px solid var(--cora-border-light);
+  transition: border-color 0.16s, box-shadow 0.16s, background 0.16s;
+}
+
+.md-header[data-md-state="shadow"] {
+  box-shadow: 0 1px rgba(26, 26, 26, 0.02), 0 8px 24px -18px rgba(26, 26, 26, 0.18);
+}
+
+/* The brand-mark SVG (rendered by overrides/partials/logo.html).
+   22px square, accent color, sage on hover — exact match for coradata.org. */
+.md-header .md-logo .cora-brand-mark,
+.md-header .cora-brand-mark {
+  width: 22px;
+  height: 22px;
+  color: var(--cora-accent);
+  flex: none;
+  transition: color 0.2s;
+  display: block;
+}
+
+.md-header__button.md-logo {
+  padding: 0;
+  margin: 0 0.5rem 0 0;
+  color: var(--cora-accent);
+}
+
+.md-header__button.md-logo:hover .cora-brand-mark {
+  color: var(--cora-sage);
+}
+
+/* Wordmark — Material's `.md-ellipsis` carries the site title. */
+.md-header__title {
+  color: var(--cora-accent);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  margin-left: 0;
+}
+
+.md-header__title .md-header__ellipsis,
+.md-header__title .md-ellipsis {
+  color: var(--cora-accent);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* Hide the meta-line under the site name (Material can render an
+   active-section breadcrumb there; coradata.org has nothing there). */
+.md-header__topic + .md-header__topic {
+  display: none;
+}
+
+/* Header icon buttons (search, palette toggle, repo): align with the
+   navy palette rather than Material's default white-on-primary. */
+.md-header__button {
+  color: var(--cora-text-secondary);
+}
+
+.md-header__button:hover {
+  color: var(--cora-accent);
+}
+
+/* Search box: match the warm-surface treatment. */
+.md-search__form {
+  background-color: var(--cora-surface);
+  color: var(--cora-text);
+}
+
+.md-search__form:hover {
+  background-color: var(--cora-surface-alt);
+}
+
+[data-md-toggle="search"]:checked ~ .md-header .md-search__form {
+  background-color: var(--cora-surface-alt);
+}
+
+.md-search__input {
+  color: var(--cora-text);
+}
+
+.md-search__input::placeholder {
+  color: var(--cora-text-tertiary);
+}
+
+.md-search__icon {
+  color: var(--cora-text-tertiary);
+}
+
+/* ----------------------------------------------------------------------------
+ * Tabs — the nav row below the header.
+ * Styled to match coradata.org's nav.site link treatment.
+ * --------------------------------------------------------------------------*/
+
+.md-tabs {
+  background-color: transparent;
+  color: var(--cora-text);
+  border-bottom: 1px solid var(--cora-border-light);
+}
+
+.md-tabs__link {
+  color: var(--cora-text);
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 1;
+  letter-spacing: 0;
+  margin-top: 0.8em;
+}
+
+.md-tabs__link:hover,
+.md-tabs__link:focus,
+.md-tabs__link--active {
+  color: var(--cora-accent);
+}
+
+.md-tabs__link--active {
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------------------------
+ * Footer — mirrors coradata.org's `footer.site`
+ * --------------------------------------------------------------------------*/
+
+.cora-footer {
+  background-color: var(--cora-bg);
+  border-top: 1px solid var(--cora-border);
+  color: var(--cora-text-tertiary);
+  font-size: 13px;
+  padding: 36px 0 56px;
+}
+
+.cora-footer__inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cora-footer__row {
+  display: flex;
+}
+
+.cora-footer__row--primary {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.cora-footer__row--meta {
+  color: var(--cora-text-tertiary);
+}
+
+/* Wordmark on the left of the primary row */
+.cora-footer__wordmark {
+  color: var(--cora-text-secondary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cora-footer__wordmark:hover {
+  color: var(--cora-accent);
+  text-decoration: none;
+}
+
+.cora-footer__wordmark:hover .cora-brand-mark {
+  color: var(--cora-accent);
+}
+
+.cora-brand-mark--sm {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  display: inline-block;
+  color: currentColor;
+  transition: color 0.15s;
+}
+
+.cora-footer__wordmark-text {
+  letter-spacing: 0.02em;
+}
+
+/* Socials on the right of the primary row */
+.cora-footer__socials {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cora-footer__socials a {
+  color: var(--cora-text-tertiary);
+  transition: color 0.15s;
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.cora-footer__socials a:hover {
+  color: var(--cora-accent);
+  text-decoration: none;
+}
+
+/* Suppress Material's default footer reset so our markup is the only one */
+.md-footer.cora-footer .md-footer__inner,
+.md-footer.cora-footer .md-footer-meta {
+  display: none;
+}

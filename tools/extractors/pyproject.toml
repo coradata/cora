@@ -29,6 +29,10 @@ dev = [
   "types-PyYAML>=6,<7",
   "types-jsonschema>=4,<5",
 ]
+docs = [
+  "mkdocs-material>=9,<10",
+  "pymdown-extensions>=10,<11",
+]
 
 [project.scripts]
 cora = "cora_extractors.cli:main"

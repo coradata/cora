@@ -8,6 +8,14 @@ This repository is the canonical source for everything CORA publishes. The publi
 
 > **Status: bootstrap.** The repository is being initialized. License is Apache 2.0 + CC BY 4.0 (pending Legal review). The first content drop is a mirror of [IBPDI](https://github.com/ibpdi/cdm)'s Common Data Model under its existing CC BY 4.0 + MIT terms, which requires no upstream permission. [MITS](https://rettc.org/mits-data-models) has been onboarded as a participating standard under permission from RETTC; see [`standards/mits/`](standards/mits/). [REDI](https://realestatedatainitiative.netlify.app/) has been onboarded as a participating standard under permission from the REDI Data Model Sub-Committee; see [`standards/redi/`](standards/redi/).
 
+## Documentation
+
+- **Authored docs site** — [coradata.github.io/cora](https://coradata.github.io/cora/) (built from [`docs/site/`](docs/site/) by MkDocs Material; deployed from `main`)
+- **Generated browse view** — [`docs/generated/`](docs/generated/) — every committed inventory and crosswalk as Markdown with Mermaid graphs
+- **Inventory contract + path grammar** — [`docs/field-inventory.md`](docs/field-inventory.md)
+- **Architecture decisions** — [`docs/adr/`](docs/adr/) — ADR-0001 (`Inventory.enrich`), ADR-0002 (MkDocs Material)
+- **Domain vocabulary** — [`CONTEXT.md`](CONTEXT.md) — canonical glossary for terms used across code, plans, and ADRs
+
 ---
 
 ## Why CORA exists
