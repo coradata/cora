@@ -1,0 +1,97 @@
+site_name: CORA Documentation
+site_description: >-
+  Cross-standard Object & Reference Architecture for real-estate data.
+  Authored documentation for inventories, crosswalks, and the extractor toolkit.
+site_url: https://coradata.github.io/cora/
+repo_url: https://github.com/coradata/cora
+repo_name: coradata/cora
+edit_uri: edit/main/docs/site/docs/
+
+# Build into a gitignored sibling so the site dir stays clean.
+site_dir: _build
+
+strict: true
+
+theme:
+  name: material
+  custom_dir: overrides
+  favicon: assets/favicon.svg
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra:
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Concepts: concepts.md
+  - What CORA publishes: artifacts.md
+  - Finding a concept: finding-a-concept.md
+  - Reading a crosswalk: reading-a-crosswalk.md
+  - Consuming inventories: consuming-inventories.md
+  - Integrating CORA: integrating-cora.md
+  - Requesting a crosswalk: requesting-a-crosswalk.md
+  - Contributing:
+    - Seams: seams.md
+    - merge vs enrich: inventory-operations.md
+    - CLI reference: cli-reference.md
+    - Authoring a crosswalk: authoring-a-crosswalk.md
+    - Onboarding a standard: onboarding-a-standard.md
+    - Onboarding a format: onboarding-a-format.md

@@ -10,6 +10,12 @@ This directory holds CORA's mirror of [MITS](https://rettc.org/mits-data-models)
 
 **Canonical source.** The authoritative MITS distribution lives at [rettc.org/mits-data-models](https://rettc.org/mits-data-models). CORA mirrors. CORA does not author. Native files are kept bit-identical to the upstream distribution — no structural changes.
 
+## Documentation
+
+- **Concepts and CLI** — [coradata.github.io/cora](https://coradata.github.io/cora/) (authored docs site)
+- **Browse MITS inventories** — [`docs/generated/inventories/mits/`](../../docs/generated/) (one Markdown per module)
+- **Concept crosswalks** — [`docs/generated/coverage-matrix.md`](../../docs/generated/coverage-matrix.md)
+
 ## Layout
 
 ```
