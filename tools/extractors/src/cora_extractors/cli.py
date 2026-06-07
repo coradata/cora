@@ -20,6 +20,16 @@ from pathlib import Path
 
 from cora_extractors import __version__
 from cora_extractors.cdm_json import CdmJsonExtractor
+from cora_extractors.concepts import (
+    collect_census,
+    suggest_clusters,
+    write_census_csv,
+    write_census_summary,
+    write_suggestions,
+)
+from cora_extractors.concepts.report import (
+    OUTPUT_DIR as CONCEPTS_OUTPUT_DEFAULT,
+)
 from cora_extractors.config import (
     CdmJsonConfig,
     ExcelDictionaryConfig,
@@ -32,6 +42,7 @@ from cora_extractors.excel_dictionary import ExcelDictionaryExtractor
 from cora_extractors.excel_multisheet import ExcelMultiSheetDictionaryExtractor
 from cora_extractors.extractor import Extractor
 from cora_extractors.generator import Generator
+from cora_extractors.generators._common import load_crosswalks
 from cora_extractors.generators.concept_graphs import ConceptGraphsGenerator
 from cora_extractors.generators.concept_pages import ConceptPagesGenerator
 from cora_extractors.generators.coverage_matrix import CoverageMatrixGenerator
@@ -93,6 +104,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     _add_validate(subparsers)
     _add_inventory(subparsers)
     _add_docs(subparsers)
+    _add_concepts(subparsers)
 
     args = parser.parse_args(argv)
     if args.cmd is None:
@@ -332,6 +344,111 @@ def _diff_dirs(committed: Path, freshly_built: Path) -> list[str]:
 
     _walk(Path("."))
     return sorted(set(differences))
+
+
+def _add_concepts(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
+    p = subparsers.add_parser(
+        "concepts",
+        help="Concept-corpus analyzer (census, candidate-cluster suggestions, drift check).",
+    )
+    concepts_subs = p.add_subparsers(dest="concepts_cmd", required=True)
+
+    c = concepts_subs.add_parser(
+        "census",
+        help=(
+            "Walk every committed inventory and emit a flat catalogue of leaf fields "
+            "(CSV + Markdown summary). Default output dir: docs/concepts-analysis/."
+        ),
+    )
+    c.add_argument("--repo-root", type=Path, default=Path.cwd())
+    c.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Output directory. Defaults to <repo-root>/docs/concepts-analysis.",
+    )
+    c.set_defaults(func=_cmd_concepts_census)
+
+    s = concepts_subs.add_parser(
+        "suggest",
+        help=(
+            "Cluster census rows into candidate concepts across standards and write "
+            "a Markdown review report."
+        ),
+    )
+    s.add_argument("--repo-root", type=Path, default=Path.cwd())
+    s.add_argument("--output-dir", type=Path, default=None)
+    s.set_defaults(func=_cmd_concepts_suggest)
+
+    k = concepts_subs.add_parser(
+        "check",
+        help=(
+            "Re-run census + suggest into a temp directory and diff against the "
+            "committed docs/concepts-analysis/. Exits non-zero if anything differs."
+        ),
+    )
+    k.add_argument("--repo-root", type=Path, default=Path.cwd())
+    k.set_defaults(func=_cmd_concepts_check)
+
+
+def _cmd_concepts_census(args: argparse.Namespace) -> int:
+    repo_root = args.repo_root.resolve()
+    out_dir = (
+        args.output_dir.resolve()
+        if args.output_dir is not None
+        else repo_root / CONCEPTS_OUTPUT_DEFAULT
+    )
+    rows = collect_census(repo_root)
+    write_census_csv(rows, out_dir)
+    write_census_summary(rows, out_dir)
+    print(f"Wrote {len(rows):,} rows to {(out_dir / 'field-census.csv')}")
+    return 0
+
+
+def _cmd_concepts_suggest(args: argparse.Namespace) -> int:
+    repo_root = args.repo_root.resolve()
+    out_dir = (
+        args.output_dir.resolve()
+        if args.output_dir is not None
+        else repo_root / CONCEPTS_OUTPUT_DEFAULT
+    )
+    rows = collect_census(repo_root)
+    crosswalks = load_crosswalks(repo_root)
+    clusters = suggest_clusters(rows, crosswalks)
+    write_suggestions(clusters, out_dir)
+    uncovered = sum(1 for c in clusters if c.already_covered_by is None)
+    print(
+        f"Wrote {len(clusters)} clusters ({uncovered} uncovered) "
+        f"to {(out_dir / 'suggestions.md')}"
+    )
+    return 0
+
+
+def _cmd_concepts_check(args: argparse.Namespace) -> int:
+    import tempfile
+
+    repo_root = args.repo_root.resolve()
+    committed = repo_root / CONCEPTS_OUTPUT_DEFAULT
+
+    with tempfile.TemporaryDirectory(prefix="cora-concepts-check-") as tmp:
+        tmp_path = Path(tmp)
+        rows = collect_census(repo_root)
+        write_census_csv(rows, tmp_path)
+        write_census_summary(rows, tmp_path)
+        crosswalks = load_crosswalks(repo_root)
+        clusters = suggest_clusters(rows, crosswalks)
+        write_suggestions(clusters, tmp_path)
+
+        differences = _diff_dirs(committed, tmp_path)
+        if differences:
+            print(
+                "docs/concepts-analysis/ is out of date — regenerate with "
+                "`cora concepts census` and `cora concepts suggest`:"
+            )
+            for d in differences:
+                print(f"  - {d}")
+            return 1
+    return 0
 
 
 if __name__ == "__main__":

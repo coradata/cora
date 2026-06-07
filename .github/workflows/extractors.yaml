@@ -7,6 +7,7 @@ on:
       - "standards/*/current/inventory/**"
       - "crosswalks/concepts/**"
       - "docs/generated/**"
+      - "docs/concepts-analysis/**"
       - ".github/workflows/extractors.yaml"
   push:
     branches: [main]
@@ -15,6 +16,7 @@ on:
       - "standards/*/current/inventory/**"
       - "crosswalks/concepts/**"
       - "docs/generated/**"
+      - "docs/concepts-analysis/**"
       - ".github/workflows/extractors.yaml"
 
 defaults:
@@ -72,3 +74,6 @@ jobs:
       - name: cora docs check (drift gate against docs/generated/)
         working-directory: .
         run: cd tools/extractors && python -m cora_extractors docs check --repo-root ../..
+      - name: cora concepts check (drift gate against docs/concepts-analysis/)
+        working-directory: .
+        run: cd tools/extractors && python -m cora_extractors concepts check --repo-root ../..
