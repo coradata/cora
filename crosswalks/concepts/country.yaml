@@ -1,0 +1,42 @@
+concept: country
+canonical_definition: >-
+  The country where an entity — a property, asset, organization, or other
+  modeled subject — is located or registered. The conventional machine
+  representation is an ISO 3166-1 alpha-2 code (e.g., ``US``, ``GB``,
+  ``DE``); some sources also accept the English name or an ISO 3166-1
+  alpha-3 code.
+aliases:
+  - nation
+  - country_code
+  - iso_country
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: AddressType/Country
+    version: '5.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      Surfaces in all seven MITS modules via the shared ``AddressType``
+      complex type; the path resolves against any of them. Definition is
+      consistently "Country property is located in" where the source XSD
+      provides one.
+  ibpdi:
+    field: Address/Country
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+    notes: >-
+      IBPDI's canonical address modeling. A separate
+      ``EmissionFactor/Country`` field in ``energy-and-resources``
+      carries the same definition for emissions-reporting context;
+      both resolve to the same ISO 3166-1 alpha-2 concept.
+  redi:
+    field: Country
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      REDI's flat field carries the definition "The country where the
+      asset is located"; semantically identical to MITS and IBPDI.
