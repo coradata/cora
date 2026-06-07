@@ -1,0 +1,36 @@
+concept: job_title
+canonical_definition: >-
+  The professional role or position a person holds with an employer,
+  organization, or other affiliated entity. Free-form text rather than a
+  controlled vocabulary; used to address the person correctly and to record
+  occupational context.
+aliases:
+  - occupation
+  - position
+  - role
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: C_EmployerType/JobTitle
+    version: '3.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/collections.yaml
+    notes: >-
+      MITS scopes ``JobTitle`` to ``C_EmployerType`` — the applicant's
+      employer-context job title within the collections / resident-screening
+      flow — rather than as a general contact attribute. Same concept, narrower
+      modeling scope; ``close`` rather than ``exact``.
+  ibpdi:
+    field: Contact/JobTitle
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI tracks contacts only at the organization / role level
+      (e.g., ``Contact_Email_Address``). It does not carry a per-person job
+      title field.
