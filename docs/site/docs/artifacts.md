@@ -47,6 +47,16 @@ These pages are mechanical projections of the same crosswalk YAML — useful for
 
 Each inventory also has an auto-generated Markdown view of its types and fields, useful for surveying what a standard's module covers before deciding which concept crosswalks apply. Browseable under [`docs/generated/inventories/`](https://github.com/coradata/cora/tree/main/docs/generated/inventories).
 
+## Concept-corpus analyzer output
+
+The repository also ships a flat catalogue of every leaf field in the corpus, plus a periodically-refreshed report of candidate concept clusters that *could* be crosswalked but aren't yet. These artifacts surface the gap between *what CORA covers today* and *what the inventory corpus implies CORA could cover.*
+
+- [`docs/concepts-analysis/field-census.csv`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/field-census.csv) — one row per leaf field across every committed inventory. Sortable in any spreadsheet; the canonical input for tooling that needs an exhaustive view of the corpus.
+- [`docs/concepts-analysis/field-census.md`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/field-census.md) — counts by standard and by module. The at-a-glance summary.
+- [`docs/concepts-analysis/suggestions.md`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions.md) — candidate concept clusters: leaf names that appear in two or more standards, ordered with uncovered candidates first. Each cluster lists its member fields, the standards touched, and a quality signal (definition-Jaccard).
+
+The crosswalks committed today are an explicit starter set. The suggestions report names the obvious next set of concepts to add, and the corpus expands in waves of editorial review against that report.
+
 ## Validation gates
 
 Every artifact in the repository passes three validation gates before publication:
