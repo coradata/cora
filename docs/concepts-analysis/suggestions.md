@@ -10,6 +10,7 @@ Each cluster lists its member fields, the standards touched, and the average cro
 ## Uncovered candidates
 
 ### `country` (3 standards: IBPDI, MITS, REDI)
+
 _Average cross-standard definition Jaccard: 0.05_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -29,6 +30,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Country | optional | The country where the asset is located |
 
 ### `accounting_standard` (2 standards: IBPDI, REDI)
+
 _Average cross-standard definition Jaccard: 0.06_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -38,6 +40,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Accounting_Standard | optional | The accounting standards used to fill in the template for the underlying fund (e.g., Luxembourg GAAP, IFRS-EU, US GAAP)… |
 
 ### `address` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -76,6 +79,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | resident-transactions | UnitType/Address | repeating | PO Box or Street number, direction, street name, suffix |
 
 ### `color` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -86,6 +90,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | Vehicle/Color | optional |  |
 
 ### `currency` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -101,6 +106,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | resident-transactions | CurrencyRangeType/Currency | optional |  |
 
 ### `description` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.01_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -139,6 +145,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | resident-transactions | ServiceDetail/Description | optional |  |
 
 ### `discount_rate` (2 standards: IBPDI, REDI)
+
 _Average cross-standard definition Jaccard: 0.12_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -149,6 +156,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Discount_Rate | optional | The rate used to discount all cash flows to calculate the gross market value (fair value) for the asset |
 
 ### `file_type` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -158,6 +166,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | property-marketing | FileType/FileType | required | Example: photo, floorplan, logo, etc. |
 
 ### `frequency` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -169,6 +178,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | Salary/Frequency | required |  |
 
 ### `group` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.05_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -178,6 +188,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | property-marketing | ChargeOfferItemType/Group | required | In some cases, and operator may have a preferred grouping of fees. When this is the case, this preference should be pro… |
 
 ### `height` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.08_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -188,6 +199,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | property-marketing | StorageOfferItemType/Height | required | The internal height of the storage space. |
 
 ### `investment_type` (2 standards: IBPDI, REDI)
+
 _Average cross-standard definition Jaccard: 0.06_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -197,6 +209,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Investment_Type | optional | The predominant investable investment type for the fund (greater than 50% of the fund's gross assets), as described in … |
 
 ### `job_title` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -206,6 +219,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | collections | C_EmployerType/JobTitle | optional |  |
 
 ### `last_name` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -222,6 +236,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | resident-transactions | NameType/LastName | required |  |
 
 ### `lifecycle` (2 standards: MITS, REDI)
+
 _Average cross-standard definition Jaccard: 0.09_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -232,6 +247,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Lifecycle | optional | The current lifecycle stage for the asset. See below for valid lifecycle type descriptions: -Conversion: Changing from … |
 
 ### `model` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -243,6 +259,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | Vehicle/Model | optional |  |
 
 ### `name` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.02_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -272,6 +289,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | resident-transactions | PersonType/Name | required |  |
 
 ### `ownership_type` (2 standards: IBPDI, REDI)
+
 _Average cross-standard definition Jaccard: 0.10_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -281,6 +299,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Ownership_Type | optional | The ownership type of the asset. If part of the asset is leasehold and part is freehold, it should be defined based on … |
 
 ### `payment_frequency` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.05_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -290,6 +309,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | property-marketing | CharacteristicsType/PaymentFrequency | required | The frequency on which the amounts specified in this item will be payable. |
 
 ### `region` (2 standards: IBPDI, REDI)
+
 _Average cross-standard definition Jaccard: 0.04_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -299,6 +319,7 @@ _Suggested action: review and scaffold a crosswalk._
 | REDI | data-fields | Region | optional | The predominant investable region for the fund (greater than 50% of the fund's gross assets), as described in the fund'… |
 
 ### `serial_number` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -310,6 +331,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | Device/SerialNumber | repeating |  |
 
 ### `source` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -321,6 +343,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | property-marketing | LeadChannelType/Source | optional |  |
 
 ### `space_number` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -330,6 +353,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | AdditionalSpace/SpaceNumber | optional |  |
 
 ### `space_type` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -340,6 +364,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | AdditionalSpace/SpaceType | required |  |
 
 ### `status` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -353,6 +378,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | property-marketing | PropertyTypeExtended/status | optional |  |
 
 ### `sub_type` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -365,6 +391,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lead-management | SpecificAmenityType/SubType | optional |  |
 
 ### `unit` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -388,6 +415,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | resident-transactions | UnitsType/Unit | repeating |  |
 
 ### `value` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -399,6 +427,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | Asset/Value | required |  |
 
 ### `version` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -409,6 +438,7 @@ _Suggested action: review and scaffold a crosswalk._
 | MITS | lease-application | Document/Version | optional |  |
 
 ### `width` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.08_
 _Suggested action: review and scaffold a crosswalk._
 
@@ -421,6 +451,7 @@ _Suggested action: review and scaffold a crosswalk._
 ## Already covered (for reference)
 
 ### `city` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Already covered by crosswalk: **city**_
 
@@ -437,6 +468,7 @@ _Already covered by crosswalk: **city**_
 | MITS | resident-transactions | AddressType/City | optional |  |
 
 ### `first_name` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.00_
 _Already covered by crosswalk: **first_name**_
 
@@ -453,6 +485,7 @@ _Already covered by crosswalk: **first_name**_
 | MITS | resident-transactions | NameType/FirstName | required |  |
 
 ### `postal_code` (2 standards: IBPDI, MITS)
+
 _Average cross-standard definition Jaccard: 0.02_
 _Already covered by crosswalk: **postal_code**_
 
@@ -468,4 +501,3 @@ _Already covered by crosswalk: **postal_code**_
 | MITS | resident-transactions | AddressType/PostalCode | optional |  |
 
 _Generated by `cora docs build`. Do not edit by hand — regenerate when the underlying inventories or crosswalks change._
-

@@ -86,7 +86,7 @@ def write_census_summary(rows: list[CensusRow], out_dir: Path) -> Path:
     )
     parts.append("\n" + DO_NOT_EDIT_FOOTER)
     out = out_dir / CENSUS_MD
-    out.write_text(normalize_blanks("\n".join(parts) + "\n"))
+    out.write_text(_finalize("\n".join(parts)))
     return out
 
 
@@ -131,13 +131,14 @@ def write_suggestions(clusters: list[Cluster], out_dir: Path) -> Path:
 
     parts.append("\n" + DO_NOT_EDIT_FOOTER)
     out = out_dir / SUGGESTIONS_MD
-    out.write_text(normalize_blanks("\n".join(parts) + "\n"))
+    out.write_text(_finalize("\n".join(parts)))
     return out
 
 
 def _render_cluster(cluster: Cluster) -> str:
     stds = ", ".join(s.upper() for s in cluster.standards)
-    header = f"### `{cluster.canonical_key}` ({len(cluster.standards)} standards: {stds})\n"
+    # Blank line after the heading per markdownlint MD022.
+    header = f"### `{cluster.canonical_key}` ({len(cluster.standards)} standards: {stds})\n\n"
     quality = f"_Average cross-standard definition Jaccard: {cluster.avg_def_jaccard:.2f}_\n"
     if cluster.already_covered_by is not None:
         status = f"_Already covered by crosswalk: **{cluster.already_covered_by}**_\n"
@@ -149,6 +150,11 @@ def _render_cluster(cluster: Cluster) -> str:
     ]
     table = md_table(["Standard", "Module", "Path", "Cardinality", "Definition"], rows)
     return header + quality + status + "\n" + table + "\n"
+
+
+def _finalize(text: str) -> str:
+    """Collapse 3+ consecutive newlines and ensure exactly one trailing newline."""
+    return normalize_blanks(text).rstrip("\n") + "\n"
 
 
 def _short(text: str, limit: int = 120) -> str:
