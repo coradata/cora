@@ -1,0 +1,50 @@
+concept: transaction_id
+canonical_definition: >-
+  A unique identifier for a single financial transaction record — a
+  posting, charge, payment, or other booking. The identifier is opaque
+  to consumers; ownership and namespace semantics are defined by the
+  source system.
+aliases:
+  - transaction_identifier
+  - txn_id
+  - posting_id
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  ibpdi:
+    field: Transaction/TransactionId
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/financials.yaml
+    notes: >-
+      IBPDI ``Transaction/TransactionId`` is documented as "Unique
+      identifier either coming from previous system otherwise it needs
+      to be defined" — IBPDI's canonical identifier-string pattern.
+      Sibling attributes carry posting date, booking type, booking
+      currency, value, and FKs to ``CostCenter`` / ``IndividualAccount``
+      / ``Document``.
+  mits:
+    field: ChargeDetail/TransactionID
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/resident-transactions.yaml
+    notes: >-
+      MITS ``ChargeDetail/TransactionID`` is documented as "Specialized
+      ID - Left as a string element" — the transaction reference on a
+      ``ChargeDetail`` record within resident-transactions. Confidence
+      ``close`` rather than ``exact`` because MITS scopes the identifier
+      to the charge-detail context (one ID per charge line) whereas
+      IBPDI ``Transaction`` is a first-class financial booking entity.
+      MITS Collections additionally surfaces a ``FileTransactionIDRef``
+      on ``C_CollectionTransactionType`` for collections-context tying;
+      ``ChargeDetail/TransactionID`` is the canonical resident-side
+      transaction ID.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is fund-level investment reporting; per-transaction
+      identifiers are out of scope. Financial flows aggregate at the
+      fund / quarter grain (e.g., ``Contract_Rent_Qtr``,
+      ``Incentive_Fees_Paid_Qtr``) with no per-transaction record.
