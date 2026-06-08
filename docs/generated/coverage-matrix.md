@@ -1,11 +1,13 @@
 # Crosswalk Coverage Matrix
 
-28 concepts across 3 hosted standards (IBPDI, MITS, REDI).
+31 concepts across 3 hosted standards (IBPDI, MITS, REDI).
 
 | Concept | IBPDI | MITS | REDI |
 |---|---|---|---|
 | [accounting_standard](concepts/accounting_standard.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
 | [area_unit_of_measurement](concepts/area_unit_of_measurement.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
+| [bathroom_count](concepts/bathroom_count.md) | ⚪ not_present | 🟢 close | ⚪ not_present |
+| [bedroom_count](concepts/bedroom_count.md) | ⚪ not_present | 🟢 close | ⚪ not_present |
 | [building_id](concepts/building_id.md) | 🟢 exact | 🟢 close | ⚪ not_present |
 | [city](concepts/city.md) | 🟢 exact | 🟢 exact | 🟢 exact |
 | [country](concepts/country.md) | 🟢 exact | 🟢 exact | 🟢 exact |
@@ -29,6 +31,7 @@
 | [serial_number](concepts/serial_number.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
 | [space_number](concepts/space_number.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
 | [space_type](concepts/space_type.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
+| [square_footage](concepts/square_footage.md) | ⚪ not_present | 🟡 partial | 🔴 divergent |
 | [state_province](concepts/state_province.md) | 🟢 exact | 🟡 partial | 🟢 exact |
 | [street_address](concepts/street_address.md) | 🟡 partial | 🟢 close | 🟢 close |
 | [unit_id](concepts/unit_id.md) | 🟢 exact | 🟢 close | ⚪ not_present |
