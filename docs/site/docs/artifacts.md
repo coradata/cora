@@ -65,7 +65,8 @@ The repository also ships a flat catalogue of every leaf field in the corpus, pl
 
 - [`docs/concepts-analysis/field-census.csv`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/field-census.csv) — one row per leaf field across every committed inventory. Sortable in any spreadsheet; the canonical input for tooling that needs an exhaustive view of the corpus.
 - [`docs/concepts-analysis/field-census.md`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/field-census.md) — counts by standard and by module. The at-a-glance summary.
-- [`docs/concepts-analysis/suggestions.md`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions.md) — candidate concept clusters: leaf names that appear in two or more standards, ordered with uncovered candidates first. Each cluster lists its member fields, the standards touched, and a quality signal (definition-Jaccard).
+- [`docs/concepts-analysis/suggestions.md`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions.md) — candidate concept clusters from the string-similarity pass: leaf names that appear in two or more standards, ordered with uncovered candidates first. Each cluster lists its member fields, the standards touched, and a quality signal (definition-Jaccard).
+- [`docs/concepts-analysis/suggestions-semantic.md`](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions-semantic.md) — candidate concept clusters from the semantic-embedding pass: fields whose `leaf_name :: definition` text is close under a sentence-transformers embedding model, surfacing matches the bare-string pass misses (e.g. `MoveInDate` ↔ `LeaseStartDate`). Noisier than the string pass; review each cluster carefully.
 
 The crosswalks committed today are an explicit starter set. The suggestions report names the obvious next set of concepts to add, and the corpus expands in waves of editorial review against that report.
 

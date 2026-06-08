@@ -21,15 +21,29 @@ from pathlib import Path
 from cora_extractors import __version__
 from cora_extractors.cdm_json import CdmJsonExtractor
 from cora_extractors.concepts import (
+    DEFAULT_MODEL as CONCEPTS_DEFAULT_MODEL,
+)
+from cora_extractors.concepts import (
+    DEFAULT_THRESHOLD as CONCEPTS_DEFAULT_THRESHOLD,
+)
+from cora_extractors.concepts import (
     collect_census,
+    make_encoder,
     suggest_clusters,
+    suggest_semantic_clusters,
     write_census_csv,
     write_census_summary,
+    write_scaffold,
+    write_semantic_suggestions,
     write_suggestions,
 )
 from cora_extractors.concepts.report import (
     OUTPUT_DIR as CONCEPTS_OUTPUT_DEFAULT,
 )
+from cora_extractors.concepts.report import (
+    SUGGESTIONS_SEMANTIC_MD as CONCEPTS_SEMANTIC_FILENAME,
+)
+from cora_extractors.concepts.suggest import normalize_leaf
 from cora_extractors.config import (
     CdmJsonConfig,
     ExcelDictionaryConfig,
@@ -373,22 +387,86 @@ def _add_concepts(subparsers: argparse._SubParsersAction[argparse.ArgumentParser
         "suggest",
         help=(
             "Cluster census rows into candidate concepts across standards and write "
-            "a Markdown review report."
+            "a Markdown review report. Pass --semantic to additionally run the "
+            "sentence-transformers embedding pass (requires the concepts-ml extra)."
         ),
     )
     s.add_argument("--repo-root", type=Path, default=Path.cwd())
     s.add_argument("--output-dir", type=Path, default=None)
+    s.add_argument(
+        "--semantic",
+        action="store_true",
+        help=(
+            "Also run the embedding-based semantic clustering pass. Requires "
+            "the [concepts-ml] extra; writes suggestions-semantic.md."
+        ),
+    )
+    s.add_argument(
+        "--threshold",
+        type=float,
+        default=CONCEPTS_DEFAULT_THRESHOLD,
+        help=(
+            f"Cosine threshold for semantic clustering "
+            f"(default {CONCEPTS_DEFAULT_THRESHOLD}). Higher = stricter."
+        ),
+    )
+    s.add_argument(
+        "--model",
+        default=CONCEPTS_DEFAULT_MODEL,
+        help=f"sentence-transformers model name (default {CONCEPTS_DEFAULT_MODEL}).",
+    )
     s.set_defaults(func=_cmd_concepts_suggest)
 
     k = concepts_subs.add_parser(
         "check",
         help=(
             "Re-run census + suggest into a temp directory and diff against the "
-            "committed docs/concepts-analysis/. Exits non-zero if anything differs."
+            "committed docs/concepts-analysis/. Exits non-zero if anything differs. "
+            "Pass --semantic to also regenerate and diff the semantic report."
         ),
     )
     k.add_argument("--repo-root", type=Path, default=Path.cwd())
+    k.add_argument(
+        "--semantic",
+        action="store_true",
+        help=(
+            "Also regenerate suggestions-semantic.md and include it in the diff. "
+            "Requires the [concepts-ml] extra."
+        ),
+    )
+    k.add_argument("--threshold", type=float, default=CONCEPTS_DEFAULT_THRESHOLD)
+    k.add_argument("--model", default=CONCEPTS_DEFAULT_MODEL)
     k.set_defaults(func=_cmd_concepts_check)
+
+    sc = concepts_subs.add_parser(
+        "scaffold",
+        help=(
+            "Generate a draft crosswalks/concepts/<name>.yaml from a cluster. "
+            "Pass --cluster <key> to auto-pickup a string-match cluster, or "
+            "--field <std>=<path> (repeatable) to specify rows explicitly."
+        ),
+    )
+    sc.add_argument("name", help="Canonical concept name (lowercase snake_case).")
+    sc.add_argument("--repo-root", type=Path, default=Path.cwd())
+    sc.add_argument(
+        "--cluster",
+        default=None,
+        help=(
+            "Cluster canonical_key (e.g. 'last_name') from the string-match "
+            "suggestions report. The scaffolder collects every census row "
+            "whose normalized leaf name matches."
+        ),
+    )
+    sc.add_argument(
+        "--field",
+        action="append",
+        default=[],
+        help=(
+            "Explicit per-standard mapping in the form <standard>=<path>. "
+            "Repeatable. Overrides --cluster when both are given."
+        ),
+    )
+    sc.set_defaults(func=_cmd_concepts_scaffold)
 
 
 def _cmd_concepts_census(args: argparse.Namespace) -> int:
@@ -421,6 +499,23 @@ def _cmd_concepts_suggest(args: argparse.Namespace) -> int:
         f"Wrote {len(clusters)} clusters ({uncovered} uncovered) "
         f"to {(out_dir / 'suggestions.md')}"
     )
+
+    if args.semantic:
+        encoder = make_encoder(args.model)
+        semantic_clusters = suggest_semantic_clusters(
+            rows, crosswalks, encoder=encoder, threshold=args.threshold
+        )
+        write_semantic_suggestions(
+            semantic_clusters, out_dir, model_name=args.model, threshold=args.threshold
+        )
+        semantic_uncovered = sum(
+            1 for c in semantic_clusters if c.already_covered_by is None
+        )
+        print(
+            f"Wrote {len(semantic_clusters)} semantic clusters "
+            f"({semantic_uncovered} uncovered) to "
+            f"{(out_dir / CONCEPTS_SEMANTIC_FILENAME)}"
+        )
     return 0
 
 
@@ -439,15 +534,99 @@ def _cmd_concepts_check(args: argparse.Namespace) -> int:
         clusters = suggest_clusters(rows, crosswalks)
         write_suggestions(clusters, tmp_path)
 
+        if args.semantic:
+            encoder = make_encoder(args.model)
+            semantic_clusters = suggest_semantic_clusters(
+                rows, crosswalks, encoder=encoder, threshold=args.threshold
+            )
+            write_semantic_suggestions(
+                semantic_clusters,
+                tmp_path,
+                model_name=args.model,
+                threshold=args.threshold,
+            )
+        else:
+            # Don't ask the diff to flag the committed semantic file as
+            # "missing in fresh build" when the gate isn't running the
+            # semantic pass — copy it over before diffing.
+            committed_semantic = committed / CONCEPTS_SEMANTIC_FILENAME
+            if committed_semantic.exists():
+                import shutil
+
+                shutil.copy(committed_semantic, tmp_path / CONCEPTS_SEMANTIC_FILENAME)
+
         differences = _diff_dirs(committed, tmp_path)
         if differences:
-            print(
-                "docs/concepts-analysis/ is out of date — regenerate with "
-                "`cora concepts census` and `cora concepts suggest`:"
+            cmd_hint = (
+                "`cora concepts census`, `cora concepts suggest`, "
+                "and `cora concepts suggest --semantic`"
+                if args.semantic
+                else "`cora concepts census` and `cora concepts suggest`"
             )
+            print(f"docs/concepts-analysis/ is out of date — regenerate with {cmd_hint}:")
             for d in differences:
                 print(f"  - {d}")
             return 1
+    return 0
+
+
+def _cmd_concepts_scaffold(args: argparse.Namespace) -> int:
+    repo_root = args.repo_root.resolve()
+    name: str = args.name
+    rows = collect_census(repo_root)
+
+    selected_rows: list[object]
+    if args.field:
+        # Explicit per-standard paths: --field mits=NameType/LastName
+        wanted: dict[str, str] = {}
+        for spec in args.field:
+            if "=" not in spec:
+                print(f"--field {spec!r} must be in the form <standard>=<path>")
+                return 2
+            std, path = spec.split("=", 1)
+            wanted[std.strip()] = path.strip()
+        by_key = {(r.standard, r.path): r for r in rows}
+        selected_rows = []
+        missing: list[str] = []
+        for std, path in wanted.items():
+            row = by_key.get((std, path))
+            if row is None:
+                missing.append(f"{std}:{path}")
+            else:
+                selected_rows.append(row)
+        if missing:
+            print("the following --field paths were not found in any committed inventory:")
+            for m in missing:
+                print(f"  - {m}")
+            return 2
+    elif args.cluster:
+        key = args.cluster
+        selected_rows = [r for r in rows if normalize_leaf(r.leaf_name) == key]
+        if not selected_rows:
+            print(
+                f"no rows match the cluster key {key!r}. Run "
+                f"`cora concepts suggest --repo-root {args.repo_root}` and pick "
+                f"a key from the report."
+            )
+            return 2
+    else:
+        print("scaffold requires either --cluster <key> or one or more --field args.")
+        return 2
+
+    all_standards = sorted({r.standard for r in rows})
+    standards_present = sorted({r.standard for r in selected_rows})  # type: ignore[attr-defined]
+    out = write_scaffold(
+        name,
+        selected_rows,  # type: ignore[arg-type]
+        standards_present=standards_present,
+        all_standards=all_standards,
+        repo_root=repo_root,
+    )
+    print(f"Wrote draft crosswalk to {out}")
+    print(
+        "TODO markers remain in the file — fill in canonical_definition, "
+        "confidence per mapping, narrative notes, and aliases before committing."
+    )
     return 0
 
 
