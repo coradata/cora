@@ -77,3 +77,27 @@ jobs:
       - name: cora concepts check (drift gate against docs/concepts-analysis/)
         working-directory: .
         run: cd tools/extractors && python -m cora_extractors concepts check --repo-root ../..
+
+  concepts-ml:
+    runs-on: ubuntu-latest
+    # Semantic-clustering pass installs sentence-transformers + torch
+    # (~250 MB) and downloads the all-MiniLM-L6-v2 model on first run.
+    # Kept in its own job so the main `test` job stays fast; the HF cache
+    # makes repeat runs quick.
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/extractors/pyproject.toml
+      - name: Cache HuggingFace model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-all-MiniLM-L6-v2-v1
+      - name: Install package (with concepts-ml extra)
+        run: pip install -e ".[concepts-ml]"
+      - name: cora concepts check --semantic (drift gate for the semantic report)
+        working-directory: .
+        run: cd tools/extractors && python -m cora_extractors concepts check --semantic --repo-root ../..
