@@ -18,7 +18,7 @@ The full inventory shape, and patterns for walking it from Python, lives under [
 
 ## Crosswalks
 
-A YAML mapping one canonical concept to per-standard inventory paths. Twenty-six committed today:
+A YAML mapping one canonical concept to per-standard inventory paths. Twenty-eight committed today:
 
 - [`accounting_standard`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/accounting_standard.yaml)
 - [`area_unit_of_measurement`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/area_unit_of_measurement.yaml)
@@ -34,12 +34,14 @@ A YAML mapping one canonical concept to per-standard inventory paths. Twenty-six
 - [`last_name`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/last_name.yaml)
 - [`lease_end_date`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/lease_end_date.yaml)
 - [`lease_start_date`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/lease_start_date.yaml)
+- [`market_rent`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/market_rent.yaml)
 - [`move_in_date`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/move_in_date.yaml)
 - [`move_out_date`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/move_out_date.yaml)
 - [`organisation_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/organisation_id.yaml)
 - [`ownership_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/ownership_type.yaml)
 - [`payment_frequency`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/payment_frequency.yaml)
 - [`postal_code`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/postal_code.yaml)
+- [`rent_amount`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/rent_amount.yaml)
 - [`serial_number`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/serial_number.yaml)
 - [`space_number`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/space_number.yaml)
 - [`space_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/space_type.yaml)
