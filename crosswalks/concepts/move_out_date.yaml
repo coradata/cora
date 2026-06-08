@@ -1,0 +1,39 @@
+concept: move_out_date
+canonical_definition: >-
+  The date on which a resident or tenant actually vacated a leased unit or
+  space. Distinct from the contractual lease end date, which may precede or
+  follow the observed move-out.
+aliases:
+  - actual_move_out
+  - occupancy_end_date
+  - vacate_date
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: LeaseType/ActualMoveOut
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS ``LeaseType/ActualMoveOut`` is the observed vacate event,
+      contrasted with ``ExpectedMoveOutDate`` (the contractual end, mapped
+      under ``lease_end_date``). MITS Collections additionally exposes
+      ``C_LeaseFileType/MoveOutDate`` for collections-context records;
+      ``LeaseType/ActualMoveOut`` is the canonical leasing-side path.
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      IBPDI models the rental contract (``RentalContract.RentEndDate``)
+      but does not surface an observed move-out event. Consumers needing
+      occupancy-as-observed semantics will find no IBPDI counterpart.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is LP-investment-reporting flavored and aggregates lease
+      activity at the fund / quarter grain. Per-tenant vacate events are
+      out of scope.

@@ -1,0 +1,39 @@
+concept: move_in_date
+canonical_definition: >-
+  The date on which a resident or tenant actually took occupancy of a leased
+  unit or space. Distinct from the contractual lease start date, which may
+  precede or follow the observed move-in.
+aliases:
+  - actual_move_in
+  - occupancy_start_date
+  - take_possession_date
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: LeaseType/ActualMoveIn
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS ``LeaseType/ActualMoveIn`` is the observed occupancy event,
+      contrasted with ``ExpectedMoveInDate`` (the contractual start, mapped
+      under ``lease_start_date``). MITS Collections additionally exposes
+      ``C_LeaseFileType/MoveInDate`` for collections-context records;
+      ``LeaseType/ActualMoveIn`` is the canonical leasing-side path.
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      IBPDI models the rental contract (``RentalContract.RentBeginDate``)
+      but does not surface an observed move-in event. Consumers needing
+      occupancy-as-observed semantics will find no IBPDI counterpart.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is LP-investment-reporting flavored and aggregates lease
+      activity at the fund / quarter grain. Per-tenant occupancy events
+      are out of scope.
