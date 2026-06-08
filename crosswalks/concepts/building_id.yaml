@@ -1,0 +1,42 @@
+concept: building_id
+canonical_definition: >-
+  The unique identifier of a physical building within a property, portfolio,
+  or asset hierarchy — the primary key the source standard uses to refer to
+  the building across modules and across systems. Typically a string
+  assigned by the property-management or asset-management system of record.
+aliases:
+  - building_identifier
+  - structure_id
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: ChargeDetail/BuildingID
+    version: '3.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/resident-transactions.yaml
+    notes: >-
+      MITS surfaces ``BuildingID`` only as a foreign-key reference on
+      ``ChargeDetail`` (resident-transactions) — there is no canonical
+      ``BuildingType/BuildingID`` field in the schema. Same logical concept
+      as IBPDI's ``Building/BuildingId`` but stored as an FK reference
+      rather than the building entity's primary key — ``close`` rather than
+      ``exact``.
+  ibpdi:
+    field: Building/BuildingId
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/digital-twin.yaml
+    notes: >-
+      Canonical entity ID per the source: "Unique identifier either coming
+      from previous system otherwise it needs to be defined". IBPDI also
+      exposes many ``BuildingId`` paths on relationship aggregates
+      (``UnitBuilding``, ``ClimateBuilding``, ``ComponentBuilding``, etc.)
+      that all reference this canonical ID.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is fund-level investment reporting; per-building identifiers are
+      out of scope.
