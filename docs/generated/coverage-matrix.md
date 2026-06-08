@@ -1,6 +1,6 @@
 # Crosswalk Coverage Matrix
 
-31 concepts across 3 hosted standards (IBPDI, MITS, REDI).
+32 concepts across 3 hosted standards (IBPDI, MITS, REDI).
 
 | Concept | IBPDI | MITS | REDI |
 |---|---|---|---|
@@ -26,6 +26,7 @@
 | [organisation_id](concepts/organisation_id.md) | 🟢 exact | 🟢 close | ⚪ not_present |
 | [ownership_type](concepts/ownership_type.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
 | [payment_frequency](concepts/payment_frequency.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
+| [phone_number](concepts/phone_number.md) | ⚪ not_present | 🟢 close | ⚪ not_present |
 | [postal_code](concepts/postal_code.md) | 🟢 exact | 🟢 exact | 🟢 exact |
 | [rent_amount](concepts/rent_amount.md) | 🟢 close | 🟢 close | 🔴 divergent |
 | [serial_number](concepts/serial_number.md) | 🟢 exact | 🟢 exact | ⚪ not_present |

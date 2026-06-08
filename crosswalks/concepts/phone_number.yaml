@@ -1,0 +1,46 @@
+concept: phone_number
+canonical_definition: >-
+  A telephone number used to reach a person, company, or property —
+  a digit string typically formatted per ITU-T E.164 or a national
+  convention. Does not constrain ownership semantics (personal vs
+  shared vs role-based).
+aliases:
+  - phone
+  - telephone
+  - tel
+  - contact_number
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      IBPDI's ``Contact`` entity carries first / last name, job title,
+      employee ID, salutation, and validity dates — but no phone number
+      (and no email; see ``email_address`` for the matching gap).
+      Contact reachability is left to systems integrating IBPDI rather
+      than modelled in the standard.
+  mits:
+    field: PhoneType/PhoneNumber
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/resident-transactions.yaml
+    notes: >-
+      MITS models phone contact as a complex ``PhoneType`` carrying
+      ``PhoneNumber`` (the digit string, ``StringMax20Type``),
+      ``Extension``, ``PhoneType`` (mobile / work / etc.), and
+      ``PhoneDescription``. The crosswalk pins ``PhoneType/PhoneNumber``
+      as the core value; consumers needing the extension or type
+      classification should resolve the surrounding ``PhoneType``
+      complex type. The ``PhoneType`` complex appears on
+      ``PersonType``, ``CompanyType``, and ``PropertyType``.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI scopes contact info to ``Contact_Name`` + ``Contact_Email_Address``
+      (the latter mapped under ``email_address``) — no phone number field.
+      Same posture as IBPDI: contact reachability outside the standard.
