@@ -18,7 +18,7 @@ The full inventory shape, and patterns for walking it from Python, lives under [
 
 ## Crosswalks
 
-A YAML mapping one canonical concept to per-standard inventory paths. Thirty-one committed today:
+A YAML mapping one canonical concept to per-standard inventory paths. Thirty-two committed today:
 
 - [`accounting_standard`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/accounting_standard.yaml)
 - [`area_unit_of_measurement`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/area_unit_of_measurement.yaml)
@@ -42,6 +42,7 @@ A YAML mapping one canonical concept to per-standard inventory paths. Thirty-one
 - [`organisation_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/organisation_id.yaml)
 - [`ownership_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/ownership_type.yaml)
 - [`payment_frequency`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/payment_frequency.yaml)
+- [`phone_number`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/phone_number.yaml)
 - [`postal_code`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/postal_code.yaml)
 - [`rent_amount`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/rent_amount.yaml)
 - [`serial_number`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/serial_number.yaml)
