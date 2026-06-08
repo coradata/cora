@@ -1,6 +1,6 @@
 # Concept Overview
 
-All 8 committed concepts and their mappings across hosted standards. Edge label = mapping confidence.
+All 9 committed concepts and their mappings across hosted standards. Edge label = mapping confidence.
 
 ```mermaid
 flowchart LR
@@ -11,6 +11,10 @@ flowchart LR
   city -- exact --> ibpdi
   city -- exact --> mits
   city -- exact --> redi
+  country["country"]
+  country -- exact --> ibpdi
+  country -- exact --> mits
+  country -- exact --> redi
   email_address["email_address"]
   email_address -- not_present --> ibpdi
   email_address -- close --> mits
