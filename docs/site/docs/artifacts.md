@@ -18,10 +18,12 @@ The full inventory shape, and patterns for walking it from Python, lives under [
 
 ## Crosswalks
 
-A YAML mapping one canonical concept to per-standard inventory paths. Twenty-eight committed today:
+A YAML mapping one canonical concept to per-standard inventory paths. Thirty-one committed today:
 
 - [`accounting_standard`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/accounting_standard.yaml)
 - [`area_unit_of_measurement`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/area_unit_of_measurement.yaml)
+- [`bathroom_count`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/bathroom_count.yaml)
+- [`bedroom_count`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/bedroom_count.yaml)
 - [`building_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/building_id.yaml)
 - [`city`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/city.yaml)
 - [`country`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/country.yaml)
@@ -45,6 +47,7 @@ A YAML mapping one canonical concept to per-standard inventory paths. Twenty-eig
 - [`serial_number`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/serial_number.yaml)
 - [`space_number`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/space_number.yaml)
 - [`space_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/space_type.yaml)
+- [`square_footage`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/square_footage.yaml)
 - [`state_province`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/state_province.yaml)
 - [`street_address`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/street_address.yaml)
 - [`unit_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/unit_id.yaml)

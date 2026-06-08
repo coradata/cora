@@ -1,0 +1,38 @@
+concept: bathroom_count
+canonical_definition: >-
+  The number of bathrooms in a residential unit. May be fractional (e.g.,
+  "1.5" for a unit with one full and one half-bath).
+aliases:
+  - bathrooms
+  - bath_count
+  - num_bathrooms
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: UnitType/UnitBathrooms
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS ``UnitType/UnitBathrooms`` carries the per-floor-plan bathroom
+      count. Range is ``Decimal4Digits2Fraction``, allowing the standard
+      half-bath convention (``1.5`` for one full + one half).
+      Empty upstream definition; semantics inferred from the field name
+      and the sibling ``UnitBedrooms``. Confidence ``close`` rather than
+      ``exact`` because of the thin upstream documentation.
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      Same posture as ``bedroom_count``. IBPDI's ``RentalUnit`` entity
+      does not model residential unit attributes at the bedroom /
+      bathroom level.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is fund-level investment reporting; per-unit residential
+      attributes are out of scope.

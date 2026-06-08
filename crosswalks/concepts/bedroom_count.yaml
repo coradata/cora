@@ -1,0 +1,39 @@
+concept: bedroom_count
+canonical_definition: >-
+  The number of bedrooms in a residential unit. May be fractional in some
+  standards (e.g., "0" for a studio, "1.5" for a one-bedroom-plus-den).
+aliases:
+  - bedrooms
+  - bedroom_qty
+  - num_bedrooms
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: UnitType/UnitBedrooms
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS ``UnitType/UnitBedrooms`` carries the per-floor-plan bedroom
+      count. Range is ``Decimal4Digits2Fraction`` (allowing fractional
+      bedrooms such as 0 for a studio or 1.5 for a one-bedroom-plus-den).
+      Empty upstream definition; semantics inferred from the field name
+      and the sibling ``UnitBathrooms``. Confidence ``close`` rather than
+      ``exact`` because of the thin upstream documentation.
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      IBPDI's ``RentalUnit`` entity captures usage type and contract
+      linkage but does not model residential unit attributes (bedroom
+      count, bathroom count, etc.) at this granularity. IBPDI is
+      commercial-and-residential agnostic; MITS is residential-flavored.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is fund-level investment reporting; per-unit residential
+      attributes are out of scope.
