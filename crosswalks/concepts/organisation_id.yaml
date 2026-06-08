@@ -1,0 +1,49 @@
+concept: organisation_id
+canonical_definition: >-
+  The unique identifier of an organisation — a company, fund manager,
+  service provider, vendor, or other institutional entity referenced by
+  other records in the corpus. The identifier is typically a string
+  assigned by the system of record and used as a foreign key from
+  contacts, properties, contracts, and related entities.
+aliases:
+  - organization_id
+  - org_id
+  - corporate_id
+  - company_id
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: CorporateID/IDNumber
+    version: '1.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/lease-application.yaml
+    notes: >-
+      MITS scopes the organisation-identifier concept to corporate-tenant
+      modeling: ``CorporateID`` is a sibling type carrying ``IDNumber``
+      (the actual identifier string) plus ``IDIssuer`` (the authority that
+      issued it). Same logical concept as IBPDI's ``OrganisationId`` but
+      narrower domain — ``corporate tenant`` rather than ``any
+      organisation`` — and richer surrounding metadata. ``close`` rather
+      than ``exact``.
+  ibpdi:
+    field: Contact/OrganisationId
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+    notes: >-
+      IBPDI exposes ``OrganisationId`` as a foreign key on ~19 entities
+      (Contact, plus every ``Role*Organisation`` relationship aggregate —
+      ``RoleBuildingOrganisation``, ``RolePortfolioOrganisation``, etc.).
+      All reference the same canonical ``Organisation`` entity. The path
+      shown here is one canonical example; the crosswalk-paths validator
+      resolves any of them.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI tracks organisations only by name as free-text strings
+      (``Fund_Sponsor_Parent_Company``, ``Portfolio_Manager``,
+      ``Deputy_Portfolio_Manager``). No explicit identifier field; the
+      organisation-id concept is not modeled.
