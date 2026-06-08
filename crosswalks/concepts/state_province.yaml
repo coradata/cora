@@ -1,0 +1,45 @@
+concept: state_province
+canonical_definition: >-
+  The country's top-level administrative subdivision in which a property,
+  address, or other modeled subject sits — a U.S. state, Canadian province,
+  U.K. county, Japanese prefecture, German Land, or other jurisdiction-
+  specific equivalent. The conventional machine representation is a
+  jurisdiction-specific code (ISO 3166-2 in many cases) or a free-text name.
+aliases:
+  - state
+  - province
+  - prefecture
+  - subdivision
+  - state_or_province
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: AddressType/State
+    version: '5.0'
+    confidence: partial
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS calls the field ``State`` (U.S.-flavored naming) and constrains
+      the range to ``StringMax3Type`` — a string capped at three characters,
+      which fits U.S. state codes (``CA``, ``TX``) and Canadian province
+      codes (``ON``, ``QC``) but not longer subnational names (e.g. Japanese
+      prefectures spelled out, or German Länder names). Same concept as the
+      canonical, narrower data-typing — ``partial`` rather than ``exact``.
+  ibpdi:
+    field: Address/StateProvincePrefecture
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/organisational-management.yaml
+    notes: >-
+      IBPDI explicitly multinational naming (``StateProvincePrefecture``)
+      with the ``stateOrProvince`` range type. Aligns with the canonical
+      concept in both naming and data shape.
+  redi:
+    field: State_Province
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      REDI's flat string field; name literally matches the canonical
+      concept.
