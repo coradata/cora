@@ -18,9 +18,10 @@ The full inventory shape, and patterns for walking it from Python, lives under [
 
 ## Crosswalks
 
-A YAML mapping one canonical concept to per-standard inventory paths. Twenty-two committed today:
+A YAML mapping one canonical concept to per-standard inventory paths. Twenty-three committed today:
 
 - [`accounting_standard`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/accounting_standard.yaml)
+- [`area_unit_of_measurement`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/area_unit_of_measurement.yaml)
 - [`building_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/building_id.yaml)
 - [`city`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/city.yaml)
 - [`country`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/country.yaml)
