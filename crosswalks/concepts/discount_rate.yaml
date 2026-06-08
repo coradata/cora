@@ -1,0 +1,35 @@
+concept: discount_rate
+canonical_definition: >-
+  The rate used to discount future cash flows to a present value during
+  valuation — the cost of capital or required rate of return applied to an
+  asset's projected cash flow series in DCF or fair-value modeling.
+  Expressed as a percentage.
+aliases:
+  - dcf_discount_rate
+  - cost_of_capital
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: null
+    version: '5.0'
+    confidence: not_present
+    notes: >-
+      MITS is leasing-and-operations flavored; valuation cash-flow
+      modeling is out of scope. No discount-rate concept surfaces in the
+      MITS XSDs.
+  ibpdi:
+    field: Valuation/DiscountRate
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/portfolio-and-asset-management.yaml
+    notes: >-
+      Terse definition ("Discount rate included") on the Valuation aggregate.
+  redi:
+    field: Discount_Rate
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      "The rate used to discount all cash flows to calculate the gross
+      market value (fair value) for the asset."

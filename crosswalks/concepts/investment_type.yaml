@@ -1,0 +1,35 @@
+concept: investment_type
+canonical_definition: >-
+  The category of investment strategy a fund or portfolio pursues —
+  typically a controlled-vocabulary value such as core, value-add,
+  opportunistic, debt, equity, or another classification the source defines.
+aliases:
+  - strategy_type
+  - investment_strategy
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: null
+    version: '5.0'
+    confidence: not_present
+    notes: >-
+      MITS is leasing-and-operations flavored; investment-strategy
+      categorization is out of scope.
+  ibpdi:
+    field: PortfolioStrategy/InvestmentType
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/portfolio-and-asset-management.yaml
+    notes: >-
+      IBPDI defines the field tersely as "Type of Strategy" within the
+      PortfolioStrategy aggregate.
+  redi:
+    field: Investment_Type
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      "The predominant investable investment type for the fund (greater
+      than 50% of the fund's gross assets), as described in the fund's
+      offering documents."

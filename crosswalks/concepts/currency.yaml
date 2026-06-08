@@ -1,0 +1,38 @@
+concept: currency
+canonical_definition: >-
+  The currency in which a monetary value or financial obligation is
+  denominated. The conventional machine representation is an ISO 4217
+  three-letter code (e.g., ``USD``, ``EUR``, ``GBP``); some sources accept
+  the currency name as free text.
+aliases:
+  - currency_code
+  - iso_currency
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: CurrencyRangeType/Currency
+    version: '5.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS scopes ``Currency`` to ``CurrencyRangeType`` — a range-bounded
+      monetary value type used in rental rates and pricing — rather than as
+      a free-standing attribute. Same currency concept, narrower modeling
+      scope; ``close`` rather than ``exact``.
+  ibpdi:
+    field: Portfolio/Currency
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/portfolio-and-asset-management.yaml
+    notes: >-
+      "Main/default currency of portfolio (depending on user it should be
+      able to change this)" — a portfolio-level default.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI carries monetary values but does not surface an explicit
+      currency leaf; the reporting currency is implicit in the fund's
+      reporting context.

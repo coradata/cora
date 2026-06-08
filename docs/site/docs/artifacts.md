@@ -18,15 +18,21 @@ The full inventory shape, and patterns for walking it from Python, lives under [
 
 ## Crosswalks
 
-A YAML mapping one canonical concept to per-standard inventory paths. Nine committed today:
+A YAML mapping one canonical concept to per-standard inventory paths. Fifteen committed today:
 
+- [`accounting_standard`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/accounting_standard.yaml)
 - [`city`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/city.yaml)
 - [`country`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/country.yaml)
+- [`currency`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/currency.yaml)
+- [`discount_rate`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/discount_rate.yaml)
 - [`email_address`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/email_address.yaml)
 - [`first_name`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/first_name.yaml)
+- [`investment_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/investment_type.yaml)
 - [`job_title`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/job_title.yaml)
 - [`last_name`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/last_name.yaml)
 - [`lease_end_date`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/lease_end_date.yaml)
+- [`ownership_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/ownership_type.yaml)
+- [`payment_frequency`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/payment_frequency.yaml)
 - [`postal_code`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/postal_code.yaml)
 - [`street_address`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/street_address.yaml)
 

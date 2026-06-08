@@ -1,12 +1,16 @@
 # Concept Overview
 
-All 9 committed concepts and their mappings across hosted standards. Edge label = mapping confidence.
+All 15 committed concepts and their mappings across hosted standards. Edge label = mapping confidence.
 
 ```mermaid
 flowchart LR
   ibpdi[("IBPDI")]
   mits[("MITS")]
   redi[("REDI")]
+  accounting_standard["accounting_standard"]
+  accounting_standard -- exact --> ibpdi
+  accounting_standard -- not_present --> mits
+  accounting_standard -- exact --> redi
   city["city"]
   city -- exact --> ibpdi
   city -- exact --> mits
@@ -15,6 +19,14 @@ flowchart LR
   country -- exact --> ibpdi
   country -- exact --> mits
   country -- exact --> redi
+  currency["currency"]
+  currency -- exact --> ibpdi
+  currency -- close --> mits
+  currency -- not_present --> redi
+  discount_rate["discount_rate"]
+  discount_rate -- exact --> ibpdi
+  discount_rate -- not_present --> mits
+  discount_rate -- exact --> redi
   email_address["email_address"]
   email_address -- not_present --> ibpdi
   email_address -- close --> mits
@@ -23,6 +35,10 @@ flowchart LR
   first_name -- exact --> ibpdi
   first_name -- exact --> mits
   first_name -- not_present --> redi
+  investment_type["investment_type"]
+  investment_type -- exact --> ibpdi
+  investment_type -- not_present --> mits
+  investment_type -- exact --> redi
   job_title["job_title"]
   job_title -- exact --> ibpdi
   job_title -- close --> mits
@@ -35,6 +51,14 @@ flowchart LR
   lease_end_date -- close --> ibpdi
   lease_end_date -- partial --> mits
   lease_end_date -- not_present --> redi
+  ownership_type["ownership_type"]
+  ownership_type -- exact --> ibpdi
+  ownership_type -- not_present --> mits
+  ownership_type -- exact --> redi
+  payment_frequency["payment_frequency"]
+  payment_frequency -- exact --> ibpdi
+  payment_frequency -- exact --> mits
+  payment_frequency -- not_present --> redi
   postal_code["postal_code"]
   postal_code -- exact --> ibpdi
   postal_code -- exact --> mits

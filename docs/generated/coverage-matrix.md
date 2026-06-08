@@ -1,16 +1,22 @@
 # Crosswalk Coverage Matrix
 
-9 concepts across 3 hosted standards (IBPDI, MITS, REDI).
+15 concepts across 3 hosted standards (IBPDI, MITS, REDI).
 
 | Concept | IBPDI | MITS | REDI |
 |---|---|---|---|
+| [accounting_standard](concepts/accounting_standard.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
 | [city](concepts/city.md) | 🟢 exact | 🟢 exact | 🟢 exact |
 | [country](concepts/country.md) | 🟢 exact | 🟢 exact | 🟢 exact |
+| [currency](concepts/currency.md) | 🟢 exact | 🟢 close | ⚪ not_present |
+| [discount_rate](concepts/discount_rate.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
 | [email_address](concepts/email_address.md) | ⚪ not_present | 🟢 close | 🟢 close |
 | [first_name](concepts/first_name.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
+| [investment_type](concepts/investment_type.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
 | [job_title](concepts/job_title.md) | 🟢 exact | 🟢 close | ⚪ not_present |
 | [last_name](concepts/last_name.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
 | [lease_end_date](concepts/lease_end_date.md) | 🟢 close | 🟡 partial | ⚪ not_present |
+| [ownership_type](concepts/ownership_type.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
+| [payment_frequency](concepts/payment_frequency.md) | 🟢 exact | 🟢 exact | ⚪ not_present |
 | [postal_code](concepts/postal_code.md) | 🟢 exact | 🟢 exact | 🟢 exact |
 | [street_address](concepts/street_address.md) | 🟡 partial | 🟢 close | 🟢 close |
 

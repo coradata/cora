@@ -1,0 +1,36 @@
+concept: payment_frequency
+canonical_definition: >-
+  The cadence at which a recurring payment obligation falls due — weekly,
+  bi-weekly, monthly, quarterly, semi-annually, annually, or another value
+  from a controlled vocabulary the source defines.
+aliases:
+  - billing_frequency
+  - rent_frequency
+  - payment_schedule
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: CharacteristicsType/PaymentFrequency
+    version: '5.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      "The frequency on which the amounts specified in this item will be
+      payable" — scoped to the rental characteristics of a unit / floorplan.
+  ibpdi:
+    field: RentalContract/PaymentFrequency
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/property-management.yaml
+    notes: >-
+      "Frequency of payment e.g. weekly, monthly, quarterly etc." — scoped
+      to an executed rental contract.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI aggregates fund-level rent and cash-flow metrics on a quarterly
+      or annual reporting cadence; it does not carry a per-contract
+      payment-frequency attribute.

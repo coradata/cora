@@ -1,0 +1,35 @@
+concept: ownership_type
+canonical_definition: >-
+  The legal ownership structure of an asset, portfolio, or holding —
+  typically freehold, leasehold, joint venture, fund-of-funds, or another
+  category from a controlled vocabulary the source defines.
+aliases:
+  - tenure
+  - ownership_structure
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: null
+    version: '5.0'
+    confidence: not_present
+    notes: >-
+      MITS models occupancy and leasing, not ownership structure. The
+      property owner's identity surfaces (e.g., ``CompanyType``), but the
+      ownership-type categorization does not.
+  ibpdi:
+    field: Portfolio/OwnershipType
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/portfolio-and-asset-management.yaml
+    notes: >-
+      "Describes the ownership structure of the portfolio" on the Portfolio
+      aggregate.
+  redi:
+    field: Ownership_Type
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      "The ownership type of the asset. If part of the asset is leasehold
+      and part is freehold, it should be defined based on…"
