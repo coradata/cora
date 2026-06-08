@@ -1,10 +1,11 @@
 # Crosswalk Coverage Matrix
 
-22 concepts across 3 hosted standards (IBPDI, MITS, REDI).
+23 concepts across 3 hosted standards (IBPDI, MITS, REDI).
 
 | Concept | IBPDI | MITS | REDI |
 |---|---|---|---|
 | [accounting_standard](concepts/accounting_standard.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
+| [area_unit_of_measurement](concepts/area_unit_of_measurement.md) | 🟢 exact | ⚪ not_present | 🟢 exact |
 | [building_id](concepts/building_id.md) | 🟢 exact | 🟢 close | ⚪ not_present |
 | [city](concepts/city.md) | 🟢 exact | 🟢 exact | 🟢 exact |
 | [country](concepts/country.md) | 🟢 exact | 🟢 exact | 🟢 exact |

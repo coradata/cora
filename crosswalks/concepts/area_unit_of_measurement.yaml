@@ -1,0 +1,40 @@
+concept: area_unit_of_measurement
+canonical_definition: >-
+  The unit in which an area or floor-size measurement is expressed — square
+  feet, square metres, square yards, or another jurisdictional standard.
+  Typically a controlled-vocabulary value the source defines.
+aliases:
+  - area_unit
+  - area_measurement_unit
+  - floor_area_unit
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: null
+    version: '5.0'
+    confidence: not_present
+    notes: >-
+      MITS does not surface an explicit area-unit field; ``UnitType``
+      carries ``MinSquareFeet`` / ``MaxSquareFeet`` and ``SquareFootType``
+      with the unit (square feet) baked into the field names. The
+      unit-of-measurement concept exists but is not separately addressable.
+  ibpdi:
+    field: AreaMeasurement/Unit
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/digital-twin.yaml
+    notes: >-
+      "Unit area is measured with" on the AreaMeasurement aggregate. Paired
+      with ``AreaMeasurement/Standard`` (the measurement methodology, e.g.
+      BOMA/IPMS) for full measurement context.
+  redi:
+    field: Area_Size_Unit_of_Measurement
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      Controlled vocabulary: ``Square Foot``, ``Square Metre``, etc. (see
+      REDI's data dictionary for the full list). REDI also exposes
+      ``Other_Area_Size_Unit_of_Measurement`` for non-area capacity
+      measurements (beds, keys, etc.); not in scope for this concept.
