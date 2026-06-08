@@ -1,0 +1,53 @@
+concept: rent_amount
+canonical_definition: >-
+  The contracted rent payable by a tenant for a unit or space, expressed as
+  a monetary amount. Distinct from the asking / marketed rent (see
+  ``market_rent``).
+aliases:
+  - monthly_rent
+  - contract_rent
+  - unit_rent
+  - rental_value
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: UnitType/UnitRent
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/lease-application.yaml
+    notes: >-
+      MITS exposes ``UnitType/UnitRent`` (the contractual rent on the unit)
+      alongside ``UnitType/MarketRent`` (asking / market rent — mapped under
+      ``market_rent``). Range is ``Decimal7Digits2Fraction`` (a MITS-defined
+      currency-precision type). MITS Collections additionally surfaces
+      ``C_LeaseFileType/MonthlyRentAmount`` for collections records; the
+      core-data ``UnitRent`` path is canonical. Confidence ``close`` rather
+      than ``exact`` because the upstream definition string is empty;
+      semantics inferred from the field name and the sibling ``MarketRent``.
+  ibpdi:
+    field: RentalPayment/ValueMonth
+    version: '1.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/property-management.yaml
+    notes: >-
+      IBPDI ``RentalPayment.ValueMonth`` is documented as "Value of payment
+      per month" — the per-month rental payment amount under the rental
+      contract. A sibling ``RentalPayment.ValueYear`` carries the annual
+      equivalent. Confidence ``close`` because IBPDI's payment model is
+      payment-record-grained (one ``RentalPayment`` may carry discount %,
+      VAT, index reference) whereas MITS ``UnitRent`` is unit-grained.
+  redi:
+    field: Contract_Rent_Qtr
+    version: '1.0'
+    confidence: divergent
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      REDI ``Contract_Rent_Qtr`` is documented as "The total contract rent
+      under existing leases for the reporting period" — a quarterly
+      aggregate across all leases, not a per-lease monthly amount. Same
+      *concept* (contractual rent receivable) but a different *grain*
+      (fund / quarter vs unit / month). REDI also surfaces
+      ``Contract_Rent_Next_12_Months`` for the year-one DCF projection.
+      Consumers reconciling MITS / IBPDI per-unit rent against REDI
+      portfolio aggregates need to sum and align reporting periods.

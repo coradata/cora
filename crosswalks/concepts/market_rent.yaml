@@ -1,0 +1,47 @@
+concept: market_rent
+canonical_definition: >-
+  The market / asking rent for a unit or space — what a comparable unit
+  would lease for at current market terms. Distinct from the contracted
+  rent under any existing lease (see ``rent_amount``).
+aliases:
+  - asking_rent
+  - market_asking_rent
+  - street_rent
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: UnitType/MarketRent
+    version: '4.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS ``UnitType/MarketRent`` is the asking / market rent on a unit;
+      contrasted with ``UnitType/UnitRent`` (the actual contracted rent,
+      mapped under ``rent_amount``). The field appears identically across
+      all seven MITS modules. Confidence ``close`` rather than ``exact``
+      because the upstream definition string is empty; semantics inferred
+      from the field name and the sibling ``UnitRent``.
+  ibpdi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      IBPDI's rental model surfaces the contracted payment
+      (``RentalPayment.ValueMonth``) but does not separately track an
+      asking / market rent for the unit. Consumers needing market-vs-
+      contract comparison will find no IBPDI counterpart.
+  redi:
+    field: Market_Rent_Next_12_Months
+    version: '1.0'
+    confidence: divergent
+    source_url: https://github.com/coradata/cora/blob/main/standards/redi/current/inventory/data-fields.yaml
+    notes: >-
+      REDI ``Market_Rent_Next_12_Months`` is documented as "The total
+      market rent under existing leases for year one of the DCF analysis
+      (only total annual amounts should be provided)" — an annual
+      aggregate across all leases, not a per-unit asking rent. Same
+      *concept* (market-rate rent) but a different *grain* (fund / annual
+      total vs unit / month) and a different *use case* (DCF input vs
+      asking-rent display). Same posture as ``rent_amount`` for the REDI
+      side — ``divergent``, not ``not_present``.

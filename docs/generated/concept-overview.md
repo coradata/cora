@@ -1,6 +1,6 @@
 # Concept Overview
 
-All 26 committed concepts and their mappings across hosted standards. Edge label = mapping confidence.
+All 28 committed concepts and their mappings across hosted standards. Edge label = mapping confidence.
 
 ```mermaid
 flowchart LR
@@ -63,6 +63,10 @@ flowchart LR
   lease_start_date -- close --> ibpdi
   lease_start_date -- partial --> mits
   lease_start_date -- not_present --> redi
+  market_rent["market_rent"]
+  market_rent -- not_present --> ibpdi
+  market_rent -- close --> mits
+  market_rent -- divergent --> redi
   move_in_date["move_in_date"]
   move_in_date -- not_present --> ibpdi
   move_in_date -- close --> mits
@@ -87,6 +91,10 @@ flowchart LR
   postal_code -- exact --> ibpdi
   postal_code -- exact --> mits
   postal_code -- exact --> redi
+  rent_amount["rent_amount"]
+  rent_amount -- close --> ibpdi
+  rent_amount -- close --> mits
+  rent_amount -- divergent --> redi
   serial_number["serial_number"]
   serial_number -- exact --> ibpdi
   serial_number -- exact --> mits
