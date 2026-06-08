@@ -1,0 +1,44 @@
+concept: unit_id
+canonical_definition: >-
+  The unique identifier of a rentable unit within a property or building —
+  the primary key the source standard uses to refer to the unit across
+  modules and across systems. Typically a string assigned by the
+  property-management or asset-management system of record.
+aliases:
+  - rental_unit_id
+  - apartment_id
+  - unit_identifier
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: ServiceDetail/UnitID
+    version: '3.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/resident-transactions.yaml
+    notes: >-
+      MITS does not model ``UnitID`` as a typed field on ``UnitType`` itself;
+      the identifier surfaces only as foreign-key references in
+      resident-transactions (``ServiceDetail/UnitID``,
+      ``ChargeDetail/UnitID``). Same logical concept as IBPDI's
+      ``Unit/UnitId`` but stored as an FK reference rather than the unit
+      entity's primary key — ``close`` rather than ``exact``.
+  ibpdi:
+    field: Unit/UnitId
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/digital-twin.yaml
+    notes: >-
+      Canonical entity ID per the source: "Unique identifier either coming
+      from previous system otherwise it needs to be defined". IBPDI also
+      exposes many ``UnitId`` paths on relationship aggregates
+      (``UnitBuilding``, ``UnitFloor``, ``UnitSite``, etc.) that all
+      reference this canonical ID.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is fund-level investment reporting; per-unit identifiers are out
+      of scope. REDI tracks unit counts (``Number_of_Units``) but not unit
+      identifiers.

@@ -18,9 +18,10 @@ The full inventory shape, and patterns for walking it from Python, lives under [
 
 ## Crosswalks
 
-A YAML mapping one canonical concept to per-standard inventory paths. Nineteen committed today:
+A YAML mapping one canonical concept to per-standard inventory paths. Twenty-one committed today:
 
 - [`accounting_standard`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/accounting_standard.yaml)
+- [`building_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/building_id.yaml)
 - [`city`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/city.yaml)
 - [`country`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/country.yaml)
 - [`currency`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/currency.yaml)
@@ -39,6 +40,7 @@ A YAML mapping one canonical concept to per-standard inventory paths. Nineteen c
 - [`space_type`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/space_type.yaml)
 - [`state_province`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/state_province.yaml)
 - [`street_address`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/street_address.yaml)
+- [`unit_id`](https://github.com/coradata/cora/blob/main/crosswalks/concepts/unit_id.yaml)
 
 Each crosswalk lists the canonical concept, aliases, a working definition, and one mapping block per participating standard. The mapping block names the inventory path, the standard version it's verified against, and the confidence label.
 
