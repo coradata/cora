@@ -1,0 +1,46 @@
+concept: lease_start_date
+canonical_definition: >-
+  The date on which a lease or rental contract becomes effective. Distinct
+  from the end date and from any actual move-in date (which may differ from
+  the contractually agreed start).
+aliases:
+  - lease_commencement_date
+  - rent_begin_date
+  - rent_start_date
+  - tenancy_start
+  - contract_start_date
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-08'
+mappings:
+  mits:
+    field: LeaseType/ExpectedMoveInDate
+    version: '4.0'
+    confidence: partial
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/property-marketing.yaml
+    notes: >-
+      MITS distinguishes ``ExpectedMoveInDate`` (contractual / planned) from
+      ``ActualMoveIn`` (observed occupancy). The crosswalk targets the
+      contractual start — consumers wanting move-in-as-observed should
+      reference ``ActualMoveIn`` (also surfaced as the dedicated
+      ``move_in_date`` crosswalk). Confidence ``partial`` reflects this
+      contractual-vs-observed ambiguity; same shape as ``lease_end_date``.
+  ibpdi:
+    field: RentalContract/RentBeginDate
+    version: '1.0'
+    confidence: close
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/property-management.yaml
+    notes: >-
+      IBPDI ``RentalContract.RentBeginDate`` is documented as "Date original
+      contract starts in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)" —
+      matches contractual start semantics. Range is ``dateTime`` (with
+      time-of-day) whereas MITS is ``xs:date`` (date only); consumers may
+      need to coerce.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is LP-investment-reporting flavored and aggregates lease activity
+      rather than tracking per-lease term dates. Individual lease start
+      dates fall outside REDI's reporting unit. Same posture as
+      ``lease_end_date``.
