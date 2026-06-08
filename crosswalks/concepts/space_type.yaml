@@ -1,0 +1,39 @@
+concept: space_type
+canonical_definition: >-
+  The category or function of a discrete space within a building — office,
+  retail, residential unit, common area, storage, parking, or another value
+  from a controlled vocabulary the source defines. Used to organize spaces
+  by use class for reporting, leasing, and operational purposes.
+aliases:
+  - space_category
+  - room_type
+  - use_class
+maintainer: '@coradata/maintainers'
+last_reviewed: '2026-06-07'
+mappings:
+  mits:
+    field: AdditionalSpace/SpaceType
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/mits/current/inventory/lease-application.yaml
+    notes: >-
+      MITS scopes ``SpaceType`` to ``AdditionalSpace`` (parking, storage,
+      etc.) at lease-application time.
+  ibpdi:
+    field: EmissionFactor/SpaceType
+    version: '1.0'
+    confidence: exact
+    source_url: https://github.com/coradata/cora/blob/main/standards/ibpdi/current/inventory/energy-and-resources.yaml
+    notes: >-
+      IBPDI uses ``SpaceType`` for emission-factor and operational-
+      measurement scoping ("differentiated emission factor for certain
+      space type within a building"); the underlying concept (categorizing
+      a space by use class) is shared with the MITS lease-application
+      modeling.
+  redi:
+    field: null
+    version: '1.0'
+    confidence: not_present
+    notes: >-
+      REDI is fund-level investment reporting; per-space categorization is
+      out of scope.
