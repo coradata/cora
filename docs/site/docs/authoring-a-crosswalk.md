@@ -155,6 +155,8 @@ tools/extractors/.venv/bin/cora docs build --repo-root .
 
 Open `docs/generated/concepts/<concept>.md` and verify the Mermaid graph and mappings table look right. The CI drift gate (`cora docs check`) will fail your PR if you commit a crosswalk but forget to regenerate the docs.
 
+The conceptual buckets the corpus organizes into — and the editorial decision tree for the confidence labels above — are documented in detail in the [crosswalk taxonomy](https://github.com/coradata/cora/blob/main/crosswalks/taxonomy.md). Read it before authoring; it answers most of the editorial questions reviewers raise.
+
 ## Step 7: Commit + PR
 
 Standard repo workflow. The maintainer review will focus on:

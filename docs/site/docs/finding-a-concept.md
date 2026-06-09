@@ -44,7 +44,7 @@ These are mechanical projections — the YAML is authoritative. Pipelines should
 
 ## When the concept isn't covered
 
-CORA today publishes six concept crosswalks, and the corpus grows with the standards bodies' work. If the field your organization needs isn't represented, [request a crosswalk](requesting-a-crosswalk.md). The mapping work is openly maintained; most additions are merged within one review cycle.
+CORA today publishes thirty-three concept crosswalks, and the corpus grows with the standards bodies' work and the analyzer-driven editorial passes. Before [requesting a crosswalk](requesting-a-crosswalk.md), check the [suggestions report](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions.md) and the [semantic suggestions report](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions-semantic.md) — the concept may already be a known candidate cluster awaiting an editorial pass. If the field your organization needs is neither covered nor surfaced, file the request. The mapping work is openly maintained; most additions are merged within one review cycle.
 
 ## What to read next
 
