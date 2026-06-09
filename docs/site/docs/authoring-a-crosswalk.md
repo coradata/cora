@@ -147,7 +147,7 @@ For a concept with a `not_present` mapping like `email_address`, the edge label 
 
 ## Step 6: Regenerate the docs
 
-Phase 4.5's generators read your new crosswalk and emit a concept page + update the coverage matrix:
+The docs generators read your new crosswalk and emit a concept page + update the coverage matrix:
 
 ```bash
 tools/extractors/.venv/bin/cora docs build --repo-root .

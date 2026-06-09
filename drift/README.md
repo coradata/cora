@@ -18,4 +18,4 @@ The drift register tracks two kinds of divergence:
 
 Resolution of any drift entry is the standards bodies' decision, not CORA's. The register surfaces; it does not arbitrate.
 
-This directory is currently empty. The register populates when the second hosted standard lands (since drift requires at least two versions or two standards to compare). Until then, the taxonomy documented here is the contract for what the register will contain.
+This directory is currently empty. Entries land as cross-version or cross-standard comparisons are authored — until then, the taxonomy above is the contract for what the register will contain. Inter-standard divergences are partially documented today in the per-crosswalk `notes` blocks under [`crosswalks/concepts/`](../crosswalks/concepts/) (see, for example, the `divergent` mappings on `rent_amount` and `market_rent`); the drift register is the consolidated view of those entries plus intra-standard version-bump deltas.

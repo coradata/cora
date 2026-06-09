@@ -131,7 +131,7 @@ Existing tests for `excel_multisheet`, `xsd`, `cdm_json` are good shape referenc
 
 ## The "two-source genericity audit"
 
-A discipline from Phase 2. The rule: **before declaring a format adapter shipped, you've extracted at least two real sources of that format successfully.**
+A core discipline of CORA's extractor work. The rule: **before declaring a format adapter shipped, you've extracted at least two real sources of that format successfully.**
 
 The point: a single source doesn't prove your adapter is general — it proves you encoded that source. With two distinct sources (different column layouts, different file naming, different nesting depth, etc.) you've shown the adapter handles the *format* not the *example*.
 

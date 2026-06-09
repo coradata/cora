@@ -103,6 +103,6 @@ Reviewers see typos and sheet-mapping mistakes in the YAML diff; no separate rep
 
 ## References
 
-- [CORA-Field-Inventory-Plan.md](../../../internal-planning/CORA-Field-Inventory-Plan.md) — Phase 3c
 - [cora/CONTEXT.md](../../CONTEXT.md) — vocabulary
 - [cora/docs/field-inventory.md](../field-inventory.md) — inventory contract
+- [cora/docs/site/docs/inventory-operations.md](../site/docs/inventory-operations.md) — `merge` vs `enrich` for consumers

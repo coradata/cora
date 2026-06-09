@@ -112,7 +112,7 @@ Open the PR. CI runs:
 - `cora docs check --repo-root .`
 - `check-jsonschema` over the new inventory YAMLs and any new crosswalks
 - markdownlint / yamllint
-- The Phase 5 docs-site build (broken-link check)
+- The authored-docs-site build (broken-link check)
 
 All five gates must pass before merge.
 

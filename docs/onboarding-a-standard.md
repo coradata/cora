@@ -45,7 +45,7 @@ If the upstream content is bytes (PDF, XLSX, XSD), commit it as-is. If it's text
 
 After the native artifact is in place, run the inventory extractor for the relevant format and commit the per-module inventory YAML files to `standards/<standard>/current/inventory/<module>.yaml`. See [`docs/field-inventory.md`](./field-inventory.md) for the format and path grammar.
 
-The extractor adapters (XSD, JSON catalog, Excel data dictionary) land in Phase 2 of [`internal-planning/CORA-Field-Inventory-Plan.md`](../../internal-planning/CORA-Field-Inventory-Plan.md). Until they're available, the inventory step is forward-referenced — onboarding can still ship the native artifact and PROVENANCE; inventory backfill happens once extractors exist.
+Five extractor adapters ship today: XSD, JSON catalog, CDM-JSON, Excel single-sheet dictionary, and Excel multi-sheet dictionary. See [`tools/extractors/README.md`](../tools/extractors/README.md) for the full CLI surface. If a standard's native format isn't covered by an existing adapter, ship the native artifact and PROVENANCE first; the inventory backfill follows once a new adapter exists ([`docs/site/docs/onboarding-a-format.md`](site/docs/onboarding-a-format.md) walks through adding one).
 
 ### 5. Write the standard's README
 

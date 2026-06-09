@@ -54,8 +54,8 @@ The [Contributing](seams.md) section documents the implementation toolkit — th
 
 ## Status
 
-Phase 4.5 shipped fifteen inventories (MITS / IBPDI / REDI), an initial six concept crosswalks, three validator adapters, five generator adapters, and five extractor adapters. The concept corpus has since grown to thirty-three crosswalks via the Phase 6 editorial waves; the [suggestions report](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions.md) and the [semantic suggestions report](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions-semantic.md) drive the ongoing additions. CORA itself is in formation; v0.1 public release is anticipated Q2 2026.
+Fifteen inventories ship today across MITS, IBPDI, and REDI — 496 types and 3,353 fields combined. Thirty-three concept crosswalks tie them together, with confidence labels (`exact` / `close` / `partial` / `divergent` / `not_present`) on every mapping. Five extractor adapters, three validator adapters, and five generator adapters back the corpus; the concept analyzer (`cora concepts census` / `suggest` / `--semantic`) drives the ongoing editorial pass and surfaces candidate clusters in two reports under [`docs/concepts-analysis/`](https://github.com/coradata/cora/tree/main/docs/concepts-analysis).
 
-The strategic framing of CORA — *why* it exists, the v0.1 scope, the governance perspective, the formation status — lives at [coradata.org](https://coradata.org).
+The strategic framing of CORA — *why* it exists, the scope, the governance perspective — lives at [coradata.org](https://coradata.org).
 
 Vendor-neutral · Global by design · Publicly available · Openly licensed.
