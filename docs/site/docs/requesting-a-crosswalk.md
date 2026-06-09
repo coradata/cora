@@ -8,6 +8,7 @@ Open a request when:
 
 - You've checked the [crosswalks directory](https://github.com/coradata/cora/tree/main/crosswalks/concepts) and the [coverage matrix](https://github.com/coradata/cora/blob/main/docs/generated/coverage-matrix.md), and the concept genuinely isn't there.
 - You've checked the [aliases](finding-a-concept.md#by-alias) of existing crosswalks — the concept might already be covered under a different canonical name.
+- You've checked the [suggestions report](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions.md) and the [semantic suggestions report](https://github.com/coradata/cora/blob/main/docs/concepts-analysis/suggestions-semantic.md) — the field your pipeline needs may already be sitting in a candidate cluster awaiting an editorial pass. If so, the request is partway done; mention the cluster in your issue.
 - The concept is **leaf-level**. Type-level concepts ("the whole address") are out of scope for the current schema. Stick to single-field concepts like `postal_code`, `last_name`, `lease_term_months`.
 
 ## What to include
