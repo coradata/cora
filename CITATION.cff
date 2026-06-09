@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "CORA — Common Ontology for Real Assets"
+message: >-
+  If you use CORA's published artifacts (inventories, crosswalks,
+  coverage matrix, extractor toolkit) in research or production work,
+  please cite this project and the underlying standards bodies.
+type: software
+authors:
+  - name: "CORA Contributors"
+    website: "https://coradata.org"
+repository-code: "https://github.com/coradata/cora"
+url: "https://coradata.org"
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+keywords:
+  - real-assets
+  - ontology
+  - data-standards
+  - crosswalk
+  - mits
+  - ibpdi
+  - redi
+  - real-estate
+  - infrastructure
+abstract: >-
+  CORA is a vendor-neutral coordination layer for real-assets data
+  standards. It hosts each participating standard in its native format,
+  publishes derived ontology and interchange formats, maintains
+  cross-standard concept crosswalks with explicit confidence labels,
+  and runs a drift register tracking how definitions evolve across
+  versions and across standards.

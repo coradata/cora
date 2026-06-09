@@ -92,7 +92,7 @@ resolve("Property/id", inventory)
 
 ## OWL/RDF projection roadmap
 
-The schema is designed so that the future OWL derivation pipeline is a clean projection — no schema migration required. When that phase opens (see [`internal-planning/CORA-Field-Inventory-Plan.md`](../../internal-planning/CORA-Field-Inventory-Plan.md), Future Phases section), the mapping is:
+The schema is designed so that the future OWL derivation pipeline is a clean projection — no schema migration required. When that work opens, the mapping is:
 
 | Inventory concept | OWL/RDF equivalent |
 |---|---|
@@ -111,7 +111,7 @@ Inventories that legitimately have no class hierarchy (Excel-primary sources lik
 
 ## How extractors produce inventories
 
-Each format gets a typed extractor adapter at the `Extractor` seam (defined in Phase 2 of the inventory plan). The XSD extractor walks `xs:complexType` definitions into `types[]` and `xs:element`/`xs:attribute` declarations into `fields[]`. The JSON catalog extractor reads a JSONPath-described shape per a per-source config. The Excel data dictionary extractor reads one sheet per inventory module. The Excel multi-sheet extractor (Phase 3c) reads MITS-style workbooks where each sheet documents one shared type.
+Each format gets a typed extractor adapter at the `Extractor` seam. The XSD extractor walks `xs:complexType` definitions into `types[]` and `xs:element`/`xs:attribute` declarations into `fields[]`. The JSON catalog extractor reads a JSONPath-described shape per a per-source config. The CDM-JSON extractor handles IBPDI's Common Data Model entity-per-file layout. The Excel single-sheet dictionary extractor reads one sheet per inventory module. The Excel multi-sheet dictionary extractor reads MITS-style workbooks where each sheet documents one shared type.
 
 Every extractor sets `source_label` on the inventory it produces (`"xsd"`, `"excel"`, `"cdm-json"`, …) so the same data wears the same label in every operation that consumes it.
 
@@ -171,4 +171,4 @@ tools/extractors/.venv/bin/python tools/extractors/scripts/show_disagreements.py
 
 ## Status
 
-Phase 1 of the [field-inventory plan](../../internal-planning/CORA-Field-Inventory-Plan.md) ships the schema, the typed inventory module, the path module, fixtures, and these docs. **No real inventories have been extracted yet** — that lands in Phase 3 after the extractor adapters arrive in Phase 2.
+Fifteen inventories are committed today: seven MITS modules (accounts-payable, collections, lead-management, lease-application, property-marketing, resident-screening, resident-transactions), seven IBPDI clusters (digital-twin, energy-and-resources, financials, organisational-management, portfolio-and-asset-management, property-management, user-and-customer-experience), and one REDI sheet (data-fields). Combined corpus: 496 types and 3,353 fields across three standards. Every inventory was produced by one of the extractor adapters under [`tools/extractors/`](../tools/extractors/) and validated by the inventory-schema, field-count, and crosswalk-paths validators under the same `cora` CLI.

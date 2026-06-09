@@ -57,7 +57,7 @@ A single `merge(other, *, strict, attributes, ...)` would do both jobs, but the 
 
 The deletion test: if `enrich` didn't exist, every enrichment-source caller (Excel today, PDF tomorrow, SQL DDL after that) would have to compose `merge` with the same pre-filter logic. Adding `enrich` concentrates that pattern in one place. See [ADR-0001](https://github.com/coradata/cora/blob/main/docs/adr/0001-enrich-vs-merge.md) for the eight sub-decisions that constrain `enrich`'s shape.
 
-## The Phase 3c MITS flow
+## The MITS XSD-plus-Excel-dictionary flow
 
 ```python
 from cora_extractors.inventory import Inventory

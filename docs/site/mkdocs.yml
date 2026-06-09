@@ -1,7 +1,8 @@
 site_name: CORA Documentation
 site_description: >-
-  Cross-standard Object & Reference Architecture for real-estate data.
-  Authored documentation for inventories, crosswalks, and the extractor toolkit.
+  Common Ontology for Real Assets — vendor-neutral coordination layer for
+  real-assets data standards (MITS, IBPDI, REDI). Authored documentation
+  for inventories, crosswalks, and the extractor toolkit.
 site_url: https://coradata.github.io/cora/
 repo_url: https://github.com/coradata/cora
 repo_name: coradata/cora

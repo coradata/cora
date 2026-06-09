@@ -45,11 +45,10 @@ MkDocs Material's Markdown-native source means our existing artifacts ([CONTEXT.
 ## Alternatives considered
 
 - **Sphinx + Furo + MyST** — rejected per the table above. The Markdown-via-MyST path makes Sphinx tolerable but adds a translation layer for no compensating benefit.
-- **Plain GitHub-rendered Markdown** (no static-site generator) — already the Phase 4.5 model. Insufficient for narrative content: no full-text search, no styled navigation, no broken-link gate beyond manual review.
+- **Plain GitHub-rendered Markdown** (no static-site generator) — the model already used for `docs/generated/`. Insufficient for narrative content: no full-text search, no styled navigation, no broken-link gate beyond manual review.
 - **Docusaurus, VuePress, Astro Starlight** — JavaScript-toolchain options. All capable, but pulling Node into a Python-tooled repo adds a build system; not worth it for a documentation site.
 
 ## References
 
-- [Phase 5 plan section](../../../internal-planning/CORA-Field-Inventory-Plan.md)
 - [MkDocs Material](https://squidfunk.github.io/mkdocs-material/)
 - [Sphinx + Furo](https://pradyunsg.me/furo/)
