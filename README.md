@@ -282,12 +282,14 @@ This pattern keeps attribution clear: the standards body owns the definition; CO
 
 ## Contact
 
-Engagement is by role-level alias. Individual contacts are deliberately not published.
+Engagement is through GitHub-native channels. Individual contacts are deliberately not published.
 
-- **Custodianship and partnership inquiries:** `custodianship@coradata.org`
-- **Technical and contribution questions:** `technical@coradata.org`
-- **Press and public statements:** `press@coradata.org`
-- **Security disclosures:** `security@coradata.org` (see [`governance/SECURITY.md`](governance/SECURITY.md))
+- **Custodianship and partnership inquiries:** open a thread in [GitHub Discussions](https://github.com/coradata/cora/discussions)
+- **Technical and contribution questions:** [GitHub Discussions](https://github.com/coradata/cora/discussions) or a [GitHub issue](https://github.com/coradata/cora/issues)
+- **Press and public statements:** the contact form at [coradata.org](https://coradata.org)
+- **Security disclosures:** open a [private security advisory](https://github.com/coradata/cora/security/advisories/new) (see [`governance/SECURITY.md`](governance/SECURITY.md))
+
+Role-level email aliases (`custodianship@`, `technical@`, `press@`, `security@coradata.org`) will be published here once provisioned.
 
 ## References
 

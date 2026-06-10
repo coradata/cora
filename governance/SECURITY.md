@@ -2,9 +2,9 @@
 
 ## Reporting a vulnerability
 
-Email `security@coradata.org`. Do not file public issues for security disclosures.
+Open a private security advisory via GitHub: [github.com/coradata/cora/security/advisories/new](https://github.com/coradata/cora/security/advisories/new). This is confidential and visible only to maintainers. Do not file public issues for security disclosures.
 
-The security alias is being provisioned. Until it resolves, please open a private security advisory via GitHub: [github.com/coradata/cora/security/advisories/new](https://github.com/coradata/cora/security/advisories/new).
+A dedicated `security@coradata.org` alias will be published here once provisioned.
 
 ## Scope
 
