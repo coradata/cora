@@ -23,7 +23,8 @@ Thank you for considering a contribution to CORA. This project hosts real assets
 3. Make your changes
 4. Ensure CI passes (lint, license check, crosswalk schema validation)
 5. Open a pull request with a clear description and reference to any related issue
-6. Agree to the CLA terms in `governance/CLA.md`
+
+Opening a pull request constitutes agreement to the [Contributor License Agreement](governance/CLA.md). No separate signature is required.
 
 ## Pull request checklist
 
