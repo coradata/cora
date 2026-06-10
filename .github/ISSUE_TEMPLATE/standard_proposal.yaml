@@ -1,0 +1,72 @@
+name: Standard proposal
+description: Propose a new data standard for CORA to host and crosswalk.
+labels: ["standard-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        Use this to propose a **new** standard for CORA to host. For a new
+        version of a standard CORA already hosts, use *Standard update* instead.
+        Before filing, please read
+        [how proposals are evaluated](https://github.com/coradata/cora/blob/main/docs/site/docs/onboarding-a-standard.md#how-proposals-are-evaluated).
+  - type: input
+    id: standard_name
+    attributes:
+      label: Standard name
+      placeholder: e.g. CREFC Investor Reporting Package (IRP)
+    validations:
+      required: true
+  - type: input
+    id: owning_body
+    attributes:
+      label: Owning body
+      description: Who maintains the standard upstream, and a link to their home.
+      placeholder: e.g. CRE Finance Council — https://www.crefc.org/irp
+    validations:
+      required: true
+  - type: input
+    id: native_format
+    attributes:
+      label: Native format(s)
+      description: The format the standard is published in (XSD, JSON, Excel, PDF, SQL DDL, etc.).
+      placeholder: e.g. Excel workbook + PDF specification
+    validations:
+      required: true
+  - type: dropdown
+    id: relationship_status
+    attributes:
+      label: Relationship status
+      description: Where the conversation with the owning body stands today.
+      options:
+        - No contact yet
+        - In conversation
+        - Written permission held
+        - Open-license mirror (no permission required)
+    validations:
+      required: true
+  - type: textarea
+    id: license_terms
+    attributes:
+      label: License and redistribution terms
+      description: >-
+        The standard's license, and whether CORA may redistribute the native
+        artifact. If permission is required and not yet granted, say so.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why CORA should host it
+      description: >-
+        Scope fit (real-assets investment / operational / reporting lifecycle),
+        a named consumer or participating sponsor, and which existing concepts
+        it would crosswalk to.
+    validations:
+      required: true
+  - type: input
+    id: spec_url
+    attributes:
+      label: Specification URL
+      description: Link to the upstream spec or schema, if public.
+    validations:
+      required: false

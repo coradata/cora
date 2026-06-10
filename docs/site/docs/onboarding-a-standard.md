@@ -15,6 +15,19 @@ Each existing standard demonstrates one path:
 
 A new standard slots into the same flow.
 
+## How proposals are evaluated
+
+Before the mechanical steps below, a proposed standard has to clear an editorial bar. Anyone can propose one by opening a [standard proposal issue](https://github.com/coradata/cora/issues/new?template=standard_proposal.yaml); the proposal is evaluated against four criteria:
+
+1. **Licensing.** The standard is published under an open license CORA may redistribute, *or* the owning body grants written permission to mirror it. A standard CORA cannot legally republish cannot be hosted — only linked.
+2. **Scope fit.** The standard describes real-assets data across the investment, operational, or reporting lifecycle (real estate equity/debt, infrastructure). Adjacent domains (smart-building/IoT, general semantic interchange) are out of scope and belong to RealEstateCore, OSI, and similar — CORA crosswalks to them at the boundary rather than hosting them.
+3. **Upstream relationship.** Either an open-license mirror path exists (no permission needed) or there is a real conversation with the owning body. CORA does not host standards over a maintainer's objection.
+4. **A reason to host it now.** A named consumer who needs the crosswalks, or a participating sponsor, or clear overlap with concepts already in the corpus. Hosting a standard nobody is asking to unify adds maintenance cost without payoff.
+
+**Who decides.** During bootstrap custodianship the decision rests with the bootstrap custodian (Cherre), made in the open on the proposal issue. When CORA transitions to neutral foundation governance, standard intake becomes a governance-body decision. Either way the criteria above are the bar, and the rationale for accepting or declining is recorded on the issue.
+
+A proposal that clears the bar then follows the mechanical onboarding below.
+
 ## Step 1: Mirror the native artifact
 
 ```
