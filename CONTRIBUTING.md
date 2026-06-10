@@ -33,4 +33,4 @@ Thank you for considering a contribution to CORA. This project hosts real assets
 
 ## Questions
 
-Open a discussion at [github.com/coradata/cora/discussions](https://github.com/coradata/cora/discussions) or email `technical@coradata.org` once aliases are provisioned.
+Open a discussion at [github.com/coradata/cora/discussions](https://github.com/coradata/cora/discussions).
