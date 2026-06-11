@@ -109,7 +109,7 @@ A first-time crosswalking pass often surfaces vocabulary clashes (IBPDI's "Build
 tools/extractors/.venv/bin/cora docs build --repo-root .
 ```
 
-Your new inventory pages appear at `docs/generated/inventories/<std>/<module>.md` and the index page picks up the new standard automatically. The CI drift gate (`cora docs check`) ensures regeneration happens.
+Your new inventory pages appear at `docs/generated/inventories/<std>/<module>.md` and the index page picks up the new standard automatically. Once the new standard has crosswalk mappings (step 5), `docs build` also emits the [adoption briefings](adopting-a-standard.md) for every ordered pair it now participates in — no manual step. The CI drift gate (`cora docs check`) ensures regeneration happens. The worked example on the authored [Adopting a standard](adopting-a-standard.md) page is hand-written, though — consider refreshing it if the new standard makes a better illustration.
 
 ## Step 7: Update the CHANGELOG and the corpus-wide README
 
