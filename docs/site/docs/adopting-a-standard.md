@@ -21,18 +21,9 @@ Each briefing ends with an honest coverage note: CORA maps only what's in the co
 
 ## Where to read them
 
-Browse all pairs at [`docs/generated/adoption/`](https://github.com/coradata/cora/tree/main/docs/generated/adoption), or jump to a specific journey:
+The full set — one briefing per ordered pair of hosted standards — is indexed at [`docs/generated/adoption/`](https://github.com/coradata/cora/blob/main/docs/generated/adoption/README.md). That index lists every pair with its recognise / new / stays-home counts and links straight to each briefing.
 
-| You report in | Adopting | Briefing |
-|---|---|---|
-| IBPDI | MITS | [ibpdi → mits](https://github.com/coradata/cora/blob/main/docs/generated/adoption/ibpdi-to-mits.md) |
-| IBPDI | REDI | [ibpdi → redi](https://github.com/coradata/cora/blob/main/docs/generated/adoption/ibpdi-to-redi.md) |
-| MITS | IBPDI | [mits → ibpdi](https://github.com/coradata/cora/blob/main/docs/generated/adoption/mits-to-ibpdi.md) |
-| MITS | REDI | [mits → redi](https://github.com/coradata/cora/blob/main/docs/generated/adoption/mits-to-redi.md) |
-| REDI | IBPDI | [redi → ibpdi](https://github.com/coradata/cora/blob/main/docs/generated/adoption/redi-to-ibpdi.md) |
-| REDI | MITS | [redi → mits](https://github.com/coradata/cora/blob/main/docs/generated/adoption/redi-to-mits.md) |
-
-The briefings regenerate on every change to the crosswalks, so they stay current as the corpus grows and as new standards onboard (the set expands automatically to every ordered pair).
+The briefings regenerate on every change to the crosswalks, so they stay current as the corpus grows. When a new standard onboards, its pairings appear in that index automatically — the set expands to every ordered pair (N×(N−1)) with no manual edit here.
 
 ## From the command line
 

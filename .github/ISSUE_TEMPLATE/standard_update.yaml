@@ -26,3 +26,13 @@ body:
     attributes:
       label: Summary of changes
       description: What changed upstream? Breaking? Additive? New concepts?
+  - type: markdown
+    attributes:
+      value: >-
+        **After re-extraction:** once the inventories and affected crosswalks
+        are updated, run `cora docs build` and commit the result. This
+        regenerates the coverage matrix, concept pages, and the
+        [adoption briefings](https://github.com/coradata/cora/blob/main/docs/generated/adoption/README.md)
+        — the `cora docs check` CI gate fails until you do. Field/confidence
+        changes flow into the briefings automatically; a version-label-only
+        bump produces no briefing diff.
