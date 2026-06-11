@@ -46,6 +46,10 @@ class IndexGenerator:
                 "- [Concept Overview](concept-overview.md) — "
                 "Mermaid graph of every concept and its mappings"
             )
+            parts.append(
+                "- [Adoption Briefings](adoption/README.md) — "
+                "per-standard-pair guides for adopting an additional standard"
+            )
             parts.append("\n### Concepts\n")
             for cw in sorted(crosswalks, key=lambda c: c.concept):
                 tag = " — boundary" if cw.boundary else ""

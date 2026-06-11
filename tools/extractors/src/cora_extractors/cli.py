@@ -57,6 +57,10 @@ from cora_extractors.excel_multisheet import ExcelMultiSheetDictionaryExtractor
 from cora_extractors.extractor import Extractor
 from cora_extractors.generator import Generator
 from cora_extractors.generators._common import load_crosswalks
+from cora_extractors.generators.adoption_briefings import (
+    AdoptionBriefingGenerator,
+    render_briefing,
+)
 from cora_extractors.generators.concept_graphs import ConceptGraphsGenerator
 from cora_extractors.generators.concept_pages import ConceptPagesGenerator
 from cora_extractors.generators.coverage_matrix import CoverageMatrixGenerator
@@ -100,6 +104,7 @@ GENERATORS: list[Generator] = [
     ConceptPagesGenerator(),
     ConceptGraphsGenerator(),
     InventoryPagesGenerator(),
+    AdoptionBriefingGenerator(),
     IndexGenerator(),
 ]
 
@@ -119,6 +124,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     _add_inventory(subparsers)
     _add_docs(subparsers)
     _add_concepts(subparsers)
+    _add_adopt(subparsers)
 
     args = parser.parse_args(argv)
     if args.cmd is None:
@@ -292,6 +298,37 @@ def _add_docs(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -
     )
     c.add_argument("--repo-root", type=Path, default=Path.cwd())
     c.set_defaults(func=_cmd_docs_check)
+
+
+def _add_adopt(subparsers: argparse._SubParsersAction[argparse.ArgumentParser]) -> None:
+    p = subparsers.add_parser(
+        "adopt",
+        help=(
+            "Print an adoption briefing: you report in --from and are adopting "
+            "--to. Renders the same content as the generated adoption pages."
+        ),
+    )
+    p.add_argument("--from", dest="home", required=True, help="Standard you already report in.")
+    p.add_argument("--to", dest="adopting", required=True, help="Standard you are adopting.")
+    p.add_argument("--repo-root", type=Path, default=Path.cwd())
+    p.set_defaults(func=_cmd_adopt)
+
+
+def _cmd_adopt(args: argparse.Namespace) -> int:
+    repo_root = args.repo_root.resolve()
+    crosswalks = load_crosswalks(repo_root)
+    standards = sorted({s for cw in crosswalks for s in cw.mappings})
+    home, adopting = args.home.lower(), args.adopting.lower()
+    for label, std in (("--from", home), ("--to", adopting)):
+        if std not in standards:
+            known = ", ".join(standards) or "(none)"
+            print(f"error: {label} '{std}' not a hosted standard. Known: {known}")
+            return 2
+    if home == adopting:
+        print("error: --from and --to must differ")
+        return 2
+    print(render_briefing(home, adopting, crosswalks))
+    return 0
 
 
 def _cmd_docs_build(args: argparse.Namespace) -> int:

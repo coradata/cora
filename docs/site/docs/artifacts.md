@@ -64,6 +64,12 @@ A single Markdown table showing every committed concept against every participat
 
 The matrix is the at-a-glance answer to *which fields can my pipeline rely on across the sources I actually receive?* — green for `exact`, less-green for `close`, amber for `partial`, red for `divergent`, dash for `not_present`.
 
+## Adoption briefings
+
+For a consumer who already reports in one hosted standard and is taking on another, CORA generates a directional briefing per ordered pair of standards — what you'll recognise, what's genuinely new, and where the two look equal but aren't. Browseable under [`docs/generated/adoption/`](https://github.com/coradata/cora/tree/main/docs/generated/adoption). The narrative entry point is [Adopting a standard](adopting-a-standard.md).
+
+Each briefing is a pure projection of the crosswalks: it partitions concepts into *recognise-but-reconcile* (present in both, with `partial`/`divergent` grain-mismatch caveats pulled to the front), *new territory* (present in the standard you're adopting, absent from the one you know), and *stays home* (yours, but the new standard won't carry them).
+
 ## Generated concept pages
 
 Each concept also has an auto-generated Markdown page that combines the mappings table, the cross-standard graph, and a link back to the source YAML. Browseable under [`docs/generated/concepts/`](https://github.com/coradata/cora/tree/main/docs/generated/concepts).
