@@ -43,7 +43,7 @@ concepts-ml = [
   "sentence-transformers>=3,<5",
   # The transitive torch+sentence-transformers combo needs numpy 1.x — torch
   # 2.2's pre-built wheels predate the numpy 2.x ABI break.
-  "numpy>=1.26,<2",
+  "numpy>=1.26,<3",
 ]
 
 [project.scripts]
