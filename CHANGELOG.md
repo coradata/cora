@@ -10,7 +10,7 @@ For per-standard upstream version history see each standard's `current/CHANGELOG
 
 For per-PR detail see the [merged pull-request list](https://github.com/coradata/cora/pulls?q=is%3Apr+is%3Amerged) and the [release notes](https://github.com/coradata/cora/releases).
 
-## Unreleased
+## v0.1.0 — 2026-06-30
 
 ### Added
 
