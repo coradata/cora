@@ -31,7 +31,7 @@ dev = [
 ]
 docs = [
   "mkdocs-material>=9,<10",
-  "pymdown-extensions>=10,<11",
+  "pymdown-extensions>=10,<12",
 ]
 # Optional ML stack for `cora concepts suggest --semantic`. Adds ~250 MB
 # (torch + transformers + sentence-transformers), so it lives behind an
