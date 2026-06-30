@@ -228,19 +228,7 @@ The contributor walkthrough lives at [`CONTRIBUTING.md`](CONTRIBUTING.md). Break
 
 ## Governance
 
-Cherre is the **bootstrap custodian** of CORA. The role is time-bounded by design.
-
-In the bootstrap phase, Cherre staffs the repository, runs the publishing pipeline, and underwrites the operational cost of hosting. Cherre does not hold authority over what any hosted standard says or how it evolves.
-
 CORA's stated intent is to transition to **neutral foundation governance** once the project has more than one hosted standard and at least one standards body has joined as a participating member. The target form is a foundation-style structure modeled on Open Semantic Interchange's stated transition path and on the Linux Foundation's project model. The destination foundation has not been selected.
-
-### Staffing and operational commitment
-
-During the bootstrap phase, Cherre commits dedicated engineering capacity to maintain the publishing pipeline, run the drift register, ship and update skills, and respond to upstream releases from hosted standards. Specific SLAs (response time on upstream releases, drift register update cadence, security disclosure handling) will be published in `governance/SLA.md` as the publishing cadence is established.
-
-### Sunset and review clause
-
-If by 18 months after the first tagged release CORA has not (a) onboarded a participating standards body beyond the bootstrap content or (b) attracted at least one non-Cherre maintainer, the bootstrap custodianship will be formally reviewed. The outcome (continue, transfer to a foundation immediately, or sunset) will be decided publicly. This is to prevent CORA from becoming an abandoned vendor-hosted repository that other projects work around.
 
 ### Governance documents
 
@@ -255,14 +243,6 @@ If by 18 months after the first tagged release CORA has not (a) onboarded a part
 | `governance/CHARTER.md` | Planned |
 | `governance/GOVERNANCE.md` | Planned |
 | `governance/SLA.md` | Planned |
-
-## Cherre's role and commercial position
-
-Cherre is a real estate data platform. Cherre builds commercial products that consume and operate on real assets data. CORA puts the *definitional* layer in public. Cherre's commercial products depend on implementation, integration, and operational reliability against that layer, not on private ownership of the definitions themselves.
-
-This is a deliberate bet: that open, well-governed schemas are better for the industry than vendor-owned ones, and that Cherre wins more business by being the best implementation against a shared substrate than by being the only vendor that owns it.
-
-CORA artifacts are Apache 2.0 and CC BY 4.0 and free for any use, including by Cherre's competitors. Cherre's commercial products remain commercial.
 
 ## Citing CORA
 
