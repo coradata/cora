@@ -40,7 +40,7 @@ docs = [
 concepts-ml = [
   # sentence-transformers 5.x pulls transformers 5.x which has a NameError
   # in transformers/integrations/accelerate.py against torch 2.2; pin <5.
-  "sentence-transformers>=3,<5",
+  "sentence-transformers>=3,<6",
   # The transitive torch+sentence-transformers combo needs numpy 1.x — torch
   # 2.2's pre-built wheels predate the numpy 2.x ABI break.
   "numpy>=1.26,<3",
