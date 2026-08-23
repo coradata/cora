@@ -38,7 +38,7 @@ docs = [
 # extra rather than the base dependency set. The default string-similarity
 # pass (`cora concepts suggest`) needs none of this.
 concepts-ml = [
-  "sentence-transformers>=3,<6",
+  "sentence-transformers>=3,<7",
   "numpy>=1.26,<3",
 ]
 
