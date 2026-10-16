@@ -2,10 +2,6 @@
 
 This directory holds CORA's mirror of the [REDI Data Model](https://realestatedatainitiative.netlify.app/), the LP-led data standard published by the REDI Data Model Sub-Committee. REDI defines a structured set of data fields, lists, and metadata for institutional real estate investment reporting across fund vehicles (open-end North America, APAC, EU; separately managed accounts; closed-end funds), with explicit cross-mappings to the NCREIF/PREA Reporting Standards and INREV.
 
-**Why this is here.** REDI is mirrored in CORA with permission from the REDI Data Model Sub-Committee. REDI is onboarded as a participating standards body.
-
-**Attribution.** All credit for REDI goes to the REDI Data Model Sub-Committee and the limited partners and contributing organizations that author and maintain it. See [PROVENANCE.yaml](PROVENANCE.yaml) for license terms and attribution requirements.
-
 **Provenance.** See [PROVENANCE.yaml](PROVENANCE.yaml) for the distribution URL, upstream version, and license metadata.
 
 **Canonical source.** The authoritative REDI distribution lives at [realestatedatainitiative.netlify.app](https://realestatedatainitiative.netlify.app/). CORA mirrors. CORA does not author. Native files are kept bit-identical to the upstream distribution — no structural changes.
